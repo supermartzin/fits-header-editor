@@ -7,7 +7,7 @@ import java.text.DecimalFormatSymbols;
  * Helper class for formatting numbers info specific format
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.0.1
  */
 public class NumberFormatter {
 
@@ -35,8 +35,11 @@ public class NumberFormatter {
         separator.setDecimalSeparator('.');
 
         DecimalFormat decimalFormat = new DecimalFormat();
+        decimalFormat.setDecimalFormatSymbols(separator);
+        decimalFormat.setGroupingUsed(false);
         decimalFormat.setMinimumIntegerDigits(minimumIntegerDigits);
         decimalFormat.setMaximumFractionDigits(maximumFractionDigits);
+
 
         return decimalFormat.format(number);
     }
