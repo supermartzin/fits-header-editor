@@ -24,16 +24,16 @@ public final class JulianDate {
      * @param hour          number of hours
      * @param minute        number of minutes
      * @param second        number of seconds
-     * @param nanoseconds   number of nanoseconds
+     * @param nanosecond    number of nanoseconds
      */
-    public JulianDate(int year, int month, int day, int hour, int minute, int second, int nanoseconds) {
+    public JulianDate(int year, int month, int day, int hour, int minute, int second, int nanosecond) {
         _year = year;
         _month = month;
         _day = day;
         _hour = hour
                 + minute / 60.0
                 + second / 3600.0
-                + nanoseconds / 3600000000000.0;
+                + nanosecond / 3600000000000.0;
     }
 
     /**
@@ -42,6 +42,9 @@ public final class JulianDate {
      * @param datetime  DateTime parameter
      */
     public JulianDate(LocalDateTime datetime) {
+        if (datetime == null)
+            throw new IllegalArgumentException("datetime is null");
+
         _year = datetime.getYear();
         _month = datetime.getMonthValue();
         _day = datetime.getDayOfMonth();
