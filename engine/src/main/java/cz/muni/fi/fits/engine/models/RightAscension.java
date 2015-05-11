@@ -1,10 +1,10 @@
-package cz.muni.fi.fits.engine.tools;
+package cz.muni.fi.fits.engine.models;
 
 /**
  * Class for computing right acsension of some object from provided coordinates
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.1.1
  */
 public final class RightAscension {
 
@@ -20,6 +20,13 @@ public final class RightAscension {
      * @param seconds   object's seconds
      */
     public RightAscension(double hours, double minutes, double seconds) {
+        if (Double.isNaN(hours))
+            throw new  IllegalArgumentException("hours parameter is not a number");
+        if (Double.isNaN(minutes))
+            throw new  IllegalArgumentException("minutes parameter is not a number");
+        if (Double.isNaN(seconds))
+            throw new  IllegalArgumentException("seconds parameter is not a number");
+
         _hours = hours;
         _minutes = minutes;
         _seconds = seconds;

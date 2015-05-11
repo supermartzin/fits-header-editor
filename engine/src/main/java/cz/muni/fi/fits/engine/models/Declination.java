@@ -1,12 +1,12 @@
-package cz.muni.fi.fits.engine.tools;
+package cz.muni.fi.fits.engine.models;
 
 /**
  * Class for computing decliantion of some object from provided coordinates
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
-public class Declination {
+public final class Declination {
 
     private final double _degrees;
     private final double _minutes;
@@ -20,6 +20,13 @@ public class Declination {
      * @param seconds   number of object's seconds
      */
     public Declination(double degrees, double minutes, double seconds) {
+        if (Double.isNaN(degrees))
+            throw new IllegalArgumentException("degrees parameter is not a number");
+        if (Double.isNaN(minutes))
+            throw new IllegalArgumentException("minutes parameter is not a number");
+        if (Double.isNaN(seconds))
+            throw new IllegalArgumentException("seconds parameter is not a number");
+
         _degrees = degrees;
         _minutes = minutes;
         _seconds = seconds;

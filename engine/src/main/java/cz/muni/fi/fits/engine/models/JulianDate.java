@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.engine.tools;
+package cz.muni.fi.fits.engine.models;
 
 import java.time.LocalDateTime;
 

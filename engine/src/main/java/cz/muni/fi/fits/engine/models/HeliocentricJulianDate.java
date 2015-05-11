@@ -1,12 +1,12 @@
-package cz.muni.fi.fits.engine.tools;
+package cz.muni.fi.fits.engine.models;
 
 /**
  * Class for computing heliocentric julian date of some object from provided parameters
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.0.1
  */
-public class HeliocentricJulianDate {
+public final class HeliocentricJulianDate {
 
     private static final double PI = Math.PI;
     private static final double RADS = PI / 180.0;

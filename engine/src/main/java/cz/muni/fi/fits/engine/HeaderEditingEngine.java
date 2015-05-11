@@ -147,9 +147,9 @@ public interface HeaderEditingEngine {
      * @param exposure              {@link String} value as keyword of exposure record
      *                              or {@link Double} as value of exposure in seconds
      * @param rightAscension        {@link String} value as keyword of right ascension record
-     *                              or {@link cz.muni.fi.fits.engine.tools.RightAscension} as right ascension value parameters
+     *                              or {@link cz.muni.fi.fits.engine.models.RightAscension} as right ascension value parameters
      * @param declination           {@link String} value as keyword of declination record
-     *                              or {@link cz.muni.fi.fits.engine.tools.Declination} as declination value parameters
+     *                              or {@link cz.muni.fi.fits.engine.models.Declination} as declination value parameters
      * @param comment               comment of HJD record, insert
      *                              <code>null</code> when no comment to add
      * @param fitsFile              FITS file in which to chain records

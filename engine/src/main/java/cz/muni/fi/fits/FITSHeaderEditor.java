@@ -1,8 +1,8 @@
 package cz.muni.fi.fits;
 
 import cz.muni.fi.fits.engine.HeaderEditingEngine;
-import cz.muni.fi.fits.engine.tools.Declination;
-import cz.muni.fi.fits.engine.tools.RightAscension;
+import cz.muni.fi.fits.engine.models.Declination;
+import cz.muni.fi.fits.engine.models.RightAscension;
 import cz.muni.fi.fits.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.exceptions.ValidationException;
 import cz.muni.fi.fits.input.processors.InputProcessor;
