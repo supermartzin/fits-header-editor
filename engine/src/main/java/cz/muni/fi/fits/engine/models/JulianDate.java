@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
  * Class for computing julian date from human readable datetime
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.0.3
  */
 public final class JulianDate {
 
@@ -43,7 +43,7 @@ public final class JulianDate {
      */
     public JulianDate(LocalDateTime datetime) {
         if (datetime == null)
-            throw new IllegalArgumentException("datetime is null");
+            throw new IllegalArgumentException("datetime parameter is null");
 
         _year = datetime.getYear();
         _month = datetime.getMonthValue();
@@ -59,7 +59,7 @@ public final class JulianDate {
      *
      * @return  computed julian date
      */
-    public double getJulianDate() {
+    public double computeJulianDate() {
         return 367 * _year
                 - Math.floor((_year + Math.floor((_month + 9) / 12.0)) * 7 / 4.0)
                 + Math.floor(275 * _month / 9.0)

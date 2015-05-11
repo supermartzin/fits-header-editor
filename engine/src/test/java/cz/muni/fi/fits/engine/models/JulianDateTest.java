@@ -61,7 +61,7 @@ public class JulianDateTest {
         int nanosecond = 12347856;
 
         JulianDate julianDate = new JulianDate(year, month, day, hour, minute, second, nanosecond);
-        double julianDateValue = julianDate.getJulianDate();
+        double julianDateValue = julianDate.computeJulianDate();
 
         assertNotNull(julianDateValue);
         assertEquals(2448032.101933013, julianDateValue, 0.0000000001);
@@ -78,7 +78,7 @@ public class JulianDateTest {
         int nanosecond = 12347856;
 
         JulianDate julianDate = new JulianDate(year, month, day, hour, minute, second, nanosecond);
-        double julianDateValue = julianDate.getJulianDate();
+        double julianDateValue = julianDate.computeJulianDate();
 
         assertNotNull(julianDateValue);
         assertEquals(2175535.155694587, julianDateValue, 0.0000000001);
@@ -89,7 +89,7 @@ public class JulianDateTest {
         LocalDateTime dateTime = LocalDateTime.of(2010, 11, 23, 20, 58, 26);
 
         JulianDate julianDate = new JulianDate(dateTime);
-        double julianDateValue = julianDate.getJulianDate();
+        double julianDateValue = julianDate.computeJulianDate();
 
         assertNotNull(julianDateValue);
         assertEquals(2455524.373912037, julianDateValue, 0.0000000001);

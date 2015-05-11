@@ -4,7 +4,7 @@ package cz.muni.fi.fits.engine.models;
  * Class for computing heliocentric julian date of some object from provided parameters
  *
  * @author Martin Vrábel
- * @version 1.0.1
+ * @version 1.1
  */
 public final class HeliocentricJulianDate {
 
@@ -25,7 +25,14 @@ public final class HeliocentricJulianDate {
      * @param declination       {@link Declination} object
      */
     public HeliocentricJulianDate(JulianDate julianDate, RightAscension rightAscension, Declination declination) {
-        _julianDate = julianDate.getJulianDate();
+        if (julianDate == null)
+            throw new IllegalArgumentException("julianDate parameter is null");
+        if (rightAscension == null)
+            throw new IllegalArgumentException("rightAscension parameter is null");
+        if (declination == null)
+            throw new IllegalArgumentException("declination parameter is null");
+
+        _julianDate = julianDate.computeJulianDate();
         _rightAscension = rightAscension.getRightAscension();
         _declination = declination.getDeclination();
     }
@@ -38,6 +45,13 @@ public final class HeliocentricJulianDate {
      * @param declination       {@link Declination} value
      */
     public HeliocentricJulianDate(double julianDate, double rightAscension, double declination) {
+        if (Double.isNaN(julianDate))
+            throw new  IllegalArgumentException("julianDate parameter is not a number");
+        if (Double.isNaN(rightAscension))
+            throw new  IllegalArgumentException("rightAscension parameter is not a number");
+        if (Double.isNaN(declination))
+            throw new  IllegalArgumentException("declination parameter is not a number");
+
         _julianDate = julianDate;
         _rightAscension = rightAscension;
         _declination = declination;
