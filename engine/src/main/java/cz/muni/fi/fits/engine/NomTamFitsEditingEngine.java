@@ -1,11 +1,14 @@
 package cz.muni.fi.fits.engine;
 
-import cz.muni.fi.fits.engine.tools.Declination;
-import cz.muni.fi.fits.engine.tools.HeliocentricJulianDate;
-import cz.muni.fi.fits.engine.tools.JulianDate;
-import cz.muni.fi.fits.engine.tools.RightAscension;
+import cz.muni.fi.fits.engine.models.Declination;
+import cz.muni.fi.fits.engine.models.HeliocentricJulianDate;
+import cz.muni.fi.fits.engine.models.JulianDate;
+import cz.muni.fi.fits.engine.models.RightAscension;
+import cz.muni.fi.fits.engine.models.utils.DeclinationParamsConverter;
+import cz.muni.fi.fits.engine.models.utils.RightAscensionParamsConverter;
 import cz.muni.fi.fits.models.Result;
 import cz.muni.fi.fits.utils.Constants;
+import cz.muni.fi.fits.engine.models.utils.NumberFormatter;
 import cz.muni.fi.fits.utils.Tuple;
 import nom.tam.fits.*;
 import nom.tam.util.BufferedFile;
@@ -30,7 +33,7 @@ import java.util.List;
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">Project pages</a>
  *
  * @author Martin Vrábel
- * @version 1.3.1
+ * @version 1.3.3
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
@@ -745,7 +748,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
     /**
      * Computes Julian Date from provided datetime and exposure parameters
-     * and saves/updates value to <code>JD</code> keyword to FITS file header
+     * and saves or updates (if record already exists) value to corresponding
+     * record in FITS file header
      *
      * @param datetime  {@link String} value as keyword of datetime record
      *                  or {@link java.time.LocalDateTime} as value of datetime
@@ -829,7 +833,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // compute Julian Date
             JulianDate jd = new JulianDate(datetimeValue);
 
-            HeaderCard jdCard = new HeaderCard(Constants.DEFAULT_JD_KEYWORD, jd.getJulianDate(), comment);
+            HeaderCard jdCard = new HeaderCard(Constants.DEFAULT_JD_KEYWORD, jd.computeJulianDate(), comment);
 
             // check for mandatory keyword
             for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
@@ -862,18 +866,18 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
     }
 
     /**
-     * Computes Heliocentric Julian Date, saves/updates the value to <code>HJD</code> keyword,
-     * saves right ascension to <code>RA</code> keyword and declination do <code>DEC</code>
-     * keyword to FITS file header
+     * Computes Heliocentric Julian Date, saves or updates (if record already exists)
+     * the value to corresponding record in header, saves right ascension and declination values
+     * to FITS file header (if provided as values, otherwise does not save)
      *
      * @param datetime              {@link String} value as keyword of datetime record
      *                              or {@link java.time.LocalDateTime} as value of datetime
      * @param exposure              {@link String} value as keyword of exposure record
      *                              or {@link Double} as value of exposure in seconds
      * @param rightAscension        {@link String} value as keyword of right ascension record
-     *                              or {@link cz.muni.fi.fits.engine.tools.RightAscension} as right ascension value parameters
+     *                              or {@link cz.muni.fi.fits.engine.models.RightAscension} as right ascension value parameters
      * @param declination           {@link String} value as keyword of declination record
-     *                              or {@link cz.muni.fi.fits.engine.tools.Declination} as declination value parameters
+     *                              or {@link cz.muni.fi.fits.engine.models.Declination} as declination value parameters
      * @param comment               comment of HJD record, insert
      *                              <code>null</code> when no comment to add
      * @param fitsFile              FITS file in which to chain records
@@ -1029,38 +1033,30 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     return new Result(false, "Header already contains record with '" + hjdCard.getValue() + "' keyword but it is mandatory hence it cannot be changed");
             }
 
-            // save/update to header as new record
-            if (header.containsKey(Constants.DEFAULT_HJD_KEYWORD)) {
-                header.updateLine(Constants.DEFAULT_HJD_KEYWORD, hjdCard);
-                hjdUpdated = true;
-            } else {
+            if (!header.containsKey(Constants.DEFAULT_HJD_KEYWORD)) {
+                // save to header as new record
                 Cursor<String, HeaderCard> iterator = header.iterator();
                 iterator.end();
                 iterator.add(Constants.DEFAULT_HJD_KEYWORD, hjdCard);
+            } else {
+                // update existing record in header
+                header.updateLine(Constants.DEFAULT_HJD_KEYWORD, hjdCard);
+                hjdUpdated = true;
             }
 
             boolean saveRightAscension = rightAscension instanceof RightAscension;
             boolean saveDeclination = declination instanceof Declination;
 
             if (saveRightAscension) {
-                double raHours = rightAscensionValue.getHours();
-                double raMinutes = rightAscensionValue.getMinutes();
-                double raSeconds = rightAscensionValue.getSeconds();
-                String raValue = "";
-                if (Math.rint(raHours) == raHours)
-                    raValue += Double.valueOf(raHours).intValue();
-                else
-                    raValue += raHours;
-                raValue += ":";
-                if (Math.rint(raMinutes) == raMinutes)
-                    raValue += Double.valueOf(raMinutes).intValue();
-                else
-                    raValue += raMinutes;
-                raValue += ":";
-                if (Math.rint(raSeconds) == raSeconds)
-                    raValue += Double.valueOf(raSeconds).intValue();
-                else
-                    raValue += raSeconds;
+                // convert parameters to base form
+                RightAscensionParamsConverter converter = new RightAscensionParamsConverter(
+                        rightAscensionValue.getHours(),
+                        rightAscensionValue.getMinutes(),
+                        rightAscensionValue.getSeconds());
+
+                String raValue = NumberFormatter.format(converter.getHours(), 2, 2) + ":"
+                               + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
+                               + NumberFormatter.format(converter.getSeconds(), 2, 3);
 
                 HeaderCard raCard = new HeaderCard(Constants.DEFAULT_RA_KEYWORD, raValue, Constants.DEFAULT_RA_COMMENT);
 
@@ -1081,24 +1077,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             if (saveDeclination) {
-                double decDegrees = declinationValue.getDegrees();
-                double decMinutes = declinationValue.getMinutes();
-                double decSeconds = declinationValue.getSeconds();
-                String decValue = "";
-                if (Math.rint(decDegrees) == decDegrees)
-                    decValue += Double.valueOf(decDegrees).intValue();
-                else
-                    decValue += decDegrees;
-                decValue += ":";
-                if (Math.rint(decMinutes) == decMinutes)
-                    decValue += Double.valueOf(decMinutes).intValue();
-                else
-                    decValue += decMinutes;
-                decValue += ":";
-                if (Math.rint(decSeconds) == decSeconds)
-                    decValue += Double.valueOf(decSeconds).intValue();
-                else
-                    decValue += decSeconds;
+                // convert parameters to base form
+                DeclinationParamsConverter converter = new DeclinationParamsConverter(
+                        declinationValue.getDegrees(),
+                        declinationValue.getMinutes(),
+                        declinationValue.getSeconds());
+
+                String decValue = NumberFormatter.format(converter.getDegrees(), 2, 2) + ":"
+                                + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
+                                + NumberFormatter.format(converter.getSeconds(), 2, 3);
 
                 HeaderCard decCard = new HeaderCard(Constants.DEFAULT_DEC_KEYWORD, decValue, Constants.DEFAULT_DEC_COMMENT);
 
