@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.engine.models.utils;
+package cz.muni.fi.fits.engine.models.converters;
 
 import cz.muni.fi.fits.models.TimeObject;
 import org.junit.Rule;

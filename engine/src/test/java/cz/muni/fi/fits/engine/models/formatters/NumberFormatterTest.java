@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.engine.models.utils;
+package cz.muni.fi.fits.engine.models.formatters;
 
 import org.junit.Test;
 
