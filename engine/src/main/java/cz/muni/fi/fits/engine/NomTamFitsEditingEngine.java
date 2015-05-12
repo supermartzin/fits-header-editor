@@ -4,11 +4,12 @@ import cz.muni.fi.fits.engine.models.Declination;
 import cz.muni.fi.fits.engine.models.HeliocentricJulianDate;
 import cz.muni.fi.fits.engine.models.JulianDate;
 import cz.muni.fi.fits.engine.models.RightAscension;
+import cz.muni.fi.fits.engine.models.utils.DateTimeUtils;
 import cz.muni.fi.fits.engine.models.utils.DeclinationParamsConverter;
+import cz.muni.fi.fits.engine.models.utils.NumberFormatter;
 import cz.muni.fi.fits.engine.models.utils.RightAscensionParamsConverter;
 import cz.muni.fi.fits.models.Result;
 import cz.muni.fi.fits.utils.Constants;
-import cz.muni.fi.fits.engine.models.utils.NumberFormatter;
 import cz.muni.fi.fits.utils.Tuple;
 import nom.tam.fits.*;
 import nom.tam.util.BufferedFile;
@@ -19,7 +20,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
@@ -33,7 +37,7 @@ import java.util.List;
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">Project pages</a>
  *
  * @author Martin Vrábel
- * @version 1.3.3
+ * @version 1.3.5
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
@@ -699,12 +703,84 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // get header card with keyword
             HeaderCard oldCard = header.findCard(keyword);
 
-            // try to parse datetime from value
-            LocalDateTime parsedDateTime;
-            try {
-                parsedDateTime = LocalDateTime.parse(oldCard.getValue());
-            } catch (DateTimeParseException dtpEx) {
-                return new Result(false, "Record with keyword '" + keyword + "' does not contain parsable datetime value");
+            // try to parse LocalDateTime value
+            DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateTimeFormatter(oldCard.getValue());
+            DateTimeUtils.DateTimeType recordType = DateTimeUtils.DateTimeType.DATETIME;
+            // try to parse LocalDate value
+            if (formatter == null) {
+                formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateFormatter(oldCard.getValue());
+                recordType = DateTimeUtils.DateTimeType.DATE;
+            }
+            // try to parse LocalTime value
+            if (formatter == null) {
+                formatter = DateTimeUtils.DateTimeParser.tryParseLocalTimeFormatter(oldCard.getValue());
+                recordType = DateTimeUtils.DateTimeType.TIME;
+            }
+
+            // cannot parse DateTime value
+            if (formatter == null)
+                return new Result(false, "Record with keyword '" + keyword + "' does not contain parsable DateTime value");
+
+            HeaderCard newCard;
+            switch (recordType) {
+                case DATETIME:
+                    // parse LocalDateTime value
+                    LocalDateTime parsedDateTime = DateTimeUtils.DateTimeParser.parseLocalDateTime(oldCard.getValue(), formatter);
+                    try {
+                        // shift value
+                        LocalDateTime newDateTime = parsedDateTime
+                                .plus(yearShift, ChronoUnit.YEARS)
+                                .plus(monthShift, ChronoUnit.MONTHS)
+                                .plus(dayShift, ChronoUnit.DAYS)
+                                .plus(hourShift, ChronoUnit.HOURS)
+                                .plus(minuteShift, ChronoUnit.MINUTES)
+                                .plus(secondShift, ChronoUnit.SECONDS)
+                                .plus(nanosecondShift, ChronoUnit.NANOS);
+
+                        // create updated header card
+                        newCard = new HeaderCard(keyword, newDateTime.toString(), oldCard.getComment());
+                    } catch (DateTimeException | ArithmeticException ex) {
+                        return new Result(false, "Error shifting time for record '" + keyword + "': " + ex.getMessage());
+                    }
+                    break;
+
+                case DATE:
+                    // parse LocalDate value
+                    LocalDate parsedDate = DateTimeUtils.DateTimeParser.parseLocalDate(oldCard.getValue(), formatter);
+                    try {
+                        // shift value
+                        LocalDate newDate = parsedDate
+                                .plus(yearShift, ChronoUnit.YEARS)
+                                .plus(monthShift, ChronoUnit.MONTHS)
+                                .plus(dayShift, ChronoUnit.DAYS);
+
+                        // create updated header card
+                        newCard = new HeaderCard(keyword, newDate.toString(), oldCard.getComment());
+                    } catch (DateTimeException | ArithmeticException ex) {
+                        return new Result(false, "Error shifting time for record '" + keyword + "': " + ex.getMessage());
+                    }
+                    break;
+
+                case TIME:
+                    // parse LocalTime value
+                    LocalTime parsedTime = DateTimeUtils.DateTimeParser.parseLocalTime(oldCard.getValue(), formatter);
+                    try {
+                        // shift value
+                        LocalTime newTime = parsedTime
+                                .plus(hourShift, ChronoUnit.HOURS)
+                                .plus(minuteShift, ChronoUnit.MINUTES)
+                                .plus(secondShift, ChronoUnit.SECONDS)
+                                .plus(nanosecondShift, ChronoUnit.NANOS);
+
+                        // create updated header card
+                        newCard = new HeaderCard(keyword, newTime.toString(), oldCard.getComment());
+                    } catch (DateTimeException | ArithmeticException ex) {
+                        return new Result(false, "Error shifting time for record '" + keyword + "': " + ex.getMessage());
+                    }
+                    break;
+
+                default:
+                    return new Result(false, "Record with keyword '" + keyword + "' does not contain parsable DateTime value");
             }
 
             // check for mandatory keyword
@@ -712,24 +788,6 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 if (keyword.matches(mandatoryKwRegex))
                     return new Result(false, "Header contains record with '" + keyword + "' keyword but it is mandatory hence it cannot be changed");
             }
-
-            // shift datetime according to arguments
-            LocalDateTime newDateTime;
-            try {
-                newDateTime = parsedDateTime
-                        .plus(yearShift, ChronoUnit.YEARS)
-                        .plus(monthShift, ChronoUnit.MONTHS)
-                        .plus(dayShift, ChronoUnit.DAYS)
-                        .plus(hourShift, ChronoUnit.HOURS)
-                        .plus(minuteShift, ChronoUnit.MINUTES)
-                        .plus(secondShift, ChronoUnit.SECONDS)
-                        .plus(nanosecondShift, ChronoUnit.NANOS);
-            } catch (DateTimeException | ArithmeticException ex) {
-                return new Result(false, "Error shifting time for record '" + keyword + "': " + ex.getMessage());
-            }
-
-            // create updated header card
-            HeaderCard newCard = new HeaderCard(keyword, newDateTime.toString(), oldCard.getComment());
 
             // update record in header
             header.updateLine(keyword, newCard);
@@ -739,8 +797,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             fits.write(bf);
 
             // return success
-            return new Result(true, "'" + keyword + "' record successfully changed from '" + parsedDateTime.toString() + "'" +
-                        " to '" + newDateTime.toString() + "'");
+            return new Result(true, "'" + keyword + "' record successfully changed from '"
+                                            + oldCard.getValue() + "' to '"
+                                            + newCard.getValue() + "'");
         } catch (FitsException | IOException ex) {
             return new Result(false, "Error in editing engine: " + ex.getMessage());
         }
