@@ -4,10 +4,11 @@ import cz.muni.fi.fits.engine.models.Declination;
 import cz.muni.fi.fits.engine.models.HeliocentricJulianDate;
 import cz.muni.fi.fits.engine.models.JulianDate;
 import cz.muni.fi.fits.engine.models.RightAscension;
-import cz.muni.fi.fits.engine.utils.DateTimeUtils;
 import cz.muni.fi.fits.engine.models.converters.DeclinationParamsConverter;
-import cz.muni.fi.fits.engine.models.formatters.NumberFormatter;
 import cz.muni.fi.fits.engine.models.converters.RightAscensionParamsConverter;
+import cz.muni.fi.fits.engine.models.formatters.NumberFormatter;
+import cz.muni.fi.fits.engine.utils.DateTimeUtils;
+import cz.muni.fi.fits.engine.utils.MandatoryFITSKeywords;
 import cz.muni.fi.fits.models.Result;
 import cz.muni.fi.fits.utils.Constants;
 import cz.muni.fi.fits.utils.Tuple;
@@ -26,9 +27,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Editing engine class implementing {@link HeaderEditingEngine} interface
@@ -37,11 +36,9 @@ import java.util.List;
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">Project pages</a>
  *
  * @author Martin Vrábel
- * @version 1.3.5
+ * @version 1.3.6
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
-
-    private static final List<String> MANDATORY_KEYWORDS_REGEX = Arrays.asList("^NAXIS[0-9]{0,3}$", "^SIMPLE$", "^BITPIX$", "^EXTEND$", "^XTENSION$");
 
     /**
      * Adds new record to FITS header with specified arguments
@@ -99,9 +96,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             if (keywordExists) {
                 if (updateIfExists) {
                     // check for mandatory keyword
-                    for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                        if (keyword.matches(mandatoryKwRegex))
-                            return new Result(false, "Record with keyword '" + keyword + "' already exists in header and is mandatory hence it cannot be changed");
+                    if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword)) {
+                        return new Result(false, "Record with keyword '" + keyword + "' already exists in header and is mandatory hence it cannot be changed");
                     }
                     // update existing header card
                     header.updateLine(keyword, card);
@@ -213,9 +209,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
                 // check for mandatory keyword at this index
                 String indexKey = iterator.next().getKey();
-                for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                    if (indexKey.matches(mandatoryKwRegex))
-                        return new Result(false, "Record '" + keyword + "' cannot be inserted to index " + index + " because of mandatory keyword '" + indexKey + "'");
+                if (MandatoryFITSKeywords.matchesMandatoryKeyword(indexKey)) {
+                    return new Result(false, "Record '" + keyword + "' cannot be inserted to index " + index + " because of mandatory keyword '" + indexKey + "'");
                 }
 
                 iterator.prev();
@@ -274,9 +269,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 return new Result(false, "Header does not contain record with keyword '" + keyword + "'");
 
             // check for mandatory keyword
-            for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                if (keyword.matches(mandatoryKwRegex))
-                    return new Result(false, "Record with keyword '" + keyword + "' is mandatory hence it cannot be removed");
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword)) {
+                return new Result(false, "Record with keyword '" + keyword + "' is mandatory hence it cannot be removed");
             }
 
             // remove card with specified keyword
@@ -329,9 +323,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // check for mandatory keyword
             String indexKey = iterator.next().getKey();
-            for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                if (indexKey.matches(mandatoryKwRegex))
-                    return new Result(false, "Record with keyword '" + indexKey + "' on index " + index + " is mandatory hence it cannot be removed");
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(indexKey)) {
+                return new Result(false, "Record with keyword '" + indexKey + "' on index " + index + " is mandatory hence it cannot be removed");
             }
 
             // remove record on the index
@@ -388,9 +381,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             if (newExists) {
                 if (removeValueOfNewIfExists) {
                     // check for mandatory keyword
-                    for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                        if (newKeyword.matches(mandatoryKwRegex))
-                            return new Result(false, "Header already contains record with '" + newKeyword + "' keyword but it is mandatory hence it cannot be removed");
+                    if (MandatoryFITSKeywords.matchesMandatoryKeyword(newKeyword)) {
+                        return new Result(false, "Header already contains record with '" + newKeyword + "' keyword but it is mandatory hence it cannot be removed");
                     }
                     valueOfNewRemoved = true;
 
@@ -402,9 +394,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             // check for mandatory keyword
-            for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                if (oldKeyword.matches(mandatoryKwRegex))
-                    return new Result(false, "Record with keyword '" + oldKeyword + "' is mandatory hence it cannot be changed");
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(oldKeyword)) {
+                return new Result(false, "Record with keyword '" + oldKeyword + "' is mandatory hence it cannot be changed");
             }
 
             // get old header card and create updated one based on type of value
@@ -513,9 +504,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             if (keywordExists) {
                 // check for mandatory keyword
-                for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                    if (keyword.matches(mandatoryKwRegex))
-                        return new Result(false, "Record with keyword '" + keyword + "' is mandatory hence it cannot be changed");
+                if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword)) {
+                    return new Result(false, "Record with keyword '" + keyword + "' is mandatory hence it cannot be changed");
                 }
 
                 // update existing header card
@@ -627,9 +617,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     return new Result(false, "Header already contains record with '" + keyword + "' keyword");
                 } else {
                     // check for mandatory keyword
-                    for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                        if (keyword.matches(mandatoryKwRegex))
-                            return new Result(false, "Header already contains record with '" + keyword + "' keyword but it is mandatory hence it cannot be changed");
+                    if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword)) {
+                        return new Result(false, "Header already contains record with '" + keyword + "' keyword but it is mandatory hence it cannot be changed");
                     }
 
                     updated = true;
@@ -784,9 +773,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             // check for mandatory keyword
-            for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                if (keyword.matches(mandatoryKwRegex))
-                    return new Result(false, "Header contains record with '" + keyword + "' keyword but it is mandatory hence it cannot be changed");
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword)) {
+                return new Result(false, "Header contains record with '" + keyword + "' keyword but it is mandatory hence it cannot be changed");
             }
 
             // update record in header
@@ -895,9 +883,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             HeaderCard jdCard = new HeaderCard(Constants.DEFAULT_JD_KEYWORD, jd.computeJulianDate(), comment);
 
             // check for mandatory keyword
-            for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                if (jdCard.getValue().matches(mandatoryKwRegex))
-                    return new Result(false, "Header already contains record with '" + jdCard.getValue() + "' keyword but it is mandatory hence it cannot be changed");
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_JD_KEYWORD)) {
+                return new Result(false, "Header already contains record with '" + Constants.DEFAULT_JD_KEYWORD + "' keyword but it is mandatory hence it cannot be changed");
             }
 
             // save/update to header as new record
@@ -1087,9 +1074,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             HeaderCard hjdCard = new HeaderCard(Constants.DEFAULT_HJD_KEYWORD, hjd.computeHeliocentricJulianDate(), comment);
 
             // check for mandatory keyword
-            for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                if (hjdCard.getValue().matches(mandatoryKwRegex))
-                    return new Result(false, "Header already contains record with '" + hjdCard.getValue() + "' keyword but it is mandatory hence it cannot be changed");
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_HJD_KEYWORD)) {
+                return new Result(false, "Header already contains record with '" + Constants.DEFAULT_HJD_KEYWORD + "' keyword but it is mandatory hence it cannot be changed");
             }
 
             if (!header.containsKey(Constants.DEFAULT_HJD_KEYWORD)) {
@@ -1120,9 +1106,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 HeaderCard raCard = new HeaderCard(Constants.DEFAULT_RA_KEYWORD, raValue, Constants.DEFAULT_RA_COMMENT);
 
                 // check for mandatory keyword
-                for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                    if (raCard.getValue().matches(mandatoryKwRegex))
-                        return new Result(false, "Header already contains record with '" + raCard.getValue() + "' keyword but it is mandatory hence it cannot be changed");
+                if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_RA_KEYWORD)) {
+                    return new Result(false, "Header already contains record with '" + Constants.DEFAULT_RA_KEYWORD + "' keyword but it is mandatory hence it cannot be changed");
                 }
 
                 // save/update right ascension to header
@@ -1149,9 +1134,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 HeaderCard decCard = new HeaderCard(Constants.DEFAULT_DEC_KEYWORD, decValue, Constants.DEFAULT_DEC_COMMENT);
 
                 // check for mandatory keyword
-                for (String mandatoryKwRegex : MANDATORY_KEYWORDS_REGEX) {
-                    if (decCard.getValue().matches(mandatoryKwRegex))
-                        return new Result(false, "Header already contains record with '" + decCard.getValue() + "' keyword but it is mandatory hence it cannot be changed");
+                if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_DEC_KEYWORD)) {
+                    return new Result(false, "Header already contains record with '" + Constants.DEFAULT_DEC_KEYWORD + "' keyword but it is mandatory hence it cannot be changed");
                 }
 
                 // save/update declination to header
