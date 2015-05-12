@@ -6,3 +6,4 @@ engine/FITS-HeaderEditor.iml
 manuals/
 fits-files/
 filepaths-creator/filepaths-creator.iml
+filepaths-creator/out/
