@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * FilePath Creator 1.0
  *
  * @author Martin Vrábel
- * @version 1.0.RELEASE
+ * @version 1.0.1.RELEASE
  */
 public class MainApp extends Application {
 

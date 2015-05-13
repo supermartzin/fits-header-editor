@@ -1,5 +1,6 @@
 package cz.muni.fi.files.dialog;
 
+import javafx.application.Platform;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -66,13 +67,15 @@ public class ExceptionDialog extends Alert {
             // Set expandable Exception into the dialog pane.
             this.getDialogPane().setExpandableContent(expContent);
 
-            Hyperlink detailsButton = (Hyperlink) this.getDialogPane().lookup(".details-button");
-            this.getDialogPane().expandableContentProperty().addListener((observable, oldValue, newValue) -> {
-                detailsButton.setText(newValue != null ? "Viac detailov" : "Menej detailov");
-            });
+            Platform.runLater(() -> {
+                Hyperlink detailsButton = (Hyperlink) this.getDialogPane().lookup(".details-button");
+                this.getDialogPane().expandedProperty().addListener((observable, oldValue, newValue) -> {
+                    detailsButton.setText(newValue ? "Menej detailov" : "Viac detailov");
+                });
 
-            this.getDialogPane().setExpanded(true);
-            this.getDialogPane().setExpanded(false);
+                this.getDialogPane().setExpanded(true);
+                this.getDialogPane().setExpanded(false);
+            });
         }
     }
 }

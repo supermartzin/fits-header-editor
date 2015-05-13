@@ -1,8 +1,3 @@
-engine/target/
-.idea/
-.idea
-engine/files.in
-engine/FITS-HeaderEditor.iml
 manuals/
 fits-files/
 filepaths-creator/out/
