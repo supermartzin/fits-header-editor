@@ -1,9 +1,6 @@
 package cz.muni.fi.files.dialog;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
@@ -16,47 +13,66 @@ import java.io.StringWriter;
  * used for showing details of exception in Alert dialog
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class ExceptionDialog extends Alert {
 
+    /**
+     * Creates new instance of basic {@link ExceptionDialog}
+     */
     public ExceptionDialog() {
         super(AlertType.ERROR);
-        this.setTitle("Neočakávaná chyba programu");
-        this.setHeaderText("Nastala neočakávaná chyba programu");
     }
 
+    /**
+     * Creates new instance of {@link ExceptionDialog} with specified <code>contentText</code>
+     * and <code>buttonTypes</code>
+     *
+     * @param contentText   content text of dialog
+     * @param buttons       buttons of this dialog
+     */
     public ExceptionDialog(String contentText, ButtonType... buttons) {
         super(AlertType.ERROR, contentText, buttons);
     }
 
+    /**
+     * Sets instance of {@link Throwable} that will be displayed in this dialog
+     *
+     * @param exception {@link Throwable} instance of exception to display
+     */
     public void setException(Throwable exception) {
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        exception.printStackTrace(pw);
-        String exceptionText = sw.toString();
+        if (exception != null) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            exception.printStackTrace(pw);
+            String exceptionText = sw.toString();
 
-        Label label = new Label("Výpis trasovania výnimky:");
+            Label label = new Label("Výpis trasovania výnimky:");
 
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
+            TextArea textArea = new TextArea(exceptionText);
+            textArea.setEditable(false);
+            textArea.setWrapText(true);
 
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
+            textArea.setMaxWidth(Double.MAX_VALUE);
+            textArea.setMaxHeight(Double.MAX_VALUE);
+            GridPane.setVgrow(textArea, Priority.ALWAYS);
+            GridPane.setHgrow(textArea, Priority.ALWAYS);
 
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
+            GridPane expContent = new GridPane();
+            expContent.setMaxWidth(Double.MAX_VALUE);
+            expContent.add(label, 0, 0);
+            expContent.add(textArea, 0, 1);
 
-        // Set expandable Exception into the dialog pane.
-        this.getDialogPane().setExpandableContent(expContent);
+            // Set expandable Exception into the dialog pane.
+            this.getDialogPane().setExpandableContent(expContent);
 
-        // set content text
-        this.setContentText("Program vyhodil neočakávanú výnimku so správou:\n     " +
-                exception.getMessage());
+            Hyperlink detailsButton = (Hyperlink) this.getDialogPane().lookup(".details-button");
+            this.getDialogPane().expandableContentProperty().addListener((observable, oldValue, newValue) -> {
+                detailsButton.setText(newValue != null ? "Viac detailov" : "Menej detailov");
+            });
+
+            this.getDialogPane().setExpanded(true);
+            this.getDialogPane().setExpanded(false);
+        }
     }
 }

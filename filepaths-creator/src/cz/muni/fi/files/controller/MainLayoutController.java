@@ -1,6 +1,7 @@
 package cz.muni.fi.files.controller;
 
 import cz.muni.fi.files.MainApp;
+import cz.muni.fi.files.dialog.ExceptionDialog;
 import cz.muni.fi.files.utils.NotifyingRunnable;
 import cz.muni.fi.files.utils.ThreadCompleteListener;
 import javafx.application.Platform;
@@ -15,10 +16,7 @@ import javafx.stage.Modality;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MainLayoutController implements ThreadCompleteListener {
 
@@ -139,6 +137,9 @@ public class MainLayoutController implements ThreadCompleteListener {
             return false;
 
         Set<String> filters = getFileFilters();
+        if (filters.isEmpty())
+            return true;
+
         for (String filter : filters) {
             if (file.getName().endsWith(filter))
                 return true;
@@ -148,7 +149,7 @@ public class MainLayoutController implements ThreadCompleteListener {
     }
 
     @Override
-    public void notifyOfThreadComplete(Runnable runnable) {
+    public void notifyWhenThreadComplete(Runnable runnable) {
         if (runnable instanceof  NotifyingRunnable) {
             NotifyingRunnable notifyingRunnable = (NotifyingRunnable) runnable;
 
@@ -167,7 +168,17 @@ public class MainLayoutController implements ThreadCompleteListener {
                     alert.showAndWait();
                 });
             } else {
-                // TODO throw error
+                Platform.runLater(() -> {
+                    ExceptionDialog dialog = new ExceptionDialog();
+                    dialog.initOwner(_mainApp.getPrimaryStage());
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.setTitle("Nastala chyba");
+                    dialog.setHeaderText("Súbor nebolo možné vytvoriť!");
+                    dialog.setContentText("Vyskytla sa chyba počas vytvárania súboru s cestami.");
+                    dialog.setException(notifyingRunnable.getError());
+
+                    dialog.showAndWait();
+                });
             }
         }
     }

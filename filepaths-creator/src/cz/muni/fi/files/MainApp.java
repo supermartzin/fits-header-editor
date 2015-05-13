@@ -5,9 +5,16 @@ import cz.muni.fi.files.dialog.ExceptionDialog;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * FilePath Creator 1.0
+ *
+ * @author Martin Vrábel
+ * @version 1.0.RELEASE
+ */
 public class MainApp extends Application {
 
     private Stage _primaryStage;
@@ -24,7 +31,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         _primaryStage = primaryStage;
         _primaryStage.setTitle("FilePaths Creator");
-        // TODO set icon
+        _primaryStage.getIcons().add(new Image("icons/icon.png"));
 
         // user cannot resize
         _primaryStage.setResizable(false);
@@ -46,6 +53,9 @@ public class MainApp extends Application {
             controller.setMainApp(this);
         } catch (Exception ex) {
             ExceptionDialog dialog = new ExceptionDialog();
+            dialog.setTitle("Neočakávaná chyba programu");
+            dialog.setHeaderText("Nastala neočakávaná chyba programu");
+            dialog.setContentText("Program vyhodil neočakávanú výnimku so správou:\n     " + ex.getMessage());
             dialog.setException(ex);
             dialog.showAndWait();
             System.exit(1);

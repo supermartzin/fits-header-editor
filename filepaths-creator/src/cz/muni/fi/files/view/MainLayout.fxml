@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="220.0" minWidth="250.0" prefHeight="220.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.muni.fi.files.controller.MainLayoutController">
+<AnchorPane minHeight="220.0" minWidth="250.0" prefHeight="220.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.muni.fi.files.controller.MainLayoutController">
     <children>
         <Label layoutX="15.0" layoutY="19.0" text="Priečinok so súbormi:" AnchorPane.leftAnchor="15.0" />
         <Button layoutX="419.0" layoutY="15.0" mnemonicParsing="false" onAction="#onBrowseForInputDirectory" prefHeight="25.0" prefWidth="66.0" text="Vybrať..." AnchorPane.rightAnchor="15.0" />
         <Label layoutX="15.0" layoutY="54.0" text="Filter (oddelený čiarkou):" AnchorPane.leftAnchor="15.0" />
         <Button layoutX="419.0" layoutY="97.0" mnemonicParsing="false" onAction="#onBrowseForOutputDirectory" prefHeight="25.0" prefWidth="66.0" text="Vybrať..." AnchorPane.rightAnchor="15.0" />
         <TextField fx:id="inputDirTextField" editable="false" layoutX="160.0" layoutY="15.0" promptText="kde sú uložené súbory na spracovanie" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
-        <TextField fx:id="filterTextField" layoutX="160.0" layoutY="50.0" prefHeight="25.0" prefWidth="227.0" promptText="napr.: 'fits,fts,fit'" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
+        <TextField fx:id="filterTextField" layoutX="160.0" layoutY="50.0" prefHeight="25.0" prefWidth="227.0" promptText="napr.: 'fits,fts,fit'  (prázdny = všetky súbory)" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
         <TextField fx:id="outputDirTextField" editable="false" layoutX="160.0" layoutY="97.0" prefHeight="25.0" prefWidth="215.0" promptText="kde uložiť výstupný súbor" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
         <Label layoutX="15.0" layoutY="101.0" text="Výstupný priečinok:" AnchorPane.leftAnchor="15.0" />
         <Label layoutX="15.0" layoutY="136.0" text="Názov výstupného súboru:" AnchorPane.leftAnchor="15.0" />
