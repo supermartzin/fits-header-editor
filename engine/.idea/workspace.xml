@@ -5,13 +5,15 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="FITSHeaderEditor" />
+      <artifact name="FITS-HeaderEditor:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FITS-HeaderEditor.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FITS-HeaderEditor.iml" afterPath="$PROJECT_DIR$/FITS-HeaderEditor.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -43,24 +45,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FITSHeaderEditor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java">
+      <file leaf-file-name="NomTamFitsEditingEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
-                <element signature="docComment;method#FITSHeaderEditor#0;class#FITSHeaderEditor#0" expanded="false" />
-                <element signature="method#FITSHeaderEditor#0;class#FITSHeaderEditor#0" expanded="false" />
+                <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <marker date="1431599246492" expanded="false" signature="2298:2575" placeholder="..." />
+                <marker date="1431599246492" expanded="false" signature="6401:6766" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationInitializer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PropertiesLoader.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationInitializer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3041237">
-              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -93,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BigDecimalParsingTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/DefaultTypeConverterTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_LocalDateTimeParsingTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" />
@@ -106,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeJDDataTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByKeywordDataTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractShiftTimeDataTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/tools/HeliocentricJulianDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/NumberFormatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/tools/RightAscension.java" />
@@ -139,11 +168,13 @@
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/utils/DateTimeParserTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/utils/NumberFormatterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/MandatoryKeywords.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/MandatoryFITSKeywords.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/MandatoryFITSKeywordsTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java" />
       </list>
     </option>
   </component>
@@ -156,12 +187,6 @@
       <MavenGeneralSettings>
         <option name="mavenHome" value="Bundled (Maven 3)" />
       </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="downloadDocsAutomatically" value="true" />
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -320,20 +345,19 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="FITS Header Editor Tool" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="FITS Header Editor Tool" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -343,7 +367,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="FITS Header Editor Tool" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -359,13 +383,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="fits" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="FITS Header Editor Tool" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -387,7 +415,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="FITS Header Editor Tool" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -411,8 +439,73 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loaders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,7 +518,7 @@
     <property name="recentsLimit" value="5" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Atlassian/SourceTree/git_local/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="options.lastSelected" value="Errors" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -450,7 +543,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="968" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="dynamic.classpath" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3816092" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -477,7 +570,7 @@
       <recent name="cz.muni.fi.fits.input.converters" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.FITS-HeaderEditor [package]">
+  <component name="RunManager" selected="Application.Application">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -742,7 +835,7 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="ApplicationInitializer" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration default="false" name="Application" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="cz.muni.fi.fits.*" />
@@ -751,7 +844,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.ApplicationInitializer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="shift_time files.in ccd-temp -h=15 -d=-26 -min=-25 -y=2" />
+      <option name="PROGRAM_PARAMETERS" value="add -u files.in longstr &quot;This is very very very very very very very very very very very very very very very very very very very very very very very very very very very long string value of FITS card&quot; &quot;long longer longest loooongest comment&quot;" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -760,7 +853,9 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="FITS-HeaderEditor" />
       <envs />
-      <method />
+      <method>
+        <option name="MakeProject" enabled="true" />
+      </method>
     </configuration>
     <configuration default="false" name="All in FITS-HeaderEditor" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -811,7 +906,7 @@
       </method>
     </configuration>
     <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Application.ApplicationInitializer" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Application" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.All in FITS-HeaderEditor" />
       <item index="2" class="java.lang.String" itemvalue="Maven.FITS-HeaderEditor [package]" />
     </list>
@@ -926,12 +1021,13 @@
       <workItem from="1431333124063" duration="11078000" />
       <workItem from="1431417421166" duration="23735000" />
       <workItem from="1431538600968" duration="12000" />
-      <workItem from="1431593949568" duration="374000" />
+      <workItem from="1431593949568" duration="3645000" />
+      <workItem from="1431597605159" duration="1659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="563043000" />
+    <option name="totallyTimeSpent" value="567973000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -995,7 +1091,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="150" />
+      <option name="time" value="155" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1004,17 +1100,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BigDecimalParsingTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fits.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22767857">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.094866075">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,24 +1207,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fits.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18973215">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/inputData/ShiftTimeInputData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18973215">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61340207">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1200,6 +1276,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51227677">
           <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="32" selection-end-column="80" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1207,6 +1284,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15178572">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="docComment;method#JulianDate#0;class#JulianDate#0" expanded="false" />
+            <element signature="docComment;method#JulianDate#1;class#JulianDate#0" expanded="false" />
+            <element signature="docComment;method#computeJulianDate#0;class#JulianDate#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1250,6 +1332,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18973215">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;method#format#0;class#NumberFormatter#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1264,6 +1349,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3794643">
           <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1313,6 +1399,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46875">
           <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1320,6 +1407,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11383928">
           <caret line="12" column="84" selection-start-line="12" selection-start-column="84" selection-end-line="12" selection-end-column="84" />
+          <folding>
+            <element signature="docComment;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="initializer##0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;method#tryParseLocalDateTimeFormatter#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#tryParseLocalDateTimeFormatter#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;method#tryParseLocalDateFormatter#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#tryParseLocalDateFormatter#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;method#tryParseLocalTimeFormatter#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#tryParseLocalTimeFormatter#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;method#parseLocalDateTime#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#parseLocalDateTime#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;method#parseLocalDate#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#parseLocalDate#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;method#parseLocalTime#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#parseLocalTime#0;class#DateTimeParser#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="docComment;class#DateTimeType#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="class#DateTimeType#0;class#DateTimeUtils#0" expanded="false" />
+            <element signature="method#DateTimeUtils#0;class#DateTimeUtils#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1335,8 +1442,43 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="37" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="initializer##0;class#MandatoryFITSKeywords#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/Properties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3327032">
+          <caret line="340" column="0" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fits.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.667297">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47766322">
+          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding>
+            <element signature="docComment;method#FITSHeaderEditor#0;class#FITSHeaderEditor#0" expanded="false" />
+            <element signature="method#FITSHeaderEditor#0;class#FITSHeaderEditor#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1344,11 +1486,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
@@ -1367,33 +1507,24 @@
             <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.14604811">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
-          <folding>
-            <element signature="docComment;method#FITSHeaderEditor#0;class#FITSHeaderEditor#0" expanded="false" />
-            <element signature="method#FITSHeaderEditor#0;class#FITSHeaderEditor#0" expanded="false" />
+            <marker date="1431599246492" expanded="false" signature="2298:2575" placeholder="..." />
+            <marker date="1431599246492" expanded="false" signature="6401:6766" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3041237">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1404,7 +1535,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>FITSHeaderEditor</last-edited>
+          <last-edited>FITS-HeaderEditor:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1457,6 +1588,7 @@
             <option name="proportions">
               <list>
                 <option value="0.3816092" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1464,7 +1596,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: gov.nasa.gsfc.heasarc:nom-tam-fits:1.12.1-SNAPSHOT</last-edited>
+          <last-edited>Maven: org.hamcrest:hamcrest-core:1.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

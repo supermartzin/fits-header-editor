@@ -8,7 +8,7 @@ import java.util.Properties;
  * Class for loading user defined properties from file
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.0.1
  */
 public final class PropertiesLoader {
 
@@ -16,15 +16,15 @@ public final class PropertiesLoader {
      * Loads properties from specified properties file using spcified <code>mainClass</code>
      * class loader
      *
-     * @param mainClass     class containing <code>main</code> method
+     * @param clazz         class containing <code>main</code> method
      * @param filePath      path to properties file
      * @return              object with properties
      * @throws IOException  when some error occurs during reading properties
      */
-    public static Properties loadProperties(Class<?> mainClass, String filePath) throws IOException {
+    public static Properties loadProperties(Class<?> clazz, String filePath) throws IOException {
         Properties props = new Properties();
 
-        props.load(mainClass.getResourceAsStream(filePath));
+        props.load(clazz.getResourceAsStream(filePath));
 
         return props;
     }
