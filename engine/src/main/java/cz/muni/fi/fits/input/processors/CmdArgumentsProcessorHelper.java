@@ -21,7 +21,7 @@ import java.util.LinkedList;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.3
+ * @version 1.3.1
  */
 final class CmdArgumentsProcessorHelper {
 
@@ -414,7 +414,7 @@ final class CmdArgumentsProcessorHelper {
         if (cmdArgs.length < startIndex + 1)
             throw new WrongNumberOfParametersException(cmdArgs.length, "Wrong number of parameters for operation 'CHAIN'");
 
-        LinkedList<Tuple> chainValues = new LinkedList<>();
+        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
         String comment = null;
         for (int i = startIndex; i < cmdArgs.length; i++) {
             String argument = cmdArgs[i];
@@ -429,9 +429,9 @@ final class CmdArgumentsProcessorHelper {
 
             // keyword
             if (argument.startsWith("-k=") || argument.startsWith("-K=")) {
-                argument = argument.substring(3).trim();
+                argument = argument.substring(3).trim().toUpperCase();
                 if (!argument.isEmpty())
-                    chainValues.add(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, argument.toUpperCase()));
+                    chainValues.add(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, argument));
                 continue;
             }
 

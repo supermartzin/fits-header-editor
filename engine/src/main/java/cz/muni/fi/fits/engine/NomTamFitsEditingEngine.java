@@ -10,6 +10,7 @@ import cz.muni.fi.fits.engine.models.formatters.NumberFormatter;
 import cz.muni.fi.fits.engine.utils.DateTimeUtils;
 import cz.muni.fi.fits.engine.utils.MandatoryFITSKeywords;
 import cz.muni.fi.fits.models.Result;
+import cz.muni.fi.fits.models.inputData.ChainRecordsInputData;
 import cz.muni.fi.fits.utils.Constants;
 import cz.muni.fi.fits.utils.Tuple;
 import nom.tam.fits.*;
@@ -36,7 +37,7 @@ import java.util.LinkedList;
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">Project pages</a>
  *
  * @author Martin Vrábel
- * @version 1.3.6
+ * @version 1.3.7
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
@@ -544,8 +545,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
      * Chain multiple records into new single record in FITS header by specified arguments
      *
      * @param keyword                   keyword of new chained record
-     * @param chainParameters           list of parameters containing constants and keywords
-     *                                  which to chain
+     * @param chainParameters           list of parameters containing constant and keyword
+     *                                  tuples of {@link ChainRecordsInputData.ChainValueType} and
+     *                                  {@link String} which to chain
      * @param comment                   comment to set in record, insert <code>null</code>
      *                                  if no comment to add
      * @param updateIfExists            value indicating whether to update value of record
@@ -556,7 +558,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
      * @return                          {@inheritDoc}
      */
     @Override
-    public Result chainMultipleRecords(String keyword, LinkedList<Tuple> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile) {
+    public Result chainMultipleRecords(String keyword, LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile) {
         if (keyword == null)
             throw new IllegalArgumentException("keyword is null");
         if (chainParameters == null)
@@ -576,13 +578,14 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // iterate over parameters and create new value
             String value = "";
-            for (Tuple chainParameter : chainParameters) {
-                switch ((String) chainParameter.getFirst()) {
-                    case "constant":
-                        value += (String) chainParameter.getSecond();
+
+            for (Tuple<ChainRecordsInputData.ChainValueType, String> chainParameter : chainParameters) {
+                switch (chainParameter.getFirst()) {
+                    case CONSTANT:
+                        value += chainParameter.getSecond();
                         break;
-                    case "keyword":
-                        String key = (String) chainParameter.getSecond();
+                    case KEYWORD:
+                        String key = chainParameter.getSecond();
                         // check if header contains key
                         boolean keyExists = header.containsKey(key);
 

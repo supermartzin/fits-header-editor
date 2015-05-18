@@ -1,6 +1,7 @@
 package cz.muni.fi.fits.engine;
 
 import cz.muni.fi.fits.models.Result;
+import cz.muni.fi.fits.models.inputData.ChainRecordsInputData;
 import cz.muni.fi.fits.utils.Tuple;
 
 import java.io.File;
@@ -11,7 +12,7 @@ import java.util.LinkedList;
  * over FITS files
  *
  * @author Martin Vrábel
- * @version 1.3.1
+ * @version 1.3.2
  */
 public interface HeaderEditingEngine {
 
@@ -92,8 +93,9 @@ public interface HeaderEditingEngine {
      * Chain multiple records into new single record in FITS header by specified arguments
      *
      * @param keyword                   keyword of new chained record
-     * @param chainParameters           list of parameters containing constants and keywords
-     *                                  which to chain
+     * @param chainParameters           list of parameters containing constant and keyword
+     *                                  tuples of {@link ChainRecordsInputData.ChainValueType} and
+     *                                  {@link String} which to chain
      * @param comment                   comment to set in record, insert <code>null</code>
      *                                  if no comment to add
      * @param updateIfExists            value indicating whether to update value of record
@@ -103,7 +105,7 @@ public interface HeaderEditingEngine {
      * @param fitsFile                  FITS file in which to chain records
      * @return                          {@link Result} object with results of this operation
      */
-    Result chainMultipleRecords(String keyword, LinkedList<Tuple> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile);
+    Result chainMultipleRecords(String keyword, LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile);
 
     /**
      * Shifts time of time record with <code>keyword</code> by amount of time specified by arguments

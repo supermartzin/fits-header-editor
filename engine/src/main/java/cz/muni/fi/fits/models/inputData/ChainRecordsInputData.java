@@ -12,26 +12,26 @@ import java.util.LinkedList;
  * Class encapsulating input data for operation <b>Chain multiple records</b>
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ChainRecordsInputData extends SwitchInputData {
 
     private final String _keyword;
-    private final LinkedList<Tuple> _chainValues;
+    private final LinkedList<Tuple<ChainValueType, String>> _chainValues;
     private final String _comment;
 
     /**
      * Creates new {@link ChainRecordsInputData} object with specified chain data
      *
      * @param keyword                   keyword of chained record
-     * @param chainValues               list of pair values (constant or keyword) to chain into record
+     * @param chainValues               list of constant or keyword tuples to chain into record
      * @param comment                   comment of chained record, insert
      *                                  <code>null</code> if no comment to add
      * @param updateIfExists            value indicating whether update record if it does already exists
      * @param skipIfChainKwNotExists    value indicating whether skip specific keyword in chain values
      *                                  if it does not already exist
      */
-    public ChainRecordsInputData(String keyword, LinkedList<Tuple> chainValues, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists) {
+    public ChainRecordsInputData(String keyword, LinkedList<Tuple<ChainValueType, String>> chainValues, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists) {
         this(keyword, chainValues, comment, updateIfExists, skipIfChainKwNotExists, new HashSet<>());
     }
 
@@ -39,7 +39,7 @@ public class ChainRecordsInputData extends SwitchInputData {
      * Creates new {@link ChainRecordsInputData} object with specified chain data
      *
      * @param keyword                   keyword of chained record
-     * @param chainValues               list of pair values (constant or keyword) to chain into record
+     * @param chainValues               list of constant or keyword tuples to chain into record
      * @param comment                   comment of chained record, insert
      *                                  <code>null</code> if no comment to add
      * @param updateIfExists            value indicating whether update record if it does already exist
@@ -47,7 +47,7 @@ public class ChainRecordsInputData extends SwitchInputData {
      *                                  if it does not exist
      * @param fitsFiles                 FITS files in which chain multiple records
      */
-    public ChainRecordsInputData(String keyword, LinkedList<Tuple> chainValues, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, Collection<File> fitsFiles) {
+    public ChainRecordsInputData(String keyword, LinkedList<Tuple<ChainValueType, String>> chainValues, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, Collection<File> fitsFiles) {
         super(OperationType.CHAIN_RECORDS, fitsFiles);
         this._keyword = keyword != null ? keyword.toUpperCase() : null;
         this._chainValues = chainValues;
@@ -60,7 +60,7 @@ public class ChainRecordsInputData extends SwitchInputData {
         return _keyword;
     }
 
-    public LinkedList<Tuple> getChainValues() {
+    public LinkedList<Tuple<ChainValueType, String>> getChainValues() {
         return _chainValues;
     }
 
@@ -79,7 +79,7 @@ public class ChainRecordsInputData extends SwitchInputData {
     }
 
     /**
-     * Value indicating whether skipspecific keyword in chain values if it does not exist in header
+     * Value indicating whether skip specific keyword in chain values if it does not exist in header
      *
      * @return  <code>true</code> when skip specific keyword if it does not exist
      *          <code>false</code> when do not skip specific keyword if it does not exist
