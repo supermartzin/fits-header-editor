@@ -2,10 +2,10 @@ package cz.muni.fi.files.controller;
 
 import cz.muni.fi.files.MainApp;
 import cz.muni.fi.files.dialog.ExceptionDialog;
-import cz.muni.fi.files.utils.NotifyingRunnable;
-import cz.muni.fi.files.utils.ThreadCompleteListener;
-import javafx.application.Platform;
+import cz.muni.fi.files.service.FileCreationService;
 import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
+import javafx.event.Event;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
@@ -14,11 +14,16 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 
 import java.io.File;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class MainLayoutController implements ThreadCompleteListener {
+public class MainLayoutController {
 
     private MainApp _mainApp;
 
@@ -58,17 +63,87 @@ public class MainLayoutController implements ThreadCompleteListener {
 
     public void onCreateFile() {
         if (mandatoryFieldsFilled()) {
-            Task createOutputFileTask = getCreateOutputFileTask();
+            final Task fileCreationTask = createFileCreationTask();
+
+            FileCreationService service = new FileCreationService(fileCreationTask);
+            service.setOnFailed(this::onTaskFailed);
+            service.setOnSucceeded(this::onTaskSucceeded);
+
+            progressBar.progressProperty().unbind();
+            progressBar.progressProperty().bind(fileCreationTask.progressProperty());
 
             createOutputFileButton.setDisable(true);
             progressBar.setVisible(true);
-            progressBar.progressProperty().unbind();
-            progressBar.progressProperty().bind(createOutputFileTask.progressProperty());
 
-            NotifyingRunnable runnable = new NotifyingRunnable(createOutputFileTask);
-            runnable.addListener(this);
-            new Thread(runnable).start();
+            service.start();
         }
+    }
+
+    private Task createFileCreationTask() {
+        return new Task() {
+            @Override
+            protected Object call() throws Exception {
+                int itemsCount = _inputDirectory.list().length;
+                int counter = 0;
+
+                // list all satisfying files
+                List<String> files = new ArrayList<>();
+                for (File file : _inputDirectory.listFiles()) {
+                    updateProgress(++counter, itemsCount);
+                    if (file.isFile() && satisfiesFilesFilter(file)) {
+                        files.add(file.getAbsolutePath());
+                    }
+                }
+
+                String outputDirectory = _outputDirectory != null
+                        ? _outputDirectory.getAbsolutePath() + "\\"
+                        : "";
+                String outputFilename = outputFileNameTextField.getText();
+                Path outputPath = Paths.get(outputDirectory + outputFilename);
+
+                Files.write(outputPath, files);
+
+                return true;
+            }
+        };
+    }
+
+    private void onTaskSucceeded(Event event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initOwner(_mainApp.getPrimaryStage());
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.setTitle("Informácia");
+        alert.setHeaderText("Súbor úspešne vytvorený!");
+        alert.setContentText("Súbor s cestami k súborom bol úspešne vytvorený.");
+
+        alert.showAndWait();
+
+        progressBar.setVisible(false);
+        createOutputFileButton.setDisable(false);
+    }
+
+    private void onTaskFailed(Event event) {
+        Worker worker = (Worker)event.getSource();
+
+        ExceptionDialog dialog = new ExceptionDialog();
+        dialog.initOwner(_mainApp.getPrimaryStage());
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.setTitle("Nastala chyba");
+        dialog.setHeaderText("Súbor nebolo možné vytvoriť!");
+        dialog.setException(worker.getException());
+
+        // set content text according to exception type
+        if (worker.getException() instanceof AccessDeniedException) {
+            dialog.setContentText("V zadanom priečinku nie sú dostatočné oprávnenia na zápis súboru." +
+                    "\r\nSkúste vybrať iný priečinok.");
+        } else {
+            dialog.setContentText("Vyskytla sa chyba počas vytvárania súboru s cestami.");
+        }
+
+        dialog.showAndWait();
+
+        progressBar.setVisible(false);
+        createOutputFileButton.setDisable(false);
     }
 
     private boolean mandatoryFieldsFilled() {
@@ -80,8 +155,6 @@ public class MainLayoutController implements ThreadCompleteListener {
 
         if (_inputDirectory == null) {
             alert.setContentText("Musíte vybrať vstupný priečinok so súbormi!");
-        } else if (_outputDirectory == null) {
-            alert.setContentText("Musíte vybrať priečinok, kde uložiť výstupný súbor!");
         } else if (outputFileNameTextField.getText().isEmpty()) {
             alert.setContentText("Musíte vyplniť názov výstupného súboru!");
         } else {
@@ -108,30 +181,6 @@ public class MainLayoutController implements ThreadCompleteListener {
         return filters;
     }
 
-    private Task getCreateOutputFileTask() {
-        return new Task() {
-            @Override
-            protected Object call() throws Exception {
-                int itemsCount = _inputDirectory.list().length;
-                int counter = 0;
-
-                // list all satisfying files
-                List<String> files = new ArrayList<>();
-                for (File file : _inputDirectory.listFiles()) {
-                    updateProgress(++counter, itemsCount);
-                    if (file.isFile() && satisfiesFilesFilter(file)) {
-                        files.add(file.getAbsolutePath());
-                    }
-                }
-
-                String outputFilename = outputFileNameTextField.getText();
-                Files.write(Paths.get(_outputDirectory.getAbsolutePath() + "\\" + outputFilename), files);
-
-                return true;
-            }
-        };
-    }
-
     private boolean satisfiesFilesFilter(File file) {
         if (file == null)
             return false;
@@ -146,40 +195,5 @@ public class MainLayoutController implements ThreadCompleteListener {
         }
 
         return false;
-    }
-
-    @Override
-    public void notifyWhenThreadComplete(Runnable runnable) {
-        if (runnable instanceof  NotifyingRunnable) {
-            NotifyingRunnable notifyingRunnable = (NotifyingRunnable) runnable;
-
-            progressBar.setVisible(false);
-            createOutputFileButton.setDisable(false);
-
-            if (notifyingRunnable.hasEndedWithNoError()) {
-                Platform.runLater(() -> {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.initOwner(_mainApp.getPrimaryStage());
-                    alert.initModality(Modality.APPLICATION_MODAL);
-                    alert.setTitle("Informácia");
-                    alert.setHeaderText("Súbor úspešne vytvorený!");
-                    alert.setContentText("Súbor s cestami k súborom bol úspešne vytvorený.");
-
-                    alert.showAndWait();
-                });
-            } else {
-                Platform.runLater(() -> {
-                    ExceptionDialog dialog = new ExceptionDialog();
-                    dialog.initOwner(_mainApp.getPrimaryStage());
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    dialog.setTitle("Nastala chyba");
-                    dialog.setHeaderText("Súbor nebolo možné vytvoriť!");
-                    dialog.setContentText("Vyskytla sa chyba počas vytvárania súboru s cestami.");
-                    dialog.setException(notifyingRunnable.getError());
-
-                    dialog.showAndWait();
-                });
-            }
-        }
     }
 }

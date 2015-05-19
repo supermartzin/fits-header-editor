@@ -2,29 +2,133 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="220.0" minWidth="250.0" prefHeight="220.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.muni.fi.files.controller.MainLayoutController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.muni.fi.files.controller.MainLayoutController">
     <children>
-        <Label layoutX="15.0" layoutY="19.0" text="Priečinok so súbormi:" AnchorPane.leftAnchor="15.0" />
-        <Button layoutX="419.0" layoutY="15.0" mnemonicParsing="false" onAction="#onBrowseForInputDirectory" prefHeight="25.0" prefWidth="66.0" text="Vybrať..." AnchorPane.rightAnchor="15.0" />
-        <Label layoutX="15.0" layoutY="54.0" text="Filter (oddelený čiarkou):" AnchorPane.leftAnchor="15.0" />
-        <Button layoutX="419.0" layoutY="97.0" mnemonicParsing="false" onAction="#onBrowseForOutputDirectory" prefHeight="25.0" prefWidth="66.0" text="Vybrať..." AnchorPane.rightAnchor="15.0" />
-        <TextField fx:id="inputDirTextField" editable="false" layoutX="160.0" layoutY="15.0" promptText="kde sú uložené súbory na spracovanie" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
-        <TextField fx:id="filterTextField" layoutX="160.0" layoutY="50.0" prefHeight="25.0" prefWidth="227.0" promptText="napr.: 'fits,fts,fit'  (prázdny = všetky súbory)" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
-        <TextField fx:id="outputDirTextField" editable="false" layoutX="160.0" layoutY="97.0" prefHeight="25.0" prefWidth="215.0" promptText="kde uložiť výstupný súbor" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
-        <Label layoutX="15.0" layoutY="101.0" text="Výstupný priečinok:" AnchorPane.leftAnchor="15.0" />
-        <Label layoutX="15.0" layoutY="136.0" text="Názov výstupného súboru:" AnchorPane.leftAnchor="15.0" />
-        <TextField fx:id="outputFileNameTextField" layoutX="160.0" layoutY="132.0" promptText="aj s príponou (napr. 'file.out')" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" />
-        <Separator layoutX="10.0" layoutY="85.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-        <Separator layoutX="15.0" layoutY="168.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-        <Button fx:id="createOutputFileButton" layoutX="372.0" layoutY="178.0" mnemonicParsing="false" onAction="#onCreateFile" prefHeight="40.0" prefWidth="113.0" text="Vytvoriť" AnchorPane.rightAnchor="15.0">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-      <ProgressBar fx:id="progressBar" layoutX="14.0" layoutY="186.0" prefHeight="25.0" prefWidth="341.0" progress="0.0" visible="false" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="145.0" />
+      <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="150.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="250.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                    <Label text="Priečinok so súbormi:">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                    <TextField fx:id="inputDirTextField" editable="false" promptText="kde sú uložené súbory na spracovanie" GridPane.columnIndex="1">
+                     <tooltip>
+                        <Tooltip text="Priečinok, v ktorom sú uložené súbory na spracovanie (povinné pole)" />
+                     </tooltip>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                    <Button mnemonicParsing="false" onAction="#onBrowseForInputDirectory" text="Vybrať..." GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Button>
+                    <Label text="Filter (oddelený čiarkou):" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                    <TextField fx:id="filterTextField" promptText="napr.: 'fits,fts,fit'" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <tooltip>
+                        <Tooltip text="Aký typ súborov zahrnúť do spracovania, prázdny = všetky súbory (nepovinné pole)" />
+                     </tooltip>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                    <Separator GridPane.columnSpan="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Separator>
+                    <Label text="Výstupný priečinok:" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                    <TextField fx:id="outputDirTextField" editable="false" promptText="kde uložiť výstupný súbor" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <tooltip>
+                        <Tooltip text="Priečinok, do ktorého uložiť výstupný súbor, prázdny = aktuálny priečinok (nepovinné pole)" />
+                     </tooltip>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                    <Button mnemonicParsing="false" onAction="#onBrowseForOutputDirectory" text="Vybrať..." GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Button>
+                    <Label text="Názov výstupného súboru:" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                    <TextField fx:id="outputFileNameTextField" promptText="aj s príponou (napr. 'file.out')" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <tooltip>
+                        <Tooltip text="Názov výstupného súboru, do ktorého uložiť cesty k súborom (povinné pole)" />
+                     </tooltip>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                    <Separator GridPane.columnSpan="3" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Separator>
+               </children>
+            </GridPane>
+            <GridPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+                <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="NEVER" />
+              </rowConstraints>
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <ProgressBar fx:id="progressBar" progress="0.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets bottom="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ProgressBar>
+                     </children>
+                  </AnchorPane>
+                    <Button fx:id="createOutputFileButton" mnemonicParsing="false" onAction="#onCreateFile" prefHeight="40.0" text="Vytvoriť" GridPane.columnIndex="1">
+                        <font>
+                            <Font name="System Bold" size="14.0" />
+                        </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                    </Button>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

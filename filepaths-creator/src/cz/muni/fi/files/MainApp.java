@@ -10,10 +10,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FilePath Creator 1.0
+ * FilePath Creator 1.1
  *
  * @author Martin Vrábel
- * @version 1.0.1.RELEASE
+ * @version 1.1.0.RELEASE
  */
 public class MainApp extends Application {
 
@@ -47,6 +47,7 @@ public class MainApp extends Application {
             AnchorPane mainLayout = mainLayoutFile.load();
 
             Scene scene = new Scene(mainLayout);
+            _primaryStage.sizeToScene();
             _primaryStage.setScene(scene);
 
             MainLayoutController controller = mainLayoutFile.getController();
