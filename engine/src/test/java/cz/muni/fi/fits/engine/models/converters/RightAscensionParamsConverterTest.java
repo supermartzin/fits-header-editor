@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
  * time data to its baseform
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class RightAscensionParamsConverterTest {
 
@@ -59,7 +59,7 @@ public class RightAscensionParamsConverterTest {
         RightAscensionParamsConverter converter = new RightAscensionParamsConverter(hours, minutes, seconds);
 
         assertNotNull(converter);
-        assertEquals(460, converter.getHours());
+        assertEquals(4, converter.getHours());
         assertEquals(48, converter.getMinutes());
         assertEquals(51.989, converter.getSeconds(), 0.0001);
     }
@@ -73,7 +73,7 @@ public class RightAscensionParamsConverterTest {
         RightAscensionParamsConverter converter = new RightAscensionParamsConverter(hours, minutes, seconds);
 
         assertNotNull(converter);
-        assertEquals(-450, converter.getHours());
+        assertEquals(6, converter.getHours());
         assertEquals(5, converter.getMinutes());
         assertEquals(3.989, converter.getSeconds(), 0.0001);
     }
@@ -87,9 +87,9 @@ public class RightAscensionParamsConverterTest {
         RightAscensionParamsConverter converter = new RightAscensionParamsConverter(hours, minutes, seconds);
 
         assertNotNull(converter);
-        assertEquals(-12, converter.getHours());
-        assertEquals(-32, converter.getMinutes());
-        assertEquals(-49.8, converter.getSeconds(), 0.0001);
+        assertEquals(11, converter.getHours());
+        assertEquals(27, converter.getMinutes());
+        assertEquals(10.2, converter.getSeconds(), 0.0001);
     }
 
     @Test
@@ -102,8 +102,8 @@ public class RightAscensionParamsConverterTest {
         RightAscensionParamsConverter converter = new RightAscensionParamsConverter(timeObject);
 
         assertNotNull(converter);
-        assertEquals(-12, converter.getHours());
-        assertEquals(-32, converter.getMinutes());
-        assertEquals(-49.8, converter.getSeconds(), 0.0001);
+        assertEquals(11, converter.getHours());
+        assertEquals(27, converter.getMinutes());
+        assertEquals(10.2, converter.getSeconds(), 0.0001);
     }
 }

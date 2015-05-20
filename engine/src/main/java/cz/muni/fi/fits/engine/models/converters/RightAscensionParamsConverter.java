@@ -7,7 +7,7 @@ import cz.muni.fi.fits.models.TimeObject;
  * time data to its base from
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class RightAscensionParamsConverter {
 
@@ -67,19 +67,36 @@ public class RightAscensionParamsConverter {
         // set seconds
         _seconds = seconds;
 
-        // set seconds to range <0,60>
+        // set seconds to range <-60,60>
         if (Math.abs(_seconds - 60) > 0.00001) {
             int count = (int) _seconds / 60;
             _seconds %= 60;
             _minutes += count;
         }
 
-        // set minutes to range <0,60>
+        // set minutes to range <-60,60>
         if (_minutes >= 60) {
             int count = _minutes / 60;
             _minutes %= 60;
             _hours += count;
         }
+
+        // set seconds to range <0,60>
+        if (_seconds < 0) {
+            _seconds += 60;
+            _minutes--;
+        }
+
+        // set minutes to range <0.60>
+        if (_minutes < 0) {
+            _minutes += 60;
+            _hours--;
+        }
+
+        // set hours to range <0,24>
+        _hours %= 24;
+        if (_hours < 0)
+            _hours += 24;
     }
 
     public int getHours() {
