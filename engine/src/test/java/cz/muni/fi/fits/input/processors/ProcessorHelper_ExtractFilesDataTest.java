@@ -25,12 +25,12 @@ import static org.junit.Assert.assertTrue;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractFilesDataTest {
 
     private static final Path FILE_PATH = Paths.get("test-files.in");
-    private static final Path DIR_PATH = Paths.get("test-files_dir.in");
+    private static final Path DIR_PATH = Paths.get("test-files_dir");
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
@@ -38,11 +38,13 @@ public class ProcessorHelper_ExtractFilesDataTest {
     @Before
     public void setUp() throws Exception {
         Files.createFile(FILE_PATH);
+        Files.createDirectory(DIR_PATH);
     }
 
     @After
     public void tearDown() throws Exception {
         Files.deleteIfExists(FILE_PATH);
+        Files.deleteIfExists(DIR_PATH);
     }
 
     @Test
@@ -53,7 +55,7 @@ public class ProcessorHelper_ExtractFilesDataTest {
 
     @Test
     public void testExtractFilesData_FilePathDoesNotExists() throws Exception {
-        Path path = Paths.get("files_not_exists.in");
+        Path path = Paths.get("files_not_exist.in");
 
         exception.expect(IllegalInputDataException.class);
         exception.expectMessage("does not exist");
@@ -61,21 +63,24 @@ public class ProcessorHelper_ExtractFilesDataTest {
     }
 
     @Test
-    public void testExtractFilesData_FilePathIsDirectory() throws Exception {
-        Files.createDirectory(DIR_PATH);
+    public void testExtractFilesData_DirectoryPathDoesNotExists() throws Exception {
+        Path path = Paths.get("directory_not_exist");
+
         exception.expect(IllegalInputDataException.class);
-        exception.expectMessage("is not a file");
-        try {
-            CmdArgumentsProcessorHelper.extractFilesData(DIR_PATH.toString());
-        }
-        finally {
-            Files.deleteIfExists(DIR_PATH);
-        }
+        exception.expectMessage("does not exist");
+        CmdArgumentsProcessorHelper.extractFilesData(path.toString());
     }
 
     @Test
     public void testExtractFilesData_FileIsEmpty() throws Exception {
         Collection<File> fitsFiles = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
+
+        assertTrue(fitsFiles.isEmpty());
+    }
+
+    @Test
+    public void testExtractFilesData_DirectoryIsEmpty() throws Exception {
+        Collection<File> fitsFiles = CmdArgumentsProcessorHelper.extractFilesData(DIR_PATH.toString());
 
         assertTrue(fitsFiles.isEmpty());
     }
@@ -96,7 +101,24 @@ public class ProcessorHelper_ExtractFilesDataTest {
         Files.write(FILE_PATH, fitsFilesLines);
 
         Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
+
         assertNotNull(files);
         assertEquals(3, files.size());
+    }
+
+    @Test
+    public void testExtractFilesData_CorrectDirectory() throws Exception {
+        Files.createFile(Paths.get(DIR_PATH.toString() + File.separator + "sample1.fits"));
+        Files.createFile(Paths.get(DIR_PATH.toString() + File.separator + "sample2.fits"));
+        Files.createFile(Paths.get(DIR_PATH.toString() + File.separator + "sample3.fits"));
+
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(DIR_PATH.toString());
+
+        assertNotNull(files);
+        assertEquals(3, files.size());
+
+        Files.deleteIfExists(Paths.get(DIR_PATH.toString() + File.separator + "sample1.fits"));
+        Files.deleteIfExists(Paths.get(DIR_PATH.toString() + File.separator + "sample2.fits"));
+        Files.deleteIfExists(Paths.get(DIR_PATH.toString() + File.separator + "sample3.fits"));
     }
 }

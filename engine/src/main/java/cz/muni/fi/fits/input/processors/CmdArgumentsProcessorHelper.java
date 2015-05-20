@@ -10,6 +10,9 @@ import cz.muni.fi.fits.models.inputData.*;
 import cz.muni.fi.fits.utils.Tuple;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,47 +24,63 @@ import java.util.LinkedList;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.3.1
+ * @version 1.3.2
  */
 final class CmdArgumentsProcessorHelper {
 
     /**
-     * Extracts paths to FITS files to process and returnd them as collection of {@link File} objects
+     * Extracts files or paths to files for processing and return them as a collection of {@link File} objects
      *
-     * @param pathToFile                    path to input file in which FITS files paths are specified
-     * @return                              unmodifiable collection of {@link File} objects reprsenting FITS files
-     * @throws IllegalInputDataException    when input file is in invalid form
+     * @param path                          path to input file or directory where the files are specified
+     * @return                              unmodifiable collection of {@link File} objects representing extracted files
+     * @throws IllegalInputDataException    when input file or directory is in invalid form
      */
-    static Collection<File> extractFilesData(String pathToFile) throws IllegalInputDataException {
-        if (pathToFile == null)
-            throw new IllegalArgumentException("pathToFile is null");
+    static Collection<File> extractFilesData(String path) throws IllegalInputDataException {
+        if (path == null)
+            throw new IllegalArgumentException("path is null");
 
         Collection<File> fitsFiles = new HashSet<>();
 
-        // check existence of input file
-        File inputFile = new File(pathToFile);
+        boolean isFile = true;
+        // check whether it is a file or directory
+        File inputFile = new File(path);
         if (!inputFile.exists())
-            throw new IllegalInputDataException("Input file '" + pathToFile + "' does not exist");
-        if (!inputFile.isFile())
-            throw new IllegalInputDataException("Provided path '" + pathToFile + "' is not a file");
+            throw new IllegalInputDataException("Input file or directory '" + path + "' does not exist");
+        if (inputFile.isDirectory()) isFile = false;
 
-        // read paths to FITS files
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile)))
-        {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
+        if (isFile) {
+            // read paths to FITS files
+            try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    line = line.trim();
 
-                // ignore commented lines
-                if (line.startsWith("#")) continue;
+                    // ignore commented lines
+                    if (line.startsWith("#")) continue;
 
-                File fitsFile = new File(line);
-                fitsFiles.add(fitsFile);
+                    // add file to collection
+                    fitsFiles.add(new File(line));
+                }
+            } catch (FileNotFoundException fnfEx) {
+                throw new IllegalInputDataException("Input file '" + path + "' does not exist", fnfEx);
+            } catch (IOException ioEx) {
+                throw new IllegalInputDataException("Error reading input file '" + path + "'", ioEx);
             }
-        } catch (FileNotFoundException fnfEx) {
-            throw new IllegalInputDataException("Input file '" + pathToFile + "' does not exist", fnfEx);
-        } catch (IOException ioEx) {
-            throw new IllegalInputDataException("Error reading input file '" + pathToFile + "'", ioEx);
+        } else {
+            // read files in directory
+            try {
+                Files.walk(Paths.get(path)).forEach(filePath -> {
+                    if (Files.isRegularFile(filePath)) {
+                        fitsFiles.add(new File(filePath.toUri()));
+                    }
+                });
+            } catch (IOException ioEx) {
+                throw new IllegalInputDataException("Error reading input directory with files", ioEx);
+            } catch (InvalidPathException ipEx) {
+                throw new IllegalInputDataException("Path to input directory is invalid", ipEx);
+            } catch (SecurityException sEx) {
+                throw new IllegalInputDataException("Cannot access input directory - insufficient permissions", sEx);
+            }
         }
 
         return Collections.unmodifiableCollection(fitsFiles);
