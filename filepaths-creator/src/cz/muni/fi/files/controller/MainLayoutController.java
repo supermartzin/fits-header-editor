@@ -96,7 +96,7 @@ public class MainLayoutController {
                 }
 
                 String outputDirectory = _outputDirectory != null
-                        ? _outputDirectory.getAbsolutePath() + "\\"
+                        ? _outputDirectory.getAbsolutePath() + File.separator
                         : "";
                 String outputFilename = outputFileNameTextField.getText();
                 Path outputPath = Paths.get(outputDirectory + outputFilename);
