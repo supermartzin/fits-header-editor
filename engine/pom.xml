@@ -6,13 +6,13 @@
 
     <groupId>cz.muni.fi.fits</groupId>
     <artifactId>FITS-HeaderEditor</artifactId>
-    <version>0.9.6.1-SNAPSHOT</version>
+    <version>0.9.6.2-SNAPSHOT</version>
 
     <name>FITS Header Editor Tool</name>
     <packaging>jar</packaging>
 
     <properties>
-        <guice.version>4.0-beta5</guice.version>
+        <guice.version>4.0</guice.version>
         <guava.version>18.0</guava.version>
         <nom.tam.fits.version>1.12.1-SNAPSHOT</nom.tam.fits.version>
         <junit.version>4.12</junit.version>

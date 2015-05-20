@@ -10,9 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverter.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FITS-HeaderEditor.iml" afterPath="$PROJECT_DIR$/FITS-HeaderEditor.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Projekty\Bakalárka\FITSHeaderEditor\engine\.idea\libraries\Maven__com_google_inject_guice_4_0_beta5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_4_0.xml" />
     </list>
     <ignored path="FITSHeaderEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +47,9 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="543" column="4" selection-start-line="543" selection-start-column="4" selection-end-line="543" selection-end-column="4" />
+              <caret line="129" column="28" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-                <element signature="method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
@@ -112,30 +111,40 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RightAscensionParamsConverterTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2845982">
+              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeclinationParamsConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-              <folding />
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="27" selection-end-column="84" />
+              <folding>
+                <marker date="1432072414701" expanded="false" signature="658:1009" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RightAscensionParamsConverter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverter.java">
+      <file leaf-file-name="DeclinationParamsConverterTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26288658">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-              <folding>
-                <marker date="1432137752947" expanded="false" signature="1217:1562" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,14 +219,14 @@
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChainRecordsInputDataTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/inputData/ChainRecordsInputData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverter.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
       </list>
     </option>
   </component>
@@ -251,6 +260,20 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Dependencies" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="FITS Header Editor Tool" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Run Configurations" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RunConfigurationsNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -992,59 +1015,7 @@
       <recent name="cz.muni.fi.fits.input.converters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RightAscensionParamsConverterTest">
-    <configuration default="false" name="ProcessorHelper_ExtractFilesDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cz.muni.fi.fits.input.processors.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="FITS-HeaderEditor" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cz.muni.fi.fits.input.processors" />
-      <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.input.processors.ProcessorHelper_ExtractFilesDataTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="RightAscensionParamsConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cz.muni.fi.fits.engine.models.converters.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="FITS-HeaderEditor" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cz.muni.fi.fits.engine.models.converters" />
-      <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.engine.models.converters.RightAscensionParamsConverterTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Maven.FITS-HeaderEditor [package]">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -1318,7 +1289,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.ApplicationInitializer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="hjd C:\abcd\test.txt date-obs exposure 15.4:25.8:78.9 -65.66:23.45:1.25" />
+      <option name="PROGRAM_PARAMETERS" value="add files.in keyyyy valueee commeeeent" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -1331,7 +1302,7 @@
         <option name="MakeProject" enabled="true" />
       </method>
     </configuration>
-    <configuration default="false" name="All in FITS-HeaderEditor" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <configuration default="false" name="All Tests" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="FITS-HeaderEditor" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1379,19 +1350,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list size="5">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Application" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in FITS-HeaderEditor" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessorHelper_ExtractFilesDataTest" />
-      <item index="3" class="java.lang.String" itemvalue="Maven.FITS-HeaderEditor [package]" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.RightAscensionParamsConverterTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All Tests" />
+      <item index="2" class="java.lang.String" itemvalue="Maven.FITS-HeaderEditor [package]" />
     </list>
-    <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.RightAscensionParamsConverterTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessorHelper_ExtractFilesDataTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="StatisticProjectComponent">
@@ -1511,12 +1474,12 @@
       <workItem from="1431863134791" duration="597000" />
       <workItem from="1431940066881" duration="5633000" />
       <workItem from="1432072523550" duration="531000" />
-      <workItem from="1432111608564" duration="12728000" />
+      <workItem from="1432111608564" duration="15700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="591912000" />
+    <option name="totallyTimeSpent" value="594884000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1539,7 +1502,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19402985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19616205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1621,13 +1584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3984375">
           <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34151787">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1715,13 +1671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="48" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1733,13 +1682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46875">
-          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -1831,44 +1773,6 @@
         <state vertical-scroll-proportion="1.7455357">
           <caret line="97" column="69" selection-start-line="97" selection-start-column="69" selection-end-line="97" selection-end-column="69" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="543" column="4" selection-start-line="543" selection-start-column="4" selection-end-line="543" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1996,14 +1900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2014,11 +1910,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26288658">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        <state vertical-scroll-proportion="-0.6941581">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
-            <marker date="1432137752947" expanded="false" signature="1217:1562" placeholder="..." />
+            <marker date="1432137752947" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71540177">
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="27" selection-end-column="84" />
+          <folding>
+            <marker date="1432072414701" expanded="false" signature="658:1009" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="129" column="28" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
+          <folding>
+            <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2845982">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
