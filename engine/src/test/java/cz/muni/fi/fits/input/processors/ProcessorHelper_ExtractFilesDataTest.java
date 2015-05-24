@@ -61,6 +61,7 @@ public class ProcessorHelper_ExtractFilesDataTest {
         Files.createFile(SAMPLE4);
         Files.createFile(SAMPLE5);
         Files.createFile(SAMPLE6);
+        Files.createFile(SAMPLE7);
     }
 
     @After
@@ -72,6 +73,7 @@ public class ProcessorHelper_ExtractFilesDataTest {
         Files.deleteIfExists(SAMPLE4);
         Files.deleteIfExists(SAMPLE5);
         Files.deleteIfExists(SAMPLE6);
+        Files.deleteIfExists(SAMPLE7);
 
         Files.deleteIfExists(NESTED_DIRECTORY);
         Files.deleteIfExists(DIRECTORY1);
@@ -204,7 +206,7 @@ public class ProcessorHelper_ExtractFilesDataTest {
     }
 
     @Test
-    public void testExtractFilesData_FileInNestedDirectory() throws Exception {
+    public void testExtractFilesData_NestedDirectoryInInputFile() throws Exception {
         List<String> fitsFilesLines = Arrays.asList(
                 SAMPLE2.toString(),
                 DIRECTORY3.toString());
@@ -214,5 +216,13 @@ public class ProcessorHelper_ExtractFilesDataTest {
 
         assertNotNull(files);
         assertEquals(2, files.size());
+    }
+
+    @Test
+    public void testExtractFilesData_DirectoryWithNestedDirectory() throws Exception {
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(DIRECTORY3.toString());
+
+        assertNotNull(files);
+        assertEquals(1, files.size());
     }
 }
