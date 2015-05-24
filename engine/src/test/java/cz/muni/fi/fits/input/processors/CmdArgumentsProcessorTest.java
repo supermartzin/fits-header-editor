@@ -28,9 +28,13 @@ import static org.junit.Assert.*;
  * Tests for {@link CmdArgumentsProcessor} class
  *
  * @author Martin Vrábel
- * @version 1.1.1
+ * @version 1.2
  */
 public class CmdArgumentsProcessorTest {
+
+    private static final Path SAMPLE1 = Paths.get("sample1.fits");
+    private static final Path SAMPLE2 = Paths.get("sample2.fits");
+    private static final Path SAMPLE3 = Paths.get("sample3.fits");
 
     private static final Path FILE_PATH = Paths.get("test-files.in");
     private TypeConverter _converter;
@@ -41,12 +45,18 @@ public class CmdArgumentsProcessorTest {
     @Before
     public void setUp() throws Exception {
         Files.createFile(FILE_PATH);
+        Files.createFile(SAMPLE1);
+        Files.createFile(SAMPLE2);
+        Files.createFile(SAMPLE3);
         _converter = new DefaultTypeConverter();
     }
 
     @After
     public void tearDown() throws Exception {
         Files.deleteIfExists(FILE_PATH);
+        Files.deleteIfExists(SAMPLE1);
+        Files.deleteIfExists(SAMPLE2);
+        Files.deleteIfExists(SAMPLE3);
         _converter = null;
     }
 
@@ -88,7 +98,8 @@ public class CmdArgumentsProcessorTest {
     // AddNewRecordInputData test
     @Test
     public void testGetProcessedInput_ValidAddNewRecordInputData() throws Exception {
-        Files.write(FILE_PATH, Collections.singletonList("sample1.fits"));
+        Files.write(FILE_PATH, Collections.singletonList(SAMPLE1.toString()));
+
         String[] args = new String[] { "add", FILE_PATH.toString(), "KEYWORD", "true", "comment" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -110,7 +121,11 @@ public class CmdArgumentsProcessorTest {
     // AddNewToIndexInputData test
     @Test
     public void testGetProcessedInput_ValidAddNewToIndexInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits", "sample3.fits"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                SAMPLE3.toString()));
+
         String[] args = new String[] { "add_ix", "-rm", FILE_PATH.toString(), "9", "KEYWORD", "256321456987456321477" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -133,7 +148,10 @@ public class CmdArgumentsProcessorTest {
     // RemoveByKeywordInputData test
     @Test
     public void testGetProcessedInput_ValidRemoveByKeywordInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample3.fits"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE3.toString()));
+
         String[] args = new String[] { "remove", FILE_PATH.toString(), "KEYWORD" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -152,7 +170,10 @@ public class CmdArgumentsProcessorTest {
     // RemoveFromIndexInputData test
     @Test
     public void testGetProcessedInput_ValidRemoveFromIndexInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString()));
+
         String[] args = new String[] { "remove_ix", FILE_PATH.toString(), "12" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -171,7 +192,11 @@ public class CmdArgumentsProcessorTest {
     // ChangeKeywordInputData test
     @Test
     public void testGetProcessedInput_ValidChangeKeywordInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits", "sample3.fits"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                SAMPLE3.toString()));
+
         String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "OLD_KEYWORD", "NEW KEYWORD" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -192,7 +217,10 @@ public class CmdArgumentsProcessorTest {
     // ChangeKeywordInputData test
     @Test
     public void testGetProcessedInput_ValidChangeValueByKeywordInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString()));
+
         String[] args = new String[] { "change", "-a", FILE_PATH.toString(), "KEYWORD", "12.45E120", "comment" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -214,7 +242,12 @@ public class CmdArgumentsProcessorTest {
     // ChainRecordsInputData test
     @Test
     public void testGetProcessedInput_ValidChainRecordsInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits", "sample3.fit", "sample4.fts"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                SAMPLE3.toString(),
+                "sample4.fts"));
+
         String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=constant 1", "-k=key_word", "-c=Constant 2" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -224,7 +257,7 @@ public class CmdArgumentsProcessorTest {
         assertTrue(inputData.getOperationType() == OperationType.CHAIN_RECORDS);
         assertTrue(inputData instanceof ChainRecordsInputData);
         assertNotNull(inputData.getFitsFiles());
-        assertEquals(4, inputData.getFitsFiles().size());
+        assertEquals(3, inputData.getFitsFiles().size());
 
         ChainRecordsInputData crid = (ChainRecordsInputData)inputData;
         assertTrue(crid.skipIfChainKwNotExists());
@@ -237,7 +270,10 @@ public class CmdArgumentsProcessorTest {
     // ShiftTimeInputData test
     @Test
     public void testGetProcessedInput_ValidShiftTimeInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits", "sample3.fit"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                "sample3.fit"));
         String[] args = new String[] { "shift_time", FILE_PATH.toString(), "KEYWORD", "-y=-23", "-min=12", "-d=-123" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -247,7 +283,7 @@ public class CmdArgumentsProcessorTest {
         assertTrue(inputData.getOperationType() == OperationType.SHIFT_TIME);
         assertTrue(inputData instanceof ShiftTimeInputData);
         assertNotNull(inputData.getFitsFiles());
-        assertEquals(3, inputData.getFitsFiles().size());
+        assertEquals(2, inputData.getFitsFiles().size());
 
         ShiftTimeInputData stid = (ShiftTimeInputData)inputData;
         assertEquals("KEYWORD", stid.getKeyword());
@@ -264,7 +300,13 @@ public class CmdArgumentsProcessorTest {
     // ComputeHJDInputData test
     @Test
     public void testGetProcessedInput_ValidComputeHJDInputData() throws Exception {
-        Files.write(FILE_PATH, Arrays.asList("sample1.fits", "sample2.fits", "sample3.fit", "sample4.fit", "sample5.fit", "sample6.fit"));
+        Files.write(FILE_PATH, Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                SAMPLE3.toString(),
+                "sample4.fit",
+                "sample5.fit",
+                "directory/sample6.fit"));
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATE-OBS", "10.50", "RGHT_ASC", "-45:26:13.5" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -274,7 +316,7 @@ public class CmdArgumentsProcessorTest {
         assertTrue(inputData.getOperationType() == OperationType.COMPUTE_HJD);
         assertTrue(inputData instanceof ComputeHJDInputData);
         assertNotNull(inputData.getFitsFiles());
-        assertEquals(6, inputData.getFitsFiles().size());
+        assertEquals(3, inputData.getFitsFiles().size());
 
         ComputeHJDInputData chjdid = (ComputeHJDInputData)inputData;
         assertTrue(chjdid.getDatetime() instanceof String);

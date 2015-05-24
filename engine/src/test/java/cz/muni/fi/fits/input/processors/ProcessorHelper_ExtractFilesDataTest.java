@@ -25,26 +25,58 @@ import static org.junit.Assert.assertTrue;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public class ProcessorHelper_ExtractFilesDataTest {
 
+    private static final Path DIRECTORY1 = Paths.get("test-directory1");
+    private static final Path DIRECTORY2 = Paths.get("test-directory2");
+    private static final Path DIRECTORY3 = Paths.get("test-directory3");
+    private static final Path NESTED_DIRECTORY = Paths.get(DIRECTORY3.toString() + "/nested-directory");
+
+    private static final Path SAMPLE1 = Paths.get("sample1.fits");
+    private static final Path SAMPLE2 = Paths.get("sample2.fits");
+    private static final Path SAMPLE3 = Paths.get("sample3.fits");
+    private static final Path SAMPLE4 = Paths.get(DIRECTORY2 + File.separator + "sample4.fits");
+    private static final Path SAMPLE5 = Paths.get(DIRECTORY2 + File.separator + "sample5.fits");
+    private static final Path SAMPLE6 = Paths.get(DIRECTORY3 + File.separator + "sample6.fits");
+    private static final Path SAMPLE7 = Paths.get(NESTED_DIRECTORY + File.separator + "sample7.fits");
+
     private static final Path FILE_PATH = Paths.get("test-files.in");
-    private static final Path DIR_PATH = Paths.get("test-files_dir");
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
     @Before
     public void setUp() throws Exception {
+        Files.createDirectory(DIRECTORY1);
+        Files.createDirectory(DIRECTORY2);
+        Files.createDirectory(DIRECTORY3);
+        Files.createDirectory(NESTED_DIRECTORY);
+
         Files.createFile(FILE_PATH);
-        Files.createDirectory(DIR_PATH);
+        Files.createFile(SAMPLE1);
+        Files.createFile(SAMPLE2);
+        Files.createFile(SAMPLE3);
+        Files.createFile(SAMPLE4);
+        Files.createFile(SAMPLE5);
+        Files.createFile(SAMPLE6);
     }
 
     @After
     public void tearDown() throws Exception {
         Files.deleteIfExists(FILE_PATH);
-        Files.deleteIfExists(DIR_PATH);
+        Files.deleteIfExists(SAMPLE1);
+        Files.deleteIfExists(SAMPLE2);
+        Files.deleteIfExists(SAMPLE3);
+        Files.deleteIfExists(SAMPLE4);
+        Files.deleteIfExists(SAMPLE5);
+        Files.deleteIfExists(SAMPLE6);
+
+        Files.deleteIfExists(NESTED_DIRECTORY);
+        Files.deleteIfExists(DIRECTORY1);
+        Files.deleteIfExists(DIRECTORY2);
+        Files.deleteIfExists(DIRECTORY3);
     }
 
     @Test
@@ -80,14 +112,17 @@ public class ProcessorHelper_ExtractFilesDataTest {
 
     @Test
     public void testExtractFilesData_DirectoryIsEmpty() throws Exception {
-        Collection<File> fitsFiles = CmdArgumentsProcessorHelper.extractFilesData(DIR_PATH.toString());
+        Collection<File> fitsFiles = CmdArgumentsProcessorHelper.extractFilesData(DIRECTORY1.toString());
 
         assertTrue(fitsFiles.isEmpty());
     }
 
     @Test
     public void testExtractFilesData_OnlyCommentedPaths() throws Exception {
-        List<String> fitsFilesLines = Arrays.asList("# sample1.fits", "#sample2.fits", "### sample3.fits");
+        List<String> fitsFilesLines = Arrays.asList(
+                "# "   + SAMPLE1.toString(),
+                "#"    + SAMPLE2.toString(),
+                "### " + DIRECTORY1.toString());
         Files.write(FILE_PATH, fitsFilesLines);
 
         HashSet<File> fitsFiles = new HashSet<>(CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString()));
@@ -97,7 +132,12 @@ public class ProcessorHelper_ExtractFilesDataTest {
 
     @Test
     public void testExtractFilesData_CorrectFile() throws Exception {
-        List<String> fitsFilesLines = Arrays.asList("sample1.fits", "#sample2.fits", "sample3.fits", "##sample4.fits", "sample5.fits");
+        List<String> fitsFilesLines = Arrays.asList(
+                       SAMPLE1.toString(),
+                       SAMPLE2.toString(),
+                       SAMPLE3.toString(),
+                "##" + SAMPLE4.toString(),
+                       "sample6.fits");
         Files.write(FILE_PATH, fitsFilesLines);
 
         Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
@@ -108,17 +148,71 @@ public class ProcessorHelper_ExtractFilesDataTest {
 
     @Test
     public void testExtractFilesData_CorrectDirectory() throws Exception {
-        Files.createFile(Paths.get(DIR_PATH.toString() + File.separator + "sample1.fits"));
-        Files.createFile(Paths.get(DIR_PATH.toString() + File.separator + "sample2.fits"));
-        Files.createFile(Paths.get(DIR_PATH.toString() + File.separator + "sample3.fits"));
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(DIRECTORY2.toString());
 
-        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(DIR_PATH.toString());
+        assertNotNull(files);
+        assertEquals(2, files.size());
+    }
+
+    @Test
+    public void testExtractFilesData_FilesAndDirsInInputFile() throws Exception {
+        List<String> fitsFilesLines = Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                DIRECTORY2.toString(),
+                DIRECTORY1.toString(),
+                "nonexistent-dir1",
+                "nonexistent-dir2");
+        Files.write(FILE_PATH, fitsFilesLines);
+
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
+
+        assertNotNull(files);
+        assertEquals(4, files.size());
+    }
+
+    @Test
+    public void testExtractFilesData_OnlyDirsInInputFile() throws Exception {
+        List<String> fitsFilesLines = Arrays.asList(
+                DIRECTORY1.toString(),
+                DIRECTORY2.toString(),
+                DIRECTORY3.toString());
+        Files.write(FILE_PATH, fitsFilesLines);
+
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
 
         assertNotNull(files);
         assertEquals(3, files.size());
+    }
 
-        Files.deleteIfExists(Paths.get(DIR_PATH.toString() + File.separator + "sample1.fits"));
-        Files.deleteIfExists(Paths.get(DIR_PATH.toString() + File.separator + "sample2.fits"));
-        Files.deleteIfExists(Paths.get(DIR_PATH.toString() + File.separator + "sample3.fits"));
+    @Test
+    public void testExtractFilesData_SamePathsInInputFile() throws Exception {
+        List<String> fitsFilesLines = Arrays.asList(
+                SAMPLE1.toString(),
+                SAMPLE1.toString(),
+                SAMPLE1.toString(),
+                SAMPLE2.toString(),
+                DIRECTORY2.toString(),
+                DIRECTORY2.toString(),
+                DIRECTORY3.toString());
+        Files.write(FILE_PATH, fitsFilesLines);
+
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
+
+        assertNotNull(files);
+        assertEquals(5, files.size());
+    }
+
+    @Test
+    public void testExtractFilesData_FileInNestedDirectory() throws Exception {
+        List<String> fitsFilesLines = Arrays.asList(
+                SAMPLE2.toString(),
+                DIRECTORY3.toString());
+        Files.write(FILE_PATH, fitsFilesLines);
+
+        Collection<File> files = CmdArgumentsProcessorHelper.extractFilesData(FILE_PATH.toString());
+
+        assertNotNull(files);
+        assertEquals(2, files.size());
     }
 }

@@ -24,15 +24,16 @@ import java.util.LinkedList;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.3.2
+ * @version 1.3.3
  */
 final class CmdArgumentsProcessorHelper {
 
     /**
-     * Extracts files or paths to files for processing and return them as a collection of {@link File} objects
+     * Extracts files or paths to files for processing and return them as a collection of unique {@link File} objects.
+     * If path does not exist it's skipped
      *
      * @param path                          path to input file or directory where the files are specified
-     * @return                              unmodifiable collection of {@link File} objects representing extracted files
+     * @return                              unmodifiable collection of unique {@link File} objects representing extracted files
      * @throws IllegalInputDataException    when input file or directory is in invalid form
      */
     static Collection<File> extractFilesData(String path) throws IllegalInputDataException {
@@ -58,8 +59,18 @@ final class CmdArgumentsProcessorHelper {
                     // ignore commented lines
                     if (line.startsWith("#")) continue;
 
-                    // add file to collection
-                    fitsFiles.add(new File(line));
+                    File fitsFile = new File(line);
+                    // check if file or directory
+                    if (Files.isRegularFile(fitsFile.toPath())) {
+                        // add file directly
+                        fitsFiles.add(fitsFile);
+                    } else if (Files.isDirectory(fitsFile.toPath())) {
+                        // load all files in directory
+                        Files.walk(fitsFile.toPath(), 1).forEach(file -> {
+                            if (Files.isRegularFile(file))
+                                fitsFiles.add(new File(file.toUri()));
+                        });
+                    }
                 }
             } catch (FileNotFoundException fnfEx) {
                 throw new IllegalInputDataException("Input file '" + path + "' does not exist", fnfEx);
@@ -69,10 +80,9 @@ final class CmdArgumentsProcessorHelper {
         } else {
             // read files in directory
             try {
-                Files.walk(Paths.get(path)).forEach(filePath -> {
-                    if (Files.isRegularFile(filePath)) {
+                Files.walk(Paths.get(path), 1).forEach(filePath -> {
+                    if (Files.isRegularFile(filePath))
                         fitsFiles.add(new File(filePath.toUri()));
-                    }
                 });
             } catch (IOException ioEx) {
                 throw new IllegalInputDataException("Error reading input directory with files", ioEx);
