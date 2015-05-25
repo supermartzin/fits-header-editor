@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class TypeConverter_DoubleParsingTest {
 
@@ -62,6 +62,21 @@ public class TypeConverter_DoubleParsingTest {
     @Test
     public void testParseDouble_EmptyValue() throws Exception {
         String value = "";
+
+        exception.expect(ParseException.class);
+        _converter.parseDouble(value);
+    }
+
+    @Test
+    public void testTryParseDouble_TooBigValue() throws Exception {
+        String value = "2514.5689E985";
+
+        assertFalse(_converter.tryParseDouble(value));
+    }
+
+    @Test
+    public void testParseDouble_TooBigValue() throws Exception {
+        String value = "2514.5689E985";
 
         exception.expect(ParseException.class);
         _converter.parseDouble(value);

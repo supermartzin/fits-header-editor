@@ -1,15 +1,11 @@
 package cz.muni.fi.fits;
 
 import cz.muni.fi.fits.engine.HeaderEditingEngine;
-import cz.muni.fi.fits.engine.models.Declination;
-import cz.muni.fi.fits.engine.models.RightAscension;
 import cz.muni.fi.fits.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.exceptions.ValidationException;
 import cz.muni.fi.fits.input.processors.InputProcessor;
 import cz.muni.fi.fits.input.validators.InputDataValidator;
-import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.Result;
-import cz.muni.fi.fits.models.TimeObject;
 import cz.muni.fi.fits.models.inputData.*;
 import cz.muni.fi.fits.output.writers.OutputWriter;
 
@@ -20,7 +16,7 @@ import java.io.File;
  * Core editing class used as a central point of FITS Header Editor Tool
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.0.1
  */
 public class FITSHeaderEditor {
 
@@ -275,29 +271,11 @@ public class FITSHeaderEditor {
 
                     // compute HJD in FITS files
                     for (File fitsFile : chjdid.getFitsFiles()) {
-                        Object rightAscension = chjdid.getRightAscension();
-                        Object declination = chjdid.getDeclination();
-
-                        if (chjdid.getRightAscension() instanceof TimeObject) {
-                            TimeObject raTimeObject = (TimeObject) chjdid.getRightAscension();
-                            rightAscension = new RightAscension(
-                                    raTimeObject.getHours(),
-                                    raTimeObject.getMinutes(),
-                                    raTimeObject.getSeconds());
-                        }
-                        if (chjdid.getDeclination() instanceof DegreesObject) {
-                            DegreesObject decDegreesObject = (DegreesObject) chjdid.getDeclination();
-                            declination = new Declination(
-                                    decDegreesObject.getDegrees(),
-                                    decDegreesObject.getMinutes(),
-                                    decDegreesObject.getSeconds());
-                        }
-
                         Result result = _headerEditingEngine.computeHeliocentricJulianDate(
                                 chjdid.getDatetime(),
                                 chjdid.getExposure(),
-                                rightAscension,
-                                declination,
+                                chjdid.getRightAscension(),
+                                chjdid.getDeclination(),
                                 chjdid.getComment(),
                                 fitsFile);
 

@@ -9,7 +9,9 @@ import cz.muni.fi.fits.engine.models.converters.RightAscensionParamsConverter;
 import cz.muni.fi.fits.engine.models.formatters.NumberFormatter;
 import cz.muni.fi.fits.engine.utils.DateTimeUtils;
 import cz.muni.fi.fits.engine.utils.MandatoryFITSKeywords;
+import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.Result;
+import cz.muni.fi.fits.models.TimeObject;
 import cz.muni.fi.fits.models.inputData.ChainRecordsInputData;
 import cz.muni.fi.fits.utils.Constants;
 import cz.muni.fi.fits.utils.Tuple;
@@ -37,7 +39,7 @@ import java.util.LinkedList;
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">Project pages</a>
  *
  * @author Martin Vrábel
- * @version 1.3.7
+ * @version 1.4
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
@@ -881,9 +883,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             datetimeValue = datetimeValue.plusNanos(Double.valueOf(nanoseconds).longValue());
 
             // compute Julian Date
-            JulianDate jd = new JulianDate(datetimeValue);
+            double julianDate = JulianDate.computeJulianDate(datetimeValue);
 
-            HeaderCard jdCard = new HeaderCard(Constants.DEFAULT_JD_KEYWORD, jd.computeJulianDate(), comment);
+            HeaderCard jdCard = new HeaderCard(Constants.DEFAULT_JD_KEYWORD, julianDate, comment);
 
             // check for mandatory keyword
             if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_JD_KEYWORD)) {
@@ -923,10 +925,12 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
      *                              or {@link java.time.LocalDateTime} as value of datetime
      * @param exposure              {@link String} value as keyword of exposure record
      *                              or {@link Double} as value of exposure in seconds
-     * @param rightAscension        {@link String} value as keyword of right ascension record
-     *                              or {@link cz.muni.fi.fits.engine.models.RightAscension} as right ascension value parameters
-     * @param declination           {@link String} value as keyword of declination record
-     *                              or {@link cz.muni.fi.fits.engine.models.Declination} as declination value parameters
+     * @param rightAscension        {@link String} value as keyword of right ascension record,
+     *                              {@link cz.muni.fi.fits.models.TimeObject} as right ascension value parameters
+     *                              or {@link Double} or {@link java.math.BigDecimal} value of right ascension
+     * @param declination           {@link String} value as keyword of declination record,
+     *                              {@link cz.muni.fi.fits.models.DegreesObject} as declination value parameters
+     *                              or {@link Double} or {@link java.math.BigDecimal} as value of declination
      * @param comment               comment of HJD record, insert
      *                              <code>null</code> when no comment to add
      * @param fitsFile              FITS file in which to chain records
@@ -954,10 +958,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             BasicHDU hdu = fits.getHDU(0);
             Header header = hdu.getHeader();
 
+
+            boolean saveRightAscension = true;
+            boolean saveDeclination = true;
+
             LocalDateTime datetimeValue;
             double exposureValue;
-            RightAscension rightAscensionValue;
-            Declination declinationValue;
+
+            double rightAscensionValue;
+            double declinationValue;
 
             // load datetime value
             if (datetime instanceof LocalDateTime) {
@@ -1005,9 +1014,24 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             // load right ascension value
-            if (rightAscension instanceof RightAscension) {
-                rightAscensionValue = (RightAscension) rightAscension;
+            if (rightAscension instanceof Double) {
+                // value is double
+                rightAscensionValue = (double) rightAscension;
+            } else if (rightAscension instanceof BigDecimal) {
+                // value is BigDecimal
+                double value = ((BigDecimal) rightAscension).doubleValue();
+                if (Double.isFinite(value)) {
+                    rightAscensionValue = value;
+                } else {
+                    return new Result(false, "Right Ascension value is too big");
+                }
+            } else if (rightAscension instanceof TimeObject) {
+                // value is TimeObject
+                rightAscensionValue = RightAscension.computeRightAscension((TimeObject) rightAscension);
             } else if (rightAscension instanceof String) {
+                // value is String keyword
+                saveRightAscension = false;
+
                 // get value from FITS file header
                 String rightAscensionKeyword = (String) rightAscension;
 
@@ -1015,10 +1039,14 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     HeaderCard rightAscensionCard = header.findCard(rightAscensionKeyword);
 
                     // parse right ascension from record
-                    String[] values = rightAscensionCard.getValue().trim().split(":");
-                    if (values.length == 3) {
+                    if (rightAscensionCard.valueType().equals(Double.class)) {
+                        // double value
+                        rightAscensionValue = rightAscensionCard.getValue(Double.class, Double.NaN);
+                    } else if (rightAscensionCard.getValue().trim().split(":").length == 3) {
+                        // full time value
+                        String[] values = rightAscensionCard.getValue().trim().split(":");
                         try {
-                            rightAscensionValue = new RightAscension(
+                            rightAscensionValue = RightAscension.computeRightAscension(
                                     Double.parseDouble(values[0].trim()),
                                     Double.parseDouble(values[1].trim()),
                                     Double.parseDouble(values[2].trim()));
@@ -1036,9 +1064,24 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             // load declination value
-            if (declination instanceof Declination) {
-                declinationValue = (Declination) declination;
+            if (declination instanceof Double) {
+                // value is double
+                declinationValue = (double) declination;
+            } else if (declination instanceof BigDecimal) {
+                // value is BigDecimal
+                double value = ((BigDecimal) declination).doubleValue();
+                if (Double.isFinite(value)) {
+                    declinationValue = value;
+                } else {
+                    return new Result(false, "Declination value is too big");
+                }
+            } else if (declination instanceof DegreesObject) {
+                // value is DegreesObject
+                declinationValue = Declination.computeDeclination((DegreesObject) declination);
             } else if (declination instanceof String) {
+                // value is String keyword
+                saveDeclination = false;
+
                 // get value from FITS file header
                 String declinationKeyword = (String) declination;
 
@@ -1046,10 +1089,14 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     HeaderCard declinationCard = header.findCard(declinationKeyword);
 
                     // parse declination from record
-                    String[] values = declinationCard.getValue().trim().split(":");
-                    if (values.length == 3) {
+                    if (declinationCard.valueType().equals(Double.class)) {
+                        // double value
+                        declinationValue = declinationCard.getValue(Double.class, Double.NaN);
+                    } else if (declinationCard.getValue().trim().split(":").length == 3) {
+                        // full degrees value
+                        String[] values = declinationCard.getValue().trim().split(":");
                         try {
-                            declinationValue = new Declination(
+                            declinationValue = Declination.computeDeclination(
                                     Double.parseDouble(values[0].trim()),
                                     Double.parseDouble(values[1].trim()),
                                     Double.parseDouble(values[2].trim()));
@@ -1071,10 +1118,10 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             datetimeValue = datetimeValue.plusNanos(Double.valueOf(nanoseconds).longValue());
 
             // compute Heliocentric Julian Date
-            JulianDate jd = new JulianDate(datetimeValue);
-            HeliocentricJulianDate hjd = new HeliocentricJulianDate(jd, rightAscensionValue, declinationValue);
+            double julianDate = JulianDate.computeJulianDate(datetimeValue);
+            double heliocentricJulianDate = HeliocentricJulianDate.computeHeliocentricJulianDate(julianDate, rightAscensionValue, declinationValue);
 
-            HeaderCard hjdCard = new HeaderCard(Constants.DEFAULT_HJD_KEYWORD, hjd.computeHeliocentricJulianDate(), comment);
+            HeaderCard hjdCard = new HeaderCard(Constants.DEFAULT_HJD_KEYWORD, heliocentricJulianDate, comment);
 
             // check for mandatory keyword
             if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_HJD_KEYWORD)) {
@@ -1092,21 +1139,28 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 hjdUpdated = true;
             }
 
-            boolean saveRightAscension = rightAscension instanceof RightAscension;
-            boolean saveDeclination = declination instanceof Declination;
-
             if (saveRightAscension) {
-                // convert parameters to base form
-                RightAscensionParamsConverter converter = new RightAscensionParamsConverter(
-                        rightAscensionValue.getHours(),
-                        rightAscensionValue.getMinutes(),
-                        rightAscensionValue.getSeconds());
+                HeaderCard raCard;
 
-                String raValue = NumberFormatter.format(converter.getHours(), 2, 2) + ":"
-                               + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
-                               + NumberFormatter.format(converter.getSeconds(), 2, 3);
+                if (rightAscension instanceof TimeObject) {
+                    // save in full time format -> hh:mm:ss.SSS
 
-                HeaderCard raCard = new HeaderCard(Constants.DEFAULT_RA_KEYWORD, raValue, Constants.DEFAULT_RA_COMMENT);
+                    TimeObject timeObject = (TimeObject) rightAscension;
+                    // convert parameters to base form
+                    RightAscensionParamsConverter converter = new RightAscensionParamsConverter(
+                            timeObject.getHours(),
+                            timeObject.getMinutes(),
+                            timeObject.getSeconds());
+
+                    String raValue = NumberFormatter.format(converter.getHours(), 2, 2) + ":"
+                            + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
+                            + NumberFormatter.format(converter.getSeconds(), 2, 3);
+
+                    raCard = new HeaderCard(Constants.DEFAULT_RA_KEYWORD, raValue, Constants.DEFAULT_RA_COMMENT);
+                } else {
+                    // save as number
+                    raCard = new HeaderCard(Constants.DEFAULT_RA_KEYWORD, rightAscensionValue, Constants.DEFAULT_RA_COMMENT);
+                }
 
                 // check for mandatory keyword
                 if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_RA_KEYWORD)) {
@@ -1124,17 +1178,27 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             if (saveDeclination) {
-                // convert parameters to base form
-                DeclinationParamsConverter converter = new DeclinationParamsConverter(
-                        declinationValue.getDegrees(),
-                        declinationValue.getMinutes(),
-                        declinationValue.getSeconds());
+                HeaderCard decCard;
 
-                String decValue = NumberFormatter.format(converter.getDegrees(), 2, 2) + ":"
-                                + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
-                                + NumberFormatter.format(converter.getSeconds(), 2, 3);
+                if (declination instanceof DegreesObject) {
+                    // save in full degrees format -> hh:mm:ss.SSS
 
-                HeaderCard decCard = new HeaderCard(Constants.DEFAULT_DEC_KEYWORD, decValue, Constants.DEFAULT_DEC_COMMENT);
+                    DegreesObject degreesObject = (DegreesObject) declination;
+                    // convert parameters to base form
+                    DeclinationParamsConverter converter = new DeclinationParamsConverter(
+                            degreesObject.getDegrees(),
+                            degreesObject.getMinutes(),
+                            degreesObject.getSeconds());
+
+                    String decValue = NumberFormatter.format(converter.getDegrees(), 2, 2) + ":"
+                            + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
+                            + NumberFormatter.format(converter.getSeconds(), 2, 3);
+
+                    decCard = new HeaderCard(Constants.DEFAULT_DEC_KEYWORD, decValue, Constants.DEFAULT_DEC_COMMENT);
+                } else {
+                    // save as number
+                    decCard = new HeaderCard(Constants.DEFAULT_DEC_KEYWORD, declinationValue, Constants.DEFAULT_DEC_COMMENT);
+                }
 
                 // check for mandatory keyword
                 if (MandatoryFITSKeywords.matchesMandatoryKeyword(Constants.DEFAULT_DEC_KEYWORD)) {

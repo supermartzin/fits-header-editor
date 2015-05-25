@@ -1,22 +1,20 @@
 package cz.muni.fi.fits.engine.models;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 
 /**
  * Class for computing julian date from human readable datetime
  *
  * @author Martin Vrábel
- * @version 1.0.3
+ * @version 2.0
  */
 public final class JulianDate {
 
-    private final int _year;
-    private final int _month;
-    private final int _day;
-    private final double _hour;
+    private JulianDate() {}
 
     /**
-     * Creates new {@link JulianDate} object with provided datetime parameters
+     * Computes Julian Date from full datetime parameters
      *
      * @param year          year
      * @param month         month (1-12)
@@ -25,47 +23,40 @@ public final class JulianDate {
      * @param minute        number of minutes
      * @param second        number of seconds
      * @param nanosecond    number of nanoseconds
+     * @return              computed julian date
      */
-    public JulianDate(int year, int month, int day, int hour, int minute, int second, int nanosecond) {
-        _year = year;
-        _month = month;
-        _day = day;
-        _hour = hour
+    public static double computeJulianDate(int year, int month, int day, int hour, int minute, int second, int nanosecond) {
+        double _hour = hour
                 + minute / 60.0
                 + second / 3600.0
                 + nanosecond / 3600000000000.0;
-    }
 
-    /**
-     * Creates new {@link JulianDate} object with provided {@link LocalDateTime} parameter
-     *
-     * @param datetime  DateTime parameter
-     */
-    public JulianDate(LocalDateTime datetime) {
-        if (datetime == null)
-            throw new IllegalArgumentException("datetime parameter is null");
-
-        _year = datetime.getYear();
-        _month = datetime.getMonthValue();
-        _day = datetime.getDayOfMonth();
-        _hour = datetime.getHour()
-                + datetime.getMinute() / 60.0
-                + datetime.getSecond() / 3600.0
-                + datetime.getNano() / 3600000000000.0;
-    }
-
-    /**
-     * Computes Julian Date from object's datetime parameters
-     *
-     * @return  computed julian date
-     */
-    public double computeJulianDate() {
-        return 367 * _year
-                - Math.floor((_year + Math.floor((_month + 9) / 12.0)) * 7 / 4.0)
-                + Math.floor(275 * _month / 9.0)
-                + _day
+        return 367 * year
+                - Math.floor((year + Math.floor((month + 9) / 12.0)) * 7 / 4.0)
+                + Math.floor(275 * month / 9.0)
+                + day
                 - 730531.5
                 + _hour / 24.0
                 + 2451545;
+    }
+
+    /**
+     * Computes Julian Date from provided {@link LocalDateTime} object parameters
+     *
+     * @param datetime  datetime parameter in form of {@link LocalDateTime} object
+     * @return          computed julian date
+     */
+    public static double computeJulianDate(LocalDateTime datetime) {
+        if (datetime == null)
+            throw new IllegalArgumentException("datetime parameter is null");
+
+        return computeJulianDate(
+                datetime.getYear(),
+                datetime.getMonthValue(),
+                datetime.getDayOfMonth(),
+                datetime.getHour(),
+                datetime.getMinute(),
+                datetime.getSecond(),
+                datetime.get(ChronoField.NANO_OF_SECOND));
     }
 }

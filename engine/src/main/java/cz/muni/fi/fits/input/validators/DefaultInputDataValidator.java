@@ -1,6 +1,8 @@
 package cz.muni.fi.fits.input.validators;
 
 import com.google.common.base.CharMatcher;
+import cz.muni.fi.fits.engine.models.Declination;
+import cz.muni.fi.fits.engine.models.RightAscension;
 import cz.muni.fi.fits.exceptions.ValidationException;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
@@ -8,6 +10,7 @@ import cz.muni.fi.fits.models.inputData.*;
 import cz.muni.fi.fits.utils.Constants;
 import cz.muni.fi.fits.utils.Tuple;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -15,7 +18,7 @@ import java.time.LocalDateTime;
  * for validation of input data
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.2.2
  */
 public class DefaultInputDataValidator implements InputDataValidator {
 
@@ -637,21 +640,29 @@ public class DefaultInputDataValidator implements InputDataValidator {
         if (computeHJDInputData.getRightAscension() == null)
             throw new ValidationException("Right ascension parameter cannot be null");
 
-        // right ascension parameter must be either String or TimeObject
+        // right ascension parameter must be either String, TimeObject or decimal number value
         if (!(computeHJDInputData.getRightAscension() instanceof String)
-                && !(computeHJDInputData.getRightAscension() instanceof TimeObject))
-            throw new ValidationException("Right ascension parameter must be either String keyword or TimeObject value");
+                && !(computeHJDInputData.getRightAscension() instanceof TimeObject)
+                && !(computeHJDInputData.getRightAscension() instanceof Double)
+                && !(computeHJDInputData.getRightAscension() instanceof BigDecimal))
+            throw new ValidationException("Right ascension parameter must be either String keyword, TimeObject value or decimal number value");
 
         if (computeHJDInputData.getRightAscension() instanceof TimeObject) {
-            TimeObject rightAscension = (TimeObject) computeHJDInputData.getRightAscension();
+            TimeObject raTimeObject = (TimeObject) computeHJDInputData.getRightAscension();
 
-            // right ascension parameter values must be numbers`
-            if (Double.isNaN(rightAscension.getHours()))
+            // right ascension parameter values must be numbers
+            if (Double.isNaN(raTimeObject.getHours()))
                 throw new ValidationException("Right ascension's hours parameter must be number");
-            if (Double.isNaN(rightAscension.getMinutes()))
+            if (Double.isNaN(raTimeObject.getMinutes()))
                 throw new ValidationException("Right ascension's minutes parameter must be number");
-            if (Double.isNaN(rightAscension.getSeconds()))
+            if (Double.isNaN(raTimeObject.getSeconds()))
                 throw new ValidationException("Right ascension's seconds parameter must be number");
+
+            // check if value is in range
+            double rightAscension = RightAscension.computeRightAscension(raTimeObject);
+            if (Double.compare(rightAscension, Constants.MIN_RA_VALUE) < 0
+                    || Double.compare(rightAscension, Constants.MAX_RA_VALUE) > 0)
+                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE + "°," + Constants.MAX_RA_VALUE + "°>");
         }
 
         if (computeHJDInputData.getRightAscension() instanceof String) {
@@ -670,25 +681,51 @@ public class DefaultInputDataValidator implements InputDataValidator {
                 throw new ValidationException("Right ascension keyword has exceeded maximum allowed length of " + Constants.MAX_KEYWORD_LENGTH + " characters");
         }
 
+        if (computeHJDInputData.getRightAscension() instanceof Double) {
+            double rightAscension = (double) computeHJDInputData.getRightAscension();
+
+            // check if value is in range
+            if (Double.compare(rightAscension, Constants.MIN_RA_VALUE) < 0
+                    || Double.compare(rightAscension, Constants.MAX_RA_VALUE) > 0)
+                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE + "°," + Constants.MAX_RA_VALUE + "°>");
+        }
+
+        if (computeHJDInputData.getRightAscension() instanceof BigDecimal) {
+            BigDecimal rightAscension = (BigDecimal) computeHJDInputData.getRightAscension();
+
+            // check if value is in range
+            if (rightAscension.compareTo(new BigDecimal(Constants.MIN_RA_VALUE)) < 0
+                    || rightAscension.compareTo(new BigDecimal(Constants.MAX_RA_VALUE)) > 0)
+                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE + "°," + Constants.MAX_RA_VALUE + "°>");
+        }
+
         // declination parameter cannot be null
         if (computeHJDInputData.getDeclination() == null)
             throw new ValidationException("Declination parameter cannot be null");
 
-        // declination parameter must be either String or DegreesObject
+        // declination parameter must be either String, DegreesObject or decimal number value
         if (!(computeHJDInputData.getDeclination() instanceof String)
-                && !(computeHJDInputData.getDeclination() instanceof DegreesObject))
-            throw new ValidationException("Declination parameter must be either String keyword or DegreesObject value");
+                && !(computeHJDInputData.getDeclination() instanceof DegreesObject)
+                && !(computeHJDInputData.getDeclination() instanceof Double)
+                && !(computeHJDInputData.getDeclination() instanceof BigDecimal))
+            throw new ValidationException("Declination parameter must be either String keyword, DegreesObject value or decimal number value");
 
         if (computeHJDInputData.getDeclination() instanceof DegreesObject) {
-            DegreesObject declination = (DegreesObject) computeHJDInputData.getDeclination();
+            DegreesObject decDegreesObject = (DegreesObject) computeHJDInputData.getDeclination();
 
             // declination parameter values must be numbers
-            if (Double.isNaN(declination.getDegrees()))
+            if (Double.isNaN(decDegreesObject.getDegrees()))
                 throw new ValidationException("Declination's degrees parameter must be number");
-            if (Double.isNaN(declination.getMinutes()))
+            if (Double.isNaN(decDegreesObject.getMinutes()))
                 throw new ValidationException("Declination's minutes parameter must be number");
-            if (Double.isNaN(declination.getSeconds()))
+            if (Double.isNaN(decDegreesObject.getSeconds()))
                 throw new ValidationException("Declination's seconds parameter must be number");
+
+            // check if value is in range
+            double declination = Declination.computeDeclination(decDegreesObject);
+            if (Double.compare(declination, Constants.MIN_DEC_VALUE) < 0
+                    || Double.compare(declination, Constants.MAX_DEC_VALUE) > 0)
+                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE + "°," + Constants.MAX_DEC_VALUE + "°>");
         }
 
         if (computeHJDInputData.getDeclination() instanceof String) {
@@ -705,6 +742,24 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // String declination keyword cannot exceed allowed length
             if (declination.length() > Constants.MAX_KEYWORD_LENGTH)
                 throw new ValidationException("Declination keyword has exceeded maximum allowed length of " + Constants.MAX_KEYWORD_LENGTH + " characters");
+        }
+
+        if (computeHJDInputData.getDeclination() instanceof Double) {
+            double declination = (double) computeHJDInputData.getDeclination();
+
+            // check if value is in range
+            if (Double.compare(declination, Constants.MIN_DEC_VALUE) < 0
+                    || Double.compare(declination, Constants.MAX_DEC_VALUE) > 0)
+                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE + "°," + Constants.MAX_DEC_VALUE + "°>");
+        }
+
+        if (computeHJDInputData.getDeclination() instanceof BigDecimal) {
+            BigDecimal declination = (BigDecimal) computeHJDInputData.getDeclination();
+
+            // check if value is in range
+            if (declination.compareTo(new BigDecimal(Constants.MIN_DEC_VALUE)) < 0
+                    || declination.compareTo(new BigDecimal(Constants.MAX_DEC_VALUE)) > 0)
+                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE + "°," + Constants.MAX_DEC_VALUE + "°>");
         }
 
         // check comment

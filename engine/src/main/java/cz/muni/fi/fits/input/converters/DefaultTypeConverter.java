@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
  * implments {@link TypeConverter} interface
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.2.1
  */
 public class DefaultTypeConverter implements TypeConverter {
 
@@ -104,8 +104,8 @@ public class DefaultTypeConverter implements TypeConverter {
             throw new IllegalArgumentException("value is null");
 
         try {
-            Double.parseDouble(value);
-            return true;
+            double parsedValue = Double.parseDouble(value);
+            return Double.isFinite(parsedValue);
         } catch (NumberFormatException nfEx) {
             return false;
         }
@@ -124,7 +124,11 @@ public class DefaultTypeConverter implements TypeConverter {
             throw new IllegalArgumentException("value is null");
 
         try {
-            return Double.parseDouble(value);
+            double parsedValue = Double.parseDouble(value);
+            if (Double.isFinite(parsedValue))
+                return parsedValue;
+            else
+                throw new ParseException("Value is too big for Double type");
         } catch (NumberFormatException nfEx) {
             throw new ParseException(nfEx.getMessage(), nfEx);
         }

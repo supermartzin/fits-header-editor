@@ -1,17 +1,17 @@
 package cz.muni.fi.fits.engine.models;
 
+import cz.muni.fi.fits.models.DegreesObject;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * Tests for computation of {@link Declination} from provided coordinates
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 2.0
  */
 public class DeclinationTest {
 
@@ -19,79 +19,80 @@ public class DeclinationTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testGetDeclination_NotNull() throws Exception {
-        double degrees = 12;
-        double minutes = 23.56;
-        double seconds = 147.89;
-
-        Declination declination = new Declination(degrees, minutes, seconds);
-
-        assertNotNull(declination);
-    }
-
-    @Test
-    public void testGetDeclination_DegreesNaN() throws Exception {
+    public void testComputeDeclination_DegreesNaN() throws Exception {
         double degrees = Double.NaN;
         double minutes = 23.56;
         double seconds = 147.89;
 
         exception.expect(IllegalArgumentException.class);
-        new Declination(degrees, minutes, seconds);
+        Declination.computeDeclination(degrees, minutes, seconds);
     }
 
     @Test
-    public void testGetDeclination_MinutesNaN() throws Exception {
+    public void testComputeDeclination_MinutesNaN() throws Exception {
         double degrees = -42.42;
         double minutes = Double.NaN;
         double seconds = 147.89;
 
         exception.expect(IllegalArgumentException.class);
-        new Declination(degrees, minutes, seconds);
+        Declination.computeDeclination(degrees, minutes, seconds);
     }
 
     @Test
-    public void testGetDeclination_SecondsNaN() throws Exception {
+    public void testComputeDeclination_SecondsNaN() throws Exception {
         double degrees = 86.2;
         double minutes = 23.56;
         double seconds = Double.NaN;
 
         exception.expect(IllegalArgumentException.class);
-        new Declination(degrees, minutes, seconds);
+        Declination.computeDeclination(degrees, minutes, seconds);
     }
 
     @Test
-    public void testGetDeclination_1() throws Exception {
+    public void testComputeDeclination_DegreesObjectNull() throws Exception {
+        DegreesObject degreesObject = null;
+
+        exception.expect(IllegalArgumentException.class);
+        Declination.computeDeclination(degreesObject);
+    }
+
+    @Test
+    public void testComputeDeclination_DegreesObject_1() throws Exception {
+        DegreesObject degreesObject = new DegreesObject(86.2, 23.56, 147.89);
+
+        double declination = Declination.computeDeclination(degreesObject);
+
+        assertEquals(86.63374723, declination, 0.00000001);
+    }
+
+    @Test
+    public void testComputeDeclination_DegreesObject_2() throws Exception {
+        DegreesObject degreesObject = new DegreesObject(-163.94, 2.5, 0.647);
+
+        double declination = Declination.computeDeclination(degreesObject);
+
+        assertEquals(-163.98184638, declination, 0.00000001);
+    }
+
+    @Test
+    public void testComputeDeclination_DegreesCoordinates_1() throws Exception {
         double degrees = 69.25;
         double minutes = 37.4;
         double seconds = 12.541;
 
-        Declination declination = new Declination(degrees, minutes, seconds);
-        double declinationValue = declination.getDeclination();
+        double declination = Declination.computeDeclination(degrees, minutes, seconds);
 
-        assertEquals(69.87681694, declinationValue, 0.00000001);
+        assertEquals(69.87681694, declination, 0.00000001);
     }
 
     @Test
-    public void testGetDeclination_2() throws Exception {
+    public void testComputeDeclination_DegreesCoordinates_2() throws Exception {
         double degrees = -79.89;
         double minutes = 132.5;
         double seconds = 471.126;
 
-        Declination declination = new Declination(degrees, minutes, seconds);
-        double declinationValue = declination.getDeclination();
+        double declination = Declination.computeDeclination(degrees, minutes, seconds);
 
-        assertEquals(-82.22920167, declinationValue, 0.00000001);
-    }
-
-    @Test
-    public void testGetDeclination_3() throws Exception {
-        double degrees = -163.94;
-        double minutes = 2.5;
-        double seconds = 0.647;
-
-        Declination declination = new Declination(degrees, minutes, seconds);
-        double declinationValue = declination.getDeclination();
-
-        assertEquals(-163.98184638, declinationValue, 0.00000001);
+        assertEquals(-82.22920167, declination, 0.00000001);
     }
 }

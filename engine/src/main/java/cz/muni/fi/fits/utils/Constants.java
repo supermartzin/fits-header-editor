@@ -4,7 +4,7 @@ package cz.muni.fi.fits.utils;
  * Static class contaning useful constants related to FITS files
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public final class Constants {
 
@@ -21,4 +21,8 @@ public final class Constants {
     public static final String DEFAULT_RA_COMMENT = "ra";
     public static final String DEFAULT_DEC_KEYWORD = "DEC";
     public static final String DEFAULT_DEC_COMMENT = "dec";
+    public static final double MIN_RA_VALUE = 0;
+    public static final double MAX_RA_VALUE = 360;
+    public static final double MIN_DEC_VALUE = -90;
+    public static final double MAX_DEC_VALUE = 90;
 }

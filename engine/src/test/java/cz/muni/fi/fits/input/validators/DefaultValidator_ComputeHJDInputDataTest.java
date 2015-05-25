@@ -11,15 +11,16 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
- * Tests for validation of {@link cz.muni.fi.fits.models.inputData.ComputeHJDInputData} input data
+ * Tests for validation of {@link ComputeHJDInputData} input data
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DefaultValidator_ComputeHJDInputDataTest {
 
@@ -190,7 +191,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
                 false, "DEC", "comment", _fitsFiles);
 
         exception.expect(ValidationException.class);
-        exception.expectMessage("must be either String keyword or TimeObject value");
+        exception.expectMessage("must be either String keyword, TimeObject value or decimal number value");
         _validator.validate(chjdid);
     }
 
@@ -255,6 +256,36 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
+    public void testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_1() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                372.256, new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("is not in range");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_2() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new BigDecimal(372.256), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("is not in range");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_3() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new TimeObject(24, 15, 68), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("is not in range");
+        _validator.validate(chjdid);
+    }
+
+    @Test
     public void testValidate_ComputeHJDInputData_DeclinationNull() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 25.3, 6), null, "comment", _fitsFiles);
@@ -270,7 +301,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
                 new TimeObject(12, 25.3, 6), true, "comment", _fitsFiles);
 
         exception.expect(ValidationException.class);
-        exception.expectMessage("must be either String keyword or DegreesObject value");
+        exception.expectMessage("must be either String keyword, DegreesObject value or decimal number value");
         _validator.validate(chjdid);
     }
 
@@ -301,6 +332,36 @@ public class DefaultValidator_ComputeHJDInputDataTest {
 
         exception.expect(ValidationException.class);
         exception.expectMessage("must be number");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_1() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new TimeObject(12, 14, 23), -91.36, null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("is not in range");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_2() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new TimeObject(12, 14, 23), new BigDecimal(-91.36), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("is not in range");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_3() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new TimeObject(12, 14, 23), new DegreesObject(89.8, 25.16, 99.99), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("is not in range");
         _validator.validate(chjdid);
     }
 

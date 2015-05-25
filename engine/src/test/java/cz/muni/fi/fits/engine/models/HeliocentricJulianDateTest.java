@@ -1,17 +1,20 @@
 package cz.muni.fi.fits.engine.models;
 
+import cz.muni.fi.fits.models.DegreesObject;
+import cz.muni.fi.fits.models.TimeObject;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.time.LocalDateTime;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * Tests for creation and computational methods of {@link HeliocentricJulianDate}
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class HeliocentricJulianDateTest {
 
@@ -19,111 +22,71 @@ public class HeliocentricJulianDateTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testConstructHeliocentricJulianDate_NotNull_ObjectParams() throws Exception {
-        JulianDate julianDate = new JulianDate(1990, 11, 25, 17, 47, 45, 12456321);
-        RightAscension rightAscension = new RightAscension(12, 25, 48);
-        Declination declination = new Declination(65, 14, 48);
-
-        HeliocentricJulianDate heliocentricJulianDate = new HeliocentricJulianDate(
-                julianDate, rightAscension, declination);
-
-        assertNotNull(heliocentricJulianDate);
-    }
-
-    @Test
-    public void testConstructHeliocentricJulianDate_NotNull_DoubleParams() throws Exception {
-        double julianDate = 2448221.2414932;
-        double rightAscension = 186.45;
-        double declination = 65.24666666666667;
-
-        HeliocentricJulianDate heliocentricJulianDate = new HeliocentricJulianDate(
-                julianDate, rightAscension, declination);
-
-        assertNotNull(heliocentricJulianDate);
-    }
-
-    @Test
-    public void testConstructHeliocentricJulianDate_NullJulianDate() throws Exception {
-        RightAscension rightAscension = new RightAscension(12, 25, 48);
-        Declination declination = new Declination(65, 14, 48);
+    public void testComputeHeliocentricJulianDate_NullJulianDate() throws Exception {
+        TimeObject rightAscension = new TimeObject(12, 25, 48);
+        DegreesObject declination = new DegreesObject(65, 14, 48);
 
         exception.expect(IllegalArgumentException.class);
-        new HeliocentricJulianDate(null, rightAscension, declination);
+        HeliocentricJulianDate.computeHeliocentricJulianDate(null, rightAscension, declination);
     }
 
     @Test
-    public void testConstructHeliocentricJulianDate_NullRightAscension() throws Exception {
-        JulianDate julianDate = new JulianDate(1990, 11, 25, 17, 47, 45, 12456321);
-        Declination declination = new Declination(65, 14, 48);
+    public void testComputeHeliocentricJulianDate_NullRightAscension() throws Exception {
+        LocalDateTime julianDate = LocalDateTime.of(1990, 11, 25, 17, 47, 45, 12456321);
+        DegreesObject declination = new DegreesObject(65, 14, 48);
 
         exception.expect(IllegalArgumentException.class);
-        new HeliocentricJulianDate(julianDate, null, declination);
+        HeliocentricJulianDate.computeHeliocentricJulianDate(julianDate, null, declination);
     }
 
     @Test
-    public void testConstructHeliocentricJulianDate_NullDeclination() throws Exception {
-        JulianDate julianDate = new JulianDate(1990, 11, 25, 17, 47, 45, 12456321);
-        RightAscension rightAscension = new RightAscension(12, 25, 48);
+    public void testComputeHeliocentricJulianDate_NullDeclination() throws Exception {
+        LocalDateTime julianDate = LocalDateTime.of(1990, 11, 25, 17, 47, 45, 12456321);
+        TimeObject rightAscension = new TimeObject(12, 25, 48);
 
         exception.expect(IllegalArgumentException.class);
-        new HeliocentricJulianDate(julianDate, rightAscension, null);
+        HeliocentricJulianDate.computeHeliocentricJulianDate(julianDate, rightAscension, null);
     }
 
     @Test
-    public void testConstructHeliocentricJulianDate_JulianDate_DoubleNaN() throws Exception {
+    public void testComputeHeliocentricJulianDate_JulianDate_DoubleNaN() throws Exception {
         double julianDate = Double.NaN;
         double rightAscension = 186.45;
         double declination = 65.24666666666667;
 
         exception.expect(IllegalArgumentException.class);
-        new HeliocentricJulianDate(julianDate, rightAscension, declination);
+        HeliocentricJulianDate.computeHeliocentricJulianDate(julianDate, rightAscension, declination);
     }
 
     @Test
-    public void testConstructHeliocentricJulianDate_RightAscension_DoubleNaN() throws Exception {
+    public void testComputeHeliocentricJulianDate_RightAscension_DoubleNaN() throws Exception {
         double julianDate = 2448221.2414932;
         double rightAscension = Double.NaN;
         double declination = 65.24666666666667;
 
         exception.expect(IllegalArgumentException.class);
-        new HeliocentricJulianDate(julianDate, rightAscension, declination);
+        HeliocentricJulianDate.computeHeliocentricJulianDate(julianDate, rightAscension, declination);
     }
 
     @Test
-    public void testConstructHeliocentricJulianDate_Declination_DoubleNaN() throws Exception {
+    public void testComputeHeliocentricJulianDate_Declination_DoubleNaN() throws Exception {
         double julianDate = 2448221.2414932;
         double rightAscension = 186.45;
         double declination = Double.NaN;
 
         exception.expect(IllegalArgumentException.class);
-        new HeliocentricJulianDate(julianDate, rightAscension, declination);
+        HeliocentricJulianDate.computeHeliocentricJulianDate(julianDate, rightAscension, declination);
     }
 
     @Test
     public void testComputeHeliocentricJulianDate_RealParams() throws Exception {
-        JulianDate julianDate = new JulianDate(1990, 11, 25, 17, 47, 45, 12456321);
-        RightAscension rightAscension = new RightAscension(12, 25, 48);
-        Declination declination = new Declination(65, 14, 48);
+        LocalDateTime julianDate = LocalDateTime.of(1990, 11, 25, 17, 47, 45, 12456321);
+        TimeObject rightAscension = new TimeObject(12, 25, 48);
+        DegreesObject declination = new DegreesObject(65, 14, 48);
 
-        HeliocentricJulianDate heliocentricJulianDate = new HeliocentricJulianDate(
+        double heliocentricJulianDate = HeliocentricJulianDate.computeHeliocentricJulianDate(
                 julianDate, rightAscension, declination);
-        double hjdValue = heliocentricJulianDate.computeHeliocentricJulianDate();
 
-        assertNotNull(hjdValue);
-        assertEquals(2448221.242056166, hjdValue, 0.00000000001);
-    }
-
-    @Test
-    public void testComputeHeliocentricJulianDate_UnrealParams() throws Exception {
-        JulianDate julianDate = new JulianDate(2159, 47, 156, 88, 117, 20, 12456321);
-        RightAscension rightAscension = new RightAscension(-689, 12, 44);
-        Declination declination = new Declination(754, 0, 10);
-
-        HeliocentricJulianDate heliocentricJulianDate = new HeliocentricJulianDate(
-                julianDate, rightAscension, declination);
-        double hjdValue = heliocentricJulianDate.computeHeliocentricJulianDate();
-
-        assertNotNull(hjdValue);
-        assertEquals(2511177.2480348856, hjdValue, 0.00000000001);
+        assertEquals(2448221.242056166, heliocentricJulianDate, 0.00000000001);
     }
 }

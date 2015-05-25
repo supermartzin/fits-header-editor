@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * over FITS files
  *
  * @author Martin Vrábel
- * @version 1.3.2
+ * @version 1.3.3
  */
 public interface HeaderEditingEngine {
 
@@ -148,10 +148,12 @@ public interface HeaderEditingEngine {
      *                              or {@link java.time.LocalDateTime} as value of datetime
      * @param exposure              {@link String} value as keyword of exposure record
      *                              or {@link Double} as value of exposure in seconds
-     * @param rightAscension        {@link String} value as keyword of right ascension record
-     *                              or {@link cz.muni.fi.fits.engine.models.RightAscension} as right ascension value parameters
-     * @param declination           {@link String} value as keyword of declination record
-     *                              or {@link cz.muni.fi.fits.engine.models.Declination} as declination value parameters
+     * @param rightAscension        {@link String} value as keyword of right ascension record,
+     *                              {@link cz.muni.fi.fits.models.TimeObject} as right ascension value parameters
+     *                              or {@link Double} or {@link java.math.BigDecimal} value of right ascension
+     * @param declination           {@link String} value as keyword of declination record,
+     *                              {@link cz.muni.fi.fits.models.DegreesObject} as declination value parameters
+     *                              or {@link Double} or {@link java.math.BigDecimal} as value of declination
      * @param comment               comment of HJD record, insert
      *                              <code>null</code> when no comment to add
      * @param fitsFile              FITS file in which to chain records

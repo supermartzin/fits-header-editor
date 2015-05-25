@@ -1,10 +1,15 @@
 package cz.muni.fi.fits.engine.models;
 
+import cz.muni.fi.fits.models.DegreesObject;
+import cz.muni.fi.fits.models.TimeObject;
+
+import java.time.LocalDateTime;
+
 /**
  * Class for computing heliocentric julian date of some object from provided parameters
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 2.0
  */
 public final class HeliocentricJulianDate {
 
@@ -13,38 +18,17 @@ public final class HeliocentricJulianDate {
     private static final double ECL = 23.439292 * RADS;
     private static final double AUSEC = 8.3168775;
 
-    private final double _julianDate;
-    private final double _rightAscension;
-    private final double _declination;
+    private HeliocentricJulianDate() {}
 
     /**
-     * Creates new {@link HeliocentricJulianDate} object with provided parameters
+     * Computes object's heliocentric julian date from provided parameters
      *
-     * @param julianDate        {@link JulianDate} object
-     * @param rightAscension    {@link RightAscension} object
-     * @param declination       {@link Declination} object
+     * @param julianDate        julian date value
+     * @param rightAscension    right ascension value
+     * @param declination       declination value
+     * @return                  computed heliocentric julian date
      */
-    public HeliocentricJulianDate(JulianDate julianDate, RightAscension rightAscension, Declination declination) {
-        if (julianDate == null)
-            throw new IllegalArgumentException("julianDate parameter is null");
-        if (rightAscension == null)
-            throw new IllegalArgumentException("rightAscension parameter is null");
-        if (declination == null)
-            throw new IllegalArgumentException("declination parameter is null");
-
-        _julianDate = julianDate.computeJulianDate();
-        _rightAscension = rightAscension.getRightAscension();
-        _declination = declination.getDeclination();
-    }
-
-    /**
-     * Creates new {@link HeliocentricJulianDate} object with provided parameters
-     *
-     * @param julianDate        {@link JulianDate} value
-     * @param rightAscension    {@link RightAscension} value
-     * @param declination       {@link Declination} value
-     */
-    public HeliocentricJulianDate(double julianDate, double rightAscension, double declination) {
+    public static double computeHeliocentricJulianDate(double julianDate, double rightAscension, double declination) {
         if (Double.isNaN(julianDate))
             throw new  IllegalArgumentException("julianDate parameter is not a number");
         if (Double.isNaN(rightAscension))
@@ -52,21 +36,10 @@ public final class HeliocentricJulianDate {
         if (Double.isNaN(declination))
             throw new  IllegalArgumentException("declination parameter is not a number");
 
-        _julianDate = julianDate;
-        _rightAscension = rightAscension;
-        _declination = declination;
-    }
-
-    /**
-     * Computes object's heliocentric julian date from provided object's parameters
-     *
-     * @return  computed object's heliocentric julian date
-     */
-    public double computeHeliocentricJulianDate() {
-        double pe = (102.94719 + 0.00000911309 * (_julianDate - 2451545)) * RADS;
-        double ae = 1.00000011 - 1.36893E-12 * (_julianDate - 2451545);
-        double ee = 0.01671022 - 0.00000000104148 * (_julianDate - 2451545);
-        double le = (RADS * (100.46435 + 0.985609101 * (_julianDate - 2451545)));
+        double pe = (102.94719 + 0.00000911309 * (julianDate - 2451545)) * RADS;
+        double ae = 1.00000011 - 1.36893E-12 * (julianDate - 2451545);
+        double ee = 0.01671022 - 0.00000000104148 * (julianDate - 2451545);
+        double le = (RADS * (100.46435 + 0.985609101 * (julianDate - 2451545)));
 
         // Earth position by Kepler equation
         double B = (le - pe) / (2 * PI);
@@ -109,14 +82,36 @@ public final class HeliocentricJulianDate {
         double earthY = Math.sin(RA * PI / 12.0) * Math.cos(DEC * PI / 180.0);
         double earthZ = Math.sin(DEC * PI / 180.0);
         // object
-        double objectX = Math.cos(_rightAscension * PI / 180.0) * Math.cos(_declination * PI / 180.0);
-        double objectY = Math.sin(_rightAscension * PI / 180.0) * Math.cos(_declination * PI / 180.0);
-        double objectZ = Math.sin(_declination * PI / 180.0);
+        double objectX = Math.cos(rightAscension * PI / 180.0) * Math.cos(declination * PI / 180.0);
+        double objectY = Math.sin(rightAscension * PI / 180.0) * Math.cos(declination * PI / 180.0);
+        double objectZ = Math.sin(declination * PI / 180.0);
 
         double correction = AUSEC * (earthX * objectX
                 + earthY * objectY
                 + earthZ * objectZ);
 
-        return _julianDate + correction / (24.0 * 60.0);
+        return julianDate + correction / (24.0 * 60.0);
+    }
+
+    /**
+     * Computes object's heliocentric julian date from provided parameters
+     *
+     * @param julianDate        julian date as {@link LocalDateTime} value
+     * @param rightAscension    right ascension as {@link TimeObject} value
+     * @param declination       declination as {@link DegreesObject} value
+     * @return                  computed heliocentric julian date
+     */
+    public static double computeHeliocentricJulianDate(LocalDateTime julianDate, TimeObject rightAscension, DegreesObject declination) {
+        if (julianDate == null)
+            throw new IllegalArgumentException("julianDate parameter is null");
+        if (rightAscension == null)
+            throw new IllegalArgumentException("rightAscension parameter is null");
+        if (declination == null)
+            throw new IllegalArgumentException("declination parameter is null");
+
+        return computeHeliocentricJulianDate(
+                JulianDate.computeJulianDate(julianDate),
+                RightAscension.computeRightAscension(rightAscension),
+                Declination.computeDeclination(declination));
     }
 }

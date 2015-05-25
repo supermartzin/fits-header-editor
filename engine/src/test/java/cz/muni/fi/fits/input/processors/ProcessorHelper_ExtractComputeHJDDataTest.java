@@ -14,6 +14,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +27,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractComputeHJDDataTest {
 
@@ -130,6 +131,28 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
+    public void testExtractComputeHJDData_DoubleRightAscensionParameter() throws Exception {
+        String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14.5689", "-15:-16:-17", "comment" };
+
+        ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
+        assertNotNull(chjdid);
+        assertTrue(chjdid.getRightAscension() instanceof Double);
+        double rightAscension = (double) chjdid.getRightAscension();
+        assertEquals(14.5689, rightAscension, 0.0);
+    }
+
+    @Test
+    public void testExtractComputeHJDData_DecimalRightAscensionParameter() throws Exception {
+        String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "2514.5689E385", "-15:-16:-17", "comment" };
+
+        ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
+        assertNotNull(chjdid);
+        assertTrue(chjdid.getRightAscension() instanceof BigDecimal);
+        BigDecimal rightAscension = (BigDecimal) chjdid.getRightAscension();
+        assertEquals(new BigDecimal("2514.5689E385"), rightAscension);
+    }
+
+    @Test
     public void testExtractComputeHJDData_StringDeclinationKeyword() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "dec" };
 
@@ -159,6 +182,28 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
         exception.expect(IllegalInputDataException.class);
         exception.expectMessage("is in invalid format");
         CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
+    }
+
+    @Test
+    public void testExtractComputeHJDData_DoubleDeclinationParameter() throws Exception {
+        String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "226.2481" };
+
+        ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
+        assertNotNull(chjdid);
+        assertTrue(chjdid.getDeclination() instanceof Double);
+        double declination = (double) chjdid.getDeclination();
+        assertEquals(226.2481, declination, 0.0);
+    }
+
+    @Test
+    public void testExtractComputeHJDData_DecimalDeclinationParameter() throws Exception {
+        String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "2261248964582316452.2481E320" };
+
+        ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
+        assertNotNull(chjdid);
+        assertTrue(chjdid.getDeclination() instanceof BigDecimal);
+        BigDecimal declination = (BigDecimal) chjdid.getDeclination();
+        assertEquals(new BigDecimal("2261248964582316452.2481E320"), declination);
     }
 
     @Test

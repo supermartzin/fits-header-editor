@@ -24,7 +24,7 @@ import java.util.LinkedList;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.3.3
+ * @version 1.3.4
  */
 final class CmdArgumentsProcessorHelper {
 
@@ -661,8 +661,15 @@ final class CmdArgumentsProcessorHelper {
         Object rightAscension;
         parameter = cmdArgs[4].trim();
 
-        String[] raValues = parameter.split(":");
-        if (raValues.length == 3) {
+        if (converter.tryParseDouble(parameter)) {
+            // double value
+            rightAscension = converter.parseDouble(parameter);
+        } else if (converter.tryParseBigDecimal(parameter)) {
+            // BigDecimal value
+            rightAscension = converter.parseBigDecimal(parameter);
+        } else if (parameter.split(":").length == 3) {
+            // time object value
+            String[] raValues = parameter.split(":");
             double hours;
             double minutes;
             double seconds;
@@ -684,6 +691,7 @@ final class CmdArgumentsProcessorHelper {
 
             rightAscension = new TimeObject(hours, minutes, seconds);
         } else {
+            // keyword value
             rightAscension = parameter;
         }
 
@@ -691,8 +699,15 @@ final class CmdArgumentsProcessorHelper {
         Object declination;
         parameter = cmdArgs[5].trim();
 
-        String[] decValues = parameter.split(":");
-        if (decValues.length == 3) {
+        if (converter.tryParseDouble(parameter)) {
+            // double value
+            declination = converter.parseDouble(parameter);
+        } else if (converter.tryParseBigDecimal(parameter)) {
+            // BigDecimal value
+            declination = converter.parseBigDecimal(parameter);
+        } else if (parameter.split(":").length == 3) {
+            // degrees object value
+            String[] decValues = parameter.split(":");
             double degrees;
             double minutes;
             double seconds;
@@ -714,6 +729,7 @@ final class CmdArgumentsProcessorHelper {
 
             declination = new DegreesObject(degrees, minutes, seconds);
         } else {
+            // keyword value
             declination = parameter;
         }
 

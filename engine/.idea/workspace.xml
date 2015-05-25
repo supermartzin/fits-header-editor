@@ -11,7 +11,25 @@
   <component name="ChangeListManager">
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/RightAscension.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/RightAscension.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FITSHeaderEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,14 +59,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NomTamFitsEditingEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
+      <file leaf-file-name="ApplicationInitializer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="28" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
+              <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NomTamFitsEditingEngine.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.6886161">
+              <caret line="1023" column="48" selection-start-line="1023" selection-start-column="48" selection-end-line="1023" selection-end-column="48" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="docComment;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
@@ -66,61 +95,95 @@
                 <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-                <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <marker date="1432573018567" expanded="false" signature="43871:44370" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationInitializer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
+      <file leaf-file-name="HeliocentricJulianDateTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43814433">
-              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#HeliocentricJulianDateTest#0" expanded="false" />
+                <element signature="method#testComputeHeliocentricJulianDate_NullJulianDate#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+                <element signature="method#testComputeHeliocentricJulianDate_NullRightAscension#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+                <element signature="method#testComputeHeliocentricJulianDate_NullDeclination#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+                <element signature="method#testComputeHeliocentricJulianDate_JulianDate_DoubleNaN#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+                <element signature="method#testComputeHeliocentricJulianDate_RightAscension_DoubleNaN#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+                <element signature="method#testComputeHeliocentricJulianDate_Declination_DoubleNaN#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CmdArgumentsProcessorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+              <folding>
+                <element signature="method#setUp#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#tearDown#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_NullArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_NoArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_WrongNumberOfArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_BadOperation#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidAddNewRecordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidAddNewToIndexInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidRemoveByKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidRemoveFromIndexInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidChangeKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidChangeValueByKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidChainRecordsInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidShiftTimeInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+                <element signature="method#testGetProcessedInput_ValidComputeHJDInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RightAscensionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CmdArgumentsProcessorHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java">
+      <file leaf-file-name="HeliocentricJulianDate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+              <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding>
-                <element signature="docComment;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractFilesData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractFilesData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractAddNewRecordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractAddNewRecordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractAddNewToIndexData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractAddNewToIndexData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractRemoveByKeywordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractRemoveByKeywordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractRemoveFromIndexData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractRemoveFromIndexData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractChangeKeywordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractChangeKeywordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractChangeValueByKeywordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractChangeValueByKeywordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractChainRecordsData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractChainRecordsData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractShiftTimeData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractShiftTimeData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractComputeJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractComputeJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="docComment;method#extractComputeHJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-                <element signature="method#extractComputeHJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
+                <element signature="method#computeHeliocentricJulianDate#0;class#HeliocentricJulianDate#0" expanded="false" />
+                <marker date="1432556142480" expanded="false" signature="1037:1419" placeholder="..." />
+                <marker date="1432556142480" expanded="true" signature="4259:4596" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeclinationParamsConverter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverter.java">
+      <file leaf-file-name="JulianDate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="27" selection-end-column="84" />
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -153,14 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChangeValueByKeywordDataTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeJDDataTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByKeywordDataTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractShiftTimeDataTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/tools/HeliocentricJulianDate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/NumberFormatter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/tools/RightAscension.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/tools/RightAscensionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/tools/Declination.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/tools/DeclinationTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/tools/HeliocentricJulianDateTest.java" />
@@ -174,11 +229,6 @@
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/utils/RightAscensionParamsConverterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/utils/RightAscensionParamsConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/utils/DeclinationParamsConverter.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/utils/NumberFormatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/utils/DateTimeParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/utils/DateTimeUtilities.java" />
@@ -190,20 +240,33 @@
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/MandatoryKeywords.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/MandatoryFITSKeywords.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/MandatoryFITSKeywordsTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChainRecordsInputDataTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/inputData/ChainRecordsInputData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/RightAscension.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
       </list>
     </option>
   </component>
@@ -393,8 +456,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -440,6 +501,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -500,6 +565,150 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="formatters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -742,6 +951,10 @@
               <option name="myItemId" value="input" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -804,6 +1017,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="formatters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -848,6 +1099,8 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -860,7 +1113,7 @@
     <property name="recentsLimit" value="5" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../easycore.doc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Moje vlastné veci/Hospital" />
     <property name="options.lastSelected" value="Errors" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -912,7 +1165,7 @@
       <recent name="cz.muni.fi.fits.input.converters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All Tests">
+  <component name="RunManager" selected="Application.Application">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -1186,7 +1439,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.ApplicationInitializer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="add files.in keyyyy valueee commeeeent" />
+      <option name="PROGRAM_PARAMETERS" value="hjd files.in date-obs exposure 23:59:59.9984 -89:1:2" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -1372,12 +1625,14 @@
       <workItem from="1431940066881" duration="5633000" />
       <workItem from="1432072523550" duration="531000" />
       <workItem from="1432111608564" duration="15700000" />
-      <workItem from="1432478496239" duration="10391000" />
+      <workItem from="1432478496239" duration="13167000" />
+      <workItem from="1432504942542" duration="5431000" />
+      <workItem from="1432544109896" duration="19121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="605275000" />
+    <option name="totallyTimeSpent" value="632603000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1396,17 +1651,16 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24458875" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33982685" sideWeight="0.51226014" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19402985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19616205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22707888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1420,6 +1674,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48924732" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1441,7 +1696,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="170" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java</url>
+          <line>82</line>
+          <properties />
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="173" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1450,76 +1713,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/ConfigurationLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3797251">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20870535">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeJDInputDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1194197">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3984375">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45535713">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/RightAscension.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4174107">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="27" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51227677">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="32" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15178572">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="39" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23367697">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/TimeObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17182131">
@@ -1534,24 +1727,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36049107">
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18973215">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3794643">
-          <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -1622,9 +1801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <marker date="1432478348096" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1632,7 +1808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18973215">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1643,29 +1818,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7455357">
-          <caret line="97" column="69" selection-start-line="97" selection-start-column="69" selection-end-line="97" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="204" column="68" selection-start-line="204" selection-start-column="68" selection-end-line="204" selection-end-column="68" />
-          <folding>
-            <marker date="1432478347285" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/inputData/ChainRecordsInputData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.172991">
           <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1673,13 +1829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1819196">
-          <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1695,26 +1844,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4741036">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5822306">
-          <caret line="728" column="17" selection-start-line="728" selection-start-column="17" selection-end-line="728" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1726,49 +1859,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71540177">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="28" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1785,7 +1881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.393534">
           <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1793,9 +1888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-          <folding>
-            <element signature="e#6053#6054#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1803,9 +1895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
-          <folding>
-            <element signature="e#6007#6008#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1813,7 +1902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1821,50 +1909,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5185184">
           <caret line="612" column="0" selection-start-line="612" selection-start-column="0" selection-end-line="612" selection-end-column="0" />
-          <folding>
-            <element signature="e#21202#21203#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6941581">
+          <caret line="75" column="29" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4741036">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="27" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.7594502">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23367697">
-          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-          <folding>
-            <element signature="method#setUp#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#tearDown#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_NullArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_NoArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_WrongNumberOfArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_BadOperation#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidAddNewRecordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidAddNewToIndexInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidRemoveByKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidRemoveFromIndexInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidChangeKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidChangeValueByKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidChainRecordsInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidShiftTimeInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-            <element signature="method#testGetProcessedInput_ValidComputeHJDInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1391753">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        <state vertical-scroll-proportion="2.8402061">
+          <caret line="740" column="0" selection-start-line="740" selection-start-column="0" selection-end-line="740" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#CmdArgumentsProcessorHelper#0" expanded="false" />
             <element signature="docComment;method#extractFilesData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
             <element signature="method#extractFilesData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
             <element signature="docComment;method#extractAddNewRecordData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
@@ -1886,38 +1974,302 @@
             <element signature="docComment;method#extractComputeJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
             <element signature="method#extractComputeJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
             <element signature="docComment;method#extractComputeHJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
-            <element signature="method#extractComputeHJDData#0;class#CmdArgumentsProcessorHelper#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6941581">
-          <caret line="75" column="29" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.15178572">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.734375">
+          <caret line="150" column="94" selection-start-line="150" selection-start-column="36" selection-end-line="150" selection-end-column="94" />
+          <caret line="151" column="113" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="113" />
+          <caret line="152" column="110" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="110" />
+          <caret line="153" column="90" selection-start-line="153" selection-start-column="36" selection-end-line="153" selection-end-column="90" />
+          <caret line="154" column="112" selection-start-line="154" selection-start-column="36" selection-end-line="154" selection-end-column="112" />
+          <caret line="155" column="109" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="109" />
           <folding>
-            <element signature="docComment;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_NullFilePath#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_FilePathDoesNotExists#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_DirectoryPathDoesNotExists#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_FileIsEmpty#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_DirectoryIsEmpty#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_OnlyCommentedPaths#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_CorrectFile#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_CorrectDirectory#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_FilesAndDirsInInputFile#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_OnlyDirsInInputFile#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_SamePathsInInputFile#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
-            <element signature="method#testExtractFilesData_NestedDirectoryInInputFile#0;class#ProcessorHelper_ExtractFilesDataTest#0" expanded="false" />
+            <element signature="docComment;method#addNewRecord#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#addNewRecordToIndex#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#removeRecordByKeyword#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#removeRecordFromIndex#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#changeKeywordOfRecord#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#changeValueOfRecord#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#chainMultipleRecords#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#HeaderEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#computeJulianDate#0;class#HeaderEditingEngine#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/RightAscension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Declination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018973215">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding>
+            <element signature="method#beforeClass#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_Null#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_NullFitsFiles#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_NoFitsFiles#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeParameterNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureParameterNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureValueNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionHoursNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionMinutesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionSecondsNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_1#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_2#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_3#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationDegreesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationMinutesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationSecondsNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_1#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_2#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_3#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_CommentWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_CommentTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ValidInputData#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17075893">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="docComment;method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#9;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9966443">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43814433">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0154638">
+          <caret line="198" column="89" selection-start-line="198" selection-start-column="89" selection-end-line="198" selection-end-column="89" />
+          <folding>
+            <element signature="method#setUp#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#tearDown#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_WrongNumberOfParameters#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_LocalDateTimeDatetimeParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_StringDatetimeKeyword#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DoubleExposureParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_StringExposureKeyword#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_StringRightAscensionKeyword#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_TimeObjectRightAscensionParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_InvalidTimeObjectRightAscensionParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DoubleRightAscensionParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DecimalRightAscensionParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_StringDeclinationKeyword#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DegreesObjectDeclinationParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_InvalidDegreesObjectDeclinationParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DoubleDeclinationParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DecimalDeclinationParameter#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_ContainsComment#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_DefaultComment#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+            <element signature="method#testExtractComputeHJDData_CorrectParameters#0;class#ProcessorHelper_ExtractComputeHJDDataTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+          <folding>
+            <element signature="method#setUp#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#tearDown#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_NullArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_NoArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_WrongNumberOfArguments#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_BadOperation#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidAddNewRecordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidAddNewToIndexInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidRemoveByKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidRemoveFromIndexInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidChangeKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidChangeValueByKeywordInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidChainRecordsInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidShiftTimeInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+            <element signature="method#testGetProcessedInput_ValidComputeHJDInputData#0;class#CmdArgumentsProcessorTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#HeliocentricJulianDateTest#0" expanded="false" />
+            <element signature="method#testComputeHeliocentricJulianDate_NullJulianDate#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+            <element signature="method#testComputeHeliocentricJulianDate_NullRightAscension#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+            <element signature="method#testComputeHeliocentricJulianDate_NullDeclination#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+            <element signature="method#testComputeHeliocentricJulianDate_JulianDate_DoubleNaN#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+            <element signature="method#testComputeHeliocentricJulianDate_RightAscension_DoubleNaN#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+            <element signature="method#testComputeHeliocentricJulianDate_Declination_DoubleNaN#0;class#HeliocentricJulianDateTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <element signature="method#computeHeliocentricJulianDate#0;class#HeliocentricJulianDate#0" expanded="false" />
+            <marker date="1432556142480" expanded="false" signature="1037:1419" placeholder="..." />
+            <marker date="1432556142480" expanded="true" signature="4259:4596" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/time/LocalDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
+          <folding>
+            <element signature="e#33312#33313#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7302405">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6886161">
+          <caret line="1023" column="48" selection-start-line="1023" selection-start-column="48" selection-end-line="1023" selection-end-column="48" />
+          <folding>
+            <element signature="docComment;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#addNewRecordToIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#removeRecordByKeyword#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#removeRecordFromIndex#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#changeKeywordOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#changeValueOfRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#chainMultipleRecords#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <marker date="1432573018567" expanded="false" signature="43871:44370" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
