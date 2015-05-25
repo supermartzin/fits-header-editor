@@ -24,7 +24,7 @@ import java.util.LinkedList;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.3.4
+ * @version 1.3.5
  */
 final class CmdArgumentsProcessorHelper {
 
@@ -112,7 +112,7 @@ final class CmdArgumentsProcessorHelper {
             if (switchParam.equals("-u"))
                 updateIfExists = true;
             else
-                throw new InvalidSwitchParameterException("Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-u'");
+                throw new InvalidSwitchParameterException(switchParam, "Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-u'");
         }
 
         if (!updateIfExists) {
@@ -177,7 +177,7 @@ final class CmdArgumentsProcessorHelper {
             if (switchParam.equals("-rm"))
                 removeOldIfExists = true;
             else
-                throw new InvalidSwitchParameterException("Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-rm'");
+                throw new InvalidSwitchParameterException(switchParam, "Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-rm'");
         }
 
         if (!removeOldIfExists) {
@@ -291,7 +291,7 @@ final class CmdArgumentsProcessorHelper {
             if (switchParam.equals("-rm"))
                 removeValueOfNewIfExists = true;
             else
-                throw new InvalidSwitchParameterException("Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-rm'");
+                throw new InvalidSwitchParameterException(switchParam, "Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-rm'");
         }
 
         if (!removeValueOfNewIfExists) {
@@ -328,7 +328,7 @@ final class CmdArgumentsProcessorHelper {
             if (switchParam.equals("-a"))
                 addNewIfNotExists = true;
             else
-                throw new InvalidSwitchParameterException("Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-a'");
+                throw new InvalidSwitchParameterException(switchParam, "Switch parameter is in invalid format: '" + switchParam + "'. Correct format is '-a'");
         }
 
         if (!addNewIfNotExists) {
@@ -399,7 +399,7 @@ final class CmdArgumentsProcessorHelper {
                     skipIfChainKwNotExists = true;
                     break;
                 default:
-                    throw new InvalidSwitchParameterException("First switch parameter is in invalid format: '" + firstSwitchParam + "'. Correct format is '-u' or '-s");
+                    throw new InvalidSwitchParameterException(firstSwitchParam, "First switch parameter is in invalid format: '" + firstSwitchParam + "'. Correct format is '-u' or '-s");
             }
 
             if (cmdArgs.length < 3)
@@ -413,13 +413,13 @@ final class CmdArgumentsProcessorHelper {
                     if (secondSwitchParam.equals("-s"))
                         skipIfChainKwNotExists = true;
                     else
-                        throw new InvalidSwitchParameterException("Second switch parameter is in invalid format: '" + secondSwitchParam + "'. Correct format is '-s");
+                        throw new InvalidSwitchParameterException(secondSwitchParam, "Second switch parameter is in invalid format: '" + secondSwitchParam + "'. Correct format is '-s");
                     // if first param is '-s' second must be '-u'
                 } else {
                     if (secondSwitchParam.equals("-u"))
                         updateIfExists = true;
                     else
-                        throw new InvalidSwitchParameterException("Second switch parameter is in invalid format: '" + secondSwitchParam + "'. Correct format is '-u");
+                        throw new InvalidSwitchParameterException(secondSwitchParam, "Second switch parameter is in invalid format: '" + secondSwitchParam + "'. Correct format is '-u");
                 }
             }
         }

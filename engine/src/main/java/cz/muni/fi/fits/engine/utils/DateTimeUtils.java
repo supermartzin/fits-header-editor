@@ -177,14 +177,24 @@ public final class DateTimeUtils {
      * Enumeration of possible datetime types
      *
      * @author Martin Vrábel
-     * @version 1.0
+     * @version 1.0.1
      */
     public enum DateTimeType {
+        /**
+         * Full date and time type, e.g.: <code>25-03-1996T12:34:56.789</code>
+         */
         DATETIME,
+
+        /**
+         * Only date type, e.g.: <code>25-03-1996</code>
+         */
         DATE,
+
+        /**
+         * Only time type, e.g.: <code>12:34:56.789</code>
+         */
         TIME
     }
 
-    private DateTimeUtils() {
-    }
+    private DateTimeUtils() {}
 }

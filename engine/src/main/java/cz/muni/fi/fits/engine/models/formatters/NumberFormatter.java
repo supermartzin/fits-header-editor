@@ -11,8 +11,7 @@ import java.text.DecimalFormatSymbols;
  */
 public class NumberFormatter {
 
-    private NumberFormatter() {
-    }
+    private NumberFormatter() {}
 
     /**
      * Formats inserted number into specified format usable in time or degree inscription,
