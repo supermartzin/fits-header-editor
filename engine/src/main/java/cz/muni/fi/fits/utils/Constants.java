@@ -4,7 +4,7 @@ package cz.muni.fi.fits.utils;
  * Static class contaning useful constants related to FITS files
  *
  * @author Martin Vrábel
- * @version 1.4
+ * @version 1.5
  */
 public final class Constants {
 
@@ -76,20 +76,80 @@ public final class Constants {
     /**
      * Minimum allowed value for Right Ascension
      */
-    public static final double MIN_RA_VALUE = 0;
+    public static final Double MIN_RA_VALUE = 0.0;
 
     /**
      * Maximum allowed value for Right Ascension
      */
-    public static final double MAX_RA_VALUE = 360;
+    public static final Double MAX_RA_VALUE = 360.0;
 
     /**
      * Minimum allowed value for Declination
      */
-    public static final double MIN_DEC_VALUE = -90;
+    public static final Double MIN_DEC_VALUE = -90.0;
 
     /**
      * Maximum allowed value for Declination
      */
-    public static final double MAX_DEC_VALUE = 90;
+    public static final Double MAX_DEC_VALUE = 90.0;
+
+    /**
+     * Minumum number of hours for time value of Right Ascension
+     */
+    public static final Double RA_MIN_HOURS = 0.0;
+
+    /**
+     * Maximum number of hours for time value of Right Ascension
+     */
+    public static final Double RA_MAX_HOURS = 24.0;
+
+    /**
+     * Minumum number of minutes for time value of Right Ascension
+     */
+    public static final Double RA_MIN_MINUTES = 0.0;
+
+    /**
+     * Maximum number of minutes for time value of Right Ascension
+     */
+    public static final Double RA_MAX_MINUTES = 60.0;
+
+    /**
+     * Minumum number of seconds for time value of Right Ascension
+     */
+    public static final Double RA_MIN_SECONDS = 0.0;
+
+    /**
+     * Maximum number of seconds for time value of Right Ascension
+     */
+    public static final Double RA_MAX_SECONDS = 60.0;
+
+    /**
+     * Minumum number of degrees for degrees value of Declination
+     */
+    public static final Double DEC_MIN_DEGREES = -90.0;
+
+    /**
+     * Maximum number of degrees for degrees value of Declination
+     */
+    public static final Double DEC_MAX_DEGREES = 90.0;
+
+    /**
+     * Minumum number of minutes for degrees value of Declination
+     */
+    public static final Double DEC_MIN_MINUTES = 0.0;
+
+    /**
+     * Maximum number of minutes for degrees value of Declination
+     */
+    public static final Double DEC_MAX_MINUTES = 60.0;
+
+    /**
+     * Minumum number of seconds for degrees value of Declination
+     */
+    public static final Double DEC_MIN_SECONDS = 0.0;
+
+    /**
+     * Maximum number of seconds for degrees value of Declination
+     */
+    public static final Double DEC_MAX_SECONDS = 60.0;
 }
