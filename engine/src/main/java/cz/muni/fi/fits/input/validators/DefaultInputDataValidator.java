@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  * for validation of input data
  *
  * @author Martin Vrábel
- * @version 1.2.3
+ * @version 1.2.2
  */
 public class DefaultInputDataValidator implements InputDataValidator {
 
@@ -662,10 +662,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
             double rightAscension = RightAscension.computeRightAscension(raTimeObject);
             if (Double.compare(rightAscension, Constants.MIN_RA_VALUE) < 0
                     || Double.compare(rightAscension, Constants.MAX_RA_VALUE) > 0)
-                throw new ValidationException("Right ascension parameter is not in range: " +
-                        "<" + Constants.RA_MIN_HOURS.intValue() + "," + Constants.RA_MAX_HOURS.intValue() + ") h, " +
-                        "<" + Constants.RA_MIN_MINUTES.intValue() + "," + Constants.RA_MAX_MINUTES.intValue() + ") min, " +
-                        "<" + Constants.RA_MIN_SECONDS.intValue() + "," + Constants.RA_MAX_SECONDS.intValue() + ") s");
+                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE + "°," + Constants.MAX_RA_VALUE + "°>");
         }
 
         if (computeHJDInputData.getRightAscension() instanceof String) {
@@ -690,7 +687,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // check if value is in range
             if (Double.compare(rightAscension, Constants.MIN_RA_VALUE) < 0
                     || Double.compare(rightAscension, Constants.MAX_RA_VALUE) > 0)
-                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE.intValue() + "°," + Constants.MAX_RA_VALUE.intValue() + "°>");
+                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE + "°," + Constants.MAX_RA_VALUE + "°>");
         }
 
         if (computeHJDInputData.getRightAscension() instanceof BigDecimal) {
@@ -699,7 +696,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // check if value is in range
             if (rightAscension.compareTo(new BigDecimal(Constants.MIN_RA_VALUE)) < 0
                     || rightAscension.compareTo(new BigDecimal(Constants.MAX_RA_VALUE)) > 0)
-                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE.intValue() + "°," + Constants.MAX_RA_VALUE.intValue() + "°>");
+                throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE + "°," + Constants.MAX_RA_VALUE + "°>");
         }
 
         // declination parameter cannot be null
@@ -728,10 +725,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
             double declination = Declination.computeDeclination(decDegreesObject);
             if (Double.compare(declination, Constants.MIN_DEC_VALUE) < 0
                     || Double.compare(declination, Constants.MAX_DEC_VALUE) > 0)
-                throw new ValidationException("Declination parameter is not in range: " +
-                        "<" + Constants.DEC_MIN_DEGREES.intValue() + "," + Constants.DEC_MAX_DEGREES.intValue() + ">°, " +
-                        "<" + Constants.DEC_MIN_MINUTES.intValue() + "," + Constants.DEC_MAX_MINUTES.intValue() + ")', " +
-                        "<" + Constants.DEC_MIN_SECONDS.intValue() + "," + Constants.DEC_MAX_SECONDS.intValue() + ")''");
+                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE + "°," + Constants.MAX_DEC_VALUE + "°>");
         }
 
         if (computeHJDInputData.getDeclination() instanceof String) {
@@ -756,7 +750,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // check if value is in range
             if (Double.compare(declination, Constants.MIN_DEC_VALUE) < 0
                     || Double.compare(declination, Constants.MAX_DEC_VALUE) > 0)
-                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE.intValue() + "°," + Constants.MAX_DEC_VALUE.intValue() + "°>");
+                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE + "°," + Constants.MAX_DEC_VALUE + "°>");
         }
 
         if (computeHJDInputData.getDeclination() instanceof BigDecimal) {
@@ -765,7 +759,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // check if value is in range
             if (declination.compareTo(new BigDecimal(Constants.MIN_DEC_VALUE)) < 0
                     || declination.compareTo(new BigDecimal(Constants.MAX_DEC_VALUE)) > 0)
-                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE.intValue() + "°," + Constants.MAX_DEC_VALUE.intValue() + "°>");
+                throw new ValidationException("Declination parameter is not in range: <" + Constants.MIN_DEC_VALUE + "°," + Constants.MAX_DEC_VALUE + "°>");
         }
 
         // check comment

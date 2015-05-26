@@ -12,7 +12,7 @@
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FITSHeaderEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="815" column="101" selection-start-line="815" selection-start-column="101" selection-end-line="815" selection-end-column="101" />
+              <caret line="1093" column="28" selection-start-line="1093" selection-start-column="28" selection-end-line="1093" selection-end-column="28" />
               <folding>
                 <element signature="docComment;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
@@ -66,10 +66,20 @@
                 <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+                <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-                <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
                 <marker date="1432573018567" expanded="false" signature="43871:44370" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RightAscensionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.05685619">
               <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
               <folding>
                 <element signature="docComment;field#MAX_KEYWORD_LENGTH#0;class#Constants#0" expanded="false" />
@@ -107,50 +117,6 @@
                 <element signature="docComment;field#MAX_RA_VALUE#0;class#Constants#0" expanded="false" />
                 <element signature="docComment;field#MIN_DEC_VALUE#0;class#Constants#0" expanded="false" />
                 <element signature="docComment;field#MAX_DEC_VALUE#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#RA_MIN_HOURS#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#RA_MAX_HOURS#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#RA_MIN_MINUTES#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#RA_MAX_MINUTES#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#RA_MIN_SECONDS#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#RA_MAX_SECONDS#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#DEC_MIN_DEGREES#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#DEC_MAX_DEGREES#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#DEC_MIN_MINUTES#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#DEC_MAX_MINUTES#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#DEC_MIN_SECONDS#0;class#Constants#0" expanded="false" />
-                <element signature="docComment;field#DEC_MAX_SECONDS#0;class#Constants#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultInputDataValidator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7508591">
-              <caret line="741" column="73" selection-start-line="741" selection-start-column="73" selection-end-line="741" selection-end-column="73" />
-              <folding>
-                <element signature="docComment;method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validate#9;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="docComment;method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
-                <element signature="method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -216,6 +182,7 @@
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDate.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" />
@@ -233,7 +200,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/WrongNumberOfParametersException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
       </list>
     </option>
   </component>
@@ -1470,7 +1436,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.ApplicationInitializer" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="hjd files.in date-obs exposure 23:59:59.9984 -91:1:2" />
+      <option name="PROGRAM_PARAMETERS" value="hjd files.in date-obs exposure 23:59:59.9984 -89:1:2" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -1659,12 +1625,12 @@
       <workItem from="1432478496239" duration="13167000" />
       <workItem from="1432504942542" duration="5431000" />
       <workItem from="1432544109896" duration="22312000" />
-      <workItem from="1432630154850" duration="4224000" />
+      <workItem from="1432630154850" duration="2112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="640018000" />
+    <option name="totallyTimeSpent" value="637906000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1681,13 +1647,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24458875" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19402985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22707888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1697,14 +1661,16 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39718616" sideWeight="0.48773986" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39718616" sideWeight="0.48773986" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48924732" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1745,6 +1711,20 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByIndexDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="64" selection-start-line="44" selection-start-column="62" selection-end-line="44" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/loaders/PropertiesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/InputProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18973215">
@@ -1981,6 +1961,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018973215">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+          <folding>
+            <element signature="method#beforeClass#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_Null#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_NullFitsFiles#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_NoFitsFiles#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeParameterNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureParameterNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureValueNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionHoursNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionMinutesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionSecondsNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_1#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_2#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_3#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationDegreesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationMinutesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationSecondsNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_1#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_2#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_3#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_CommentWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_CommentTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+            <element signature="method#testValidate_ComputeHJDInputData_ValidInputData#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17075893">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="docComment;method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validate#9;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="docComment;method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
+            <element signature="method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.9966443">
@@ -2193,16 +2252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15178572">
           <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2225,7 +2274,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="815" column="101" selection-start-line="815" selection-start-column="101" selection-end-line="815" selection-end-column="101" />
+          <caret line="1093" column="28" selection-start-line="1093" selection-start-column="28" selection-end-line="1093" selection-end-column="28" />
           <folding>
             <element signature="docComment;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="docComment;method#addNewRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
@@ -2245,8 +2294,8 @@
             <element signature="docComment;method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="method#shiftTimeOfTimeRecord#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="docComment;method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
+            <element signature="method#computeJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <element signature="docComment;method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
-            <element signature="method#computeHeliocentricJulianDate#0;class#NomTamFitsEditingEngine#0" expanded="false" />
             <marker date="1432573018567" expanded="false" signature="43871:44370" placeholder="..." />
           </folding>
         </state>
@@ -2260,72 +2309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/inputData/ComputeJDInputData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6410257">
-          <caret line="95" column="11" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeJDInputDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0234114">
-          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.160535">
-          <caret line="358" column="105" selection-start-line="358" selection-start-column="105" selection-end-line="358" selection-end-column="105" />
-          <folding>
-            <element signature="docComment;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#beforeClass#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_Null#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_NullFitsFiles#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_NoFitsFiles#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DatetimeParameterNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DatetimeParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DatetimeKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ExposureParameterNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ExposureParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ExposureValueNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ExposureKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionHoursNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionMinutesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionSecondsNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_RightAscensionKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_1#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_2#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfRightAscensionParameter_3#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationNull#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationParameterInvalidType#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationDegreesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationMinutesNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationSecondsNaN#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_1#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_2#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_InvalidRangeOfDeclinationParameter_3#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordEmpty#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_DeclinationKeywordTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_CommentWithInvalidChars#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_CommentTooLong#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-            <element signature="method#testValidate_ComputeHJDInputData_ValidInputData#0;class#DefaultValidator_ComputeHJDInputDataTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2336,7 +2319,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.05685619">
           <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
           <folding>
             <element signature="docComment;field#MAX_KEYWORD_LENGTH#0;class#Constants#0" expanded="false" />
@@ -2356,48 +2339,6 @@
             <element signature="docComment;field#MAX_RA_VALUE#0;class#Constants#0" expanded="false" />
             <element signature="docComment;field#MIN_DEC_VALUE#0;class#Constants#0" expanded="false" />
             <element signature="docComment;field#MAX_DEC_VALUE#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#RA_MIN_HOURS#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#RA_MAX_HOURS#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#RA_MIN_MINUTES#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#RA_MAX_MINUTES#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#RA_MIN_SECONDS#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#RA_MAX_SECONDS#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#DEC_MIN_DEGREES#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#DEC_MAX_DEGREES#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#DEC_MIN_MINUTES#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#DEC_MAX_MINUTES#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#DEC_MIN_SECONDS#0;class#Constants#0" expanded="false" />
-            <element signature="docComment;field#DEC_MAX_SECONDS#0;class#Constants#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7508591">
-          <caret line="741" column="73" selection-start-line="741" selection-start-column="73" selection-end-line="741" selection-end-column="73" />
-          <folding>
-            <element signature="docComment;method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#0;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#1;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#2;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#3;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#4;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#5;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#6;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#7;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validate#8;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validate#9;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="docComment;method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
-            <element signature="method#validateCommonInputData#0;class#DefaultInputDataValidator#0" expanded="false" />
           </folding>
         </state>
       </provider>
