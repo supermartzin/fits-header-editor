@@ -11,17 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ConfigurationException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ConfigurationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/DateTimeUtils.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/DateTimeUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/IllegalInputDataException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/IllegalInputDataException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/InvalidSwitchParameterException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/InvalidSwitchParameterException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatter.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/OperationType.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/OperationType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ParseException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ParseException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/UnknownOperationException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/UnknownOperationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ValidationException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ValidationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/WrongNumberOfParametersException.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/WrongNumberOfParametersException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FITSHeaderEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -106,9 +97,27 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.018973215">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.05685619">
+              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+              <folding>
+                <element signature="docComment;field#MAX_KEYWORD_LENGTH#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MAX_COMMENT_LENGTH#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MAX_STRING_VALUE_LENGTH#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MAX_STRING_VALUE_COMMENT_LENGTH#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#KEYWORD_REGEX#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_HJD_KEYWORD#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_HJD_COMMENT#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_JD_KEYWORD#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_JD_COMMENT#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_RA_KEYWORD#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_RA_COMMENT#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_DEC_KEYWORD#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#DEFAULT_DEC_COMMENT#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MIN_RA_VALUE#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MAX_RA_VALUE#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MIN_DEC_VALUE#0;class#Constants#0" expanded="false" />
+                <element signature="docComment;field#MAX_DEC_VALUE#0;class#Constants#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +175,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/converters/DefaultTypeConverter.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/HeaderEditingEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/RightAscension.java" />
@@ -191,6 +199,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/ValidationException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/exceptions/WrongNumberOfParametersException.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java" />
       </list>
     </option>
   </component>
@@ -380,6 +389,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1087,8 +1098,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1615,12 +1624,13 @@
       <workItem from="1432111608564" duration="15700000" />
       <workItem from="1432478496239" duration="13167000" />
       <workItem from="1432504942542" duration="5431000" />
-      <workItem from="1432544109896" duration="21825000" />
+      <workItem from="1432544109896" duration="22312000" />
+      <workItem from="1432630154850" duration="2112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="635307000" />
+    <option name="totallyTimeSpent" value="637906000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1637,32 +1647,32 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24458875" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19402985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22707888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39718616" sideWeight="0.48773986" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39718616" sideWeight="0.48773986" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48924732" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33982685" sideWeight="0.4904051" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1901,7 +1911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1391753">
           <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2122,8 +2131,6 @@
           <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
             <element signature="method#computeHeliocentricJulianDate#0;class#HeliocentricJulianDate#0" expanded="false" />
-            <marker date="1432556142480" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1432556142480" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -2203,7 +2210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="67" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2211,7 +2217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="70" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2219,12 +2224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17075893">
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-          <folding>
-            <element signature="docComment;method#ParseException#0;class#ParseException#0" expanded="false" />
-            <element signature="docComment;method#ParseException#1;class#ParseException#0" expanded="false" />
-            <element signature="docComment;method#ParseException#2;class#ParseException#0" expanded="false" />
-            <element signature="docComment;method#ParseException#3;class#ParseException#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2232,7 +2231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15178572">
           <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2240,7 +2238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15178572">
           <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2248,7 +2245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1004465">
           <caret line="60" column="55" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2256,16 +2252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15178572">
           <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2326,16 +2312,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/JulianDate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.018973215">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.05685619">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+          <folding>
+            <element signature="docComment;field#MAX_KEYWORD_LENGTH#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MAX_COMMENT_LENGTH#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MAX_STRING_VALUE_LENGTH#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MAX_STRING_VALUE_COMMENT_LENGTH#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#KEYWORD_REGEX#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_HJD_KEYWORD#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_HJD_COMMENT#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_JD_KEYWORD#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_JD_COMMENT#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_RA_KEYWORD#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_RA_COMMENT#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_DEC_KEYWORD#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#DEFAULT_DEC_COMMENT#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MIN_RA_VALUE#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MAX_RA_VALUE#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MIN_DEC_VALUE#0;class#Constants#0" expanded="false" />
+            <element signature="docComment;field#MAX_DEC_VALUE#0;class#Constants#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
