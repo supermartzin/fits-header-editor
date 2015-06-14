@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  * Tests for creation and computational methods of {@link JulianDate}
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class JulianDateTest {
 
@@ -20,13 +20,13 @@ public class JulianDateTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testComputeJulianDate_NullLocalDateTime() throws Exception {
+    public void testComputeJulianDate_LocalDateTime_Null() throws Exception {
         exception.expect(IllegalArgumentException.class);
         JulianDate.computeJulianDate(null);
     }
 
     @Test
-    public void testComputeJulianDate_LocalDateTime() throws Exception {
+    public void testComputeJulianDate_LocalDateTime_Valid() throws Exception {
         LocalDateTime dateTime = LocalDateTime.of(2010, 11, 23, 20, 58, 26);
 
         double julianDate = JulianDate.computeJulianDate(dateTime);

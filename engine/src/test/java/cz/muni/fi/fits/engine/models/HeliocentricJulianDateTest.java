@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  * Tests for creation and computational methods of {@link HeliocentricJulianDate}
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class HeliocentricJulianDateTest {
 
@@ -22,7 +22,7 @@ public class HeliocentricJulianDateTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testComputeHeliocentricJulianDate_NullJulianDate() throws Exception {
+    public void testComputeHeliocentricJulianDate_JulianDate_Null() throws Exception {
         TimeObject rightAscension = new TimeObject(12, 25, 48);
         DegreesObject declination = new DegreesObject(65, 14, 48);
 
@@ -31,7 +31,7 @@ public class HeliocentricJulianDateTest {
     }
 
     @Test
-    public void testComputeHeliocentricJulianDate_NullRightAscension() throws Exception {
+    public void testComputeHeliocentricJulianDate_RightAscension_Null() throws Exception {
         LocalDateTime julianDate = LocalDateTime.of(1990, 11, 25, 17, 47, 45, 12456321);
         DegreesObject declination = new DegreesObject(65, 14, 48);
 
@@ -40,7 +40,7 @@ public class HeliocentricJulianDateTest {
     }
 
     @Test
-    public void testComputeHeliocentricJulianDate_NullDeclination() throws Exception {
+    public void testComputeHeliocentricJulianDate_Declination_Null() throws Exception {
         LocalDateTime julianDate = LocalDateTime.of(1990, 11, 25, 17, 47, 45, 12456321);
         TimeObject rightAscension = new TimeObject(12, 25, 48);
 
@@ -49,7 +49,7 @@ public class HeliocentricJulianDateTest {
     }
 
     @Test
-    public void testComputeHeliocentricJulianDate_JulianDate_DoubleNaN() throws Exception {
+    public void testComputeHeliocentricJulianDate_JulianDate_DoubleValue_NotANumber() throws Exception {
         double julianDate = Double.NaN;
         double rightAscension = 186.45;
         double declination = 65.24666666666667;
@@ -59,7 +59,7 @@ public class HeliocentricJulianDateTest {
     }
 
     @Test
-    public void testComputeHeliocentricJulianDate_RightAscension_DoubleNaN() throws Exception {
+    public void testComputeHeliocentricJulianDate_RightAscension_DoubleValue_NotANumber() throws Exception {
         double julianDate = 2448221.2414932;
         double rightAscension = Double.NaN;
         double declination = 65.24666666666667;
@@ -69,7 +69,7 @@ public class HeliocentricJulianDateTest {
     }
 
     @Test
-    public void testComputeHeliocentricJulianDate_Declination_DoubleNaN() throws Exception {
+    public void testComputeHeliocentricJulianDate_Declination_DoubleValue_NotANumber() throws Exception {
         double julianDate = 2448221.2414932;
         double rightAscension = 186.45;
         double declination = Double.NaN;

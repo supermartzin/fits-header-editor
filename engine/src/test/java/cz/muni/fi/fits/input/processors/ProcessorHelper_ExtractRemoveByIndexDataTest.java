@@ -21,7 +21,7 @@ import static org.junit.Assert.assertNotNull;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractRemoveByIndexDataTest {
 
@@ -41,7 +41,7 @@ public class ProcessorHelper_ExtractRemoveByIndexDataTest {
     }
 
     @Test
-    public void testExtractRemoveByIndexData_WrongNumberOfParameters() throws Exception {
+    public void testExtractRemoveByIndexData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "remove_ix", FILE_PATH.toString() };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -49,7 +49,7 @@ public class ProcessorHelper_ExtractRemoveByIndexDataTest {
     }
 
     @Test
-    public void testExtractRemoveByIndexData_InvalidIndex() throws Exception {
+    public void testExtractRemoveByIndexData_Index_InvalidNumber() throws Exception {
         String[] args = new String[] { "remove_ix", FILE_PATH.toString(), "index" };
 
         exception.expect(IllegalInputDataException.class);
@@ -57,7 +57,7 @@ public class ProcessorHelper_ExtractRemoveByIndexDataTest {
     }
 
     @Test
-    public void testExtractRemoveByIndexData_ValidIndex() throws Exception {
+    public void testExtractRemoveByIndexData_Index_Valid() throws Exception {
         String[] args = new String[] { "remove_ix", FILE_PATH.toString(), "25" };
 
         RemoveFromIndexInputData rfiid = CmdArgumentsProcessorHelper.extractRemoveFromIndexData(args);

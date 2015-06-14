@@ -28,13 +28,13 @@ import static org.junit.Assert.*;
  * Tests for {@link CmdArgumentsProcessor} class
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.4
  */
 public class CmdArgumentsProcessorTest {
 
-    private static final Path SAMPLE1 = Paths.get("sample1.fits");
-    private static final Path SAMPLE2 = Paths.get("sample2.fits");
-    private static final Path SAMPLE3 = Paths.get("sample3.fits");
+    private Path SAMPLE1;
+    private Path SAMPLE2;
+    private Path SAMPLE3;
 
     private static final Path FILE_PATH = Paths.get("test-files.in");
     private TypeConverter _converter;
@@ -45,23 +45,22 @@ public class CmdArgumentsProcessorTest {
     @Before
     public void setUp() throws Exception {
         Files.createFile(FILE_PATH);
-        Files.createFile(SAMPLE1);
-        Files.createFile(SAMPLE2);
-        Files.createFile(SAMPLE3);
+
+        SAMPLE1 = Paths.get(getClass().getResource("/sample1.fits").toURI());
+        SAMPLE2 = Paths.get(getClass().getResource("/sample2.fits").toURI());
+        SAMPLE3 = Paths.get(getClass().getResource("/sample3.fits").toURI());
+
         _converter = new DefaultTypeConverter();
     }
 
     @After
     public void tearDown() throws Exception {
         Files.deleteIfExists(FILE_PATH);
-        Files.deleteIfExists(SAMPLE1);
-        Files.deleteIfExists(SAMPLE2);
-        Files.deleteIfExists(SAMPLE3);
         _converter = null;
     }
 
     @Test
-    public void testGetProcessedInput_NullArguments() throws Exception {
+    public void testGetProcessedInput_Arguments_Null() throws Exception {
         InputProcessor inputProcessor = new CmdArgumentsProcessor(null, _converter);
 
         exception.expect(IllegalInputDataException.class);
@@ -70,7 +69,7 @@ public class CmdArgumentsProcessorTest {
     }
 
     @Test
-    public void testGetProcessedInput_NoArguments() throws Exception {
+    public void testGetProcessedInput_Arguments_Empty() throws Exception {
         InputProcessor inputProcessor = new CmdArgumentsProcessor(new String[]{}, _converter);
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -78,7 +77,7 @@ public class CmdArgumentsProcessorTest {
     }
 
     @Test
-    public void testGetProcessedInput_WrongNumberOfArguments() throws Exception {
+    public void testGetProcessedInput_Arguments_WrongNumber() throws Exception {
         String[] args = new String[] { "add" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
@@ -97,7 +96,7 @@ public class CmdArgumentsProcessorTest {
 
     // AddNewRecordInputData test
     @Test
-    public void testGetProcessedInput_ValidAddNewRecordInputData() throws Exception {
+    public void testGetProcessedInput_AddNewRecordInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Collections.singletonList(SAMPLE1.toString()));
 
         String[] args = new String[] { "add", FILE_PATH.toString(), "KEYWORD", "true", "comment" };
@@ -120,7 +119,7 @@ public class CmdArgumentsProcessorTest {
 
     // AddNewToIndexInputData test
     @Test
-    public void testGetProcessedInput_ValidAddNewToIndexInputData() throws Exception {
+    public void testGetProcessedInput_AddNewToIndexInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString(),
@@ -147,7 +146,7 @@ public class CmdArgumentsProcessorTest {
 
     // RemoveByKeywordInputData test
     @Test
-    public void testGetProcessedInput_ValidRemoveByKeywordInputData() throws Exception {
+    public void testGetProcessedInput_RemoveByKeywordInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE3.toString()));
@@ -169,7 +168,7 @@ public class CmdArgumentsProcessorTest {
 
     // RemoveFromIndexInputData test
     @Test
-    public void testGetProcessedInput_ValidRemoveFromIndexInputData() throws Exception {
+    public void testGetProcessedInput_RemoveFromIndexInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString()));
@@ -191,7 +190,7 @@ public class CmdArgumentsProcessorTest {
 
     // ChangeKeywordInputData test
     @Test
-    public void testGetProcessedInput_ValidChangeKeywordInputData() throws Exception {
+    public void testGetProcessedInput_ChangeKeywordInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString(),
@@ -216,7 +215,7 @@ public class CmdArgumentsProcessorTest {
 
     // ChangeKeywordInputData test
     @Test
-    public void testGetProcessedInput_ValidChangeValueByKeywordInputData() throws Exception {
+    public void testGetProcessedInput_ChangeValueByKeywordInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString()));
@@ -241,7 +240,7 @@ public class CmdArgumentsProcessorTest {
 
     // ChainRecordsInputData test
     @Test
-    public void testGetProcessedInput_ValidChainRecordsInputData() throws Exception {
+    public void testGetProcessedInput_ChainRecordsInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString(),
@@ -269,7 +268,7 @@ public class CmdArgumentsProcessorTest {
 
     // ShiftTimeInputData test
     @Test
-    public void testGetProcessedInput_ValidShiftTimeInputData() throws Exception {
+    public void testGetProcessedInput_ShiftTimeInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString(),
@@ -299,7 +298,7 @@ public class CmdArgumentsProcessorTest {
 
     // ComputeHJDInputData test
     @Test
-    public void testGetProcessedInput_ValidComputeHJDInputData() throws Exception {
+    public void testGetProcessedInput_ComputeHJDInputData_Valid() throws Exception {
         Files.write(FILE_PATH, Arrays.asList(
                 SAMPLE1.toString(),
                 SAMPLE2.toString(),

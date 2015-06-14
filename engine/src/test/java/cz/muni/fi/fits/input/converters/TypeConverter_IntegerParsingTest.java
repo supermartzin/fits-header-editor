@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class TypeConverter_IntegerParsingTest {
 
@@ -37,7 +37,7 @@ public class TypeConverter_IntegerParsingTest {
 
 
     @Test
-    public void testTryParseInt_NullValue() throws Exception {
+    public void testTryParseInt_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -45,7 +45,7 @@ public class TypeConverter_IntegerParsingTest {
     }
 
     @Test
-    public void testParseInt_NullValue() throws Exception {
+    public void testParseInt_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -53,14 +53,14 @@ public class TypeConverter_IntegerParsingTest {
     }
 
     @Test
-    public void testTryParseInt_EmptyValue() throws Exception {
+    public void testTryParseInt_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseInt(value));
     }
 
     @Test
-    public void testParseInt_EmptyValue() throws Exception {
+    public void testParseInt_Value_Empty() throws Exception {
         String value = "";
 
         exception.expect(ParseException.class);
@@ -68,7 +68,7 @@ public class TypeConverter_IntegerParsingTest {
     }
 
     @Test
-    public void testTryParseInt_IncorrectValues() throws Exception {
+    public void testTryParseInt_Values_NonParsable() throws Exception {
         String value1 = "258749654511";
         String value2 = "258749654.511";
         String value3 = "258749654511abd";
@@ -81,7 +81,7 @@ public class TypeConverter_IntegerParsingTest {
     }
 
     @Test
-    public void testParseInt_IncorrectValue() throws Exception {
+    public void testParseInt_Value_NonParsable() throws Exception {
         String value = "258749654511";
 
         exception.expect(ParseException.class);
@@ -89,7 +89,7 @@ public class TypeConverter_IntegerParsingTest {
     }
 
     @Test
-    public void testTryParseInt_CorrectValues() throws Exception {
+    public void testTryParseInt_Values_Parsable() throws Exception {
         String value1 = "12453";
         String value2 = "0";
         String value3 = "-1254";
@@ -102,7 +102,7 @@ public class TypeConverter_IntegerParsingTest {
     }
 
     @Test
-    public void testParseInt_CorrectValues() throws Exception {
+    public void testParseInt_Values_Parsable() throws Exception {
         String value1 = "12453";
         String value2 = "0";
         String value3 = "-1254";

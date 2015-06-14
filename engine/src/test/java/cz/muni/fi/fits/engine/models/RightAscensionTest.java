@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Tests for computation of {@link RightAscension} from provided coordinates
  *
  * @author Martin Vrábel
- * @version 2.0
+ * @version 2.1
  */
 public class RightAscensionTest {
 
@@ -19,7 +19,7 @@ public class RightAscensionTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testComputeRightAscension_HoursNaN() throws Exception {
+    public void testComputeRightAscension_Hours_NotANumber() throws Exception {
         double hours = Double.NaN;
         double minutes = 2.51;
         double seconds = 0.145;
@@ -29,7 +29,7 @@ public class RightAscensionTest {
     }
 
     @Test
-    public void testComputeRightAscension_MinutesNaN() throws Exception {
+    public void testComputeRightAscension_Minutes_NotANumber() throws Exception {
         double hours = 24.53;
         double minutes = Double.NaN;
         double seconds = 0.145;
@@ -39,7 +39,7 @@ public class RightAscensionTest {
     }
 
     @Test
-    public void testComputeRightAscension_SecondsNaN() throws Exception {
+    public void testComputeRightAscension_Seconds_NotANumber() throws Exception {
         double hours = 147.36;
         double minutes = 2.51;
         double seconds = Double.NaN;
@@ -49,7 +49,7 @@ public class RightAscensionTest {
     }
 
     @Test
-    public void testComputeRightAscension_TimeObjectNull() throws Exception {
+    public void testComputeRightAscension_TimeObject_Null() throws Exception {
         TimeObject timeObject = null;
 
         exception.expect(IllegalArgumentException.class);

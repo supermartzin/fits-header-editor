@@ -17,7 +17,7 @@ import java.util.HashSet;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DefaultValidator_RemoveByKeywordInputDataTest {
 
@@ -43,7 +43,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_NullFitsFiles() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_FitsFiles_Null() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData("KEYWORD", null);
 
         exception.expect(ValidationException.class);
@@ -52,7 +52,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_NoFitsFiles() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_FitsFiles_Empty() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData("KEYWORD", new HashSet<>());
 
         exception.expect(ValidationException.class);
@@ -61,7 +61,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_NullKeyword() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_Keyword_Null() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData(null, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -70,7 +70,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_EmptyKeyword() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_Keyword_Empty() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData("", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -79,7 +79,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_KeywordWithInvalidChars() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_Keyword_WithInvalidChars() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData("KEYWORD*", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -88,7 +88,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_TooLongKeyword() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_Keyword_TooLong() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData("TOO_LONG_KEYWORD", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -97,7 +97,7 @@ public class DefaultValidator_RemoveByKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveByKeywordInputData_ValidInputData() throws Exception {
+    public void testValidate_RemoveByKeywordInputData_Valid() throws Exception {
         RemoveByKeywordInputData rbkid = new RemoveByKeywordInputData("KEYWORD", _fitsFiles);
 
         _validator.validate(rbkid);

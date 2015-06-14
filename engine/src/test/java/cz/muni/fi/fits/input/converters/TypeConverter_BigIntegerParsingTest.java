@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class TypeConverter_BigIntegerParsingTest {
 
@@ -37,7 +37,7 @@ public class TypeConverter_BigIntegerParsingTest {
 
 
     @Test
-    public void testTryParseBigInteger_NullValue() throws Exception {
+    public void testTryParseBigInteger_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -45,7 +45,7 @@ public class TypeConverter_BigIntegerParsingTest {
     }
 
     @Test
-    public void testParseBigInteger_NullValue() throws Exception {
+    public void testParseBigInteger_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -53,14 +53,14 @@ public class TypeConverter_BigIntegerParsingTest {
     }
 
     @Test
-    public void testTryParseBigInteger_EmptyValue() throws Exception {
+    public void testTryParseBigInteger_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseBigInteger(value));
     }
 
     @Test
-    public void testParseBigInteger_EmptyValue() throws Exception {
+    public void testParseBigInteger_Value_Empty() throws Exception {
         String value = "";
 
         exception.expect(ParseException.class);
@@ -68,7 +68,7 @@ public class TypeConverter_BigIntegerParsingTest {
     }
 
     @Test
-    public void testTryParseBigInteger_IncorrectValues() throws Exception {
+    public void testTryParseBigInteger_Values_NonParsable() throws Exception {
         String value1 = "--12365889452123624789541";
         String value2 = "1234567890123456789.";
         String value3 = ".02365T";
@@ -79,7 +79,7 @@ public class TypeConverter_BigIntegerParsingTest {
     }
 
     @Test
-    public void testParseBigInteger_IncorrectValue() throws Exception {
+    public void testParseBigInteger_Value_NonParsable() throws Exception {
         String value = "--12365889452123624789541";
 
         exception.expect(ParseException.class);
@@ -87,7 +87,7 @@ public class TypeConverter_BigIntegerParsingTest {
     }
 
     @Test
-    public void testTryParseBigInteger_CorrectValues() throws Exception {
+    public void testTryParseBigInteger_Values_Parsable() throws Exception {
         String value1 = "12345678901234567890";
         String value2 = "-56324";
         String value3 = "+6658999898989784512154121";
@@ -98,7 +98,7 @@ public class TypeConverter_BigIntegerParsingTest {
     }
 
     @Test
-    public void testParseBigInteger_CorrectValues() throws Exception {
+    public void testParseBigInteger_Values_Parsable() throws Exception {
         String value1 = "12345678901234567890";
         String value2 = "-56324";
         String value3 = "+6658999898989784512154121";

@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public class ProcessorHelper_ExtractComputeHJDDataTest {
 
@@ -51,7 +51,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_WrongNumberOfParameters() throws Exception {
+    public void testExtractComputeHJDData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME" };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -59,7 +59,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_LocalDateTimeDatetimeParameter() throws Exception {
+    public void testExtractComputeHJDData_DatetimeParameter_LocalDateTime() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "2015-05-08T12:34:56", "EXPOSURE", "14:22:30", "-15:-16:-17" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -69,7 +69,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_StringDatetimeKeyword() throws Exception {
+    public void testExtractComputeHJDData_DatetimeKeyword_String() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATE tImE", "EXPOSURE", "14:22:30", "-15:-16:-17" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -79,7 +79,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DoubleExposureParameter() throws Exception {
+    public void testExtractComputeHJDData_ExposureParameter_Double() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "2015-05-08T12:34:56", "25.45", "14:22:30", "-15:-16:-17" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -89,7 +89,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_StringExposureKeyword() throws Exception {
+    public void testExtractComputeHJDData_ExposureKeyword_String() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "ExposurE", "14:22:30", "-15:-16:-17", "comment" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -99,7 +99,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_StringRightAscensionKeyword() throws Exception {
+    public void testExtractComputeHJDData_RightAscensionKeyword_String() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "rghtAsc", "-15:-16:-17", "comment" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -109,7 +109,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_TimeObjectRightAscensionParameter() throws Exception {
+    public void testExtractComputeHJDData_RightAscensionParameter_TimeObject_Valid() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "-15:-16:-17", "comment" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -122,7 +122,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_InvalidTimeObjectRightAscensionParameter() throws Exception {
+    public void testExtractComputeHJDData_RightAscensionParameter_TimeObject_InvalidFormat() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:abc:30", "-15:-16:-17", "comment" };
 
         exception.expect(IllegalInputDataException.class);
@@ -131,7 +131,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DoubleRightAscensionParameter() throws Exception {
+    public void testExtractComputeHJDData_RightAscensionParameter_Double() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14.5689", "-15:-16:-17", "comment" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -142,7 +142,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DecimalRightAscensionParameter() throws Exception {
+    public void testExtractComputeHJDData_RightAscensionParameter_Decimal() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "2514.5689E385", "-15:-16:-17", "comment" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -153,7 +153,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_StringDeclinationKeyword() throws Exception {
+    public void testExtractComputeHJDData_DeclinationKeyword_String() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "dec" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -163,7 +163,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DegreesObjectDeclinationParameter() throws Exception {
+    public void testExtractComputeHJDData_DeclinationParameter_DegreesObject_Valid() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "-15:-16:-17" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -176,7 +176,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_InvalidDegreesObjectDeclinationParameter() throws Exception {
+    public void testExtractComputeHJDData_DeclinationParameter_DegreesObject_InvalidFormat() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "decln:-16:-17" };
 
         exception.expect(IllegalInputDataException.class);
@@ -185,7 +185,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DoubleDeclinationParameter() throws Exception {
+    public void testExtractComputeHJDData_DeclinationParameter_Double() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "226.2481" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -196,7 +196,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DecimalDeclinationParameter() throws Exception {
+    public void testExtractComputeHJDData_DeclinationParameter_Decimal() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "2261248964582316452.2481E320" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -207,7 +207,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_ContainsComment() throws Exception {
+    public void testExtractComputeHJDData_Comment_PresentInData() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "12:-16:-17", "comment" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);
@@ -217,7 +217,7 @@ public class ProcessorHelper_ExtractComputeHJDDataTest {
     }
 
     @Test
-    public void testExtractComputeHJDData_DefaultComment() throws Exception {
+    public void testExtractComputeHJDData_Comment_Default() throws Exception {
         String[] args = new String[] { "hjd", FILE_PATH.toString(), "DATETIME", "EXPOSURE", "14:22:30", "12:-16:-17" };
 
         ComputeHJDInputData chjdid = CmdArgumentsProcessorHelper.extractComputeHJDData(args, _converter);

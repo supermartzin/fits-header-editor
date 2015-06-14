@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class TypeConverter_LocalDateTimeParsingTest {
 
@@ -35,7 +35,7 @@ public class TypeConverter_LocalDateTimeParsingTest {
 
 
     @Test
-    public void testTryParseLocalDateTime_NullValue() throws Exception {
+    public void testTryParseLocalDateTime_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -43,7 +43,7 @@ public class TypeConverter_LocalDateTimeParsingTest {
     }
 
     @Test
-    public void testParseLocalDateTime_NullValue() throws Exception {
+    public void testParseLocalDateTime_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -51,14 +51,14 @@ public class TypeConverter_LocalDateTimeParsingTest {
     }
 
     @Test
-    public void testTryParseLocalDateTime_EmptyValue() throws Exception {
+    public void testTryParseLocalDateTime_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseLocalDateTime(value));
     }
 
     @Test
-    public void testParseLocalDateTime_EmptyValue() throws Exception {
+    public void testParseLocalDateTime_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseLocalDateTime(value));
@@ -68,7 +68,7 @@ public class TypeConverter_LocalDateTimeParsingTest {
     }
 
     @Test
-    public void testTryParseLocalDateTime_IncorrectValues() throws Exception {
+    public void testTryParseLocalDateTime_Values_NonParsable() throws Exception {
         String value1 = "2012:12:07T02:23:56";
         String value2 = "3-6-2-24:24:24";
         String value3 = "3.12.2014T14:15:16";
@@ -79,7 +79,7 @@ public class TypeConverter_LocalDateTimeParsingTest {
     }
 
     @Test
-    public void testParseLocalDateTime_IncorrectValue() throws Exception {
+    public void testParseLocalDateTime_Value_NonParsable() throws Exception {
         String value = "2012:12:7T02:23:56";
 
         exception.expect(ParseException.class);
@@ -87,7 +87,7 @@ public class TypeConverter_LocalDateTimeParsingTest {
     }
 
     @Test
-    public void testTryParseLocalDateTime_CorrectValues() throws Exception {
+    public void testTryParseLocalDateTime_Values_Parsable() throws Exception {
         String value1 = "2014-06-23T14:23:56";
         String value2 = "2012-12-08T12:12:12";
 
@@ -96,7 +96,7 @@ public class TypeConverter_LocalDateTimeParsingTest {
     }
 
     @Test
-    public void testParseLocalDateTime_CorrectValues() throws Exception {
+    public void testParseLocalDateTime_Values_Parsable() throws Exception {
         String value1 = "2014-06-23T14:23:56";
         String value2 = "2012-12-08T12:12:12";
 

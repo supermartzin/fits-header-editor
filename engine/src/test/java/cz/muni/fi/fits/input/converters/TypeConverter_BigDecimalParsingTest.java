@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class TypeConverter_BigDecimalParsingTest {
 
@@ -37,7 +37,7 @@ public class TypeConverter_BigDecimalParsingTest {
 
 
     @Test
-    public void testTryParseBigDecimal_NullValue() throws Exception {
+    public void testTryParseBigDecimal_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -45,7 +45,7 @@ public class TypeConverter_BigDecimalParsingTest {
     }
 
     @Test
-    public void testParseBigDecimal_NullValue() throws Exception {
+    public void testParseBigDecimal_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -53,14 +53,14 @@ public class TypeConverter_BigDecimalParsingTest {
     }
 
     @Test
-    public void testTryParseBigDecimal_EmptyValue() throws Exception {
+    public void testTryParseBigDecimal_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseBigDecimal(value));
     }
 
     @Test
-    public void testParseBigDecimal_EmptyValue() throws Exception {
+    public void testParseBigDecimal_Value_Empty() throws Exception {
         String value = "";
 
         exception.expect(ParseException.class);
@@ -68,7 +68,7 @@ public class TypeConverter_BigDecimalParsingTest {
     }
 
     @Test
-    public void testTryParseBigDecimal_IncorrectValues() throws Exception {
+    public void testTryParseBigDecimal_Values_NonParsable() throws Exception {
         String value1 = "12354778996..1254";
         String value2 = "4.58963256x10^-659";
         String value3 = "-+5632.1254";
@@ -79,7 +79,7 @@ public class TypeConverter_BigDecimalParsingTest {
     }
 
     @Test
-    public void testParseBigDecimal_IncorrectValue() throws Exception {
+    public void testParseBigDecimal_Value_NonParsable() throws Exception {
         String value = "12354778996..1254";
 
         exception.expect(ParseException.class);
@@ -87,7 +87,7 @@ public class TypeConverter_BigDecimalParsingTest {
     }
 
     @Test
-    public void testTryParseBigDecimal_CorrectValues() throws Exception {
+    public void testTryParseBigDecimal_Values_Parsable() throws Exception {
         String value1 = "123.457896541232E12345";
         String value2 = "-8965874513269115.11445458478784789748787661";
         String value3 = "+1.236574588256285268216261861e123";
@@ -98,7 +98,7 @@ public class TypeConverter_BigDecimalParsingTest {
     }
 
     @Test
-    public void testParseBigDecimal_CorrectValues() throws Exception {
+    public void testParseBigDecimal_Values_Parsable() throws Exception {
         String value1 = "123.457896541232E12345";
         String value2 = "-8965874513269115.11445458478784789748787661";
         String value3 = "+1.236574588256285268216261861e123";

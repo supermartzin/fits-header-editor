@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
  * degrees data to its baseform
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DeclinationParamsConverterTest {
 
@@ -21,7 +21,7 @@ public class DeclinationParamsConverterTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testConversion_DegreesNaN() throws Exception {
+    public void testConversion_Degrees_NotANumber() throws Exception {
         double degrees = Double.NaN;
         double minutes = 12.35;
         double seconds = 45.63;
@@ -31,7 +31,7 @@ public class DeclinationParamsConverterTest {
     }
 
     @Test
-    public void testConversion_MinutesNaN() throws Exception {
+    public void testConversion_Minutes_NotANumber() throws Exception {
         double degrees = 145.37;
         double minutes = Double.NaN;
         double seconds = 45.63;
@@ -41,7 +41,7 @@ public class DeclinationParamsConverterTest {
     }
 
     @Test
-    public void testConversion_SecondsNaN() throws Exception {
+    public void testConversion_Seconds_NotANumber() throws Exception {
         double degrees = -89.26;
         double minutes = 12.35;
         double seconds = Double.NaN;
@@ -79,7 +79,7 @@ public class DeclinationParamsConverterTest {
     }
 
     @Test
-    public void testConvertion_DegreesObject() throws Exception {
+    public void testConvertion_DegreesObject_Valid() throws Exception {
         double degrees = -25.42;
         double minutes = 14.78;
         double seconds = 39.85;

@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class TypeConverter_BooleanParsingTest {
 
@@ -37,7 +37,7 @@ public class TypeConverter_BooleanParsingTest {
 
 
     @Test
-    public void testTryParseBoolean_NullValue() throws Exception {
+    public void testTryParseBoolean_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -45,7 +45,7 @@ public class TypeConverter_BooleanParsingTest {
     }
 
     @Test
-    public void testParseBoolean_NullValue() throws Exception {
+    public void testParseBoolean_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -53,14 +53,14 @@ public class TypeConverter_BooleanParsingTest {
     }
 
     @Test
-    public void testTryParseBoolean_EmptyValue() throws Exception {
+    public void testTryParseBoolean_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseBoolean(value));
     }
 
     @Test
-    public void testParseBoolean_EmptyValue() throws Exception {
+    public void testParseBoolean_Value_Empty() throws Exception {
         String value = "";
 
         exception.expect(ParseException.class);
@@ -68,7 +68,7 @@ public class TypeConverter_BooleanParsingTest {
     }
 
     @Test
-    public void testTryParseBoolean_IncorrectValues() throws Exception {
+    public void testTryParseBoolean_Values_NonParsable() throws Exception {
         String value1 = "tt";
         String value2 = "1";
         String value3 = "truel";
@@ -79,7 +79,7 @@ public class TypeConverter_BooleanParsingTest {
     }
 
     @Test
-    public void testParseBoolean_IncorrectValue() throws Exception {
+    public void testParseBoolean_Value_NonParsable() throws Exception {
         String value = "tt";
 
         exception.expect(ParseException.class);
@@ -87,7 +87,7 @@ public class TypeConverter_BooleanParsingTest {
     }
 
     @Test
-    public void testTryParseBoolean_CorrectValues() throws Exception {
+    public void testTryParseBoolean_Values_Parsable() throws Exception {
         String value1 = "true";
         String value2 = "t";
         String value3 = "FALSE";
@@ -102,7 +102,7 @@ public class TypeConverter_BooleanParsingTest {
     }
 
     @Test
-    public void testParseBoolean_CorrectValues() throws Exception {
+    public void testParseBoolean_Values_Parsable() throws Exception {
         String value1 = "true";
         String value2 = "t";
         String value3 = "FALSE";

@@ -17,7 +17,7 @@ import java.util.Collection;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DefaultValidator_ComputeJDInputDataTest {
 
@@ -43,7 +43,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_NullFitsFiles() throws Exception {
+    public void testValidate_ComputeJDInputData_FitsFiles_Null() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", 40.0, "comment", null);
 
         exception.expect(ValidationException.class);
@@ -52,7 +52,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_NoFitsFiles() throws Exception {
+    public void testValidate_ComputeJDInputData_FitsFiles_Empty() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", 40.0, "comment");
 
         exception.expect(ValidationException.class);
@@ -61,7 +61,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_DatetimeParameterNull() throws Exception {
+    public void testValidate_ComputeJDInputData_DatetimeParameter_Null() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData((String)null, 40.0, "comment", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -70,7 +70,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_DatetimeKeywordEmpty() throws Exception {
+    public void testValidate_ComputeJDInputData_DatetimeKeyword_Empty() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("", 40.0, "comment", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -79,7 +79,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_DatetimeKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ComputeJDInputData_DatetimeKeyword_WithInvalidChars() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATE TIME", 40.0, "comment", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -88,7 +88,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_DatetimeKeywordTooLong() throws Exception {
+    public void testValidate_ComputeJDInputData_DatetimeKeyword_TooLong() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("TOO_LONG_KEYWORD", 40.0, null, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -97,7 +97,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_ExposureParameterNull() throws Exception {
+    public void testValidate_ComputeJDInputData_ExposureParameter_Null() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", null, null, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -106,16 +106,25 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_ExposureValueNaN() throws Exception {
+    public void testValidate_ComputeJDInputData_ExposureDoubleValue_NotANumber() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", Double.NaN, null, _fitsFiles);
 
         exception.expect(ValidationException.class);
-        exception.expectMessage("must be a valid number");
+        exception.expectMessage("must be a correct number");
         _validator.validate(cjdid);
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_ExposureKeywordEmpty() throws Exception {
+    public void testValidate_ComputeJDInputData_ExposureDoubleValue_Infinite() throws Exception {
+        ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", Double.NEGATIVE_INFINITY, null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a finite number");
+        _validator.validate(cjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeJDInputData_ExposureKeyword_Empty() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", "", null, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -124,7 +133,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_ExposureKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ComputeJDInputData_ExposureKeyword_WithInvalidChars() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", "EXPOS**E", null, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -133,7 +142,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_ExposureKeywordTooLong() throws Exception {
+    public void testValidate_ComputeJDInputData_ExposureKeyword_TooLong() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", "EXPOSURE_TOO_LONG", null, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -142,7 +151,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_CommentWithInvalidChars() throws Exception {
+    public void testValidate_ComputeJDInputData_Comment_WithInvalidChars() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", 40.0, "commentčšľľšč", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -151,7 +160,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_CommentTooLong() throws Exception {
+    public void testValidate_ComputeJDInputData_Comment_TooLong() throws Exception {
         ComputeJDInputData cjdid = new ComputeJDInputData("DATETIME", 40.0, "comment too long - comment too long - comment too long", _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -160,7 +169,7 @@ public class DefaultValidator_ComputeJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeJDInputData_ValidInputData() throws Exception {
+    public void testValidate_ComputeJDInputData_Valid() throws Exception {
         ComputeJDInputData cjdid1 = new ComputeJDInputData("DATETIME", 12.45, "comment", _fitsFiles);
         ComputeJDInputData cjdid2 = new ComputeJDInputData(LocalDateTime.of(2014, 5, 5, 12, 34, 56), "EXPOSURE", null, _fitsFiles);
         ComputeJDInputData cjdid3 = new ComputeJDInputData("DATETIME", "EXPOSURE", "comment", _fitsFiles);

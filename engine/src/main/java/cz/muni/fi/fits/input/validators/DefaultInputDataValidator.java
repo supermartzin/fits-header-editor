@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  * for validation of input data
  *
  * @author Martin Vrábel
- * @version 1.2.3
+ * @version 1.2.4
  */
 public class DefaultInputDataValidator implements InputDataValidator {
 
@@ -62,7 +62,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
         Object value = addNewRecordInputData.getValue();
         if (value instanceof String) {
             isValueString = true;
-            String strValue = (String)value;
+            String strValue = (String) value;
 
             // String value cannot be empty
             if (strValue.isEmpty())
@@ -73,6 +73,17 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // check for invalid characters
             if (!CharMatcher.ASCII.matchesAllOf(strValue))
                 throw new ValidationException("String value contains invalid non-ASCII characters");
+        }
+        // if value is double, check for NaN or Infinity
+        if (value instanceof Double) {
+            double doubleValue = (double) value;
+
+            // double must be a number
+            if (Double.isNaN(doubleValue))
+                throw new ValidationException("Double value must be a correct number");
+            // double must be finite number
+            if (Double.isInfinite(doubleValue))
+                throw new ValidationException("Double value must be a finite number");
         }
 
         // if contains comment check for allowed comment length
@@ -150,6 +161,17 @@ public class DefaultInputDataValidator implements InputDataValidator {
             // check for invalid characters
             if (!CharMatcher.ASCII.matchesAllOf(strValue))
                 throw new ValidationException("Comment contains invalid non-ASCII characters");
+        }
+        // if value is double, check for NaN or Infinity
+        if (value instanceof Double) {
+            double doubleValue = (double) value;
+
+            // double must be a number
+            if (Double.isNaN(doubleValue))
+                throw new ValidationException("Double value must be a correct number");
+            // double must be finite number
+            if (Double.isInfinite(doubleValue))
+                throw new ValidationException("Double value must be a finite number");
         }
 
         // if contains comment check for allowed comment length
@@ -309,7 +331,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
         Object value = changeValueByKeywordInputData.getValue();
         if (value instanceof String) {
             isValueString = true;
-            String strValue = (String)value;
+            String strValue = (String) value;
 
             // String value cannot be empty
             if (strValue.isEmpty())
@@ -321,6 +343,18 @@ public class DefaultInputDataValidator implements InputDataValidator {
             if (!CharMatcher.ASCII.matchesAllOf(strValue))
                 throw new ValidationException("String value contains invalid non-ASCII characters");
         }
+        // if value is double, check for NaN or Infinity
+        if (value instanceof Double) {
+            double doubleValue = (double) value;
+
+            // double must be a number
+            if (Double.isNaN(doubleValue))
+                throw new ValidationException("Double value must be a correct number");
+            // double must be finite number
+            if (Double.isInfinite(doubleValue))
+                throw new ValidationException("Double value must be a finite number");
+        }
+
 
         // if contains comment check for allowed comment length
         if (changeValueByKeywordInputData.getComment() != null && !changeValueByKeywordInputData.getComment().isEmpty()) {
@@ -532,7 +566,10 @@ public class DefaultInputDataValidator implements InputDataValidator {
 
             // double exposure value must be number
             if (Double.isNaN(exposure))
-                throw new ValidationException("Exposure value must be a valid number");
+                throw new ValidationException("Exposure double value must be a correct number");
+            // double exposure value must be finite number
+            if (Double.isInfinite(exposure))
+                throw new ValidationException("Exposure double value must be a finite number");
         }
 
         if (computeJDInputData.getExposure() instanceof String) {
@@ -617,7 +654,10 @@ public class DefaultInputDataValidator implements InputDataValidator {
 
             // double exposure value must be number
             if (Double.isNaN(exposure))
-                throw new ValidationException("Exposure value must be a valid number");
+                throw new ValidationException("Exposure double value must be a correct number");
+            // double exposure value must be finite number
+            if (Double.isInfinite(exposure))
+                throw new ValidationException("Exposure double value must be a finite number");
         }
 
         if (computeHJDInputData.getExposure() instanceof String) {
@@ -687,7 +727,15 @@ public class DefaultInputDataValidator implements InputDataValidator {
         if (computeHJDInputData.getRightAscension() instanceof Double) {
             double rightAscension = (double) computeHJDInputData.getRightAscension();
 
-            // check if value is in range
+            // value must be a number
+            if (Double.isNaN(rightAscension))
+                throw new ValidationException("Exposure double value must be a correct number");
+
+            // value must be a finite number
+            if (Double.isInfinite(rightAscension))
+                throw new ValidationException("Exposure double value must be a finite number");
+
+            // value must be in range
             if (Double.compare(rightAscension, Constants.MIN_RA_VALUE) < 0
                     || Double.compare(rightAscension, Constants.MAX_RA_VALUE) > 0)
                 throw new ValidationException("Right ascension parameter is not in range: <" + Constants.MIN_RA_VALUE.intValue() + "°," + Constants.MAX_RA_VALUE.intValue() + "°>");
@@ -752,6 +800,14 @@ public class DefaultInputDataValidator implements InputDataValidator {
 
         if (computeHJDInputData.getDeclination() instanceof Double) {
             double declination = (double) computeHJDInputData.getDeclination();
+
+            // value must be a number
+            if (Double.isNaN(declination))
+                throw new ValidationException("Declination double value must be a correct number");
+
+            // value must be a finite number
+            if (Double.isInfinite(declination))
+                throw new ValidationException("Declination double value must be a finite number");
 
             // check if value is in range
             if (Double.compare(declination, Constants.MIN_DEC_VALUE) < 0

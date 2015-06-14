@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Tests for computation of {@link Declination} from provided coordinates
  *
  * @author Martin Vrábel
- * @version 2.0
+ * @version 2.1
  */
 public class DeclinationTest {
 
@@ -19,7 +19,7 @@ public class DeclinationTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testComputeDeclination_DegreesNaN() throws Exception {
+    public void testComputeDeclination_Degrees_NotANumber() throws Exception {
         double degrees = Double.NaN;
         double minutes = 23.56;
         double seconds = 147.89;
@@ -29,7 +29,7 @@ public class DeclinationTest {
     }
 
     @Test
-    public void testComputeDeclination_MinutesNaN() throws Exception {
+    public void testComputeDeclination_Minutes_NotANumber() throws Exception {
         double degrees = -42.42;
         double minutes = Double.NaN;
         double seconds = 147.89;
@@ -39,7 +39,7 @@ public class DeclinationTest {
     }
 
     @Test
-    public void testComputeDeclination_SecondsNaN() throws Exception {
+    public void testComputeDeclination_Seconds_NotANumber() throws Exception {
         double degrees = 86.2;
         double minutes = 23.56;
         double seconds = Double.NaN;
@@ -49,7 +49,7 @@ public class DeclinationTest {
     }
 
     @Test
-    public void testComputeDeclination_DegreesObjectNull() throws Exception {
+    public void testComputeDeclination_DegreesObject_Null() throws Exception {
         DegreesObject degreesObject = null;
 
         exception.expect(IllegalArgumentException.class);

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public class ProcessorHelper_ExtractShiftTimeDataTest {
 
@@ -47,7 +47,7 @@ public class ProcessorHelper_ExtractShiftTimeDataTest {
     }
 
     @Test
-    public void testExtractShiftRecordData_WrongNumberOfParameters() throws Exception {
+    public void testExtractShiftRecordData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "shift_time", FILE_PATH.toString() };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -55,7 +55,7 @@ public class ProcessorHelper_ExtractShiftTimeDataTest {
     }
 
     @Test
-    public void testExtractShiftRecordData_NoKeywordParameter() throws Exception {
+    public void testExtractShiftRecordData_Keyword_Empty() throws Exception {
         String[] args = new String[] { "shift_time", FILE_PATH.toString(), "-y=-56", "-m=2" };
 
         exception.expect(IllegalInputDataException.class);
@@ -64,7 +64,7 @@ public class ProcessorHelper_ExtractShiftTimeDataTest {
     }
 
     @Test
-    public void testExtractShiftRecordData_Keyword() throws Exception {
+    public void testExtractShiftRecordData_Keyword_Valid() throws Exception {
         String[] args = new String[] { "shift_time", FILE_PATH.toString(), "KEYword", "-y=-56", "-m=0", "-d=2", "-s=0", "-ms=230" };
 
         ShiftTimeInputData stid = CmdArgumentsProcessorHelper.extractShiftTimeData(args, _converter);
@@ -73,7 +73,7 @@ public class ProcessorHelper_ExtractShiftTimeDataTest {
     }
 
     @Test
-    public void testExtractShiftRecordData_UnknownShiftParameter() throws Exception {
+    public void testExtractShiftRecordData_ShiftParameter_Unknown() throws Exception {
         String[] args = new String[] { "shift_time", FILE_PATH.toString(), "KEYWORD", "-years=-56", "-months=2" };
 
         exception.expect(IllegalInputDataException.class);
@@ -82,7 +82,7 @@ public class ProcessorHelper_ExtractShiftTimeDataTest {
     }
 
     @Test
-    public void testExtractShiftRecordData_InvalidFormatOfShiftParameter() throws Exception {
+    public void testExtractShiftRecordData_ShiftParameter_InvalidFormat() throws Exception {
         String[] args = new String[] { "shift_time", FILE_PATH.toString(), "KEYWORD", "-y=-56.0", "-min=2" };
 
         exception.expect(IllegalInputDataException.class);
@@ -91,7 +91,7 @@ public class ProcessorHelper_ExtractShiftTimeDataTest {
     }
 
     @Test
-    public void testExtractShiftRecordData_CorrectParameters() throws Exception {
+    public void testExtractShiftRecordData_Parameters_Valid() throws Exception {
         String[] args = new String[] { "shift_time", FILE_PATH.toString(), "KEYWORD", "-y=-56", "-m=0", "-d=2", "-h=-23", "-min=2", "-s=0", "-ms=230" };
 
         ShiftTimeInputData stid = CmdArgumentsProcessorHelper.extractShiftTimeData(args, _converter);

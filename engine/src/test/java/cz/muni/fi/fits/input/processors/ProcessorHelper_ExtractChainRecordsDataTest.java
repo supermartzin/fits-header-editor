@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractChainRecordsDataTest {
 
@@ -41,7 +41,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_WrongNumberOfParameters() throws Exception {
+    public void testExtractChainRecordsData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "chain", "-u", FILE_PATH.toString() };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -49,7 +49,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_NoSwitchParameters() throws Exception {
+    public void testExtractChainRecordsData_SwitchParameters_False() throws Exception {
         String[] args = new String[] { "chain", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -59,7 +59,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_WrongFirstSwitchParameter() throws Exception {
+    public void testExtractChainRecordsData_FirstSwitchParameter_WrongFormat() throws Exception {
         String[] args = new String[] { "chain", "-upd", "-s", FILE_PATH.toString() };
 
         exception.expect(InvalidSwitchParameterException.class);
@@ -67,7 +67,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_WrongSecondSwitchParameter() throws Exception {
+    public void testExtractChainRecordsData_SecondSwitchParameter_WrongFormat() throws Exception {
         String[] args = new String[] { "chain", "-s", "-upd", FILE_PATH.toString() };
 
         exception.expect(InvalidSwitchParameterException.class);
@@ -75,7 +75,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_ValidSwitchParameters() throws Exception {
+    public void testExtractChainRecordsData_SwitchParameters_Valid() throws Exception {
         String[] args = new String[] { "chain", "-s", "-u", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -85,7 +85,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_EmptyChainParameters() throws Exception {
+    public void testExtractChainRecordsData_ChainParameters_Empty() throws Exception {
         String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "COMMENT" };
 
         exception.expect(IllegalInputDataException.class);
@@ -94,7 +94,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_DoesNotContainKeyword() throws Exception {
+    public void testExtractChainRecordsData_Keyword_NotInData() throws Exception {
         String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "-c=CONSTANT 1", "COMMENT" };
 
         exception.expect(IllegalInputDataException.class);
@@ -103,7 +103,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_Keyword() throws Exception {
+    public void testExtractChainRecordsData_Keyword_Valid() throws Exception {
         String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "keyword", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -112,7 +112,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_ContainsComment() throws Exception {
+    public void testExtractChainRecordsData_Comment_PresentInData() throws Exception {
         String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -121,7 +121,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_DoesNotContainComment() throws Exception {
+    public void testExtractChainRecordsData_Comment_NotInData() throws Exception {
         String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -130,7 +130,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
     }
 
     @Test
-    public void testExtractChainRecordsData_CorrectParameters() throws Exception {
+    public void testExtractChainRecordsData_Parameters_Valid() throws Exception {
         String[] args1 = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "-k=KEYWORD 2", "-c=CONSTANT 2", "COMMENT" };
 
         ChainRecordsInputData crid1 = CmdArgumentsProcessorHelper.extractChainRecordsData(args1);

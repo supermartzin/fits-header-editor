@@ -17,7 +17,7 @@ import java.util.HashSet;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DefaultValidator_AddNewRecordInputDataTest {
 
@@ -43,7 +43,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_NullFitsFiles() throws Exception {
+    public void testValidate_AddNewRecordInputData_FitsFiles_Null() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE", "COMMENT", false, null);
 
         exception.expect(ValidationException.class);
@@ -52,7 +52,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_NoFitsFiles() throws Exception {
+    public void testValidate_AddNewRecordInputData_FitsFiles_Empty() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE", "COMMENT", false, new HashSet<>());
 
         exception.expect(ValidationException.class);
@@ -61,7 +61,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_NullKeyword() throws Exception {
+    public void testValidate_AddNewRecordInputData_Keyword_Null() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData(null, "VALUE", "COMMENT", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -70,7 +70,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_EmptyKeyword() throws Exception {
+    public void testValidate_AddNewRecordInputData_Keyword_Empty() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("", "VALUE", "COMMENT", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -79,7 +79,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_KeywordWithInvalidChars() throws Exception {
+    public void testValidate_AddNewRecordInputData_Keyword_WithInvalidChars() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEY WORD*", "VALUE", "COMMENT", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -88,7 +88,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_TooLongKeyword() throws Exception {
+    public void testValidate_AddNewRecordInputData_Keyword_TooLong() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("TOO_LONG_KEYWORD", "VALUE", "COMMENT", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -97,7 +97,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_NullValue() throws Exception {
+    public void testValidate_AddNewRecordInputData_Value_Null() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", null, "", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -106,7 +106,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_EmptyStringValue() throws Exception {
+    public void testValidate_AddNewRecordInputData_StringValue_Empty() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "", "", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -115,7 +115,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_TooLongStringValue() throws Exception {
+    public void testValidate_AddNewRecordInputData_StringValue_TooLong() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE TOO LONG - VALUE TOO LONG - VALUE TOO LONG - VALUE TOO LONG - VALUE",
                 "", false, _fitsFiles);
 
@@ -125,7 +125,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_StringValueWithInvalidChars() throws Exception {
+    public void testValidate_AddNewRecordInputData_StringValue_WithInvalidChars() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUEýššá", null, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -134,7 +134,25 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_CommentWithInvalidChars() throws Exception {
+    public void testValidate_AddNewRecordInputData_DoubleValue_NotANumber() throws Exception {
+        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", Double.NaN, null, false, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a correct number");
+        _validator.validate(anrid);
+    }
+
+    @Test
+    public void testValidate_AddNewRecordInputData_DoubleValue_Infinite() throws Exception {
+        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", Double.NEGATIVE_INFINITY, null, false, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a finite number");
+        _validator.validate(anrid);
+    }
+
+    @Test
+    public void testValidate_AddNewRecordInputData_Comment_WithInvalidChars() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE", "COMENTčšťščžťýž", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -143,8 +161,8 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_TooLongComment() throws Exception {
-        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE", "COMMENT TO LONG - COMMENT TO LONG - COMMENT TO LONG - COMMENT TOO", false, _fitsFiles);
+    public void testValidate_AddNewRecordInputData_Comment_TooLong() throws Exception {
+        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE", "COMMENT TO LONG - COMMENT TO LONG - COMMENT TOO LONG - COMMENT TOO", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
         exception.expectMessage("has exceeded maximum allowed length");
@@ -152,8 +170,8 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_TooLongCommentAndStringValue() throws Exception {
-        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE VALUE VALUE VALUE VALUE VALUE VALUE", "COMMENT TO LONG - COMMENT TO LONG", false, _fitsFiles);
+    public void testValidate_AddNewRecordInputData_CommentAndStringValue_TooLong() throws Exception {
+        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE VALUE VALUE VALUE VALUE VALUE VALUE", "COMMENT TOO LONG - COMMENT TOO LONG", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
         exception.expectMessage("Comment is too long");
@@ -161,7 +179,7 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_ValidInputData() throws Exception {
+    public void testValidate_AddNewRecordInputData_Valid() throws Exception {
         AddNewRecordInputData anrid1 = new AddNewRecordInputData("KEYWORD", 125.45, null, true, _fitsFiles);
         AddNewRecordInputData anrid2 = new AddNewRecordInputData("KEYWORD", "random value of testing record", "random comment", false, _fitsFiles);
         AddNewRecordInputData anrid3 = new AddNewRecordInputData("KEYWORD", true, "random comment", false, _fitsFiles);

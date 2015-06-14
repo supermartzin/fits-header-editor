@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractAddNewToIndexDataTest {
 
@@ -47,7 +47,7 @@ public class ProcessorHelper_ExtractAddNewToIndexDataTest {
     }
 
     @Test
-    public void testExtractAddNewToIndexData_WrongNumberOfParameters() throws Exception {
+    public void testExtractAddNewToIndexData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "add_ix", FILE_PATH.toString() };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -55,7 +55,7 @@ public class ProcessorHelper_ExtractAddNewToIndexDataTest {
     }
 
     @Test
-    public void testExtractAddNewToIndexData_InvalidIndex() throws Exception {
+    public void testExtractAddNewToIndexData_Index_InvalidFormat() throws Exception {
         String[] args = new String[] { "add_ix", FILE_PATH.toString(), "one","KEYWORD", "VALUE" };
 
         exception.expect(IllegalInputDataException.class);
@@ -63,7 +63,7 @@ public class ProcessorHelper_ExtractAddNewToIndexDataTest {
     }
 
     @Test
-    public void testExtractAddNewToIndexData_CorrectIndex() throws Exception {
+    public void testExtractAddNewToIndexData_Index_Valid() throws Exception {
         String[] args = new String[] { "add_ix", FILE_PATH.toString(), "152","KEYWORD", "VALUE" };
 
         AddNewToIndexInputData antiid = CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
@@ -72,24 +72,7 @@ public class ProcessorHelper_ExtractAddNewToIndexDataTest {
     }
 
     @Test
-    public void testExtractAddNewToIndexData_NoSwitchParameter() throws Exception {
-        String[] args = new String[] { "add_ix", FILE_PATH.toString(), "12", "KEYWORD", "VALUE" };
-
-        AddNewToIndexInputData antiid = CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
-        assertNotNull(antiid);
-        assertFalse(antiid.removeOldIfExists());
-    }
-
-    @Test
-    public void testExtractAddNewToIndexData_WrongSwitchParameter() throws Exception {
-        String[] args = new String[] { "add_ix", "-remove", FILE_PATH.toString(), "15", "KEYWORD", "VALUE" };
-
-        exception.expect(InvalidSwitchParameterException.class);
-        CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
-    }
-
-    @Test
-    public void testExtractAddNewToIndexData_ValidSwitchParameter() throws Exception {
+    public void testExtractAddNewToIndexData_SwitchParameter_True() throws Exception {
         String[] args = new String[] { "add_ix", "-rm", FILE_PATH.toString(), "1", "KEYWORD", "VALUE" };
 
         AddNewToIndexInputData antiid = CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
@@ -98,7 +81,24 @@ public class ProcessorHelper_ExtractAddNewToIndexDataTest {
     }
 
     @Test
-    public void testExtractAddNewToIndexData_Keyword() throws Exception {
+    public void testExtractAddNewToIndexData_SwitchParameter_False() throws Exception {
+        String[] args = new String[] { "add_ix", FILE_PATH.toString(), "12", "KEYWORD", "VALUE" };
+
+        AddNewToIndexInputData antiid = CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
+        assertNotNull(antiid);
+        assertFalse(antiid.removeOldIfExists());
+    }
+
+    @Test
+    public void testExtractAddNewToIndexData_SwitchParameter_WrongFormat() throws Exception {
+        String[] args = new String[] { "add_ix", "-remove", FILE_PATH.toString(), "15", "KEYWORD", "VALUE" };
+
+        exception.expect(InvalidSwitchParameterException.class);
+        CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
+    }
+
+    @Test
+    public void testExtractAddNewToIndexData_Keyword_Valid() throws Exception {
         String[] args = new String[] { "add_ix", FILE_PATH.toString(), "25", "keyword", "123456789745" };
 
         AddNewToIndexInputData antiid = CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);
@@ -107,7 +107,7 @@ public class ProcessorHelper_ExtractAddNewToIndexDataTest {
     }
 
     @Test
-    public void testExtractAddNewToIndexData_CorrectParameters() throws Exception {
+    public void testExtractAddNewToIndexData_Parameters_Valid() throws Exception {
         String[] args = new String[] { "add_ix", FILE_PATH.toString(), "25", "KEYWORD", "123456789745" };
 
         AddNewToIndexInputData antiid = CmdArgumentsProcessorHelper.extractAddNewToIndexData(args, _converter);

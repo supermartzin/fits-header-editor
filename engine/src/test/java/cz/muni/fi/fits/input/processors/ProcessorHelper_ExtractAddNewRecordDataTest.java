@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractAddNewRecordDataTest {
 
@@ -46,7 +46,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_WrongNumberOfParameters() throws Exception {
+    public void testExtractAddNewRecordData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "add", FILE_PATH.toString() };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -54,7 +54,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_NoSwitchParameter() throws Exception {
+    public void testExtractAddNewRecordData_SwitchParameter_False() throws Exception {
         String[] args = new String[] { "add", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         AddNewRecordInputData anrid = CmdArgumentsProcessorHelper.extractAddNewRecordData(args, _converter);
@@ -63,7 +63,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_WrongSwitchParameter() throws Exception {
+    public void testExtractAddNewRecordData_SwitchParameter_WrongFormat() throws Exception {
         String[] args = new String[] { "add", "-update", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         exception.expect(InvalidSwitchParameterException.class);
@@ -71,7 +71,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_ValidSwitchParameter() throws Exception {
+    public void testExtractAddNewRecordData_SwitchParameter_Valid() throws Exception {
         String[] args = new String[] { "add", "-u", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         AddNewRecordInputData anrid = CmdArgumentsProcessorHelper.extractAddNewRecordData(args, _converter);
@@ -80,7 +80,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_ContainsComment() throws Exception {
+    public void testExtractAddNewRecordData_Comment_PresentInData() throws Exception {
         String[] args = new String[] { "add", "-u", FILE_PATH.toString(), "KEYWORD", "VALUE", "comment" };
 
         AddNewRecordInputData anrid = CmdArgumentsProcessorHelper.extractAddNewRecordData(args, _converter);
@@ -91,7 +91,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_DoesNotContainComment() throws Exception {
+    public void testExtractAddNewRecordData_Comment_NotInData() throws Exception {
         String[] args = new String[] { "add", "-u", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         AddNewRecordInputData anrid = CmdArgumentsProcessorHelper.extractAddNewRecordData(args, _converter);
@@ -101,7 +101,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_Keyword() throws Exception {
+    public void testExtractAddNewRecordData_Keyword_Valid() throws Exception {
         String[] args = new String[] { "add", FILE_PATH.toString(), "keyWORD", "true" };
 
         AddNewRecordInputData anrid = CmdArgumentsProcessorHelper.extractAddNewRecordData(args, _converter);
@@ -111,7 +111,7 @@ public class ProcessorHelper_ExtractAddNewRecordDataTest {
     }
 
     @Test
-    public void testExtractAddNewRecordData_CorrectParameters() throws Exception {
+    public void testExtractAddNewRecordData_Parameters_Valid() throws Exception {
         String[] args = new String[] { "add", FILE_PATH.toString(), "KEYWORD", "true" };
 
         AddNewRecordInputData anrid = CmdArgumentsProcessorHelper.extractAddNewRecordData(args, _converter);

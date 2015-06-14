@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractChangeKeywordDataTest {
 
@@ -40,7 +40,7 @@ public class ProcessorHelper_ExtractChangeKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeKeywordData_WrongNumberOfParameters() throws Exception {
+    public void testExtractChangeKeywordData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "change_kw", FILE_PATH.toString(), "KEYWORD" };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -48,7 +48,7 @@ public class ProcessorHelper_ExtractChangeKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeKeywordData_NoSwitchParameter() throws Exception {
+    public void testExtractChangeKeywordData_SwitchParameter_False() throws Exception {
         String[] args = new String[] { "change_kw", FILE_PATH.toString(), "OLD_KEYWORD", "NEW_KEYWORD" };
 
         ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);
@@ -57,7 +57,7 @@ public class ProcessorHelper_ExtractChangeKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeKeywordData_WrongSwitchParameter() throws Exception {
+    public void testExtractChangeKeywordData_SwitchParameter_WrongFormat() throws Exception {
         String[] args = new String[] { "change_kw", "-remove", FILE_PATH.toString(), "OLD_KEYWORD", "NEW_KEYWORD" };
 
         exception.expect(InvalidSwitchParameterException.class);
@@ -65,25 +65,7 @@ public class ProcessorHelper_ExtractChangeKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeKeywordData_OldKeyword() throws Exception {
-        String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "OLD keyword", "NEW_KEYWORD" };
-
-        ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);
-        assertNotNull(ckid);
-        assertEquals("OLD KEYWORD", ckid.getOldKeyword());
-    }
-
-    @Test
-    public void testExtractChangeKeywordData_NewKeyword() throws Exception {
-        String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "OLD", "new KEYWORD" };
-
-        ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);
-        assertNotNull(ckid);
-        assertEquals("NEW KEYWORD", ckid.getNewKeyword());
-    }
-
-    @Test
-    public void testExtractChangeKeywordData_ValidSwitchParameter() throws Exception {
+    public void testExtractChangeKeywordData_SwitchParameter_Valid() throws Exception {
         String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "OLD_KEYWORD", "NEW_KEYWORD" };
 
         ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);
@@ -92,7 +74,25 @@ public class ProcessorHelper_ExtractChangeKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeKeywordData_CorrectParameters() throws Exception {
+    public void testExtractChangeKeywordData_OldKeyword_Valid() throws Exception {
+        String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "OLD keyword", "NEW_KEYWORD" };
+
+        ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);
+        assertNotNull(ckid);
+        assertEquals("OLD KEYWORD", ckid.getOldKeyword());
+    }
+
+    @Test
+    public void testExtractChangeKeywordData_NewKeyword_Valid() throws Exception {
+        String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "OLD", "new KEYWORD" };
+
+        ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);
+        assertNotNull(ckid);
+        assertEquals("NEW KEYWORD", ckid.getNewKeyword());
+    }
+
+    @Test
+    public void testExtractChangeKeywordData_Parameters_Valid() throws Exception {
         String[] args = new String[] { "change_kw", "-rm", FILE_PATH.toString(), "olD_KEYWORD", "5963" };
 
         ChangeKeywordInputData ckid = CmdArgumentsProcessorHelper.extractChangeKeywordData(args);

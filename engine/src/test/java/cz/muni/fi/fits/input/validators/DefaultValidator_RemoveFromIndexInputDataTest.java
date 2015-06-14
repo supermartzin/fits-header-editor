@@ -17,7 +17,7 @@ import java.util.HashSet;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DefaultValidator_RemoveFromIndexInputDataTest {
 
@@ -43,7 +43,7 @@ public class DefaultValidator_RemoveFromIndexInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveFromIndexInputData_NullFitsFiles() throws Exception {
+    public void testValidate_RemoveFromIndexInputData_FitsFiles_Null() throws Exception {
         RemoveFromIndexInputData rfiid = new RemoveFromIndexInputData(2, null);
 
         exception.expect(ValidationException.class);
@@ -52,7 +52,7 @@ public class DefaultValidator_RemoveFromIndexInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveFromIndexInputData_NoFitsFiles() throws Exception {
+    public void testValidate_RemoveFromIndexInputData_FitsFiles_Empty() throws Exception {
         RemoveFromIndexInputData rfiid = new RemoveFromIndexInputData(2, new HashSet<>());
 
         exception.expect(ValidationException.class);
@@ -61,7 +61,7 @@ public class DefaultValidator_RemoveFromIndexInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveFromIndexInputData_InvalidIndex() throws Exception {
+    public void testValidate_RemoveFromIndexInputData_Index_InvalidNumber() throws Exception {
         RemoveFromIndexInputData rfiid = new RemoveFromIndexInputData(0, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -70,7 +70,7 @@ public class DefaultValidator_RemoveFromIndexInputDataTest {
     }
 
     @Test
-    public void testValidate_RemoveFromIndexInputData_ValidInputData() throws Exception {
+    public void testValidate_RemoveFromIndexInputData_Valid() throws Exception {
         RemoveFromIndexInputData rfiid = new RemoveFromIndexInputData(12, _fitsFiles);
 
         _validator.validate(rfiid);

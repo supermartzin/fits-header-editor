@@ -20,7 +20,7 @@ import java.util.Collection;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class DefaultValidator_ComputeHJDInputDataTest {
 
@@ -46,7 +46,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_NullFitsFiles() throws Exception {
+    public void testValidate_ComputeHJDInputData_FitsFiles_Null() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment", null);
 
@@ -56,7 +56,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_NoFitsFiles() throws Exception {
+    public void testValidate_ComputeHJDInputData_FitsFiles_Empty() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment");
 
@@ -66,7 +66,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DatetimeParameterNull() throws Exception {
+    public void testValidate_ComputeHJDInputData_DatetimeParameter_Null() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData(null, 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment", _fitsFiles);
 
@@ -76,7 +76,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DatetimeParameterInvalidType() throws Exception {
+    public void testValidate_ComputeHJDInputData_DatetimeParameter_InvalidType() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData(true, "exptime",
                 new TimeObject(12, 25.3, 6), "DEC", "comment", _fitsFiles);
 
@@ -86,7 +86,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DatetimeKeywordEmpty() throws Exception {
+    public void testValidate_ComputeHJDInputData_DatetimeKeyword_Empty() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment", _fitsFiles);
 
@@ -96,7 +96,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DatetimeKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ComputeHJDInputData_DatetimeKeyword_WithInvalidChars() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATE TIME", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment", _fitsFiles);
 
@@ -106,7 +106,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DatetimeKeywordTooLong() throws Exception {
+    public void testValidate_ComputeHJDInputData_DatetimeKeyword_TooLong() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("TOO_LONG_KEYWORD", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment", _fitsFiles);
 
@@ -116,7 +116,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_ExposureParameterNull() throws Exception {
+    public void testValidate_ComputeHJDInputData_ExposureParameter_Null() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", null,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -126,7 +126,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_ExposureParameterInvalidType() throws Exception {
+    public void testValidate_ComputeHJDInputData_ExposureParameter_InvalidType() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData(LocalDateTime.now(), true,
                 new TimeObject(12, 25.3, 6), "DEC", "comment", _fitsFiles);
 
@@ -136,17 +136,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_ExposureValueNaN() throws Exception {
-        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", Double.NaN,
-                new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
-
-        exception.expect(ValidationException.class);
-        exception.expectMessage("must be a valid number");
-        _validator.validate(chjdid);
-    }
-
-    @Test
-    public void testValidate_ComputeHJDInputData_ExposureKeywordEmpty() throws Exception {
+    public void testValidate_ComputeHJDInputData_ExposureKeyword_Empty() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "",
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -156,7 +146,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_ExposureKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ComputeHJDInputData_ExposureKeyword_WithInvalidChars() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOS**E",
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -166,7 +156,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_ExposureKeywordTooLong() throws Exception {
+    public void testValidate_ComputeHJDInputData_ExposureKeyword_TooLong() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE_TOO_LONG",
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -176,7 +166,27 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionNull() throws Exception {
+    public void testValidate_ComputeHJDInputData_ExposureDoubleValue_NotANumber() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", Double.NaN,
+                new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a correct number");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_ExposureDoubleValue_Infinite() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", Double.POSITIVE_INFINITY,
+                new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a finite number");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_RightAscension_Null() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 null, new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -186,7 +196,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionParameterInvalidType() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionParameter_InvalidType() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData(LocalDateTime.now(), 10.0,
                 false, "DEC", "comment", _fitsFiles);
 
@@ -196,7 +206,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionHoursNaN() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionHours_NotANumber() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(Double.NaN, 24.0, 5), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -206,7 +216,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionMinutesNaN() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionMinutes_NotANumber() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, Double.NaN, 5), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -216,7 +226,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionSecondsNaN() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionSeconds_NotANumber() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 14, Double.NaN), new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -226,7 +236,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionKeywordEmpty() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionKeyword_Empty() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPTIME",
                 "", new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -236,7 +246,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionKeyword_WithInvalidChars() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 "RA/*/", new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
@@ -246,12 +256,32 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_RightAscensionKeywordTooLong() throws Exception {
+    public void testValidate_ComputeHJDInputData_RightAscensionKeyword_TooLong() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 "RIGHT_ASCENSION", new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
 
         exception.expect(ValidationException.class);
         exception.expectMessage("has exceeded maximum allowed length");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_RightAscensionDouble_NotANumber() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                Double.NaN, new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a correct number");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_RightAscensionDoubleValue_Infinite() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                Double.POSITIVE_INFINITY, new DegreesObject(-87, 25, 14.256), null, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a finite number");
         _validator.validate(chjdid);
     }
 
@@ -286,7 +316,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationNull() throws Exception {
+    public void testValidate_ComputeHJDInputData_Declination_Null() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 25.3, 6), null, "comment", _fitsFiles);
 
@@ -296,7 +326,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationParameterInvalidType() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationParameter_InvalidType() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 25.3, 6), true, "comment", _fitsFiles);
 
@@ -306,7 +336,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationDegreesNaN() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationDegrees_NotANumber() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 24.0, 5), new DegreesObject(Double.NaN, 25, 14.256), null, _fitsFiles);
 
@@ -316,7 +346,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationMinutesNaN() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationMinutes_NotANumber() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 23, 5), new DegreesObject(-87, Double.NaN, 14.256), null, _fitsFiles);
 
@@ -326,7 +356,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationSecondsNaN() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationSeconds_NotANumber() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 14, 23), new DegreesObject(-87, 25, Double.NaN), null, _fitsFiles);
 
@@ -366,7 +396,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationKeywordEmpty() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationKeyword_Empty() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPTIME",
                 new TimeObject(12, 14, 23), "", null, _fitsFiles);
 
@@ -376,7 +406,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationKeyword_WithInvalidChars() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 14, 23), "DEC*/", null, _fitsFiles);
 
@@ -386,7 +416,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_DeclinationKeywordTooLong() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationKeyword_TooLong() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
                 new TimeObject(12, 14, 23), "DECLINATION_TOO_LONG", "comment", _fitsFiles);
 
@@ -396,7 +426,27 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_CommentWithInvalidChars() throws Exception {
+    public void testValidate_ComputeHJDInputData_DeclinationDoubleValue_NotANumber() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new TimeObject(12, 14, 23), Double.NaN, "comment", _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a correct number");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_DeclinationDoubleValue_Infinite() throws Exception {
+        ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", "EXPOSURE",
+                new TimeObject(12, 14, 23), Double.NEGATIVE_INFINITY, "comment", _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("must be a finite number");
+        _validator.validate(chjdid);
+    }
+
+    @Test
+    public void testValidate_ComputeHJDInputData_Comment_WithInvalidChars() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "commentčšľľšč", _fitsFiles);
 
@@ -406,7 +456,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_CommentTooLong() throws Exception {
+    public void testValidate_ComputeHJDInputData_Comment_TooLong() throws Exception {
         ComputeHJDInputData chjdid = new ComputeHJDInputData("DATETIME", 40.0,
                 new TimeObject(12, 25.3, 6), new DegreesObject(-87, 25, 14.256), "comment too long - comment too long - comment too long", _fitsFiles);
 
@@ -416,7 +466,7 @@ public class DefaultValidator_ComputeHJDInputDataTest {
     }
 
     @Test
-    public void testValidate_ComputeHJDInputData_ValidInputData() throws Exception {
+    public void testValidate_ComputeHJDInputData_Valid() throws Exception {
         ComputeHJDInputData chjdid1 = new ComputeHJDInputData("DATETIME", 12.45,
                 new TimeObject(12, 14.36, 23), new DegreesObject(0, 25, 89.12), "comment", _fitsFiles);
         ComputeHJDInputData chjdid2 = new ComputeHJDInputData(LocalDateTime.of(2014, 5, 5, 12, 34, 56), "EXPOSURE",

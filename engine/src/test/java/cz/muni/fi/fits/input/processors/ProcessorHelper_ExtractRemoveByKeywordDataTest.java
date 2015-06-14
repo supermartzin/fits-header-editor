@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractRemoveByKeywordDataTest {
 
@@ -40,7 +40,7 @@ public class ProcessorHelper_ExtractRemoveByKeywordDataTest {
     }
 
     @Test
-    public void testExtractRemoveByKeywordData_WrongNumberOfParameters() throws Exception {
+    public void testExtractRemoveByKeywordData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "remove", FILE_PATH.toString(), "KEYWORD", "ARG1", "ARG2" };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -48,7 +48,7 @@ public class ProcessorHelper_ExtractRemoveByKeywordDataTest {
     }
 
     @Test
-    public void testExtractRemoveByKeywordData_Keyword() throws Exception {
+    public void testExtractRemoveByKeywordData_Keyword_Valid() throws Exception {
         String[] args = new String[] { "remove", FILE_PATH.toString(), "remove this keyWORD" };
 
         RemoveByKeywordInputData rbkid = CmdArgumentsProcessorHelper.extractRemoveByKeywordData(args);

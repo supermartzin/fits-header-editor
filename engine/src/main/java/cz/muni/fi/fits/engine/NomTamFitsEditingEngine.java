@@ -35,11 +35,11 @@ import java.util.LinkedList;
 /**
  * Editing engine class implementing {@link HeaderEditingEngine} interface
  * that uses external library <b>nom.tam.fits</b>, available as open source
- * on GitHub:
- * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">Project pages</a>
+ * on GitHub
+ * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">nom.tam.fits - Project pages</a>
  *
  * @author Martin Vrábel
- * @version 1.4
+ * @version 1.4.1
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
@@ -116,7 +116,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 iterator.end();
 
                 // insert new header card
-                iterator.add(keyword, card);
+                iterator.add(card);
             }
 
             // write changes back to file
@@ -224,7 +224,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             }
 
             // insert new card
-            iterator.add(keyword, card);
+            iterator.add(card);
 
             // write changes back to file
             BufferedFile bf = new BufferedFile(fitsFile, "rw");
@@ -525,7 +525,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     iterator.end();
 
                     // insert new header card
-                    iterator.add(keyword, card);
+                    iterator.add(card);
                 }
             }
 
@@ -638,7 +638,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 iterator.end();
 
                 // insert new header card
-                iterator.add(keyword, new HeaderCard(keyword, value, comment));
+                iterator.add(new HeaderCard(keyword, value, comment));
             }
 
             // write changes back to file
@@ -899,7 +899,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             } else {
                 Cursor<String, HeaderCard> iterator = header.iterator();
                 iterator.end();
-                iterator.add(Constants.DEFAULT_JD_KEYWORD, jdCard);
+                iterator.add(jdCard);
             }
 
             // write changes back to file
@@ -1132,7 +1132,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 // save to header as new record
                 Cursor<String, HeaderCard> iterator = header.iterator();
                 iterator.end();
-                iterator.add(Constants.DEFAULT_HJD_KEYWORD, hjdCard);
+                iterator.add(hjdCard);
             } else {
                 // update existing record in header
                 header.updateLine(Constants.DEFAULT_HJD_KEYWORD, hjdCard);
@@ -1173,7 +1173,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 else {
                     Cursor<String, HeaderCard> iterator = header.iterator();
                     iterator.end();
-                    iterator.add(Constants.DEFAULT_RA_KEYWORD, raCard);
+                    iterator.add(raCard);
                 }
             }
 
@@ -1211,7 +1211,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 else {
                     Cursor<String, HeaderCard> iterator = header.iterator();
                     iterator.end();
-                    iterator.add(Constants.DEFAULT_DEC_KEYWORD, decCard);
+                    iterator.add(decCard);
                 }
             }
 

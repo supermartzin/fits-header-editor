@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
  * time data to its baseform
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public class RightAscensionParamsConverterTest {
 
@@ -21,7 +21,7 @@ public class RightAscensionParamsConverterTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testConversion_HoursNaN() throws Exception {
+    public void testConversion_Hours_NotANumber() throws Exception {
         double hours = Double.NaN;
         double minutes = 12.35;
         double seconds = 45.63;
@@ -31,7 +31,7 @@ public class RightAscensionParamsConverterTest {
     }
 
     @Test
-    public void testConversion_MinutesNaN() throws Exception {
+    public void testConversion_Minutes_NotANumber() throws Exception {
         double hours = 12.47;
         double minutes = Double.NaN;
         double seconds = 3.259;
@@ -41,7 +41,7 @@ public class RightAscensionParamsConverterTest {
     }
 
     @Test
-    public void testConversion_SecondsNaN() throws Exception {
+    public void testConversion_Seconds_NotANumber() throws Exception {
         double hours = -42.86;
         double minutes = 11.4;
         double seconds = Double.NaN;
@@ -93,7 +93,7 @@ public class RightAscensionParamsConverterTest {
     }
 
     @Test
-    public void testConversion_TimeObject() throws Exception {
+    public void testConversion_TimeObject_Valid() throws Exception {
         double hours = -12.58;
         double minutes = 1.95;
         double seconds = 1.2;

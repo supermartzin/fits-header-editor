@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * for parsing Date and Time values from {@link String}
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DateTimeParserTest {
 
@@ -24,7 +24,7 @@ public class DateTimeParserTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testTryParseLocalDateTimeFormatter_ValueNull() throws Exception {
+    public void testTryParseLocalDateTimeFormatter_Value_Null() throws Exception {
         String value = null;
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateTimeFormatter(value);
@@ -33,7 +33,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalDateTimeFormatter_CorrectValue() throws Exception {
+    public void testTryParseLocalDateTimeFormatter_Value_Valid() throws Exception {
         String value = "2012-05-12T15:42:56.789";
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateTimeFormatter(value);
@@ -43,7 +43,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalDateTimeFormatter_IncorrectValue() throws Exception {
+    public void testTryParseLocalDateTimeFormatter_Value_NonParsable() throws Exception {
         String value = "2012.05.12'T'15.42.56.789";
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateTimeFormatter(value);
@@ -52,7 +52,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalDateFormatter_ValueNull() throws Exception {
+    public void testTryParseLocalDateFormatter_Value_Null() throws Exception {
         String value = null;
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateFormatter(value);
@@ -61,7 +61,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalDateFormatter_CorrectValue() throws Exception {
+    public void testTryParseLocalDateFormatter_Value_Parsable() throws Exception {
         String value = "2015-03-28";
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateFormatter(value);
@@ -71,7 +71,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalDateFormatter_IncorrectValue() throws Exception {
+    public void testTryParseLocalDateFormatter_Value_NonParsable() throws Exception {
         String value = "2015/3/008";
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateFormatter(value);
@@ -80,7 +80,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalTimeFormatter_ValueNull() throws Exception {
+    public void testTryParseLocalTimeFormatter_Value_Null() throws Exception {
         String value = null;
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalTimeFormatter(value);
@@ -89,7 +89,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalTimeFormatter_CorrectValue() throws Exception {
+    public void testTryParseLocalTimeFormatter_Value_Parsable() throws Exception {
         String value = "23:59:59.999";
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalTimeFormatter(value);
@@ -99,7 +99,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testTryParseLocalTimeFormatter_IncorrectValue() throws Exception {
+    public void testTryParseLocalTimeFormatter_Value_NonParsable() throws Exception {
         String value = "48:69:69.999";
 
         DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalTimeFormatter(value);
@@ -108,7 +108,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDateTime_ValueNull() throws Exception {
+    public void testParseLocalDateTime_Value_Null() throws Exception {
         String value = null;
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
@@ -118,7 +118,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDateTime_FormatterNull() throws Exception {
+    public void testParseLocalDateTime_Formatter_Null() throws Exception {
         String value = "2015-03-02T23:12:13.140";
         DateTimeFormatter formatter = null;
 
@@ -127,7 +127,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDateTime_CorrectValue() throws Exception {
+    public void testParseLocalDateTime_Value_Parsable() throws Exception {
         String value = "2015-03-02T23:12:13.140";
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
@@ -138,7 +138,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDateTime_IncorrectValue() throws Exception {
+    public void testParseLocalDateTime_Value_NonParsable() throws Exception {
         String value = "2015/03/02'T'48:12:13.140";
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
@@ -148,7 +148,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDate_ValueNull() throws Exception {
+    public void testParseLocalDate_Value_Null() throws Exception {
         String value = null;
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -158,7 +158,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDate_FormatterNull() throws Exception {
+    public void testParseLocalDate_Formatter_Null() throws Exception {
         String value = "2015-11-23";
         DateTimeFormatter formatter = null;
 
@@ -167,7 +167,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDate_CorrectValue() throws Exception {
+    public void testParseLocalDate_Value_Parsable() throws Exception {
         String value = "2015-11-23";
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -178,7 +178,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalDate_IncorrectValue() throws Exception {
+    public void testParseLocalDate_Value_NonParsable() throws Exception {
         String value = "2015/11/23";
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -188,7 +188,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalTime_ValueNull() throws Exception {
+    public void testParseLocalTime_Value_Null() throws Exception {
         String value = null;
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 
@@ -198,7 +198,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalTime_FormatterNull() throws Exception {
+    public void testParseLocalTime_Formatter_Null() throws Exception {
         String value = "12:34:56.789";
         DateTimeFormatter formatter = null;
 
@@ -207,7 +207,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalTime_CorrectValue() throws Exception {
+    public void testParseLocalTime_Value_Parsable() throws Exception {
         String value = "12:34:56.789";
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 
@@ -218,7 +218,7 @@ public class DateTimeParserTest {
     }
 
     @Test
-    public void testParseLocalTime_IncorrectValue() throws Exception {
+    public void testParseLocalTime_Value_NonParsable() throws Exception {
         String value = "12.94.56:789";
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 

@@ -7,24 +7,24 @@ import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
 import cz.muni.fi.fits.models.inputData.*;
+import cz.muni.fi.fits.utils.FileUtils;
 import cz.muni.fi.fits.utils.Tuple;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.stream.Stream;
 
 /**
  * Internal class used as helper for {@link CmdArgumentsProcessor} class
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.3.5
+ * @version 1.4
  */
 final class CmdArgumentsProcessorHelper {
 
@@ -32,9 +32,9 @@ final class CmdArgumentsProcessorHelper {
      * Extracts files or paths to files for processing and return them as a collection of unique {@link File} objects.
      * If path does not exist it's skipped
      *
-     * @param path                          path to input file or directory where the files are specified
-     * @return                              unmodifiable collection of unique {@link File} objects representing extracted files
-     * @throws IllegalInputDataException    when input file or directory is in invalid form
+     * @param path path to input file or directory where the files are specified
+     * @return unmodifiable collection of unique {@link File} objects representing extracted files
+     * @throws IllegalInputDataException when input file or directory is in invalid form
      */
     static Collection<File> extractFilesData(String path) throws IllegalInputDataException {
         if (path == null)
@@ -42,16 +42,30 @@ final class CmdArgumentsProcessorHelper {
 
         Collection<File> fitsFiles = new HashSet<>();
 
-        boolean isFile = true;
-        // check whether it is a file or directory
-        File inputFile = new File(path);
-        if (!inputFile.exists())
-            throw new IllegalInputDataException("Input file or directory '" + path + "' does not exist");
-        if (inputFile.isDirectory()) isFile = false;
+        // check for path validity
+        if (!FileUtils.isValidPath(path))
+            throw new IllegalInputDataException("Entered input path '" + path + "' is not valid");
 
-        if (isFile) {
+        Path _path = Paths.get(path);
+
+        // check for symbolic link
+        if (FileUtils.isSymbolicLink(_path)) {
+            _path = FileUtils.readSymbolicLink(_path);
+
+            if (_path == null)
+                throw new IllegalInputDataException("Error resolving symbolic link provided as input file");
+        }
+
+        if (!Files.exists(_path))
+            throw new IllegalInputDataException("Input file or directory '" + path + "' does not exist");
+
+        // check for Windows shortcuts (.lnk)
+        if (FileUtils.isWindowsShorcut(_path))
+            throw new IllegalInputDataException("Windows shortcut link is not supported");
+
+        if (Files.isRegularFile(_path)) {
             // read paths to FITS files
-            try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(_path.toFile()), "UTF-8"))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     line = line.trim();
@@ -59,17 +73,40 @@ final class CmdArgumentsProcessorHelper {
                     // ignore commented lines
                     if (line.startsWith("#")) continue;
 
-                    File fitsFile = new File(line);
+                    // check for path validity
+                    if (!FileUtils.isValidPath(line)) continue;
+
+                    Path linePath = Paths.get(line);
+
+                    // resolve symbolic links
+                    if (FileUtils.isSymbolicLink(linePath)) {
+                        linePath = FileUtils.readSymbolicLink(linePath);
+
+                        if (linePath == null) continue;
+                    }
+
+                    // check Windows shortcut
+                    if (FileUtils.isWindowsShorcut(linePath)) continue;
+
                     // check if file or directory
-                    if (Files.isRegularFile(fitsFile.toPath())) {
+                    if (Files.isRegularFile(linePath)) {
                         // add file directly
-                        fitsFiles.add(fitsFile);
-                    } else if (Files.isDirectory(fitsFile.toPath())) {
+                        fitsFiles.add(linePath.toFile());
+                    } else if (Files.isDirectory(linePath)) {
                         // load all files in directory
-                        Files.walk(fitsFile.toPath(), 1).forEach(file -> {
-                            if (Files.isRegularFile(file))
-                                fitsFiles.add(new File(file.toUri()));
-                        });
+                        try (Stream<Path> stream = Files.walk(linePath, 1, FileVisitOption.FOLLOW_LINKS)) {
+                            stream.forEach(file -> {
+                                // resolve symbolic links
+                                if (FileUtils.isSymbolicLink(file))
+                                    file = FileUtils.readSymbolicLink(file);
+
+                                // add file if valid
+                                if (file != null
+                                        && !FileUtils.isWindowsShorcut(file)
+                                        && Files.isRegularFile(file))
+                                    fitsFiles.add(new File(file.toUri()));
+                            });
+                        }
                     }
                 }
             } catch (FileNotFoundException fnfEx) {
@@ -77,20 +114,27 @@ final class CmdArgumentsProcessorHelper {
             } catch (IOException ioEx) {
                 throw new IllegalInputDataException("Error reading input file '" + path + "'", ioEx);
             }
-        } else {
+        } else if (Files.isDirectory(_path)) {
             // read files in directory
-            try {
-                Files.walk(Paths.get(path), 1).forEach(filePath -> {
-                    if (Files.isRegularFile(filePath))
-                        fitsFiles.add(new File(filePath.toUri()));
+            try (Stream<Path> stream = Files.walk(_path, 1, FileVisitOption.FOLLOW_LINKS)) {
+                stream.forEach(file -> {
+                    // resolve symbolic links
+                    if (FileUtils.isSymbolicLink(file))
+                        file = FileUtils.readSymbolicLink(file);
+
+                    // add file if valid
+                    if (file != null
+                            && !FileUtils.isWindowsShorcut(file)
+                            && Files.isRegularFile(file))
+                        fitsFiles.add(new File(file.toUri()));
                 });
             } catch (IOException ioEx) {
                 throw new IllegalInputDataException("Error reading input directory with files", ioEx);
-            } catch (InvalidPathException ipEx) {
-                throw new IllegalInputDataException("Path to input directory is invalid", ipEx);
             } catch (SecurityException sEx) {
                 throw new IllegalInputDataException("Cannot access input directory - insufficient permissions", sEx);
             }
+        } else {
+            throw new IllegalInputDataException("Entered path '" + path + "' is not valid file or directory");
         }
 
         return Collections.unmodifiableCollection(fitsFiles);
@@ -99,10 +143,10 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Add new record</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @param converter                     {@link TypeConverter} object used to convert type of value in new record
-     * @return                              {@link AddNewRecordInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs   commandline arguments containing specific input data
+     * @param converter {@link TypeConverter} object used to convert type of value in new record
+     * @return {@link AddNewRecordInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static AddNewRecordInputData extractAddNewRecordData(String[] cmdArgs, TypeConverter converter) throws IllegalInputDataException {
         // get switch (optional)
@@ -132,22 +176,22 @@ final class CmdArgumentsProcessorHelper {
         // integer
         if (converter.tryParseInt(strValue))
             value = converter.parseInt(strValue);
-        // long
+            // long
         else if (converter.tryParseLong(strValue))
             value = converter.parseLong(strValue);
-        // BigInteger
+            // BigInteger
         else if (converter.tryParseBigInteger(strValue))
             value = converter.parseBigInteger(strValue);
-        // double
+            // double
         else if (converter.tryParseDouble(strValue))
             value = converter.parseDouble(strValue);
-        // BigDecimal
+            // BigDecimal
         else if (converter.tryParseBigDecimal(strValue))
             value = converter.parseBigDecimal(strValue);
-        // boolean
+            // boolean
         else if (converter.tryParseBoolean(strValue))
             value = converter.parseBoolean(strValue);
-        // String
+            // String
         else
             value = strValue;
 
@@ -164,15 +208,15 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Add new record to specific index</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @param converter                     {@link TypeConverter} object used to convert type of value in new record
-     * @return                              {@link AddNewToIndexInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs   commandline arguments containing specific input data
+     * @param converter {@link TypeConverter} object used to convert type of value in new record
+     * @return {@link AddNewToIndexInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static AddNewToIndexInputData extractAddNewToIndexData(String[] cmdArgs, TypeConverter converter) throws IllegalInputDataException {
         // get switch (optional)
         boolean removeOldIfExists = false;
-        String switchParam  = cmdArgs[1].toLowerCase().trim();
+        String switchParam = cmdArgs[1].toLowerCase().trim();
         if (switchParam.startsWith("-")) {
             if (switchParam.equals("-rm"))
                 removeOldIfExists = true;
@@ -206,22 +250,22 @@ final class CmdArgumentsProcessorHelper {
         // integer
         if (converter.tryParseInt(strValue))
             value = converter.parseInt(strValue);
-        // long
+            // long
         else if (converter.tryParseLong(strValue))
             value = converter.parseLong(strValue);
-        // BigInteger
+            // BigInteger
         else if (converter.tryParseBigInteger(strValue))
             value = converter.parseBigInteger(strValue);
-        // double
+            // double
         else if (converter.tryParseDouble(strValue))
             value = converter.parseDouble(strValue);
-        // BigDecimal
+            // BigDecimal
         else if (converter.tryParseBigDecimal(strValue))
             value = converter.parseBigDecimal(strValue);
-        // boolean
+            // boolean
         else if (converter.tryParseBoolean(strValue))
             value = converter.parseBoolean(strValue);
-        // String
+            // String
         else
             value = strValue;
 
@@ -238,8 +282,8 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Remove record by keyword</b>
      *
-     * @param cmdArgs                           commandline arguments containing specific input data
-     * @return                                  {@link RemoveByKeywordInputData} object with input data
+     * @param cmdArgs commandline arguments containing specific input data
+     * @return {@link RemoveByKeywordInputData} object with input data
      * @throws WrongNumberOfParametersException when input data are in invalid form
      */
     static RemoveByKeywordInputData extractRemoveByKeywordData(String[] cmdArgs) throws WrongNumberOfParametersException {
@@ -255,9 +299,9 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Remove record from specific index</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @return                              {@link RemoveFromIndexInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs commandline arguments containing specific input data
+     * @return {@link RemoveFromIndexInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static RemoveFromIndexInputData extractRemoveFromIndexData(String[] cmdArgs) throws IllegalInputDataException {
         if (cmdArgs.length != 3)
@@ -278,8 +322,8 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Change keyword of record</b>
      *
-     * @param cmdArgs                           commandline arguments containing specific input data
-     * @return                                  {@link ChangeKeywordInputData} object with input data
+     * @param cmdArgs commandline arguments containing specific input data
+     * @return {@link ChangeKeywordInputData} object with input data
      * @throws WrongNumberOfParametersException when number of provided arguments is not sufficient
      * @throws InvalidSwitchParameterException  when switch argument is in invalid form
      */
@@ -314,9 +358,9 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Change keyword of record</b>
      *
-     * @param cmdArgs                           commandline arguments containing specific input data
-     * @param converter                         {@link TypeConverter} object used to convert type of new value in record to change
-     * @return                                  {@link ChangeValueByKeywordInputData} object with input data
+     * @param cmdArgs   commandline arguments containing specific input data
+     * @param converter {@link TypeConverter} object used to convert type of new value in record to change
+     * @return {@link ChangeValueByKeywordInputData} object with input data
      * @throws WrongNumberOfParametersException when number of provided arguments is not sufficient
      * @throws InvalidSwitchParameterException  when switch argument is in invalid form
      */
@@ -348,22 +392,22 @@ final class CmdArgumentsProcessorHelper {
         // integer
         if (converter.tryParseInt(strValue))
             value = converter.parseInt(strValue);
-        // long
+            // long
         else if (converter.tryParseLong(strValue))
             value = converter.parseLong(strValue);
-        // BigInteger
+            // BigInteger
         else if (converter.tryParseBigInteger(strValue))
             value = converter.parseBigInteger(strValue);
-        // double
+            // double
         else if (converter.tryParseDouble(strValue))
             value = converter.parseDouble(strValue);
-        // BigDecimal
+            // BigDecimal
         else if (converter.tryParseBigDecimal(strValue))
             value = converter.parseBigDecimal(strValue);
-        // boolean
+            // boolean
         else if (converter.tryParseBoolean(strValue))
             value = converter.parseBoolean(strValue);
-        // String
+            // String
         else
             value = strValue;
 
@@ -374,15 +418,15 @@ final class CmdArgumentsProcessorHelper {
         else if (addNewIfNotExists && cmdArgs.length == 6)
             comment = cmdArgs[5].trim();
 
-        return new ChangeValueByKeywordInputData(keyword, value, comment,addNewIfNotExists);
+        return new ChangeValueByKeywordInputData(keyword, value, comment, addNewIfNotExists);
     }
 
     /**
      * Extracts input data for operation <b>Chain multiple records</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @return                              {@link ChainRecordsInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs commandline arguments containing specific input data
+     * @return {@link ChainRecordsInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static ChainRecordsInputData extractChainRecordsData(String[] cmdArgs) throws IllegalInputDataException {
         // get switches (optional)
@@ -482,10 +526,10 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Shift time of time record</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @param converter                     {@link TypeConverter} object used to convert {@link String} time value to {@link Integer} value
-     * @return                              {@link ShiftTimeInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs   commandline arguments containing specific input data
+     * @param converter {@link TypeConverter} object used to convert {@link String} time value to {@link Integer} value
+     * @return {@link ShiftTimeInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static ShiftTimeInputData extractShiftTimeData(String[] cmdArgs, TypeConverter converter) throws IllegalInputDataException {
         if (cmdArgs.length < 4 || cmdArgs.length > 10)
@@ -575,10 +619,10 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Compute Julian Date</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @param converter                     {@link TypeConverter} object used to convert {@link String} input parameters to specific value types
-     * @return                              {@link ComputeJDInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs   commandline arguments containing specific input data
+     * @param converter {@link TypeConverter} object used to convert {@link String} input parameters to specific value types
+     * @return {@link ComputeJDInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static ComputeJDInputData extractComputeJDData(String[] cmdArgs, TypeConverter converter) throws IllegalInputDataException {
         if (cmdArgs.length < 4 || cmdArgs.length > 5)
@@ -614,13 +658,13 @@ final class CmdArgumentsProcessorHelper {
         // datetime == keyword && exposure = keyword
         if (datetimeKeyword != null && exposureKeyword != null)
             return new ComputeJDInputData(datetimeKeyword, exposureKeyword, comment);
-        // datetime == value && exposure == keyword
+            // datetime == value && exposure == keyword
         else if (datetimeValue != null && exposureKeyword != null)
             return new ComputeJDInputData(datetimeValue, exposureKeyword, comment);
-        // datetime == keyword && exposure == value
+            // datetime == keyword && exposure == value
         else if (datetimeKeyword != null && !Double.isNaN(exposureValue))
             return new ComputeJDInputData(datetimeKeyword, exposureValue, comment);
-        // datetime == value && exposure == value
+            // datetime == value && exposure == value
         else
             return new ComputeJDInputData(datetimeValue, exposureValue, comment);
     }
@@ -628,10 +672,10 @@ final class CmdArgumentsProcessorHelper {
     /**
      * Extracts input data for operation <b>Compute Heliocentric Julian Date</b>
      *
-     * @param cmdArgs                       commandline arguments containing specific input data
-     * @param converter                     {@link TypeConverter} object used to convert {@link String} input parameters to specific value types
-     * @return                              {@link ComputeHJDInputData} object with input data
-     * @throws IllegalInputDataException    when input data are in invalid form
+     * @param cmdArgs   commandline arguments containing specific input data
+     * @param converter {@link TypeConverter} object used to convert {@link String} input parameters to specific value types
+     * @return {@link ComputeHJDInputData} object with input data
+     * @throws IllegalInputDataException when input data are in invalid form
      */
     static ComputeHJDInputData extractComputeHJDData(String[] cmdArgs, TypeConverter converter) throws IllegalInputDataException {
         if (cmdArgs.length < 6 || cmdArgs.length > 7)

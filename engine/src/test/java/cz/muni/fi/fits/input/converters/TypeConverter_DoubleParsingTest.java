@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * in {@link DefaultTypeConverter} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class TypeConverter_DoubleParsingTest {
 
@@ -37,7 +37,7 @@ public class TypeConverter_DoubleParsingTest {
 
 
     @Test
-    public void testTryParseDouble_NullValue() throws Exception {
+    public void testTryParseDouble_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -45,7 +45,7 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testParseDouble_NullValue() throws Exception {
+    public void testParseDouble_Value_Null() throws Exception {
         String value = null;
 
         exception.expect(IllegalArgumentException.class);
@@ -53,14 +53,14 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testTryParseDouble_EmptyValue() throws Exception {
+    public void testTryParseDouble_Value_Empty() throws Exception {
         String value = "";
 
         assertFalse(_converter.tryParseDouble(value));
     }
 
     @Test
-    public void testParseDouble_EmptyValue() throws Exception {
+    public void testParseDouble_Value_Empty() throws Exception {
         String value = "";
 
         exception.expect(ParseException.class);
@@ -68,14 +68,14 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testTryParseDouble_TooBigValue() throws Exception {
+    public void testTryParseDouble_Value_TooBig() throws Exception {
         String value = "2514.5689E985";
 
         assertFalse(_converter.tryParseDouble(value));
     }
 
     @Test
-    public void testParseDouble_TooBigValue() throws Exception {
+    public void testParseDouble_Value_TooBig() throws Exception {
         String value = "2514.5689E985";
 
         exception.expect(ParseException.class);
@@ -83,7 +83,7 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testTryParseDouble_IncorrectValues() throws Exception {
+    public void testTryParseDouble_Values_NonParsable() throws Exception {
         String value1 = "+-258749654511";
         String value2 = "258749654.511.2";
         String value3 = "258749654511abd";
@@ -96,7 +96,7 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testParseDouble_IncorrectValue() throws Exception {
+    public void testParseDouble_Value_NonParsable() throws Exception {
         String value = "+-258749654511";
 
         exception.expect(ParseException.class);
@@ -104,7 +104,7 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testTryParseDouble_CorrectValues() throws Exception {
+    public void testTryParseDouble_Values_Parsable() throws Exception {
         String value1 = "+258749654511";
         String value2 = "-258749654.511";
         String value3 = "2.58749654511E25";
@@ -117,7 +117,7 @@ public class TypeConverter_DoubleParsingTest {
     }
 
     @Test
-    public void testParseDouble_CorrectValues() throws Exception {
+    public void testParseDouble_Values_Parsable() throws Exception {
         String value1 = "+258749654511";
         String value2 = "-258749654.511";
         String value3 = "2.58749654511E25";

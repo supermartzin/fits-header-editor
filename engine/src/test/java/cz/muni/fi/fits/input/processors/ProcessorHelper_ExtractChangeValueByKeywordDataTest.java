@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
 
@@ -46,7 +46,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_WrongNumberOfParameters() throws Exception {
+    public void testExtractChangeValueByKeywordData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "change", FILE_PATH.toString(), "KEYWORD", "VALUE", "COMMENT", "REDUNDANT_ARG" };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -54,7 +54,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_NoSwitchParameter() throws Exception {
+    public void testExtractChangeValueByKeywordData_SwitchParameter_False() throws Exception {
         String[] args = new String[] { "change", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         ChangeValueByKeywordInputData cvbkid = CmdArgumentsProcessorHelper.extractChangeValueByKeywordData(args, _converter);
@@ -63,7 +63,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_WrongSwitchParameter() throws Exception {
+    public void testExtractChangeValueByKeywordData_SwitchParameter_WrongFormat() throws Exception {
         String[] args = new String[] { "change", "-add", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         exception.expect(InvalidSwitchParameterException.class);
@@ -71,7 +71,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_ValidSwitchParameter() throws Exception {
+    public void testExtractChangeValueByKeywordData_SwitchParameter_Valid() throws Exception {
         String[] args = new String[] { "change", "-a", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         ChangeValueByKeywordInputData cvbkid = CmdArgumentsProcessorHelper.extractChangeValueByKeywordData(args, _converter);
@@ -80,7 +80,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_Keyword() throws Exception {
+    public void testExtractChangeValueByKeywordData_Keyword_Valid() throws Exception {
         String[] args = new String[] { "change", "-a", FILE_PATH.toString(), "KEYword", "VALUE" };
 
         ChangeValueByKeywordInputData cvbkid = CmdArgumentsProcessorHelper.extractChangeValueByKeywordData(args, _converter);
@@ -89,7 +89,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_ContainsComment() throws Exception {
+    public void testExtractChangeValueByKeywordData_Comment_PresentInData() throws Exception {
         String[] args = new String[] { "change", "-a", FILE_PATH.toString(), "KEYWORD", "VALUE", "comment" };
 
         ChangeValueByKeywordInputData cvbkid = CmdArgumentsProcessorHelper.extractChangeValueByKeywordData(args, _converter);
@@ -99,7 +99,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_DoesNotContainComment() throws Exception {
+    public void testExtractChangeValueByKeywordData_Comment_NotInData() throws Exception {
         String[] args = new String[] { "change", "-a", FILE_PATH.toString(), "KEYWORD", "VALUE" };
 
         ChangeValueByKeywordInputData cvbkid = CmdArgumentsProcessorHelper.extractChangeValueByKeywordData(args, _converter);
@@ -108,7 +108,7 @@ public class ProcessorHelper_ExtractChangeValueByKeywordDataTest {
     }
 
     @Test
-    public void testExtractChangeValueByKeywordData_CorrectParameters() throws Exception {
+    public void testExtractChangeValueByKeywordData_Parameters_Valid() throws Exception {
         String[] args = new String[] { "change", FILE_PATH.toString(), "KEYWord", "VALUE", "COMMENT" };
 
         ChangeValueByKeywordInputData cvbkid = CmdArgumentsProcessorHelper.extractChangeValueByKeywordData(args, _converter);

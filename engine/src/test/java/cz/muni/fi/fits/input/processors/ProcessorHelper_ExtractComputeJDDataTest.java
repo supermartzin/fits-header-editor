@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.2
  */
 public class ProcessorHelper_ExtractComputeJDDataTest {
 
@@ -47,7 +47,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_WrongNumberOfParameters() throws Exception {
+    public void testExtractComputeJDData_Parameters_WrongNumber() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "DATETIME" };
 
         exception.expect(WrongNumberOfParametersException.class);
@@ -55,7 +55,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_LocalDateTimeDatetimeParameter() throws Exception {
+    public void testExtractComputeJDData_DatetimeParameter_LocalDateTime() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "2015-05-08T12:34:56", "EXPOSURE", "comment" };
 
         ComputeJDInputData cjdid = CmdArgumentsProcessorHelper.extractComputeJDData(args, _converter);
@@ -64,7 +64,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_StringDatetimeKeyword() throws Exception {
+    public void testExtractComputeJDData_DatetimeKeyword_String() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "DATEtime", "exposure" };
 
         ComputeJDInputData cjdid = CmdArgumentsProcessorHelper.extractComputeJDData(args, _converter);
@@ -73,7 +73,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_DoubleExposureParameter() throws Exception {
+    public void testExtractComputeJDData_ExposureParameter_Double() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "2015-05-08T12:34:56", "25.45", "comment" };
 
         ComputeJDInputData cjdid = CmdArgumentsProcessorHelper.extractComputeJDData(args, _converter);
@@ -82,7 +82,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_StringExposureKeyword() throws Exception {
+    public void testExtractComputeJDData_ExposureKeyword_String() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "DATETIME", "expoSURE" };
 
         ComputeJDInputData cjdid = CmdArgumentsProcessorHelper.extractComputeJDData(args, _converter);
@@ -91,7 +91,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_ContainsComment() throws Exception {
+    public void testExtractComputeJDData_Comment_PresentInData() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "DATETIME", "expoSURE", "comment" };
 
         ComputeJDInputData cjdid = CmdArgumentsProcessorHelper.extractComputeJDData(args, _converter);
@@ -101,7 +101,7 @@ public class ProcessorHelper_ExtractComputeJDDataTest {
     }
 
     @Test
-    public void testExtractComputeJDData_DefaultComment() throws Exception {
+    public void testExtractComputeJDData_Comment_Default() throws Exception {
         String[] args = new String[] { "jd", FILE_PATH.toString(), "DATETIME", "expoSURE" };
 
         ComputeJDInputData cjdid = CmdArgumentsProcessorHelper.extractComputeJDData(args, _converter);

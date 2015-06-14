@@ -17,7 +17,7 @@ import java.util.HashSet;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class DefaultValidator_ChangeKeywordInputDataTest {
 
@@ -43,7 +43,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_NullFitsFiles() throws Exception {
+    public void testValidate_ChangeKeywordInputData_FitsFiles_Null() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW", "NEW_KW", false, null);
 
         exception.expect(ValidationException.class);
@@ -52,7 +52,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_NoFitsFiles() throws Exception {
+    public void testValidate_ChangeKeywordInputData_FitsFiles_Empty() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW", "NEW_KW", false, new HashSet<>());
 
         exception.expect(ValidationException.class);
@@ -61,7 +61,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_NullOldKeyword() throws Exception {
+    public void testValidate_ChangeKeywordInputData_OldKeyword_Null() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData(null, "NEW_KW", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -70,7 +70,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_EmptyOldKeyword() throws Exception {
+    public void testValidate_ChangeKeywordInputData_OldKeyword_Empty() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("", "NEW_KW", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -79,7 +79,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_OldKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ChangeKeywordInputData_OldKeyword_WithInvalidChars() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW*", "NEW_KW", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -88,7 +88,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_TooLongOldKeyword() throws Exception {
+    public void testValidate_ChangeKeywordInputData_OldKeyword_TooLong() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("TOO_LONG_OLD_KEYWORD", "NEW_KW", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -97,7 +97,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_NullNewKeyword() throws Exception {
+    public void testValidate_ChangeKeywordInputData_NewKeyword_Null() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW", null, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -106,7 +106,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_EmptyNewKeyword() throws Exception {
+    public void testValidate_ChangeKeywordInputData_NewKeyword_Empty() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW", "", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -115,7 +115,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_NewKeywordWithInvalidChars() throws Exception {
+    public void testValidate_ChangeKeywordInputData_NewKeyword_WithInvalidChars() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW", "NEW_KW*", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -124,7 +124,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_TooLongNewKeyword() throws Exception {
+    public void testValidate_ChangeKeywordInputData_NewKeyword_TooLong() throws Exception {
         ChangeKeywordInputData ckid = new ChangeKeywordInputData("OLD_KW", "TOO_LONG_NEW_KEYWORD", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -133,7 +133,7 @@ public class DefaultValidator_ChangeKeywordInputDataTest {
     }
 
     @Test
-    public void testValidate_ChangeKeywordInputData_ValidInputData() throws Exception {
+    public void testValidate_ChangeKeywordInputData_Valid() throws Exception {
         ChangeKeywordInputData ckid1 = new ChangeKeywordInputData("OLD_KW", "NEW_KW", false, _fitsFiles);
         ChangeKeywordInputData ckid2 = new ChangeKeywordInputData("OLD", "NEW", true, _fitsFiles);
 
