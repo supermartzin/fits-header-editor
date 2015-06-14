@@ -118,7 +118,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                            <outputDirectory>${basedir}/target</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>src/main/resources</directory>

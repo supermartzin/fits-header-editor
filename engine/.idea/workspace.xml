@@ -10,59 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/sample1.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/sample2.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/sample3.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/test-directory2/sample4.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/test-directory2/sample5.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/test-directory3/sample6.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/test-directory3/nested-test-directory/sample7.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/test-directory4/sample9.fits" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/shortcut.lnk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/test-directory4/shortcut.lnk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/﴾šťčßØæ₡ščžť®¶﴿.fits" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/DateTimeParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/DateTimeParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewToIndexInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewToIndexInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChainRecordsInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChainRecordsInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeKeywordInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeKeywordInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeValueByKeywordInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeValueByKeywordInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeHJDInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeJDInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ComputeJDInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_RemoveByKeywordInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_RemoveByKeywordInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_RemoveFromIndexInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_RemoveFromIndexInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ShiftTimeInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ShiftTimeInputDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FITS-HeaderEditor.iml" afterPath="$PROJECT_DIR$/FITS-HeaderEditor.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/HeliocentricJulianDateTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/JulianDateTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/MandatoryFITSKeywordsTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/MandatoryFITSKeywordsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__gov_nasa_gsfc_heasarc_nom_tam_fits_1_12_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__gov_nasa_gsfc_heasarc_nom_tam_fits_1_12_1_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractAddNewRecordDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractAddNewRecordDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractAddNewToIndexDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractAddNewToIndexDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChainRecordsDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChainRecordsDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChangeKeywordDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChangeKeywordDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChangeValueByKeywordDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractChangeValueByKeywordDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeHJDDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeJDDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractComputeJDDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByIndexDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByIndexDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByKeywordDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractRemoveByKeywordDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractShiftTimeDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractShiftTimeDataTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/RightAscensionTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BigDecimalParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BigDecimalParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BigIntegerParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BigIntegerParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BooleanParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_BooleanParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_DoubleParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_IntegerParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_IntegerParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_LocalDateTimeParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_LocalDateTimeParsingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_LongParsingTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/converters/TypeConverter_LongParsingTest.java" />
+      <change type="DELETED" beforePath="D:\Projekty\Bakalárka\FITSHeaderEditor\engine\src\test\resources\test-directory1\File for GIT to include this empty directory" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -128,8 +76,8 @@
       <file leaf-file-name="ApplicationInitializer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30357143">
-              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.89799637">
+              <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -139,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              <caret line="115" column="39" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -216,13 +164,13 @@
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
         <option value="$PROJECT_DIR$/files.in" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/FileUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/ProcessorHelper_ExtractFilesDataTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -471,116 +419,6 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="input" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="validators" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FITS Header Editor Tool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="input" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FITS Header Editor Tool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FITS Header Editor Tool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -732,7 +570,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="968" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="dynamic.classpath" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3816092" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -759,7 +597,7 @@
       <recent name="cz.muni.fi.fits.input.converters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All Tests">
+  <component name="RunManager" selected="Maven.FITS-HeaderEditor [package]">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -1234,12 +1072,12 @@
       <workItem from="1433404200494" duration="828000" />
       <workItem from="1434275332092" duration="6176000" />
       <workItem from="1434283466514" duration="489000" />
-      <workItem from="1434284021058" duration="15954000" />
+      <workItem from="1434284021058" duration="17285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="702244000" />
+    <option name="totallyTimeSpent" value="703575000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1716,14 +1554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/FITSHeaderEditor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18973215">
@@ -1769,10 +1599,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="39" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30357143">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.89799637">
+          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1836,6 +1674,7 @@
             <option name="proportions">
               <list>
                 <option value="0.3816092" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
