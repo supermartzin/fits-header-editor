@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.models.inputData;
+package cz.muni.fi.fits.input.models;
 
 import cz.muni.fi.fits.models.OperationType;
 

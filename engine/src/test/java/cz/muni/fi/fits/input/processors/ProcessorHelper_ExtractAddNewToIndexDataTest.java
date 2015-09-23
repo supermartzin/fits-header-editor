@@ -5,7 +5,7 @@ import cz.muni.fi.fits.exceptions.InvalidSwitchParameterException;
 import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.DefaultTypeConverter;
 import cz.muni.fi.fits.input.converters.TypeConverter;
-import cz.muni.fi.fits.models.inputData.AddNewToIndexInputData;
+import cz.muni.fi.fits.input.models.AddNewToIndexInputData;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

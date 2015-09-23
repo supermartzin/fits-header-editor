@@ -2,7 +2,8 @@ package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
 import cz.muni.fi.fits.exceptions.ValidationException;
-import cz.muni.fi.fits.models.inputData.ShiftTimeInputData;
+import cz.muni.fi.fits.input.models.ChainRecordsInputData;
+import cz.muni.fi.fits.input.models.ShiftTimeInputData;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * Tests for validation of {@link cz.muni.fi.fits.models.inputData.ChainRecordsInputData} input data
+ * Tests for validation of {@link ChainRecordsInputData} input data
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel

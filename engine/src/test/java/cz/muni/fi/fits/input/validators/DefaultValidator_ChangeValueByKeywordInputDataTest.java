@@ -2,7 +2,7 @@ package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
 import cz.muni.fi.fits.exceptions.ValidationException;
-import cz.muni.fi.fits.models.inputData.ChangeValueByKeywordInputData;
+import cz.muni.fi.fits.input.models.ChangeValueByKeywordInputData;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * Tests for validation of {@link cz.muni.fi.fits.models.inputData.ChangeValueByKeywordInputData} input data
+ * Tests for validation of {@link ChangeValueByKeywordInputData} input data
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel

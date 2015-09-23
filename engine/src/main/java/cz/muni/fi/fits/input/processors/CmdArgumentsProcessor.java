@@ -4,7 +4,7 @@ import cz.muni.fi.fits.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.exceptions.UnknownOperationException;
 import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.TypeConverter;
-import cz.muni.fi.fits.models.inputData.*;
+import cz.muni.fi.fits.input.models.*;
 
 import javax.inject.Singleton;
 import java.io.File;

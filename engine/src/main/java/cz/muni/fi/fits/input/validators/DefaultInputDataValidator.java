@@ -4,9 +4,10 @@ import com.google.common.base.CharMatcher;
 import cz.muni.fi.fits.engine.models.Declination;
 import cz.muni.fi.fits.engine.models.RightAscension;
 import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.input.models.*;
+import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.models.inputData.*;
 import cz.muni.fi.fits.utils.Constants;
 import cz.muni.fi.fits.utils.Tuple;
 
@@ -413,7 +414,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
         int constantsLength = 0;
         int keywordsLength = 0;
         for (Tuple tuple : chainRecordsInputData.getChainValues()) {
-            if (tuple.getFirst() == ChainRecordsInputData.ChainValueType.CONSTANT) {
+            if (tuple.getFirst() == ChainValueType.CONSTANT) {
                 String constant = (String) tuple.getSecond();
 
                 // constant cannot be null
@@ -424,7 +425,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
                     throw new ValidationException("Constant '" + constant + "' in chain values  contains invalid non-ASCII characters");
 
                 constantsLength += constant.length();
-            } else if (tuple.getFirst() == ChainRecordsInputData.ChainValueType.KEYWORD) {
+            } else if (tuple.getFirst() == ChainValueType.KEYWORD) {
                 String keyword = (String) tuple.getSecond();
 
                 // keyword cannot be null

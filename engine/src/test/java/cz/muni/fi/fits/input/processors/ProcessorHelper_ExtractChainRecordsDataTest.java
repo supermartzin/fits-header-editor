@@ -3,7 +3,8 @@ package cz.muni.fi.fits.input.processors;
 import cz.muni.fi.fits.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.exceptions.InvalidSwitchParameterException;
 import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
-import cz.muni.fi.fits.models.inputData.ChainRecordsInputData;
+import cz.muni.fi.fits.input.models.ChainRecordsInputData;
+import cz.muni.fi.fits.models.ChainValueType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -139,13 +140,13 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
         assertFalse(crid1.updateIfExists());
         assertEquals("KEYWORD", crid1.getKeyword());
         assertEquals(4, crid1.getChainValues().size());
-        assertEquals(ChainRecordsInputData.ChainValueType.CONSTANT, crid1.getChainValues().get(0).getFirst());
+        assertEquals(ChainValueType.CONSTANT, crid1.getChainValues().get(0).getFirst());
         assertEquals("CONSTANT 1", crid1.getChainValues().get(0).getSecond());
-        assertEquals(ChainRecordsInputData.ChainValueType.KEYWORD, crid1.getChainValues().get(1).getFirst());
+        assertEquals(ChainValueType.KEYWORD, crid1.getChainValues().get(1).getFirst());
         assertEquals("KEYWORD 1", crid1.getChainValues().get(1).getSecond());
-        assertEquals(ChainRecordsInputData.ChainValueType.KEYWORD, crid1.getChainValues().get(2).getFirst());
+        assertEquals(ChainValueType.KEYWORD, crid1.getChainValues().get(2).getFirst());
         assertEquals("KEYWORD 2", crid1.getChainValues().get(2).getSecond());
-        assertEquals(ChainRecordsInputData.ChainValueType.CONSTANT, crid1.getChainValues().get(3).getFirst());
+        assertEquals(ChainValueType.CONSTANT, crid1.getChainValues().get(3).getFirst());
         assertEquals("CONSTANT 2", crid1.getChainValues().get(3).getSecond());
         assertEquals("COMMENT", crid1.getComment());
 
@@ -158,9 +159,9 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
         assertTrue(crid2.updateIfExists());
         assertEquals("KEYWORD", crid2.getKeyword());
         assertEquals(2, crid2.getChainValues().size());
-        assertEquals(ChainRecordsInputData.ChainValueType.CONSTANT, crid2.getChainValues().get(0).getFirst());
+        assertEquals(ChainValueType.CONSTANT, crid2.getChainValues().get(0).getFirst());
         assertEquals("CONSTANT 1", crid2.getChainValues().get(0).getSecond());
-        assertEquals(ChainRecordsInputData.ChainValueType.KEYWORD, crid2.getChainValues().get(1).getFirst());
+        assertEquals(ChainValueType.KEYWORD, crid2.getChainValues().get(1).getFirst());
         assertEquals("KEYWORD 1", crid2.getChainValues().get(1).getSecond());
         assertNull(crid2.getComment());
     }

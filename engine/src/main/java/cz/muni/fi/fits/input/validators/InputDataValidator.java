@@ -1,7 +1,7 @@
 package cz.muni.fi.fits.input.validators;
 
 import cz.muni.fi.fits.exceptions.ValidationException;
-import cz.muni.fi.fits.models.inputData.*;
+import cz.muni.fi.fits.input.models.*;
 
 /**
  * Interface for validating input data

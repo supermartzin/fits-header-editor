@@ -2,7 +2,7 @@ package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
 import cz.muni.fi.fits.exceptions.ValidationException;
-import cz.muni.fi.fits.models.inputData.ComputeJDInputData;
+import cz.muni.fi.fits.input.models.ComputeJDInputData;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
- * Tests for validation of {@link cz.muni.fi.fits.models.inputData.ComputeJDInputData} input data
+ * Tests for validation of {@link ComputeJDInputData} input data
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel

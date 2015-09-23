@@ -4,14 +4,18 @@ import cz.muni.fi.fits.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.exceptions.InvalidSwitchParameterException;
 import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.TypeConverter;
+import cz.muni.fi.fits.input.models.*;
+import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.models.inputData.*;
 import cz.muni.fi.fits.utils.FileUtils;
 import cz.muni.fi.fits.utils.Tuple;
 
 import java.io.*;
-import java.nio.file.*;
+import java.nio.file.FileVisitOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -60,7 +64,7 @@ final class CmdArgumentsProcessorHelper {
             throw new IllegalInputDataException("Input file or directory '" + path + "' does not exist");
 
         // check for Windows shortcuts (.lnk)
-        if (FileUtils.isWindowsShorcut(_path))
+        if (FileUtils.isWindowsShortcut(_path))
             throw new IllegalInputDataException("Windows shortcut link is not supported");
 
         if (Files.isRegularFile(_path)) {
@@ -86,7 +90,7 @@ final class CmdArgumentsProcessorHelper {
                     }
 
                     // check Windows shortcut
-                    if (FileUtils.isWindowsShorcut(linePath)) continue;
+                    if (FileUtils.isWindowsShortcut(linePath)) continue;
 
                     // check if file or directory
                     if (Files.isRegularFile(linePath)) {
@@ -102,7 +106,7 @@ final class CmdArgumentsProcessorHelper {
 
                                 // add file if valid
                                 if (file != null
-                                        && !FileUtils.isWindowsShorcut(file)
+                                        && !FileUtils.isWindowsShortcut(file)
                                         && Files.isRegularFile(file))
                                     fitsFiles.add(new File(file.toUri()));
                             });
@@ -124,7 +128,7 @@ final class CmdArgumentsProcessorHelper {
 
                     // add file if valid
                     if (file != null
-                            && !FileUtils.isWindowsShorcut(file)
+                            && !FileUtils.isWindowsShortcut(file)
                             && Files.isRegularFile(file))
                         fitsFiles.add(new File(file.toUri()));
                 });
@@ -487,7 +491,7 @@ final class CmdArgumentsProcessorHelper {
         if (cmdArgs.length < startIndex + 1)
             throw new WrongNumberOfParametersException(cmdArgs.length, "Wrong number of parameters for operation 'CHAIN'");
 
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
         String comment = null;
         for (int i = startIndex; i < cmdArgs.length; i++) {
             String argument = cmdArgs[i];
@@ -496,7 +500,7 @@ final class CmdArgumentsProcessorHelper {
             if (argument.startsWith("-c=") || argument.startsWith("-C=")) {
                 argument = argument.substring(3);
                 if (!argument.isEmpty())
-                    chainValues.add(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, argument));
+                    chainValues.add(new Tuple<>(ChainValueType.CONSTANT, argument));
                 continue;
             }
 
@@ -504,7 +508,7 @@ final class CmdArgumentsProcessorHelper {
             if (argument.startsWith("-k=") || argument.startsWith("-K=")) {
                 argument = argument.substring(3).trim().toUpperCase();
                 if (!argument.isEmpty())
-                    chainValues.add(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, argument));
+                    chainValues.add(new Tuple<>(ChainValueType.KEYWORD, argument));
                 continue;
             }
 

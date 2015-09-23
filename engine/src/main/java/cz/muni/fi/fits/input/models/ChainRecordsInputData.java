@@ -1,5 +1,6 @@
-package cz.muni.fi.fits.models.inputData;
+package cz.muni.fi.fits.input.models;
 
+import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.OperationType;
 import cz.muni.fi.fits.utils.Tuple;
 
@@ -86,13 +87,5 @@ public class ChainRecordsInputData extends SwitchInputData {
      */
     public boolean skipIfChainKwNotExists() {
         return _switches.get("skipIfChainKwNotExists");
-    }
-
-    /**
-     * Enumeration of types of chain values
-     */
-    public enum ChainValueType {
-        CONSTANT,
-        KEYWORD
     }
 }

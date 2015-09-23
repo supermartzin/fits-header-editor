@@ -24,7 +24,7 @@ public final class FileUtils {
      * @return      <code>true</code> if provided <code>path</code> is Windows shorcut,
      *              <code>false</code> otherwise
      */
-    public static boolean isWindowsShorcut(Path path) {
+    public static boolean isWindowsShortcut(Path path) {
         if (path == null)
             throw new IllegalArgumentException("path is null");
 

@@ -12,10 +12,16 @@
     <packaging>jar</packaging>
 
     <properties>
+        <java.version>1.8</java.version>
         <guice.version>4.0</guice.version>
         <guava.version>18.0</guava.version>
-        <nom.tam.fits.version>1.12.1-SNAPSHOT</nom.tam.fits.version>
+        <nom.tam.fits.version>1.14.0-SNAPSHOT</nom.tam.fits.version>
         <junit.version>4.12</junit.version>
+
+        <mvm.compiler.plugin.version>3.2</mvm.compiler.plugin.version>
+        <mvn.shade.plugin.version>2.3</mvn.shade.plugin.version>
+        <mvn.jar.plugin.version>2.5</mvn.jar.plugin.version>
+        <mvn.resource.plugin.version>2.7</mvn.resource.plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -65,17 +71,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>${mvm.compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <version>${mvn.shade.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -96,7 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.5</version>
+                <version>${mvn.jar.plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*.properties</exclude>
@@ -106,7 +112,7 @@
 
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
+                <version>${mvn.resource.plugin.version}</version>
                 <configuration>
                     <includeEmptyDirs>true</includeEmptyDirs>
                 </configuration>

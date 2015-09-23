@@ -2,7 +2,8 @@ package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
 import cz.muni.fi.fits.exceptions.ValidationException;
-import cz.muni.fi.fits.models.inputData.ChainRecordsInputData;
+import cz.muni.fi.fits.input.models.ChainRecordsInputData;
+import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.utils.Tuple;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -15,7 +16,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
- * Tests for validation of {@link cz.muni.fi.fits.models.inputData.ChainRecordsInputData} input data
+ * Tests for validation of {@link ChainRecordsInputData} input data
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
@@ -46,9 +47,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_FitsFiles_Null() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "COMMENT", false, false, null);
 
         exception.expect(ValidationException.class);
@@ -58,9 +59,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_FitsFiles_Empty() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "COMMENT", false, false, new HashSet<>());
 
         exception.expect(ValidationException.class);
@@ -70,9 +71,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Keyword_Null() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData(null, chainValues, "COMMENT", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -82,9 +83,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Keyword_Empty() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>() ;
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>() ;
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("", chainValues, "COMMENT", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -94,9 +95,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Keyword_WithInvalidChars() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD*", chainValues, "COMMENT", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -106,9 +107,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Keyword_TooLong() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("TOO_LONG_KEYWORD", chainValues, "COMMENT", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -127,7 +128,7 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_ChainValues_Empty() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "COMMENT", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -137,10 +138,10 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Constant_Null() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, null));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, null));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -150,10 +151,10 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Constants_WithInvalidChars() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1 čľščč"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 2 žžťáýí"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1 čľščč"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 2 žžťáýí"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -163,9 +164,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Constants_TooLong() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "too long constant 1 - too long constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "too long constant 2 - too long constant 2"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "too long constant 1 - too long constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "too long constant 2 - too long constant 2"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "COMMENT", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -175,10 +176,10 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_ChainValuesKeyword_Null() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, null));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 2"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, null));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 2"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -188,9 +189,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_ChainValuesKeyword_Empty() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, ""));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, ""));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -200,9 +201,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_ChainValuesKeyword_WithInvalidChars() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KE**ORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KE**ORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -212,9 +213,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_ChainValuesKeyword_TooLong() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD_TOO_LONG"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD_TOO_LONG"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -224,9 +225,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Comment_WithInvalidChars() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "commentýáíáí", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -236,9 +237,9 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Comment_TooLong() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "COMMENT TO LONG - COMMENT TO LONG - COMMENT TO LONG - COMMENT TOO", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -248,10 +249,10 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_ConstantsAndComment_TooLong() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues = new LinkedList<>();
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "long constant 1"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
-        chainValues.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "long constant 2"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "long constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "long constant 2"));
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "TOO LONG COMMENT - TOO LONG COMENT - TOO lONG", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
@@ -261,17 +262,17 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
     @Test
     public void testValidate_ChainRecordsInputData_Valid() throws Exception {
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues1 = new LinkedList<>();
-        chainValues1.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 1"));
-        chainValues1.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
-        chainValues1.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, "constant 2"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues1 = new LinkedList<>();
+        chainValues1.push(new Tuple<>(ChainValueType.CONSTANT, "constant 1"));
+        chainValues1.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
+        chainValues1.push(new Tuple<>(ChainValueType.CONSTANT, "constant 2"));
         ChainRecordsInputData crid1 = new ChainRecordsInputData("KEYWORD", chainValues1, "comment", false, true, _fitsFiles);
 
-        LinkedList<Tuple<ChainRecordsInputData.ChainValueType, String>> chainValues2 = new LinkedList<>();
-        chainValues2.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "NEW_KW"));
-        chainValues2.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "KEYWORD"));
-        chainValues2.push(new Tuple<>(ChainRecordsInputData.ChainValueType.CONSTANT, " "));
-        chainValues2.push(new Tuple<>(ChainRecordsInputData.ChainValueType.KEYWORD, "ANOTHER"));
+        LinkedList<Tuple<ChainValueType, String>> chainValues2 = new LinkedList<>();
+        chainValues2.push(new Tuple<>(ChainValueType.KEYWORD, "NEW_KW"));
+        chainValues2.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
+        chainValues2.push(new Tuple<>(ChainValueType.CONSTANT, " "));
+        chainValues2.push(new Tuple<>(ChainValueType.KEYWORD, "ANOTHER"));
         ChainRecordsInputData crid2 = new ChainRecordsInputData("KEYWORD", chainValues2, "comment", false, true, _fitsFiles);
 
         _validator.validate(crid1);

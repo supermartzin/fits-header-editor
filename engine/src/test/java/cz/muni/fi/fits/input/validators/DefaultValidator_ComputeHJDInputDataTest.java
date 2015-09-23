@@ -4,7 +4,7 @@ import com.google.common.collect.Sets;
 import cz.muni.fi.fits.exceptions.ValidationException;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.models.inputData.ComputeHJDInputData;
+import cz.muni.fi.fits.input.models.ComputeHJDInputData;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;

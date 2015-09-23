@@ -1,7 +1,7 @@
-package cz.muni.fi.fits.models;
+package cz.muni.fi.fits.engine.models;
 
 /**
- * Class representing result of some operation
+ * Class representing result of an operation
  *
  * @author Martin Vrábel
  * @version 1.0

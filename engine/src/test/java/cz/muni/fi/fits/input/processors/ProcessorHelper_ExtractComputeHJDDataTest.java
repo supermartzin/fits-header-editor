@@ -6,7 +6,7 @@ import cz.muni.fi.fits.input.converters.DefaultTypeConverter;
 import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.models.inputData.ComputeHJDInputData;
+import cz.muni.fi.fits.input.models.ComputeHJDInputData;
 import cz.muni.fi.fits.utils.Constants;
 import org.junit.After;
 import org.junit.Before;

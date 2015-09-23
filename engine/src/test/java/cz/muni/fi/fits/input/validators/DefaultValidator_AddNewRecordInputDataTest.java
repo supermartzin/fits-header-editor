@@ -2,7 +2,7 @@ package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
 import cz.muni.fi.fits.exceptions.ValidationException;
-import cz.muni.fi.fits.models.inputData.AddNewRecordInputData;
+import cz.muni.fi.fits.input.models.AddNewRecordInputData;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * Tests for validation of {@link cz.muni.fi.fits.models.inputData.AddNewRecordInputData} input data
+ * Tests for validation of {@link AddNewRecordInputData} input data
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel

@@ -2,7 +2,7 @@ package cz.muni.fi.fits.input.processors;
 
 import cz.muni.fi.fits.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
-import cz.muni.fi.fits.models.inputData.RemoveFromIndexInputData;
+import cz.muni.fi.fits.input.models.RemoveFromIndexInputData;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
