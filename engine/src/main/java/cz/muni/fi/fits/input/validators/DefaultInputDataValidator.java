@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  * for validation of input data
  *
  * @author Martin Vrábel
- * @version 1.2.4
+ * @version 1.2.5
  */
 public class DefaultInputDataValidator implements InputDataValidator {
 
@@ -454,8 +454,11 @@ public class DefaultInputDataValidator implements InputDataValidator {
 
 
         // check if constants in chainValues do not exceeds allowed length
-        if (constantsLength > Constants.MAX_STRING_VALUE_LENGTH)
-            throw new ValidationException("Constants in value of chained record have exceeded maximum allowed length of " + Constants.MAX_STRING_VALUE_LENGTH + " characters");
+        if (constantsLength > Constants.MAX_STRING_VALUE_LENGTH) {
+            // if longstrings are not allowed
+            if (!chainRecordsInputData.longstringsAllowed())
+                throw new ValidationException("Constants in value of chained record have exceeded maximum allowed length of " + Constants.MAX_STRING_VALUE_LENGTH + " characters");
+        }
 
         // if contains comment check for allowed value/comment length
         if (chainRecordsInputData.getComment() != null && !chainRecordsInputData.getComment().isEmpty()) {
@@ -467,8 +470,11 @@ public class DefaultInputDataValidator implements InputDataValidator {
                 throw new ValidationException("Comment value has exceeded maximum allowed length of " + Constants.MAX_COMMENT_LENGTH + " characters");
             // check for allowed constants & comment length
             if (chainRecordsInputData.getComment().length() + constantsLength
-                                > Constants.MAX_STRING_VALUE_COMMENT_LENGTH)
-                throw new ValidationException("Comment is too long for constants in value");
+                                > Constants.MAX_STRING_VALUE_COMMENT_LENGTH) {
+                // if longstrings are not allowed
+                if (!chainRecordsInputData.longstringsAllowed())
+                    throw new ValidationException("Comment is too long for constants in value");
+            }
         }
     }
 

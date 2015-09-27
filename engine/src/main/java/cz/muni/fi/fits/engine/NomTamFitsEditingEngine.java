@@ -34,7 +34,7 @@ import java.util.List;
  * on GitHub
  *
  * @author Martin Vrábel
- * @version 1.4.2
+ * @version 1.4.3
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">nom.tam.fits - Project pages</a>
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
@@ -510,13 +510,14 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
      *                               if no comment to add
      * @param updateIfExists         value indicating whether to update value of record
      *                               with specified keyword if it already exists
-     * @param skipIfChainKwNotExists value indcating whether to skip keyword in chain parameters
-     *                               if no such record exists in header
+     * @param allowLongstrings       value indicating whether allow longstring values in header
+     *                               if chained value is longer than basic limit
      * @param fitsFile               FITS file in which to chain records
      * @return {@inheritDoc}
      */
     @Override
-    public Result chainMultipleRecords(String keyword, List<Tuple<ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile) {
+    public Result chainMultipleRecords(String keyword, List<Tuple<ChainValueType, String>> chainParameters, String comment,
+                                       boolean updateIfExists, boolean allowLongstrings, File fitsFile) {
         if (keyword == null)
             throw new IllegalArgumentException("keyword is null");
         if (chainParameters == null)
@@ -548,7 +549,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                         boolean keyExists = header.containsKey(key);
 
                         if (!keyExists) {
-                            if (skipIfChainKwNotExists) {
+                            if (allowLongstrings) {
                                 skippedKeyword = true;
                                 break;
                             } else

@@ -90,9 +90,9 @@ public class CmdArgumentsProcessor implements InputProcessor {
             case "CHAIN":
                 inputData = CmdArgumentsProcessorHelper.extractChainRecordsData(_cmdArgs);
                 ChainRecordsInputData crid = (ChainRecordsInputData) inputData;
-                if (crid.updateIfExists() && crid.skipIfChainKwNotExists())
+                if (crid.updateIfExists() && crid.longstringsAllowed())
                     fitsFilesArgIndex = 3;
-                else if (!crid.updateIfExists() && !crid.skipIfChainKwNotExists())
+                else if (!crid.updateIfExists() && !crid.longstringsAllowed())
                     fitsFilesArgIndex = 1;
                 else
                     fitsFilesArgIndex = 2;

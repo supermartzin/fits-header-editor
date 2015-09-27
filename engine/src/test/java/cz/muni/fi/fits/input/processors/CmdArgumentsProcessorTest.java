@@ -28,7 +28,7 @@ import static org.junit.Assert.*;
  * Tests for {@link CmdArgumentsProcessor} class
  *
  * @author Martin Vrábel
- * @version 1.4
+ * @version 1.4.1
  */
 public class CmdArgumentsProcessorTest {
 
@@ -247,7 +247,7 @@ public class CmdArgumentsProcessorTest {
                 SAMPLE3.toString(),
                 "sample4.fts"));
 
-        String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=constant 1", "-k=key_word", "-c=Constant 2" };
+        String[] args = new String[] { "chain", "-l", FILE_PATH.toString(), "KEYWORD", "-c=constant 1", "-k=key_word", "-c=Constant 2" };
         InputProcessor inputProcessor = new CmdArgumentsProcessor(args, _converter);
 
         InputData inputData = inputProcessor.getProcessedInput();
@@ -259,7 +259,7 @@ public class CmdArgumentsProcessorTest {
         assertEquals(3, inputData.getFitsFiles().size());
 
         ChainRecordsInputData crid = (ChainRecordsInputData)inputData;
-        assertTrue(crid.skipIfChainKwNotExists());
+        assertTrue(crid.longstringsAllowed());
         assertFalse(crid.updateIfExists());
         assertEquals("KEYWORD", crid.getKeyword());
         assertEquals(3, crid.getChainValues().size());

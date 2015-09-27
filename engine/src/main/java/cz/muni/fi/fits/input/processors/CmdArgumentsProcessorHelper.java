@@ -28,7 +28,7 @@ import java.util.stream.Stream;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.4
+ * @version 1.4.1
  */
 final class CmdArgumentsProcessorHelper {
 
@@ -435,7 +435,7 @@ final class CmdArgumentsProcessorHelper {
     static ChainRecordsInputData extractChainRecordsData(String[] cmdArgs) throws IllegalInputDataException {
         // get switches (optional)
         boolean updateIfExists = false;
-        boolean skipIfChainKwNotExists = false;
+        boolean allowLongstrings = false;
         String firstSwitchParam = cmdArgs[1].toLowerCase().trim();
         // some parameter on first place
         if (firstSwitchParam.startsWith("-")) {
@@ -443,11 +443,11 @@ final class CmdArgumentsProcessorHelper {
                 case "-u":
                     updateIfExists = true;
                     break;
-                case "-s":
-                    skipIfChainKwNotExists = true;
+                case "-l":
+                    allowLongstrings = true;
                     break;
                 default:
-                    throw new InvalidSwitchParameterException(firstSwitchParam, "First switch parameter is in invalid format: '" + firstSwitchParam + "'. Correct format is '-u' or '-s");
+                    throw new InvalidSwitchParameterException(firstSwitchParam, "First switch parameter is in invalid format: '" + firstSwitchParam + "'. Correct format is '-u' or '-l");
             }
 
             if (cmdArgs.length < 3)
@@ -456,13 +456,13 @@ final class CmdArgumentsProcessorHelper {
             String secondSwitchParam = cmdArgs[2].toLowerCase().trim();
             // some parameter on second place
             if (secondSwitchParam.startsWith("-")) {
-                // if first param is '-u' second must be '-s'
+                // if first param is '-u' second must be '-l'
                 if (updateIfExists) {
-                    if (secondSwitchParam.equals("-s"))
-                        skipIfChainKwNotExists = true;
+                    if (secondSwitchParam.equals("-l"))
+                        allowLongstrings = true;
                     else
-                        throw new InvalidSwitchParameterException(secondSwitchParam, "Second switch parameter is in invalid format: '" + secondSwitchParam + "'. Correct format is '-s");
-                    // if first param is '-s' second must be '-u'
+                        throw new InvalidSwitchParameterException(secondSwitchParam, "Second switch parameter is in invalid format: '" + secondSwitchParam + "'. Correct format is '-l");
+                    // if first param is '-l' second must be '-u'
                 } else {
                     if (secondSwitchParam.equals("-u"))
                         updateIfExists = true;
@@ -473,9 +473,9 @@ final class CmdArgumentsProcessorHelper {
         }
 
         // set keyword of chained record (required)
-        int keywordIndex = updateIfExists && skipIfChainKwNotExists
+        int keywordIndex = updateIfExists && allowLongstrings
                 ? 4
-                : !updateIfExists && !skipIfChainKwNotExists ? 2 : 3;
+                : !updateIfExists && !allowLongstrings ? 2 : 3;
         // check for correct number of parameters
         if (cmdArgs.length < keywordIndex + 1)
             throw new WrongNumberOfParametersException(cmdArgs.length, "Wrong number of parameters for operation 'CHAIN'");
@@ -497,7 +497,7 @@ final class CmdArgumentsProcessorHelper {
             String argument = cmdArgs[i];
 
             // constant
-            if (argument.startsWith("-c=") || argument.startsWith("-C=")) {
+            if (argument.toLowerCase().startsWith("-c=")) {
                 argument = argument.substring(3);
                 if (!argument.isEmpty())
                     chainValues.add(new Tuple<>(ChainValueType.CONSTANT, argument));
@@ -505,7 +505,7 @@ final class CmdArgumentsProcessorHelper {
             }
 
             // keyword
-            if (argument.startsWith("-k=") || argument.startsWith("-K=")) {
+            if (argument.toLowerCase().startsWith("-k=")) {
                 argument = argument.substring(3).trim().toUpperCase();
                 if (!argument.isEmpty())
                     chainValues.add(new Tuple<>(ChainValueType.KEYWORD, argument));
@@ -524,7 +524,7 @@ final class CmdArgumentsProcessorHelper {
         if (chainValues.isEmpty())
             throw new IllegalInputDataException("Parameters does not contain any keyword or constant to chain");
 
-        return new ChainRecordsInputData(keyword, chainValues, comment, updateIfExists, skipIfChainKwNotExists);
+        return new ChainRecordsInputData(keyword, chainValues, comment, updateIfExists, allowLongstrings);
     }
 
     /**

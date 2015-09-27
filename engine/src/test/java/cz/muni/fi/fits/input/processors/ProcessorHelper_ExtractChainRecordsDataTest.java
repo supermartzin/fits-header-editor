@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * in {@link CmdArgumentsProcessorHelper} class
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.2.5
  */
 public class ProcessorHelper_ExtractChainRecordsDataTest {
 
@@ -56,12 +56,12 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
         assertNotNull(crid);
         assertFalse(crid.updateIfExists());
-        assertFalse(crid.skipIfChainKwNotExists());
+        assertFalse(crid.longstringsAllowed());
     }
 
     @Test
     public void testExtractChainRecordsData_FirstSwitchParameter_WrongFormat() throws Exception {
-        String[] args = new String[] { "chain", "-upd", "-s", FILE_PATH.toString() };
+        String[] args = new String[] { "chain", "-upd", "-l", FILE_PATH.toString() };
 
         exception.expect(InvalidSwitchParameterException.class);
         CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -69,7 +69,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_SecondSwitchParameter_WrongFormat() throws Exception {
-        String[] args = new String[] { "chain", "-s", "-upd", FILE_PATH.toString() };
+        String[] args = new String[] { "chain", "-l", "-upd", FILE_PATH.toString() };
 
         exception.expect(InvalidSwitchParameterException.class);
         CmdArgumentsProcessorHelper.extractChainRecordsData(args);
@@ -77,17 +77,17 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_SwitchParameters_Valid() throws Exception {
-        String[] args = new String[] { "chain", "-s", "-u", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
+        String[] args = new String[] { "chain", "-l", "-u", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
         assertNotNull(crid);
         assertTrue(crid.updateIfExists());
-        assertTrue(crid.skipIfChainKwNotExists());
+        assertTrue(crid.longstringsAllowed());
     }
 
     @Test
     public void testExtractChainRecordsData_ChainParameters_Empty() throws Exception {
-        String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "COMMENT" };
+        String[] args = new String[] { "chain", "-l", FILE_PATH.toString(), "KEYWORD", "COMMENT" };
 
         exception.expect(IllegalInputDataException.class);
         exception.expectMessage("does not contain any keyword or constant");
@@ -96,7 +96,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_Keyword_NotInData() throws Exception {
-        String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "-c=CONSTANT 1", "COMMENT" };
+        String[] args = new String[] { "chain", "-l", FILE_PATH.toString(), "-c=CONSTANT 1", "COMMENT" };
 
         exception.expect(IllegalInputDataException.class);
         exception.expectMessage("Keyword is not specified");
@@ -105,7 +105,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_Keyword_Valid() throws Exception {
-        String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "keyword", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
+        String[] args = new String[] { "chain", "-l", FILE_PATH.toString(), "keyword", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
         assertNotNull(crid);
@@ -114,7 +114,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_Comment_PresentInData() throws Exception {
-        String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
+        String[] args = new String[] { "chain", "-l", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "COMMENT" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
         assertNotNull(crid);
@@ -123,7 +123,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_Comment_NotInData() throws Exception {
-        String[] args = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1" };
+        String[] args = new String[] { "chain", "-l", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1" };
 
         ChainRecordsInputData crid = CmdArgumentsProcessorHelper.extractChainRecordsData(args);
         assertNotNull(crid);
@@ -132,11 +132,11 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
     @Test
     public void testExtractChainRecordsData_Parameters_Valid() throws Exception {
-        String[] args1 = new String[] { "chain", "-s", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "-k=KEYWORD 2", "-c=CONSTANT 2", "COMMENT" };
+        String[] args1 = new String[] { "chain", "-l", FILE_PATH.toString(), "KEYWORD", "-c=CONSTANT 1", "-k=KEYWORD 1", "-k=KEYWORD 2", "-c=CONSTANT 2", "COMMENT" };
 
         ChainRecordsInputData crid1 = CmdArgumentsProcessorHelper.extractChainRecordsData(args1);
         assertNotNull(crid1);
-        assertTrue(crid1.skipIfChainKwNotExists());
+        assertTrue(crid1.longstringsAllowed());
         assertFalse(crid1.updateIfExists());
         assertEquals("KEYWORD", crid1.getKeyword());
         assertEquals(4, crid1.getChainValues().size());
@@ -155,7 +155,7 @@ public class ProcessorHelper_ExtractChainRecordsDataTest {
 
         ChainRecordsInputData crid2 = CmdArgumentsProcessorHelper.extractChainRecordsData(args2);
         assertNotNull(crid2);
-        assertFalse(crid2.skipIfChainKwNotExists());
+        assertFalse(crid2.longstringsAllowed());
         assertTrue(crid2.updateIfExists());
         assertEquals("KEYWORD", crid2.getKeyword());
         assertEquals(2, crid2.getChainValues().size());

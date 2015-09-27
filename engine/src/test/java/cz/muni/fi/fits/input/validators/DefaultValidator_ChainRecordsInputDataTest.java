@@ -20,7 +20,7 @@ import java.util.LinkedList;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public class DefaultValidator_ChainRecordsInputDataTest {
 
@@ -163,7 +163,7 @@ public class DefaultValidator_ChainRecordsInputDataTest {
     }
 
     @Test
-    public void testValidate_ChainRecordsInputData_Constants_TooLong() throws Exception {
+    public void testValidate_ChainRecordsInputData_Constants_TooLong_NotAllowedLongstrings() throws Exception {
         LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
         chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "too long constant 1 - too long constant 1"));
         chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "too long constant 2 - too long constant 2"));
@@ -171,6 +171,16 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
         exception.expect(ValidationException.class);
         exception.expectMessage("have exceeded maximum allowed length");
+        _validator.validate(crid);
+    }
+
+    @Test
+    public void testValidate_ChainRecordsInputData_Constants_TooLong_AllowedLongstrings() throws Exception {
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "too long constant 1 - too long constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "too long constant 2 - too long constant 2"));
+        ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "COMMENT", false, true, _fitsFiles);
+
         _validator.validate(crid);
     }
 
@@ -216,7 +226,7 @@ public class DefaultValidator_ChainRecordsInputDataTest {
         LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
         chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "constant"));
         chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD_TOO_LONG"));
-        ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, false, _fitsFiles);
+        ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, null, false, true, _fitsFiles);
 
         exception.expect(ValidationException.class);
         exception.expectMessage("has exceeded maximum allowed length");
@@ -248,7 +258,7 @@ public class DefaultValidator_ChainRecordsInputDataTest {
     }
 
     @Test
-    public void testValidate_ChainRecordsInputData_ConstantsAndComment_TooLong() throws Exception {
+    public void testValidate_ChainRecordsInputData_ConstantsAndComment_TooLong_NotAllowedLongstrings() throws Exception {
         LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
         chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "long constant 1"));
         chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
@@ -257,6 +267,18 @@ public class DefaultValidator_ChainRecordsInputDataTest {
 
         exception.expect(ValidationException.class);
         exception.expectMessage("Comment is too long");
+        _validator.validate(crid);
+    }
+
+    @Test
+    public void testValidate_ChainRecordsInputData_ConstantsAndComment_TooLong_AllowedLongstrings() throws Exception {
+        LinkedList<Tuple<ChainValueType, String>> chainValues = new LinkedList<>();
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "long constant 1"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD"));
+        chainValues.push(new Tuple<>(ChainValueType.CONSTANT, "long constant 2"));
+        chainValues.push(new Tuple<>(ChainValueType.KEYWORD, "KEYWORD2"));
+        ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "TOO LONG COMMENT - TOO LONG COMENT - TOO lONG", false, true, _fitsFiles);
+
         _validator.validate(crid);
     }
 

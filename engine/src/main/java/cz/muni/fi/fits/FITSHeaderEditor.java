@@ -204,7 +204,7 @@ public class FITSHeaderEditor {
                                 crid.getChainValues(),
                                 crid.getComment(),
                                 crid.updateIfExists(),
-                                crid.skipIfChainKwNotExists(),
+                                crid.longstringsAllowed(),
                                 fitsFile);
 
                         // write result

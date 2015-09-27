@@ -1,5 +1,6 @@
 package cz.muni.fi.fits.output.writers;
 
+import javax.inject.Singleton;
 import java.io.*;
 import java.time.LocalDateTime;
 
@@ -12,8 +13,9 @@ import java.time.LocalDateTime;
  * implements {@link OutputWriter} interface
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
+@Singleton
 public class FileConsoleOutputWriter implements OutputWriter {
 
     private final File _outputFile;
@@ -48,8 +50,6 @@ public class FileConsoleOutputWriter implements OutputWriter {
     @Override
     public boolean writeInfo(String infoMessage) {
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "] INFO >> " + infoMessage);
@@ -76,8 +76,6 @@ public class FileConsoleOutputWriter implements OutputWriter {
     @Override
     public boolean writeInfo(File file, String infoMessage) {
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
@@ -103,14 +101,9 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-        if (lastIndex > -1)
-            exceptionType = exceptionType.substring(lastIndex + 1);
+        String exceptionType = extractExceptionType(exception);
 
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
@@ -137,14 +130,9 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(String errorMessage, Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-        if (lastIndex > -1)
-            exceptionType = exceptionType.substring(lastIndex + 1);
+        String exceptionType = extractExceptionType(exception);
 
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
@@ -171,14 +159,9 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-        if (lastIndex > -1)
-            exceptionType = exceptionType.substring(lastIndex + 1);
+        String exceptionType = extractExceptionType(exception);
 
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
@@ -211,8 +194,6 @@ public class FileConsoleOutputWriter implements OutputWriter {
     @Override
     public boolean writeError(String errorMessage) {
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
@@ -240,8 +221,6 @@ public class FileConsoleOutputWriter implements OutputWriter {
     @Override
     public boolean writeError(File file, String errorMessage) {
         try {
-            _outputFile.createNewFile();
-
             // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
@@ -260,5 +239,15 @@ public class FileConsoleOutputWriter implements OutputWriter {
         } catch (IOException e) {
             return false;
         }
+    }
+
+    private String extractExceptionType(Throwable exception) {
+        String exceptionType = exception.getClass().getTypeName();
+        int lastIndex = exceptionType.lastIndexOf('.');
+
+        if (lastIndex > -1)
+            return exceptionType.substring(lastIndex + 1);
+        else
+            return exceptionType;
     }
 }

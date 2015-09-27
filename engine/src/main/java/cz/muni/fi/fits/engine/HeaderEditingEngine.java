@@ -12,7 +12,7 @@ import java.util.List;
  * over FITS files
  *
  * @author Martin Vrábel
- * @version 1.3.4
+ * @version 1.3.5
  */
 public interface HeaderEditingEngine {
 
@@ -100,12 +100,13 @@ public interface HeaderEditingEngine {
      *                                  if no comment to add
      * @param updateIfExists            value indicating whether to update value of record
      *                                  with specified keyword if it already exists
-     * @param skipIfChainKwNotExists    value indcating whether to skip keyword in chain parameters
-     *                                  if no such record exists in header
+     * @param allowLongstrings          value indicating whether allow longstring values in header
+     *                                  if chained value is longer than basic limit
      * @param fitsFile                  FITS file in which to chain records
      * @return                          {@link Result} object with results of this operation
      */
-    Result chainMultipleRecords(String keyword, List<Tuple<ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile);
+    Result chainMultipleRecords(String keyword, List<Tuple<ChainValueType, String>> chainParameters, String comment,
+                                boolean updateIfExists, boolean allowLongstrings, File fitsFile);
 
     /**
      * Shifts time of time record with <code>keyword</code> by amount of time specified by arguments

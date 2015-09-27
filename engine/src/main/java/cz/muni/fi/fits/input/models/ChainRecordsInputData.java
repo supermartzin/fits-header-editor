@@ -13,7 +13,7 @@ import java.util.LinkedList;
  * Class encapsulating input data for operation <b>Chain multiple records</b>
  *
  * @author Martin Vrábel
- * @version 1.2
+ * @version 1.3
  */
 public class ChainRecordsInputData extends SwitchInputData {
 
@@ -29,11 +29,11 @@ public class ChainRecordsInputData extends SwitchInputData {
      * @param comment                   comment of chained record, insert
      *                                  <code>null</code> if no comment to add
      * @param updateIfExists            value indicating whether update record if it does already exists
-     * @param skipIfChainKwNotExists    value indicating whether skip specific keyword in chain values
-     *                                  if it does not already exist
+     * @param allowLongstrings          value indicating whether allow longstring values in header
+     *                                  if chained value is longer than basic limit
      */
-    public ChainRecordsInputData(String keyword, LinkedList<Tuple<ChainValueType, String>> chainValues, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists) {
-        this(keyword, chainValues, comment, updateIfExists, skipIfChainKwNotExists, new HashSet<>());
+    public ChainRecordsInputData(String keyword, LinkedList<Tuple<ChainValueType, String>> chainValues, String comment, boolean updateIfExists, boolean allowLongstrings) {
+        this(keyword, chainValues, comment, updateIfExists, allowLongstrings, new HashSet<>());
     }
 
     /**
@@ -44,17 +44,17 @@ public class ChainRecordsInputData extends SwitchInputData {
      * @param comment                   comment of chained record, insert
      *                                  <code>null</code> if no comment to add
      * @param updateIfExists            value indicating whether update record if it does already exist
-     * @param skipIfChainKwNotExists    value indicating whether skip specific keyword in chain values
-     *                                  if it does not exist
+     * @param allowLongstrings          value indicating whether allow longstring values in header
+     *                                  if chained value is longer than basic limit
      * @param fitsFiles                 FITS files in which chain multiple records
      */
-    public ChainRecordsInputData(String keyword, LinkedList<Tuple<ChainValueType, String>> chainValues, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, Collection<File> fitsFiles) {
+    public ChainRecordsInputData(String keyword, LinkedList<Tuple<ChainValueType, String>> chainValues, String comment, boolean updateIfExists, boolean allowLongstrings, Collection<File> fitsFiles) {
         super(OperationType.CHAIN_RECORDS, fitsFiles);
         this._keyword = keyword != null ? keyword.toUpperCase() : null;
         this._chainValues = chainValues;
         this._comment = comment;
         this._switches.put("updateIfExists", updateIfExists);
-        this._switches.put("skipIfChainKwNotExists", skipIfChainKwNotExists);
+        this._switches.put("allowLongstrings", allowLongstrings);
     }
 
     public String getKeyword() {
@@ -80,12 +80,12 @@ public class ChainRecordsInputData extends SwitchInputData {
     }
 
     /**
-     * Value indicating whether skip specific keyword in chain values if it does not exist in header
+     * Value indicating whether allow longstring values in header if chained value is longer than basic limit
      *
-     * @return  <code>true</code> when skip specific keyword if it does not exist
-     *          <code>false</code> when do not skip specific keyword if it does not exist
+     * @return  <code>true</code> if longstring support is allowed
+     *          <code>false</code> otherwise
      */
-    public boolean skipIfChainKwNotExists() {
-        return _switches.get("skipIfChainKwNotExists");
+    public boolean longstringsAllowed() {
+        return _switches.get("allowLongstrings");
     }
 }
