@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.exceptions;
+package cz.muni.fi.fits.common.exceptions;
 
 /**
  * Exception class used in cases when

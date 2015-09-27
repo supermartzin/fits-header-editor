@@ -3,13 +3,13 @@ package cz.muni.fi.fits.input.validators;
 import com.google.common.base.CharMatcher;
 import cz.muni.fi.fits.engine.models.Declination;
 import cz.muni.fi.fits.engine.models.RightAscension;
-import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.common.exceptions.ValidationException;
 import cz.muni.fi.fits.input.models.*;
 import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.utils.Constants;
-import cz.muni.fi.fits.utils.Tuple;
+import cz.muni.fi.fits.common.utils.Constants;
+import cz.muni.fi.fits.common.utils.Tuple;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

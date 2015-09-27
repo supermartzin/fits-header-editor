@@ -1,6 +1,6 @@
 package cz.muni.fi.fits.input.validators;
 
-import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.common.exceptions.ValidationException;
 import cz.muni.fi.fits.input.models.*;
 
 /**

@@ -1,15 +1,15 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
-import cz.muni.fi.fits.exceptions.InvalidSwitchParameterException;
-import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.InvalidSwitchParameterException;
+import cz.muni.fi.fits.common.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.input.models.*;
 import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.utils.FileUtils;
-import cz.muni.fi.fits.utils.Tuple;
+import cz.muni.fi.fits.common.utils.FileUtils;
+import cz.muni.fi.fits.common.utils.Tuple;
 
 import java.io.*;
 import java.nio.file.FileVisitOption;

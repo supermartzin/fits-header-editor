@@ -1,6 +1,6 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 

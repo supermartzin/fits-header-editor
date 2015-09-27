@@ -1,13 +1,13 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
-import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.DefaultTypeConverter;
 import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
 import cz.muni.fi.fits.input.models.ComputeHJDInputData;
-import cz.muni.fi.fits.utils.Constants;
+import cz.muni.fi.fits.common.utils.Constants;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

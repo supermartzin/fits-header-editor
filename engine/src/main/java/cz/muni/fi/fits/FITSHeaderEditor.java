@@ -1,8 +1,8 @@
 package cz.muni.fi.fits;
 
 import cz.muni.fi.fits.engine.HeaderEditingEngine;
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
-import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.ValidationException;
 import cz.muni.fi.fits.input.models.*;
 import cz.muni.fi.fits.input.processors.InputProcessor;
 import cz.muni.fi.fits.input.validators.InputDataValidator;
@@ -48,7 +48,7 @@ public class FITSHeaderEditor {
     }
 
     /**
-     * Method starts editing with constructor-provided input data and dependencies
+     * Main method which starts FITS header editing with constructor-provided input data and dependencies
      */
     public void start() {
         try {

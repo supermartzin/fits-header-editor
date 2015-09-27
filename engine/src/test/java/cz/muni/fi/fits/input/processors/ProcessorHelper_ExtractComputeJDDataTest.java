@@ -1,10 +1,10 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
+import cz.muni.fi.fits.common.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.DefaultTypeConverter;
 import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.input.models.ComputeJDInputData;
-import cz.muni.fi.fits.utils.Constants;
+import cz.muni.fi.fits.common.utils.Constants;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

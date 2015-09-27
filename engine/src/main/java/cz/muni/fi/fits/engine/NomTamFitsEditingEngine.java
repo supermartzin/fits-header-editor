@@ -9,8 +9,8 @@ import cz.muni.fi.fits.engine.utils.MandatoryFITSKeywords;
 import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.utils.Constants;
-import cz.muni.fi.fits.utils.Tuple;
+import cz.muni.fi.fits.common.utils.Constants;
+import cz.muni.fi.fits.common.utils.Tuple;
 import nom.tam.fits.*;
 import nom.tam.util.BufferedFile;
 import nom.tam.util.Cursor;
@@ -26,7 +26,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
-import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Editing engine class implementing {@link HeaderEditingEngine} interface
@@ -516,7 +516,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
      * @return {@inheritDoc}
      */
     @Override
-    public Result chainMultipleRecords(String keyword, LinkedList<Tuple<ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile) {
+    public Result chainMultipleRecords(String keyword, List<Tuple<ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile) {
         if (keyword == null)
             throw new IllegalArgumentException("keyword is null");
         if (chainParameters == null)

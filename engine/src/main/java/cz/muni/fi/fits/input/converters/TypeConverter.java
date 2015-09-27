@@ -1,6 +1,6 @@
 package cz.muni.fi.fits.input.converters;
 
-import cz.muni.fi.fits.exceptions.ParseException;
+import cz.muni.fi.fits.common.exceptions.ParseException;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

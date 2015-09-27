@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.utils;
+package cz.muni.fi.fits.common.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,16 +10,14 @@ import java.nio.file.Paths;
  * Helper class for smoother working with files and their paths
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public final class FileUtils {
-
-    private FileUtils() {}
 
     /**
      * Check whether provided {@link Path} is Windows shortcut,
      * that is it ends with <code>.lnk</code> extension
-     *
+     *s
      * @param path  path to file to check
      * @return      <code>true</code> if provided <code>path</code> is Windows shorcut,
      *              <code>false</code> otherwise
@@ -75,10 +73,22 @@ public final class FileUtils {
             throw new IllegalArgumentException("string is null");
 
         try {
-            Paths.get(string);
-            return true;
-        } catch (InvalidPathException ipEx) {
+            Path path = Paths.get(string);
+
+            if (Files.exists(path)) {
+                // if path exists then it's valid
+                return true;
+            } else {
+                // if doesn't exist try to create it and then delete
+                Files.createFile(Paths.get(string));
+                Files.deleteIfExists(Paths.get(string));
+                return true;
+            }
+        } catch (InvalidPathException
+                | IOException ex) {
             return false;
         }
     }
+
+    private FileUtils() {}
 }

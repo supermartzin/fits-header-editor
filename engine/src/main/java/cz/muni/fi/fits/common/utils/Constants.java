@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.utils;
+package cz.muni.fi.fits.common.utils;
 
 /**
  * Static class contaning useful constants related to FITS files
@@ -152,4 +152,7 @@ public final class Constants {
      * Maximum number of seconds for degrees value of Declination
      */
     public static final Double DEC_MAX_SECONDS = 60.0;
+
+
+    private Constants() { }
 }

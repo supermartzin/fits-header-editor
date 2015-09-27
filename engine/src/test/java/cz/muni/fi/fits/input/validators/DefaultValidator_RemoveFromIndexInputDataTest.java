@@ -1,7 +1,7 @@
 package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
-import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.common.exceptions.ValidationException;
 import cz.muni.fi.fits.input.models.RemoveFromIndexInputData;
 import org.junit.BeforeClass;
 import org.junit.Rule;

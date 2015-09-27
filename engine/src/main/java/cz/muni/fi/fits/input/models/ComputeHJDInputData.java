@@ -3,7 +3,7 @@ package cz.muni.fi.fits.input.models;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.OperationType;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.utils.Constants;
+import cz.muni.fi.fits.common.utils.Constants;
 
 import java.io.File;
 import java.time.LocalDateTime;

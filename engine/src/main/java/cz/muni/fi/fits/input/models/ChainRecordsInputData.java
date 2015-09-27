@@ -2,7 +2,7 @@ package cz.muni.fi.fits.input.models;
 
 import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.OperationType;
-import cz.muni.fi.fits.utils.Tuple;
+import cz.muni.fi.fits.common.utils.Tuple;
 
 import java.io.File;
 import java.util.Collection;

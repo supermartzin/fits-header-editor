@@ -1,10 +1,10 @@
 package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
-import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.common.exceptions.ValidationException;
 import cz.muni.fi.fits.input.models.ChainRecordsInputData;
 import cz.muni.fi.fits.models.ChainValueType;
-import cz.muni.fi.fits.utils.Tuple;
+import cz.muni.fi.fits.common.utils.Tuple;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;

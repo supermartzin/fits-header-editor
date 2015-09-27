@@ -1,7 +1,7 @@
 package cz.muni.fi.fits.input.validators;
 
 import com.google.common.collect.Sets;
-import cz.muni.fi.fits.exceptions.ValidationException;
+import cz.muni.fi.fits.common.exceptions.ValidationException;
 import cz.muni.fi.fits.input.models.ChainRecordsInputData;
 import cz.muni.fi.fits.input.models.ShiftTimeInputData;
 import org.junit.BeforeClass;

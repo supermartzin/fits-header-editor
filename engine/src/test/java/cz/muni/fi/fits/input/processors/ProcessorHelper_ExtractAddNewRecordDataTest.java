@@ -1,7 +1,7 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.InvalidSwitchParameterException;
-import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
+import cz.muni.fi.fits.common.exceptions.InvalidSwitchParameterException;
+import cz.muni.fi.fits.common.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.DefaultTypeConverter;
 import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.input.models.AddNewRecordInputData;

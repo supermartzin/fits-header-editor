@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.utils.loaders;
+package cz.muni.fi.fits.common.loaders;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Properties;
  * Class for loading user defined properties from file
  *
  * @author Martin Vrábel
- * @version 1.0.1
+ * @version 1.1
  */
 public final class PropertiesLoader {
 
@@ -21,10 +21,20 @@ public final class PropertiesLoader {
      * @return              object with properties
      * @throws IOException  when some error occurs during reading properties
      */
-    public static Properties loadProperties(Class<?> clazz, String filePath) throws IOException {
+    public static Properties loadProperties(Class<?> clazz, String filePath)
+            throws IOException {
+        if (clazz == null)
+            throw new IllegalArgumentException("class parameter is null");
+        if (filePath == null)
+            throw new IllegalArgumentException("filePath is null");
+
         Properties props = new Properties();
 
-        props.load(clazz.getResourceAsStream(filePath));
+        try {
+            props.load(clazz.getResourceAsStream(filePath));
+        } catch (NullPointerException npEx) {
+            throw new IOException("File does not exists: " + filePath);
+        }
 
         return props;
     }
@@ -36,7 +46,11 @@ public final class PropertiesLoader {
      * @return              object with properties
      * @throws IOException  when some error occurs during reading properties
      */
-    public static Properties loadProperties(String filePath) throws IOException {
+    public static Properties loadProperties(String filePath)
+            throws IOException {
+        if (filePath == null)
+            throw new IllegalArgumentException("filePath is null");
+
         Properties props = new Properties();
         
         try (FileInputStream file = new FileInputStream(filePath)) {

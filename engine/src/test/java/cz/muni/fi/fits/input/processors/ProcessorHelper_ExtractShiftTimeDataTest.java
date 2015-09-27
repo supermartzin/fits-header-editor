@@ -1,7 +1,7 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
-import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.converters.DefaultTypeConverter;
 import cz.muni.fi.fits.input.converters.TypeConverter;
 import cz.muni.fi.fits.input.models.ShiftTimeInputData;

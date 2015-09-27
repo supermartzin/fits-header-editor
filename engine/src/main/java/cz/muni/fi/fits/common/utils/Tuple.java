@@ -1,4 +1,4 @@
-package cz.muni.fi.fits.utils;
+package cz.muni.fi.fits.common.utils;
 
 import com.google.common.base.Objects;
 

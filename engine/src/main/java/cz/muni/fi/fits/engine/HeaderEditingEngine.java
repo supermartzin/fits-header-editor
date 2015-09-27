@@ -2,10 +2,10 @@ package cz.muni.fi.fits.engine;
 
 import cz.muni.fi.fits.engine.models.Result;
 import cz.muni.fi.fits.models.ChainValueType;
-import cz.muni.fi.fits.utils.Tuple;
+import cz.muni.fi.fits.common.utils.Tuple;
 
 import java.io.File;
-import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Interface defining methods of editing engine that can be performed
@@ -105,7 +105,7 @@ public interface HeaderEditingEngine {
      * @param fitsFile                  FITS file in which to chain records
      * @return                          {@link Result} object with results of this operation
      */
-    Result chainMultipleRecords(String keyword, LinkedList<Tuple<ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile);
+    Result chainMultipleRecords(String keyword, List<Tuple<ChainValueType, String>> chainParameters, String comment, boolean updateIfExists, boolean skipIfChainKwNotExists, File fitsFile);
 
     /**
      * Shifts time of time record with <code>keyword</code> by amount of time specified by arguments

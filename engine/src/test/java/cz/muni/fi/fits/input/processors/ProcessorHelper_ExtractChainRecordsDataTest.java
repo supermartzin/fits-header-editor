@@ -1,8 +1,8 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
-import cz.muni.fi.fits.exceptions.InvalidSwitchParameterException;
-import cz.muni.fi.fits.exceptions.WrongNumberOfParametersException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.InvalidSwitchParameterException;
+import cz.muni.fi.fits.common.exceptions.WrongNumberOfParametersException;
 import cz.muni.fi.fits.input.models.ChainRecordsInputData;
 import cz.muni.fi.fits.models.ChainValueType;
 import org.junit.After;

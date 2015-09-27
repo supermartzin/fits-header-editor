@@ -1,6 +1,6 @@
 package cz.muni.fi.fits.input.processors;
 
-import cz.muni.fi.fits.exceptions.IllegalInputDataException;
+import cz.muni.fi.fits.common.exceptions.IllegalInputDataException;
 import cz.muni.fi.fits.input.models.InputData;
 
 /**

@@ -80,4 +80,13 @@ public interface OutputWriter {
      *                      <code>false</code> when error occurs during writing to output
      */
     boolean writeError(File file, String errorMessage);
+
+    /**
+     * Enum with types of {@link OutputWriter}
+     */
+    enum Type {
+        FILE,
+        CONSOLE,
+        FILE_AND_CONSOLE
+    }
 }
