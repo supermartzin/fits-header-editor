@@ -1,6 +1,7 @@
 package cz.muni.fi.fits.output.writers;
 
 import com.google.inject.Singleton;
+import cz.muni.fi.fits.common.utils.StringUtils;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
  * implements {@link OutputWriter} interface
  *
  * @author Martin Vrábel
- * @version 1.0.1
+ * @version 1.0.2
  */
 @Singleton
 public class ConsoleOutputWriter implements OutputWriter {
@@ -55,10 +56,7 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-        if (lastIndex > -1)
-            exceptionType = exceptionType.substring(lastIndex + 1);
+        String exceptionType = StringUtils.getExceptionType(exception);
 
         System.err.println("[" + LocalDateTime.now().toString() + "]" +
                 " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
@@ -76,10 +74,7 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(String errorMessage, Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-        if (lastIndex > -1)
-            exceptionType = exceptionType.substring(lastIndex + 1);
+        String exceptionType = StringUtils.getExceptionType(exception);
 
         System.err.println("[" + LocalDateTime.now().toString() + "]" +
                 " EXCEPTION >> [" + exceptionType + "]: " + errorMessage);
@@ -97,10 +92,7 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-        if (lastIndex > -1)
-            exceptionType = exceptionType.substring(lastIndex + 1);
+        String exceptionType = StringUtils.getExceptionType(exception);
 
         System.err.println("[" + LocalDateTime.now().toString() + "]" +
                 " EXCEPTION >>" +

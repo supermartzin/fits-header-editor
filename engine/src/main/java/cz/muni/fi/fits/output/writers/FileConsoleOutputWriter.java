@@ -1,5 +1,7 @@
 package cz.muni.fi.fits.output.writers;
 
+import cz.muni.fi.fits.common.utils.StringUtils;
+
 import javax.inject.Singleton;
 import java.io.*;
 import java.time.LocalDateTime;
@@ -13,7 +15,7 @@ import java.time.LocalDateTime;
  * implements {@link OutputWriter} interface
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.1.1
  */
 @Singleton
 public class FileConsoleOutputWriter implements OutputWriter {
@@ -101,7 +103,7 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(Throwable exception) {
-        String exceptionType = extractExceptionType(exception);
+        String exceptionType = StringUtils.getExceptionType(exception);
 
         try {
             // write to file
@@ -130,7 +132,7 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(String errorMessage, Throwable exception) {
-        String exceptionType = extractExceptionType(exception);
+        String exceptionType = StringUtils.getExceptionType(exception);
 
         try {
             // write to file
@@ -159,7 +161,7 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
-        String exceptionType = extractExceptionType(exception);
+        String exceptionType = StringUtils.getExceptionType(exception);
 
         try {
             // write to file
@@ -239,15 +241,5 @@ public class FileConsoleOutputWriter implements OutputWriter {
         } catch (IOException e) {
             return false;
         }
-    }
-
-    private String extractExceptionType(Throwable exception) {
-        String exceptionType = exception.getClass().getTypeName();
-        int lastIndex = exceptionType.lastIndexOf('.');
-
-        if (lastIndex > -1)
-            return exceptionType.substring(lastIndex + 1);
-        else
-            return exceptionType;
     }
 }
