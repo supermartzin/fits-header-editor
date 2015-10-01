@@ -13,7 +13,7 @@ import java.util.Set;
  * from FITS file header in {@link cz.muni.fi.fits.engine.HeaderEditingEngine} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.0.1
  */
 public final class DateTimeUtils {
 
@@ -31,9 +31,7 @@ public final class DateTimeUtils {
 
         static {
             DATE_TIME_FORMATTERS.add(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-
             DATE_FORMATTERS.add(DateTimeFormatter.ISO_LOCAL_DATE);
-
             TIME_FORMATTERS.add(DateTimeFormatter.ISO_LOCAL_TIME);
         }
 
@@ -45,7 +43,7 @@ public final class DateTimeUtils {
          * @return      {@link DateTimeFormatter} if parsing was successful,
          *              <code>null</code> otherwise
          */
-        public static DateTimeFormatter tryParseLocalDateTimeFormatter(String value) {
+        public static DateTimeFormatter tryGetDateTimeFormatter(String value) {
             if (value == null)
                 return null;
 
@@ -67,7 +65,7 @@ public final class DateTimeUtils {
          * @return      {@link DateTimeFormatter} if parsing was successful,
          *              <code>null</code> otherwise
          */
-        public static DateTimeFormatter tryParseLocalDateFormatter(String value) {
+        public static DateTimeFormatter tryGetDateFormatter(String value) {
             if (value == null)
                 return null;
 
@@ -89,7 +87,7 @@ public final class DateTimeUtils {
          * @return      {@link DateTimeFormatter} if parsing was successful,
          *              <code>null</code> otherwise
          */
-        public static DateTimeFormatter tryParseLocalTimeFormatter(String value) {
+        public static DateTimeFormatter tryGetTimeFormatter(String value) {
             if (value == null)
                 return null;
 
@@ -116,6 +114,25 @@ public final class DateTimeUtils {
             if (formatter == null)
                 throw new IllegalArgumentException("formatter parameter is null");
 
+            if (value == null)
+                return null;
+
+            try {
+                return LocalDateTime.parse(value);
+            } catch (DateTimeParseException dtpEx) {
+                return null;
+            }
+        }
+
+        /**
+         * Parses {@link LocalDateTime} value from {@link String}
+         * with default {@link DateTimeFormatter}
+         *
+         * @param value {@link String} containing datetime value to parse
+         * @return      {@link LocalDateTime} value if parsing was successful,
+         *              <code>null</code> otherwise
+         */
+        public static LocalDateTime parseLocalDateTime(String value) {
             if (value == null)
                 return null;
 

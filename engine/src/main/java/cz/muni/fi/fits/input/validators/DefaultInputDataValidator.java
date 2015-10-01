@@ -30,7 +30,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException  {@inheritDoc}
      */
     @Override
-    public void validate(AddNewRecordInputData addNewRecordInputData) throws ValidationException {
+    public void validate(AddNewRecordInputData addNewRecordInputData)
+            throws ValidationException {
         if (addNewRecordInputData == null)
             throw new IllegalArgumentException("addNewRecordInputData is null");
 
@@ -114,7 +115,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException      {@inheritDoc}
      */
     @Override
-    public void validate(AddNewToIndexInputData addNewToIndexInputData) throws ValidationException {
+    public void validate(AddNewToIndexInputData addNewToIndexInputData)
+            throws ValidationException {
         if (addNewToIndexInputData == null)
             throw new IllegalArgumentException("addNewToIndexInputData is null");
 
@@ -202,7 +204,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException      {@inheritDoc}
      */
     @Override
-    public void validate(RemoveByKeywordInputData removeByKeywordInputData) throws ValidationException {
+    public void validate(RemoveByKeywordInputData removeByKeywordInputData)
+            throws ValidationException {
         if (removeByKeywordInputData == null)
             throw new IllegalArgumentException("removeByKeywordInputData is null");
 
@@ -252,7 +255,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException      {@inheritDoc}
      */
     @Override
-    public void validate(ChangeKeywordInputData changeKeywordInputData) throws ValidationException {
+    public void validate(ChangeKeywordInputData changeKeywordInputData)
+            throws ValidationException {
         if (changeKeywordInputData == null)
             throw new IllegalArgumentException("changeKeywordInputData is null");
 
@@ -299,7 +303,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException          {@inheritDoc}
      */
     @Override
-    public void validate(ChangeValueByKeywordInputData changeValueByKeywordInputData) throws ValidationException {
+    public void validate(ChangeValueByKeywordInputData changeValueByKeywordInputData)
+            throws ValidationException {
         if (changeValueByKeywordInputData == null)
             throw new IllegalArgumentException("changeValueByKeywordInputData is null");
 
@@ -384,7 +389,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException  {@inheritDoc}
      */
     @Override
-    public void validate(ChainRecordsInputData chainRecordsInputData) throws ValidationException {
+    public void validate(ChainRecordsInputData chainRecordsInputData)
+            throws ValidationException {
         if (chainRecordsInputData == null)
             throw new IllegalArgumentException("chainRecordsInputData is null");
 
@@ -473,7 +479,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
                                 > Constants.MAX_STRING_VALUE_COMMENT_LENGTH) {
                 // if longstrings are not allowed
                 if (!chainRecordsInputData.longstringsAllowed())
-                    throw new ValidationException("Comment is too long for constants in value");
+                    throw new ValidationException("Comment value is too long along with constants in value");
             }
         }
     }
@@ -485,7 +491,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException  {@inheritDoc}
      */
     @Override
-    public void validate(ShiftTimeInputData shiftTimeInputData) throws ValidationException {
+    public void validate(ShiftTimeInputData shiftTimeInputData)
+            throws ValidationException {
         if (shiftTimeInputData == null)
             throw new IllegalArgumentException("shiftTimeInputData is null");
 
@@ -527,7 +534,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException  {@inheritDoc}
      */
     @Override
-    public void validate(ComputeJDInputData computeJDInputData) throws ValidationException {
+    public void validate(ComputeJDInputData computeJDInputData)
+            throws ValidationException {
         if (computeJDInputData == null)
             throw new IllegalArgumentException("computeJDInputData is null");
 
@@ -615,7 +623,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @throws ValidationException  {@inheritDoc}
      */
     @Override
-    public void validate(ComputeHJDInputData computeHJDInputData) throws ValidationException {
+    public void validate(ComputeHJDInputData computeHJDInputData)
+            throws ValidationException {
         if (computeHJDInputData == null)
             throw new IllegalArgumentException("computeHJDInputData is null");
 
@@ -850,7 +859,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
      * @param inputData             input data to validate
      * @throws ValidationException  when FITS files of input data are in invalid form
      */
-    private void validateCommonInputData(InputData inputData) throws ValidationException {
+    private void validateCommonInputData(InputData inputData)
+            throws ValidationException {
         if (inputData.getFitsFiles() == null)
             throw new ValidationException("FITS files argument cannot be null");
         if (inputData.getFitsFiles().isEmpty())

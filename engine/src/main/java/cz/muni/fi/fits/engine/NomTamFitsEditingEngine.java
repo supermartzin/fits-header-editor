@@ -1,5 +1,7 @@
 package cz.muni.fi.fits.engine;
 
+import cz.muni.fi.fits.common.utils.Constants;
+import cz.muni.fi.fits.common.utils.Tuple;
 import cz.muni.fi.fits.engine.models.*;
 import cz.muni.fi.fits.engine.models.converters.DeclinationParamsConverter;
 import cz.muni.fi.fits.engine.models.converters.RightAscensionParamsConverter;
@@ -9,8 +11,6 @@ import cz.muni.fi.fits.engine.utils.MandatoryFITSKeywords;
 import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
-import cz.muni.fi.fits.common.utils.Constants;
-import cz.muni.fi.fits.common.utils.Tuple;
 import nom.tam.fits.*;
 import nom.tam.util.BufferedFile;
 import nom.tam.util.Cursor;
@@ -24,7 +24,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -34,12 +33,16 @@ import java.util.List;
  * on GitHub
  *
  * @author Martin Vrábel
- * @version 1.4.3
+ * @version 1.5
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">nom.tam.fits - Project pages</a>
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
     private static final String FILE_OPENING_MODE = "rw";   // read-write
+
+    public NomTamFitsEditingEngine() {
+        FitsFactory.setLongStringsEnabled(true);
+    }
 
     /**
      * Adds new record to FITS header with specified arguments
@@ -95,10 +98,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             } else {
                 Cursor<String, HeaderCard> iterator = header.iterator();
 
-                // move cursor to the end of header
+                // insert new card at the end of header
                 iterator.end();
-
-                // insert new header card
                 iterator.add(card);
             }
 
@@ -163,9 +164,8 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // create new header card based on value type
             HeaderCard card = createNewHeaderCard(keyword, value, comment);
-
             if (card == null)
-                return new Result(false, "Unknown type of value object");
+                return new Result(false, "Unknown type of record's value");
 
             Cursor<String, HeaderCard> iterator = header.iterator();
 
@@ -279,11 +279,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 return new Result(false, "Index " + index + " is not in range of header size");
 
             // move cursor to specified index
-            Cursor<String, HeaderCard> iterator;
-            if (index > 1)
-                iterator = header.iterator(index - 1);
-            else
-                iterator = header.iterator();
+            Cursor<String, HeaderCard> iterator =
+                    (index > 1) ? header.iterator(index - 1)
+                            : header.iterator();
 
             // check for mandatory keyword
             String indexKey = iterator.next().getKey();
@@ -346,10 +344,10 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     if (MandatoryFITSKeywords.matchesMandatoryKeyword(newKeyword)) {
                         return new Result(false, "Header already contains record with '" + newKeyword + "' keyword but it is mandatory hence it cannot be removed");
                     }
-                    valueOfNewRemoved = true;
 
                     // remove already existing header card
                     header.deleteKey(newKeyword);
+                    valueOfNewRemoved = true;
                 } else {
                     return new Result(false, "Header already contains record with '" + newKeyword + "' keyword");
                 }
@@ -359,33 +357,14 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             if (MandatoryFITSKeywords.matchesMandatoryKeyword(oldKeyword))
                 return new Result(false, "Record with keyword '" + oldKeyword + "' is mandatory hence it cannot be changed");
 
-            // get old header card and create updated one based on type of value
-            HeaderCard newCard;
+            // get old header card and extract value with corresponding type from it
             HeaderCard oldCard = header.findCard(oldKeyword);
-            if (oldCard.valueType() == String.class) {
-                String value = header.getStringValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else if (oldCard.valueType() == Double.class) {
-                Double value = header.getDoubleValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else if (oldCard.valueType() == Boolean.class) {
-                boolean value = header.getBooleanValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else if (oldCard.valueType() == Integer.class) {
-                int value = header.getIntValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else if (oldCard.valueType() == Long.class) {
-                long value = header.getLongValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else if (oldCard.valueType() == BigInteger.class) {
-                BigInteger value = header.getBigIntegerValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else if (oldCard.valueType() == BigDecimal.class) {
-                BigDecimal value = header.getBigDecimalValue(oldKeyword);
-                newCard = new HeaderCard(newKeyword, value, oldCard.getComment());
-            } else {
-                newCard = new HeaderCard(newKeyword, oldCard.getValue(), oldCard.getComment());
-            }
+            Object value = extractValueWithCorrectType(oldCard);
+
+            // create updated header card
+            HeaderCard newCard = createNewHeaderCard(newKeyword, value, oldCard.getComment());
+            if (newCard == null)
+                return new Result(false, "Unknown type of old record's value");
 
             // update old header card with new one
             header.updateLine(oldKeyword, newCard);
@@ -437,30 +416,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             boolean keywordExists = header.containsKey(keyword);
 
             // if comment is null use the original one
-            if (newComment == null) {
+            if (newComment == null && keywordExists) {
                 HeaderCard existingCard = header.findCard(keyword);
                 newComment = existingCard.getComment();
             }
 
             // create new header card based on value type
-            HeaderCard card;
-            if (newValue instanceof Integer) {
-                card = new HeaderCard(keyword, (Integer) newValue, newComment);
-            } else if (newValue instanceof Long) {
-                card = new HeaderCard(keyword, (Long) newValue, newComment);
-            } else if (newValue instanceof Double) {
-                card = new HeaderCard(keyword, (Double) newValue, newComment);
-            } else if (newValue instanceof Boolean) {
-                card = new HeaderCard(keyword, (Boolean) newValue, newComment);
-            } else if (newValue instanceof String) {
-                card = new HeaderCard(keyword, (String) newValue, newComment);
-            } else if (newValue instanceof BigInteger) {
-                card = new HeaderCard(keyword, (BigInteger) newValue, newComment);
-            } else if (newValue instanceof BigDecimal) {
-                card = new HeaderCard(keyword, (BigDecimal) newValue, newComment);
-            } else {
+            HeaderCard card = createNewHeaderCard(keyword, newValue, newComment);
+            if (card == null)
                 return new Result(false, "Unknown type of value object");
-            }
 
             if (keywordExists) {
                 // check for mandatory keyword
@@ -474,15 +438,13 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 if (!addNewIfNotExists) {
                     return new Result(false, "Header does not contain record with '" + keyword + "' keyword");
                 } else {
-                    newAdded = true;
-
                     Cursor<String, HeaderCard> iterator = header.iterator();
 
-                    // move cursor to the end of header
+                    // insert new card at the end of header
                     iterator.end();
-
-                    // insert new header card
                     iterator.add(card);
+
+                    newAdded = true;
                 }
             }
 
@@ -502,17 +464,17 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
     /**
      * Chain multiple records into new single record in FITS header by specified arguments
      *
-     * @param keyword                keyword of new chained record
-     * @param chainParameters        list of parameters containing constant and keyword
-     *                               tuples of {@link ChainValueType} and
-     *                               {@link String} which to chain
-     * @param comment                comment to set in record, insert <code>null</code>
-     *                               if no comment to add
-     * @param updateIfExists         value indicating whether to update value of record
-     *                               with specified keyword if it already exists
-     * @param allowLongstrings       value indicating whether allow longstring values in header
-     *                               if chained value is longer than basic limit
-     * @param fitsFile               FITS file in which to chain records
+     * @param keyword          keyword of new chained record
+     * @param chainParameters  list of parameters containing constant and keyword
+     *                         tuples of {@link ChainValueType} and
+     *                         {@link String} which to chain
+     * @param comment          comment to set in record, insert <code>null</code>
+     *                         if no comment to add
+     * @param updateIfExists   value indicating whether to update value of record
+     *                         with specified keyword if it already exists
+     * @param allowLongstrings value indicating whether allow longstring values in header
+     *                         if chained value is longer than basic limit
+     * @param fitsFile         FITS file in which to chain records
      * @return {@inheritDoc}
      */
     @Override
@@ -526,7 +488,6 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             throw new IllegalArgumentException("fitsFile is null");
 
         boolean updated = false;
-        boolean skippedKeyword = false;
 
         try {
             Fits fits = new Fits(fitsFile);
@@ -546,30 +507,28 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     case KEYWORD:
                         String key = chainParameter.getSecond();
                         // check if header contains key
-                        boolean keyExists = header.containsKey(key);
+                        if (!header.containsKey(key))
+                            return new Result(false, "Header does not contain record with '" + key + "' keyword");
 
-                        if (!keyExists) {
-                            if (allowLongstrings) {
-                                skippedKeyword = true;
-                                break;
-                            } else
-                                return new Result(false, "Header does not contain record with '" + key + "' keyword");
-                        } else {
-                            // add to value
-                            value += header.findCard(key).getValue();
-                        }
+                        // add to value
+                        value += header.findCard(key).getValue();
                         break;
                 }
             }
 
             // check for validity of value
             if (value.isEmpty())
-                return new Result(false, "Value of chained records cannot empty");
-            if (value.length() > Constants.MAX_STRING_VALUE_LENGTH)
+                return new Result(false, "Value of chained records cannot be empty");
+            if (!allowLongstrings && value.length() > Constants.MAX_STRING_VALUE_LENGTH) {
                 return new Result(false, "Value of chained records is too long");
+            }
             if (comment != null
-                    && value.length() + comment.length() > Constants.MAX_STRING_VALUE_COMMENT_LENGTH)
-                return new Result(false, "Value along with comment are too long. Try to shorten the comment");
+                    && !allowLongstrings
+                    && value.length() + comment.length() > Constants.MAX_STRING_VALUE_COMMENT_LENGTH) {
+                return new Result(false, "Value along with comment is too long. Try to shorten the comment");
+            }
+
+            HeaderCard card = new HeaderCard(keyword, value, comment);
 
             // check if keyword does already exist
             boolean keywordExists = header.containsKey(keyword);
@@ -583,33 +542,27 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                         return new Result(false, "Header already contains record with '" + keyword + "' keyword but it is mandatory hence it cannot be changed");
                     }
 
-                    updated = true;
-
                     // update header card with new chained value
-                    header.updateLine(keyword, new HeaderCard(keyword, value, comment));
+                    header.updateLine(keyword, card);
+
+                    updated = true;
                 }
             } else {
                 Cursor<String, HeaderCard> iterator = header.iterator();
 
-                // move cursor to the end of header
+                // insert new card at the end of header
                 iterator.end();
-
-                // insert new header card
-                iterator.add(new HeaderCard(keyword, value, comment));
+                iterator.add(card);
             }
 
             // write changes
             writeChangesBackToFile(fits, fitsFile);
 
             // return success
-            if (!updated && !skippedKeyword)
+            if (!updated)
                 return new Result(true, "Records successfully chained into record '" + keyword + "'");
-            else if (updated && !skippedKeyword)
-                return new Result(true, "Records successfully chained and updated into record '" + keyword + "'");
-            else if (!updated)
-                return new Result(true, "Records chained into record '" + keyword + "' with some non-existing keywords records skipped");
             else
-                return new Result(true, "Records chained and updated into record '" + keyword + "' with some non-existing keywords records skipped");
+                return new Result(true, "Records successfully chained and updated into record '" + keyword + "'");
         } catch (FitsException | IOException ex) {
             return new Result(false, "Error in editing engine: " + ex.getMessage());
         }
@@ -654,16 +607,16 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             HeaderCard oldCard = header.findCard(keyword);
 
             // try to parse LocalDateTime value
-            DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateTimeFormatter(oldCard.getValue());
+            DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetDateTimeFormatter(oldCard.getValue());
             DateTimeUtils.DateTimeType recordType = DateTimeUtils.DateTimeType.DATETIME;
             // try to parse LocalDate value
             if (formatter == null) {
-                formatter = DateTimeUtils.DateTimeParser.tryParseLocalDateFormatter(oldCard.getValue());
+                formatter = DateTimeUtils.DateTimeParser.tryGetDateFormatter(oldCard.getValue());
                 recordType = DateTimeUtils.DateTimeType.DATE;
             }
             // try to parse LocalTime value
             if (formatter == null) {
-                formatter = DateTimeUtils.DateTimeParser.tryParseLocalTimeFormatter(oldCard.getValue());
+                formatter = DateTimeUtils.DateTimeParser.tryGetTimeFormatter(oldCard.getValue());
                 recordType = DateTimeUtils.DateTimeType.TIME;
             }
 
@@ -795,18 +748,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 // get value from FITS file header
                 String datetimeKeyword = (String) datetime;
 
-                if (header.containsKey(datetimeKeyword)) {
-                    HeaderCard datetimeCard = header.findCard(datetimeKeyword);
-
-                    // parse LocalDateTime value from record
-                    try {
-                        datetimeValue = LocalDateTime.parse(datetimeCard.getValue());
-                    } catch (DateTimeParseException dtpEx) {
-                        return new Result(false, "Record with keyword '" + datetimeKeyword + "' does not contain valid DateTime value");
-                    }
-                } else {
+                if (!header.containsKey(datetimeKeyword))
                     return new Result(false, "Header does not contain DateTime record with keyword '" + datetimeKeyword + "'");
-                }
+
+                HeaderCard datetimeCard = header.findCard(datetimeKeyword);
+
+                // parse LocalDateTime value from record
+                datetimeValue = DateTimeUtils.DateTimeParser.parseLocalDateTime(datetimeCard.getValue());
+                if (datetimeValue == null)
+                    return new Result(false, "Record with keyword '" + datetimeKeyword + "' does not contain valid DateTime value");
             } else {
                 return new Result(false, "Unknown type of DateTime object");
             }
@@ -818,17 +768,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 // get value from FITS file header
                 String exposureKeyword = (String) exposure;
 
-                if (header.containsKey(exposureKeyword)) {
-                    HeaderCard exposureCard = header.findCard(exposureKeyword);
-
-                    // get Double value from record
-                    exposureValue = exposureCard.getValue(Double.class, Double.NaN);
-
-                    if (Double.isNaN(exposureValue))
-                        return new Result(false, "Record with keyword '" + exposureKeyword + "' does not contain valid Double value");
-                } else {
+                if (!header.containsKey(exposureKeyword))
                     return new Result(false, "Header does not contain Exposure record with keyword '" + exposureKeyword + "'");
-                }
+
+                HeaderCard exposureCard = header.findCard(exposureKeyword);
+
+                // get Double value from record
+                exposureValue = exposureCard.getValue(Double.class, Double.NaN);
+                if (Double.isNaN(exposureValue))
+                    return new Result(false, "Record with keyword '" + exposureKeyword + "' does not contain valid Double value");
             } else {
                 return new Result(false, "Unknown type of Exposure object");
             }
@@ -847,11 +795,12 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 return new Result(false, "Header already contains record with '" + Constants.DEFAULT_JD_KEYWORD + "' keyword but it is mandatory hence it cannot be changed");
             }
 
-            // save/update to header as new record
             if (header.containsKey(Constants.DEFAULT_JD_KEYWORD)) {
+                // update existing header card
                 header.updateLine(Constants.DEFAULT_JD_KEYWORD, jdCard);
                 jdUpdated = true;
             } else {
+                // insert card at the end of header
                 Cursor<String, HeaderCard> iterator = header.iterator();
                 iterator.end();
                 iterator.add(jdCard);
@@ -928,18 +877,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 // get value from FITS file header
                 String datetimeKeyword = (String) datetime;
 
-                if (header.containsKey(datetimeKeyword)) {
-                    HeaderCard datetimeCard = header.findCard(datetimeKeyword);
-
-                    // parse LocalDateTime value from record
-                    try {
-                        datetimeValue = LocalDateTime.parse(datetimeCard.getValue());
-                    } catch (DateTimeParseException dtpEx) {
-                        return new Result(false, "Record with keyword '" + datetimeKeyword + "' does not contain valid DateTime value");
-                    }
-                } else {
+                if (!header.containsKey(datetimeKeyword))
                     return new Result(false, "Header does not contain DateTime record with keyword '" + datetimeKeyword + "'");
-                }
+
+                HeaderCard datetimeCard = header.findCard(datetimeKeyword);
+
+                // parse LocalDateTime value from record
+                datetimeValue = DateTimeUtils.DateTimeParser.parseLocalDateTime(datetimeCard.getValue());
+                if (datetimeValue == null)
+                    return new Result(false, "Record with keyword '" + datetimeKeyword + "' does not contain valid DateTime value");
             } else {
                 return new Result(false, "Unknown type of DateTime object");
             }
@@ -951,17 +897,15 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 // get value from FITS file header
                 String exposureKeyword = (String) exposure;
 
-                if (header.containsKey(exposureKeyword)) {
-                    HeaderCard exposureCard = header.findCard(exposureKeyword);
-
-                    // get Double value from record
-                    exposureValue = exposureCard.getValue(Double.class, Double.NaN);
-
-                    if (Double.isNaN(exposureValue))
-                        return new Result(false, "Record with keyword '" + exposureKeyword + "' does not contain valid Double value");
-                } else {
+                if (!header.containsKey(exposureKeyword))
                     return new Result(false, "Header does not contain Exposure record with keyword '" + exposureKeyword + "'");
-                }
+
+                HeaderCard exposureCard = header.findCard(exposureKeyword);
+
+                // get Double value from record
+                exposureValue = exposureCard.getValue(Double.class, Double.NaN);
+                if (Double.isNaN(exposureValue))
+                    return new Result(false, "Record with keyword '" + exposureKeyword + "' does not contain valid Double value");
             } else {
                 return new Result(false, "Unknown type of Exposure object");
             }
@@ -973,11 +917,12 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             } else if (rightAscension instanceof BigDecimal) {
                 // value is BigDecimal
                 double value = ((BigDecimal) rightAscension).doubleValue();
-                if (Double.isFinite(value)) {
+
+                if (Double.isFinite(value))
                     rightAscensionValue = value;
-                } else {
+                else
                     return new Result(false, "Right Ascension value is too big");
-                }
+
             } else if (rightAscension instanceof TimeObject) {
                 // value is TimeObject
                 rightAscensionValue = RightAscension.computeRightAscension((TimeObject) rightAscension);
@@ -1022,11 +967,12 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             } else if (declination instanceof BigDecimal) {
                 // value is BigDecimal
                 double value = ((BigDecimal) declination).doubleValue();
-                if (Double.isFinite(value)) {
+
+                if (Double.isFinite(value))
                     declinationValue = value;
-                } else {
+                else
                     return new Result(false, "Declination value is too big");
-                }
+
             } else if (declination instanceof DegreesObject) {
                 // value is DegreesObject
                 declinationValue = Declination.computeDeclination((DegreesObject) declination);
@@ -1079,7 +1025,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                 return new Result(false, "Header already contains record with '" + Constants.DEFAULT_HJD_KEYWORD + "' keyword but it is mandatory hence it cannot be changed");
 
             if (!header.containsKey(Constants.DEFAULT_HJD_KEYWORD)) {
-                // save to header as new record
+                // save card to the end of header as new record
                 Cursor<String, HeaderCard> iterator = header.iterator();
                 iterator.end();
                 iterator.add(hjdCard);
@@ -1094,17 +1040,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
                 if (rightAscension instanceof TimeObject) {
                     // save in full time format -> hh:mm:ss.SSS
-
-                    TimeObject timeObject = (TimeObject) rightAscension;
-                    // convert parameters to base form
-                    RightAscensionParamsConverter converter = new RightAscensionParamsConverter(
-                            timeObject.getHours(),
-                            timeObject.getMinutes(),
-                            timeObject.getSeconds());
-
-                    String raValue = NumberFormatter.format(converter.getHours(), 2, 2) + ":"
-                            + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
-                            + NumberFormatter.format(converter.getSeconds(), 2, 3);
+                    String raValue = convertAndFormat((TimeObject) rightAscension);
 
                     raCard = new HeaderCard(Constants.DEFAULT_RA_KEYWORD, raValue, Constants.DEFAULT_RA_COMMENT);
                 } else {
@@ -1132,17 +1068,7 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
                 if (declination instanceof DegreesObject) {
                     // save in full degrees format -> hh:mm:ss.SSS
-
-                    DegreesObject degreesObject = (DegreesObject) declination;
-                    // convert parameters to base form
-                    DeclinationParamsConverter converter = new DeclinationParamsConverter(
-                            degreesObject.getDegrees(),
-                            degreesObject.getMinutes(),
-                            degreesObject.getSeconds());
-
-                    String decValue = NumberFormatter.format(converter.getDegrees(), 2, 2) + ":"
-                            + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
-                            + NumberFormatter.format(converter.getSeconds(), 2, 3);
+                    String decValue = convertAndFormat((DegreesObject) declination);
 
                     decCard = new HeaderCard(Constants.DEFAULT_DEC_KEYWORD, decValue, Constants.DEFAULT_DEC_COMMENT);
                 } else {
@@ -1200,6 +1126,29 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
         }
     }
 
+    private Object extractValueWithCorrectType(HeaderCard headerCard) {
+        if (headerCard.valueType() == Double.class)
+            return headerCard.getValue(Double.class, null);
+
+        if (headerCard.valueType() == Boolean.class)
+            return headerCard.getValue(Boolean.class, null);
+
+        if (headerCard.valueType() == Integer.class)
+            return headerCard.getValue(Integer.class, null);
+
+        if (headerCard.valueType() == Long.class)
+            return headerCard.getValue(Long.class, null);
+
+        if (headerCard.valueType() == BigInteger.class)
+            return headerCard.getValue(BigInteger.class, null);
+
+        if (headerCard.valueType() == BigDecimal.class)
+            return headerCard.getValue(BigDecimal.class, null);
+
+        return headerCard.getValue();
+
+    }
+
     private void writeChangesBackToFile(Fits fitsObject, File fitsFile)
             throws IOException, FitsException {
         BufferedFile bf = new BufferedFile(fitsFile, FILE_OPENING_MODE);
@@ -1208,5 +1157,29 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
     private boolean indexInRangeOfHeaderSize(int index, Header header) {
         return index <= header.getNumberOfCards() - 1;
+    }
+
+    private String convertAndFormat(DegreesObject degreesObject) {
+        // convert parameters to base form
+        DeclinationParamsConverter converter = new DeclinationParamsConverter(
+                degreesObject.getDegrees(),
+                degreesObject.getMinutes(),
+                degreesObject.getSeconds());
+
+        return NumberFormatter.format(converter.getDegrees(), 2, 2) + ":"
+                + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
+                + NumberFormatter.format(converter.getSeconds(), 2, 3);
+    }
+
+    private String convertAndFormat(TimeObject timeObject) {
+        // convert parameters to base form
+        RightAscensionParamsConverter converter = new RightAscensionParamsConverter(
+                timeObject.getHours(),
+                timeObject.getMinutes(),
+                timeObject.getSeconds());
+
+        return NumberFormatter.format(converter.getHours(), 2, 2) + ":"
+                + NumberFormatter.format(converter.getMinutes(), 2, 2) + ":"
+                + NumberFormatter.format(converter.getSeconds(), 2, 3);
     }
 }

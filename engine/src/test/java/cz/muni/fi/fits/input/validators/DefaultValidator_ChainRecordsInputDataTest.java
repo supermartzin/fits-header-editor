@@ -266,7 +266,7 @@ public class DefaultValidator_ChainRecordsInputDataTest {
         ChainRecordsInputData crid = new ChainRecordsInputData("KEYWORD", chainValues, "TOO LONG COMMENT - TOO LONG COMENT - TOO lONG", false, false, _fitsFiles);
 
         exception.expect(ValidationException.class);
-        exception.expectMessage("Comment is too long");
+        exception.expectMessage("Comment value is too long");
         _validator.validate(crid);
     }
 
