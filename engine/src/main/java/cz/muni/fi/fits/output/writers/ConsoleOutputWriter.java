@@ -14,10 +14,12 @@ import java.time.LocalDateTime;
  * implements {@link OutputWriter} interface
  *
  * @author Martin Vrábel
- * @version 1.0.2
+ * @version 1.1
  */
 @Singleton
 public class ConsoleOutputWriter implements OutputWriter {
+
+    private static final String UNKNOWN_FILE_NAME = "Unknown file";
 
     /**
      * Writes specified <code>infoMessage</code> to standard output
@@ -27,9 +29,14 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeInfo(String infoMessage) {
-        System.out.println("[" + LocalDateTime.now().toString() + "] INFO >> " + infoMessage);
+        // write only if infoMessage parameter is correct
+        if (infoMessage != null) {
+            System.out.println("[" + LocalDateTime.now().toString() + "] INFO >> " + infoMessage);
 
-        return true;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -42,10 +49,22 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeInfo(File file, String infoMessage) {
-        System.out.println("[" + LocalDateTime.now().toString() + "]" +
-                " INFO >> [" + file.getName() + "]: " + infoMessage);
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
 
-        return true;
+        // write only if infoMessage parameter is correct
+        if (infoMessage != null) {
+            System.out.println("[" + LocalDateTime.now().toString() + "]" +
+                    " INFO >> [" + filename + "]: " + infoMessage);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -56,28 +75,44 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(Throwable exception) {
-        String exceptionType = StringUtils.getExceptionType(exception);
+        if (exception != null) {
+            String exceptionType = StringUtils.getExceptionType(exception);
 
-        System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
+            System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                    " EXCEPTION >>" +
+                    " [" + exceptionType + "]: " +
+                    exception.getMessage());
 
-        return true;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * Writes specified <code>exception</code> along with <code>errorMessage</code>
      * to standard error output
      *
-     * @param errorMessage  error message to be written to output
-     * @param exception     exception to be written to output
+     * @param errorMessage  error message to be written to output,
+     *                      if <code>null</code> or empty, message from <code>exception</code>
+     *                      parameter is taken
+     * @param exception     exception to be written to output,
+     *                      if <code>null</code>, only <code>errorMessage</code> id written as error
      * @return              {@inheritDoc}
      */
     @Override
     public boolean writeException(String errorMessage, Throwable exception) {
+        if (errorMessage == null || errorMessage.isEmpty())
+            return writeException(exception);
+        if (exception == null)
+            return writeError(errorMessage);
+
         String exceptionType = StringUtils.getExceptionType(exception);
 
         System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                " EXCEPTION >> [" + exceptionType + "]: " + errorMessage);
+                " EXCEPTION >>" +
+                " [" + exceptionType + "]: " +
+                errorMessage);
 
         return true;
     }
@@ -86,21 +121,29 @@ public class ConsoleOutputWriter implements OutputWriter {
      * Writes specified <code>exception</code> related to specified <code>file</code>
      * to standard error output
      *
-     * @param file      file to which specific exception relates
+     * @param file      file to which specific exception relates,
+     *                  if <code>null</code> then it is written as regular exception
      * @param exception exception to be written to output
      * @return          {@inheritDoc}
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
-        String exceptionType = StringUtils.getExceptionType(exception);
+        if (file == null)
+            return writeException(exception);
 
-        System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                " EXCEPTION >>" +
-                " [" + file.getName() + "] -" +
-                " [" + exceptionType + "]: " +
-                exception.getMessage());
+        if (exception != null) {
+            String exceptionType = StringUtils.getExceptionType(exception);
 
-        return true;
+            System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                    " EXCEPTION >>" +
+                    " [" + file.getName() + "] -" +
+                    " [" + exceptionType + "]: " +
+                    exception.getMessage());
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -111,27 +154,39 @@ public class ConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeError(String errorMessage) {
-        System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                " ERROR >>" + errorMessage);
+        if (errorMessage != null) {
+            System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                    " ERROR >>" + errorMessage);
 
-        return true;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * Writes specified <code>errorMessage</code> related to specified <code>file</code>
      * to standard error output
      *
-     * @param file          file to which specific error message relates
+     * @param file          file to which specific error message relates,
+     *                      if <code>null</code> then it is written as regular error
      * @param errorMessage  error message to be written to output
      * @return              {@inheritDoc}
      */
     @Override
     public boolean writeError(File file, String errorMessage) {
-        System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                " ERROR >>" +
-                " [" + file.getName() + "]: " +
-                errorMessage);
+        if (file == null)
+            return writeError(errorMessage);
 
-        return true;
+        if (errorMessage != null) {
+            System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                    " ERROR >>" +
+                    " [" + file.getName() + "]: " +
+                    errorMessage);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 }

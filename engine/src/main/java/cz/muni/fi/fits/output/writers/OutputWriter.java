@@ -15,7 +15,8 @@ public interface OutputWriter {
      *
      * @param infoMessage   info message to be written to output
      * @return              <code>true</code> when writing to output is successful,
-     *                      <code>false</code> when error occurs during writing to output
+     *                      <code>false</code> when error occurs during writing to output or
+     *                      <code>infoMessage</code> parameter is <code>null</code>
      */
     boolean writeInfo(String infoMessage);
 
@@ -26,7 +27,8 @@ public interface OutputWriter {
      * @param file          file to which specific info message relates
      * @param infoMessage   message to be written to output
      * @return              <code>true</code> when writing to output is successful,
-     *                      <code>false</code> when error occurs during writing to output
+     *                      <code>false</code> when error occurs during writing to output or
+     *                      <code>infoMessage</code> parameter is <code>null</code>
      */
     boolean writeInfo(File file, String infoMessage);
 
@@ -35,7 +37,8 @@ public interface OutputWriter {
      *
      * @param exception exception to be written to output
      * @return          <code>true</code> when writing to output is successful,
-     *                  <code>false</code> when error occurs during writing to output
+     *                  <code>false</code> when error occurs during writing to output or
+     *                  <code>exception</code> parameter is <code>null</code>
      */
     boolean writeException(Throwable exception);
 
@@ -43,8 +46,11 @@ public interface OutputWriter {
      * Writes specified <code>exception</code> along with <code>errorMessage</code>
      * to output
      *
-     * @param errorMessage  error message to be written to output
-     * @param exception     exception to be written to output
+     * @param errorMessage  error message to be written to output,
+     *                      if <code>null</code> or empty, message from <code>exception</code>
+     *                      parameter is taken
+     * @param exception     exception to be written to output,
+     *                      if <code>null</code>, only <code>errorMessage</code> id written as error
      * @return              <code>true</code> when writing to output is successful,
      *                      <code>false</code> when error occurs during writing to output
      */
@@ -54,10 +60,12 @@ public interface OutputWriter {
      * Writes specified <code>exception</code> related to specified <code>file</code>
      * to output
      *
-     * @param file      file to which specific exception relates
+     * @param file      file to which specific exception relates,
+     *                  if <code>null</code> then it is written as regular exception
      * @param exception exception to be written to output
      * @return          <code>true</code> when writing to output is successful,
-     *                  <code>false</code> when error occurs during writing to output
+     *                  <code>false</code> when error occurs during writing to output or
+     *                  <code>exception</code> parameter is <code>null</code>
      */
     boolean writeException(File file, Throwable exception);
 
@@ -66,7 +74,8 @@ public interface OutputWriter {
      *
      * @param errorMessage  error message to be written to output
      * @return              <code>true</code> when writing to output is successful,
-     *                      <code>false</code> when error occurs during writing to output
+     *                      <code>false</code> when error occurs during writing to output or
+     *                      <code>errorMessage</code> parameter is <code>null</code>
      */
     boolean writeError(String errorMessage);
 
@@ -74,10 +83,12 @@ public interface OutputWriter {
      * Writes specified <code>errorMessage</code> related to specified <code>file</code>
      * to output
      *
-     * @param file          file to which specific error message relates
+     * @param file          file to which specific error message relates,
+     *                      if <code>null</code> then it is written as regular error
      * @param errorMessage  error message to be written to output
      * @return              <code>true</code> when writing to output is successful,
-     *                      <code>false</code> when error occurs during writing to output
+     *                      <code>false</code> when error occurs during writing to output or
+     *                      <code>errorMessage</code> parameter is <code>null</code>
      */
     boolean writeError(File file, String errorMessage);
 
