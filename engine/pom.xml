@@ -6,7 +6,7 @@
 
     <groupId>cz.muni.fi.fits</groupId>
     <artifactId>FITS-HeaderEditor</artifactId>
-    <version>0.9.8-SNAPSHOT</version>
+    <version>0.9.9-SNAPSHOT</version>
 
     <name>FITS Header Editor Tool</name>
     <packaging>jar</packaging>

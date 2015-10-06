@@ -21,8 +21,8 @@ public class ApplicationInitializer {
     public static void main(String[] args) {
         try {
             // load properties
-            Properties properties = PropertiesLoader.loadProperties(ApplicationInitializer.class, "/fits.properties");     // for IDE
-            //Properties properties = PropertiesLoader.loadProperties("./fits.properties");                                // for JAR
+            //Properties properties = PropertiesLoader.loadProperties(ApplicationInitializer.class, "/fits.properties");     // for IDE
+            Properties properties = PropertiesLoader.loadProperties("./fits.properties");                                // for JAR
 
             // load configuration
             Configuration config = ConfigurationLoader.loadConfiguration(properties);

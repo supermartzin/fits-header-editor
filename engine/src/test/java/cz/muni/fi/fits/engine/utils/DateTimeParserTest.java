@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * for parsing Date and Time values from {@link String}
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.1.1
  */
 public class DateTimeParserTest {
 
@@ -25,9 +25,7 @@ public class DateTimeParserTest {
 
     @Test
     public void testTryParseLocalDateTimeFormatter_Value_Null() throws Exception {
-        String value = null;
-
-        DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetDateTimeFormatter(value);
+        DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetDateTimeFormatter(null);
 
         assertNull(formatter);
     }
@@ -53,9 +51,7 @@ public class DateTimeParserTest {
 
     @Test
     public void testTryParseLocalDateFormatter_Value_Null() throws Exception {
-        String value = null;
-
-        DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetDateFormatter(value);
+        DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetDateFormatter(null);
 
         assertNull(formatter);
     }
@@ -81,9 +77,7 @@ public class DateTimeParserTest {
 
     @Test
     public void testTryParseLocalTimeFormatter_Value_Null() throws Exception {
-        String value = null;
-
-        DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetTimeFormatter(value);
+        DateTimeFormatter formatter = DateTimeUtils.DateTimeParser.tryGetTimeFormatter(null);
 
         assertNull(formatter);
     }
@@ -109,10 +103,9 @@ public class DateTimeParserTest {
 
     @Test
     public void testParseLocalDateTime1_Value_Null() throws Exception {
-        String value = null;
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
-        LocalDateTime dateTime = DateTimeUtils.DateTimeParser.parseLocalDateTime(value, formatter);
+        LocalDateTime dateTime = DateTimeUtils.DateTimeParser.parseLocalDateTime(null, formatter);
 
         assertNull(dateTime);
     }
@@ -120,10 +113,9 @@ public class DateTimeParserTest {
     @Test
     public void testParseLocalDateTime1_Formatter_Null() throws Exception {
         String value = "2015-03-02T23:12:13.140";
-        DateTimeFormatter formatter = null;
 
         exception.expect(IllegalArgumentException.class);
-        DateTimeUtils.DateTimeParser.parseLocalDateTime(value, formatter);
+        DateTimeUtils.DateTimeParser.parseLocalDateTime(value, null);
     }
 
     @Test
@@ -149,9 +141,7 @@ public class DateTimeParserTest {
 
     @Test
     public void testParseLocalDateTime2_Value_Null() throws Exception {
-        String value = null;
-
-        LocalDateTime dateTime = DateTimeUtils.DateTimeParser.parseLocalDateTime(value);
+        LocalDateTime dateTime = DateTimeUtils.DateTimeParser.parseLocalDateTime(null);
 
         assertNull(dateTime);
     }
@@ -177,10 +167,9 @@ public class DateTimeParserTest {
 
     @Test
     public void testParseLocalDate_Value_Null() throws Exception {
-        String value = null;
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
-        LocalDate date = DateTimeUtils.DateTimeParser.parseLocalDate(value, formatter);
+        LocalDate date = DateTimeUtils.DateTimeParser.parseLocalDate(null, formatter);
 
         assertNull(date);
     }
@@ -188,10 +177,9 @@ public class DateTimeParserTest {
     @Test
     public void testParseLocalDate_Formatter_Null() throws Exception {
         String value = "2015-11-23";
-        DateTimeFormatter formatter = null;
 
         exception.expect(IllegalArgumentException.class);
-        DateTimeUtils.DateTimeParser.parseLocalDate(value, formatter);
+        DateTimeUtils.DateTimeParser.parseLocalDate(value, null);
     }
 
     @Test
@@ -217,10 +205,9 @@ public class DateTimeParserTest {
 
     @Test
     public void testParseLocalTime_Value_Null() throws Exception {
-        String value = null;
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
 
-        LocalTime time = DateTimeUtils.DateTimeParser.parseLocalTime(value, formatter);
+        LocalTime time = DateTimeUtils.DateTimeParser.parseLocalTime(null, formatter);
 
         assertNull(time);
     }
@@ -228,10 +215,9 @@ public class DateTimeParserTest {
     @Test
     public void testParseLocalTime_Formatter_Null() throws Exception {
         String value = "12:34:56.789";
-        DateTimeFormatter formatter = null;
 
         exception.expect(IllegalArgumentException.class);
-        DateTimeUtils.DateTimeParser.parseLocalTime(value, formatter);
+        DateTimeUtils.DateTimeParser.parseLocalTime(value, null);
     }
 
     @Test

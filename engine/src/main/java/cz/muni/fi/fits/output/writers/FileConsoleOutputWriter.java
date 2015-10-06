@@ -9,37 +9,68 @@ import java.time.LocalDateTime;
 /**
  * Writer class that writes output
  * <ul>
- *     <li>to system console</li>
- *     <li>to file specified in constructor</li>
+ * <li>to system console</li>
+ * <li>to file specified in constructor</li>
  * </ul>
  * implements {@link OutputWriter} interface
  *
  * @author Martin Vrábel
- * @version 1.1.1
+ * @version 1.2
  */
 @Singleton
 public class FileConsoleOutputWriter implements OutputWriter {
+
+    private static final String UNKNOWN_FILE_NAME = "Unknown file";
 
     private final File _outputFile;
 
     /**
      * Creates new instance of {@link FileConsoleOutputWriter} that writes
-     * to file specified by <code>filePath</code> parameter
+     * to file specified by <code>filePath</code> parameter. File will be created if it does not exist
      *
-     * @param filePath  specifies file where to write output data
+     * @param filePath specifies file where to write output data
+     * @throws IllegalArgumentException if provided <code>filepath</code> parameter contains invalid data
      */
     public FileConsoleOutputWriter(String filePath) {
+        if (filePath == null)
+            throw new IllegalArgumentException("filePath parameter is null");
+
         _outputFile = new File(filePath);
+
+        // create output file if it does not exist
+        if (!_outputFile.exists()) {
+            try {
+                if (!_outputFile.createNewFile())
+                    throw new IllegalArgumentException("Invalid filepath parameter");
+            } catch (IOException ioEx) {
+                throw new IllegalArgumentException("Invalid filepath parameter", ioEx);
+            }
+        }
     }
 
     /**
      * Creates new instance of {@link FileConsoleOutputWriter} that writes
-     * to specified <code>file</code> parameter
+     * to specified <code>file</code> parameter. File will be created if it does not exist
      *
-     * @param outputFile    specifies file where to write output data
+     * @param outputFile specifies file where to write output data
+     * @throws IllegalArgumentException if provided <code>file</code> parameter contains
+     *                                  invalid File data
      */
     public FileConsoleOutputWriter(File outputFile) {
+        if (outputFile == null)
+            throw new IllegalArgumentException("outputFile parameter is null");
+
         _outputFile = outputFile;
+
+        // create output file if it does not exist
+        if (!_outputFile.exists()) {
+            try {
+                if (!_outputFile.createNewFile())
+                    throw new IllegalArgumentException("Invalid file parameter");
+            } catch (IOException ioEx) {
+                throw new IllegalArgumentException("Invalid file parameter", ioEx);
+            }
+        }
     }
 
     /**
@@ -51,20 +82,21 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeInfo(String infoMessage) {
-        try {
-            // write to file
+        if (infoMessage != null) {
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                // write to file
                 writer.println("[" + LocalDateTime.now().toString() + "] INFO >> " + infoMessage);
+
+                // write to console
+                System.out.println("[" + LocalDateTime.now().toString() + "] INFO >> " + infoMessage);
+
+                return true;
+            } catch (IOException ioEx) {
+                return false;
             }
-
-            // write to console
-            System.out.println("[" + LocalDateTime.now().toString() + "] INFO >> " + infoMessage);
-
-            return true;
-        } catch (IOException e) {
+        } else {
             return false;
         }
-
     }
 
     /**
@@ -77,19 +109,28 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeInfo(File file, String infoMessage) {
-        try {
-            // write to file
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
+
+        if (infoMessage != null) {
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                // write to file
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
-                        " INFO >> [" + file.getName() + "]:" + infoMessage);
+                        " INFO >> [" + filename + "]:" + infoMessage);
+
+                // write to console
+                System.out.println("[" + LocalDateTime.now().toString() + "]" +
+                        " INFO >> [" + filename + "]: " + infoMessage);
+
+                return true;
+            } catch (IOException ioEx) {
+                return false;
             }
-
-            // write to console
-            System.out.println("[" + LocalDateTime.now().toString() + "]" +
-                    " INFO >> [" + file.getName() + "]: " + infoMessage);
-
-            return true;
-        } catch (IOException e) {
+        } else {
             return false;
         }
     }
@@ -103,21 +144,23 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(Throwable exception) {
-        String exceptionType = StringUtils.getExceptionType(exception);
+        if (exception != null) {
+            String exceptionType = StringUtils.getExceptionType(exception);
 
-        try {
-            // write to file
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                // write to file
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
                         " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
+
+                // write to console
+                System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                        " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
+
+                return true;
+            } catch (IOException ioEx) {
+                return false;
             }
-
-            // write to console
-            System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                    " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
-
-            return true;
-        } catch (IOException e) {
+        } else {
             return false;
         }
     }
@@ -126,20 +169,26 @@ public class FileConsoleOutputWriter implements OutputWriter {
      * Writes specified <code>exception</code> along with <code>errorMessage</code>
      * to output file and to system console atomically
      *
-     * @param errorMessage  error message to be written to output
-     * @param exception     exception to be written to output
+     * @param errorMessage  error message to be written to output,
+     *                      if <code>null</code> or empty, message from <code>exception</code>
+     *                      parameter is taken
+     * @param exception     exception to be written to output,
+     *                      if <code>null</code>, only <code>errorMessage</code> id written as error
      * @return              {@inheritDoc}
      */
     @Override
     public boolean writeException(String errorMessage, Throwable exception) {
+        if (errorMessage == null || errorMessage.isEmpty())
+            return writeException(exception);
+        if (exception == null)
+            return writeError(errorMessage);
+
         String exceptionType = StringUtils.getExceptionType(exception);
 
-        try {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
             // write to file
-            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
-                writer.println("[" + LocalDateTime.now().toString() + "]" +
-                        " EXCEPTION >> [" + exceptionType + "]: " + errorMessage);
-            }
+            writer.println("[" + LocalDateTime.now().toString() + "]" +
+                    " EXCEPTION >> [" + exceptionType + "]: " + errorMessage);
 
             // write to console
             System.err.println("[" + LocalDateTime.now().toString() + "]" +
@@ -161,27 +210,36 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
-        String exceptionType = StringUtils.getExceptionType(exception);
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
 
-        try {
-            // write to file
+        if (exception != null) {
+            String exceptionType = StringUtils.getExceptionType(exception);
+
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                // write to file
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
                         " EXCEPTION >>" +
-                        " [" + file.getName() + "] -" +
+                        " [" + filename + "] -" +
                         " [" + exceptionType + "]: " +
                         exception.getMessage());
+
+                // write to console
+                System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                        " EXCEPTION >>" +
+                        " [" + filename + "] -" +
+                        " [" + exceptionType + "]: " +
+                        exception.getMessage());
+
+                return true;
+            } catch (IOException e) {
+                return false;
             }
-
-            // write to console
-            System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                    " EXCEPTION >>" +
-                    " [" + file.getName() + "] -" +
-                    " [" + exceptionType + "]: " +
-                    exception.getMessage());
-
-            return true;
-        } catch (IOException e) {
+        } else {
             return false;
         }
     }
@@ -195,19 +253,21 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeError(String errorMessage) {
-        try {
-            // write to file
+        if (errorMessage != null) {
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                // write to file
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
                         " ERROR >>" + errorMessage);
+
+                // write to console
+                System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                        " ERROR >>" + errorMessage);
+
+                return true;
+            } catch (IOException e) {
+                return false;
             }
-
-            // write to console
-            System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                    " ERROR >>" + errorMessage);
-
-            return true;
-        } catch (IOException e) {
+        } else {
             return false;
         }
     }
@@ -222,23 +282,32 @@ public class FileConsoleOutputWriter implements OutputWriter {
      */
     @Override
     public boolean writeError(File file, String errorMessage) {
-        try {
-            // write to file
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
+
+        if (errorMessage != null) {
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                // write to file
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
                         " ERROR >>" +
-                        " [" + file.getName() + "]: " +
+                        " [" + filename + "]: " +
                         errorMessage);
+
+                // write to console
+                System.err.println("[" + LocalDateTime.now().toString() + "]" +
+                        " ERROR >>" +
+                        " [" + filename + "]: " +
+                        errorMessage);
+
+                return true;
+            } catch (IOException e) {
+                return false;
             }
-
-            // write to console
-            System.err.println("[" + LocalDateTime.now().toString() + "]" +
-                    " ERROR >>" +
-                    " [" + file.getName() + "]: " +
-                    errorMessage);
-
-            return true;
-        } catch (IOException e) {
+        } else {
             return false;
         }
     }
