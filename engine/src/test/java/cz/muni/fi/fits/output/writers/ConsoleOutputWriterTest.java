@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * Tests for methods of {@link ConsoleOutputWriter} class
  *
  * @author Martin Vrábel
- * @version 1.0
+ * @version 1.1
  */
 public class ConsoleOutputWriterTest {
 
@@ -130,6 +130,16 @@ public class ConsoleOutputWriterTest {
     }
 
     @Test
+    public void testWriteInfo2_Parameters_Null() throws Exception {
+        boolean result = _consoleOutputWriter.writeInfo(null, null);
+
+        String outputString = _standardOutputStream.toString();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
+    }
+
+    @Test
     public void testWriteInfo2_Parameters_Correct() throws Exception {
         String message = "Testing";
 
@@ -213,6 +223,16 @@ public class ConsoleOutputWriterTest {
     }
 
     @Test
+    public void testWriteException2_Parameters_Null() throws Exception {
+        boolean result = _consoleOutputWriter.writeException((String) null, null);
+
+        String outputString = _errorOutputStream.toString();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
+    }
+
+    @Test
     public void testWriteException2_Parameters_Correct() throws Exception {
         String message = "Testing error message";
         Throwable exception = new IllegalArgumentException("Testing exception message");
@@ -239,7 +259,7 @@ public class ConsoleOutputWriterTest {
         assertNotNull(outputString);
         assertTrue(outputString.contains(exception.getMessage()));
         assertTrue(outputString.contains(testingExceptionType));
-        assertTrue(!outputString.contains(TEST_FILE.getName()));
+        assertTrue(outputString.contains(UNKNOWN_FILE_SUBSTRING));
         assertTrue(outputString.contains(EXCEPTION_MESSAGE_LEADER));
         assertTrue(result);
     }
@@ -247,6 +267,16 @@ public class ConsoleOutputWriterTest {
     @Test
     public void testWriteException3_Exception_Null() throws Exception {
         boolean result = _consoleOutputWriter.writeException(TEST_FILE, null);
+
+        String outputString = _errorOutputStream.toString();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
+    }
+
+    @Test
+    public void testWriteException3_Parameters_Null() throws Exception {
+        boolean result = _consoleOutputWriter.writeException((File) null, null);
 
         String outputString = _errorOutputStream.toString();
         assertNotNull(outputString);
@@ -314,6 +344,7 @@ public class ConsoleOutputWriterTest {
         String outputString = _errorOutputStream.toString();
         assertNotNull(outputString);
         assertTrue(outputString.contains(message));
+        assertTrue(outputString.contains(UNKNOWN_FILE_SUBSTRING));
         assertTrue(outputString.contains(ERROR_MESSAGE_LEADER));
         assertTrue(result);
     }
@@ -339,6 +370,16 @@ public class ConsoleOutputWriterTest {
         assertTrue(outputString.contains(TEST_FILE.getName()));
         assertTrue(outputString.contains(ERROR_MESSAGE_LEADER));
         assertTrue(result);
+    }
+
+    @Test
+    public void testWriteError2_Parameters_Null() throws Exception {
+        boolean result = _consoleOutputWriter.writeError(null, null);
+
+        String outputString = _errorOutputStream.toString();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
     }
 
     @Test

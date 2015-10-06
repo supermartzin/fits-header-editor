@@ -19,10 +19,12 @@ import java.time.LocalDateTime;
 @Singleton
 public class FileOutputWriter implements OutputWriter {
 
+    private static final String UNKNOWN_FILE_NAME = "Unknown file";
+
     private final File _outputFile;
 
     /**
-     * Creates new instance of {@link ConsoleOutputWriter} that writes
+     * Creates new instance of {@link FileOutputWriter} that writes
      * to file specified by <code>filePath</code> parameter. File will be created if it does not exist
      *
      * @param filePath                  specifies file where to write output data
@@ -46,8 +48,8 @@ public class FileOutputWriter implements OutputWriter {
     }
 
     /**
-     * Creates new instance of {@link ConsoleOutputWriter} that writes
-     * to specified <code>file</code> parameter. File will be created if it does not exist
+     * Creates new instance of {@link FileOutputWriter} that writes
+     * to specified <code>outputFile</code> parameter. File will be created if it does not exist
      *
      * @param outputFile                specifies file where to write output data
      * @throws IllegalArgumentException if provided <code>file</code> parameter contains
@@ -73,8 +75,8 @@ public class FileOutputWriter implements OutputWriter {
     /**
      * Writes specified <code>infoMessage</code> to output file
      *
-     * @param infoMessage info message to be written to output
-     * @return {@inheritDoc}
+     * @param infoMessage   info message to be written to output
+     * @return              {@inheritDoc}
      */
     @Override
     public boolean writeInfo(String infoMessage) {
@@ -94,17 +96,28 @@ public class FileOutputWriter implements OutputWriter {
      * Writes specified <code>infoMessage</code> related to specified <code>file</code>
      * to output file
      *
-     * @param file        file to which specific info message relates
-     * @param infoMessage message to be written to output
-     * @return {@inheritDoc}
+     * @param file          file to which specific info message relates
+     * @param infoMessage   message to be written to output
+     * @return              {@inheritDoc}
      */
     @Override
     public boolean writeInfo(File file, String infoMessage) {
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
-            writer.println("[" + LocalDateTime.now().toString() + "]" +
-                    " INFO >> [" + file.getName() + "]:" + infoMessage);
-            return true;
-        } catch (IOException ioEx) {
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
+
+        if (infoMessage != null) {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                writer.println("[" + LocalDateTime.now().toString() + "]" +
+                        " INFO >> [" + filename + "]:" + infoMessage);
+                return true;
+            } catch (IOException ioEx) {
+                return false;
+            }
+        } else {
             return false;
         }
     }
@@ -113,17 +126,21 @@ public class FileOutputWriter implements OutputWriter {
      * Writes specified <code>exception</code> to output file
      *
      * @param exception exception to be written to output
-     * @return {@inheritDoc}
+     * @return          {@inheritDoc}
      */
     @Override
     public boolean writeException(Throwable exception) {
-        String exceptionType = StringUtils.getExceptionType(exception);
+        if (exception != null) {
+            String exceptionType = StringUtils.getExceptionType(exception);
 
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
-            writer.println("[" + LocalDateTime.now().toString() + "]" +
-                    " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
-            return true;
-        } catch (IOException ioEx) {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                writer.println("[" + LocalDateTime.now().toString() + "]" +
+                        " EXCEPTION >> [" + exceptionType + "]: " + exception.getMessage());
+                return true;
+            } catch (IOException ioEx) {
+                return false;
+            }
+        } else {
             return false;
         }
     }
@@ -132,12 +149,20 @@ public class FileOutputWriter implements OutputWriter {
      * Writes specified <code>exception</code> along with <code>errorMessage</code>
      * to output file
      *
-     * @param errorMessage error message to be written to output
-     * @param exception    exception to be written to output
-     * @return {@inheritDoc}
+     * @param errorMessage  error message to be written to output,
+     *                      if <code>null</code> or empty, message from <code>exception</code>
+     *                      parameter is taken
+     * @param exception     exception to be written to output,
+     *                      if <code>null</code>, only <code>errorMessage</code> id written as error
+     * @return              {@inheritDoc}
      */
     @Override
     public boolean writeException(String errorMessage, Throwable exception) {
+        if (errorMessage == null || errorMessage.isEmpty())
+            return writeException(exception);
+        if (exception == null)
+            return writeError(errorMessage);
+
         String exceptionType = StringUtils.getExceptionType(exception);
 
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
@@ -155,20 +180,31 @@ public class FileOutputWriter implements OutputWriter {
      *
      * @param file      file to which specific exception relates
      * @param exception exception to be written to output
-     * @return {@inheritDoc}
+     * @return          {@inheritDoc}
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
-        String exceptionType = StringUtils.getExceptionType(exception);
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
 
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
-            writer.println("[" + LocalDateTime.now().toString() + "]" +
-                    " EXCEPTION >>" +
-                    " [" + file.getName() + "] -" +
-                    " [" + exceptionType + "]: " +
-                    exception.getMessage());
-            return true;
-        } catch (IOException ioEx) {
+        if (exception != null) {
+            String exceptionType = StringUtils.getExceptionType(exception);
+
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                writer.println("[" + LocalDateTime.now().toString() + "]" +
+                        " EXCEPTION >>" +
+                        " [" + filename + "] -" +
+                        " [" + exceptionType + "]: " +
+                        exception.getMessage());
+                return true;
+            } catch (IOException ioEx) {
+                return false;
+            }
+        } else {
             return false;
         }
     }
@@ -176,16 +212,20 @@ public class FileOutputWriter implements OutputWriter {
     /**
      * Writes specified <code>errorMessage</code> to output file
      *
-     * @param errorMessage error message to be written to output
-     * @return {@inheritDoc}
+     * @param errorMessage  error message to be written to output
+     * @return              {@inheritDoc}
      */
     @Override
     public boolean writeError(String errorMessage) {
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
-            writer.println("[" + LocalDateTime.now().toString() + "]" +
-                    " ERROR >>" + errorMessage);
-            return true;
-        } catch (IOException ioEx) {
+        if (errorMessage != null) {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                writer.println("[" + LocalDateTime.now().toString() + "]" +
+                        " ERROR >>" + errorMessage);
+                return true;
+            } catch (IOException ioEx) {
+                return false;
+            }
+        } else {
             return false;
         }
     }
@@ -194,19 +234,30 @@ public class FileOutputWriter implements OutputWriter {
      * Writes specified <code>errorMessage</code> related to specified <code>file</code>
      * to output file
      *
-     * @param file         file to which specific error message relates
-     * @param errorMessage error message to be written to output
-     * @return {@inheritDoc}
+     * @param file          file to which specific error message relates
+     * @param errorMessage  error message to be written to output
+     * @return              {@inheritDoc}
      */
     @Override
     public boolean writeError(File file, String errorMessage) {
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
-            writer.println("[" + LocalDateTime.now().toString() + "]" +
-                    " ERROR >>" +
-                    " [" + file.getName() + "]: " +
-                    errorMessage);
-            return true;
-        } catch (IOException ioEx) {
+        // set filename
+        String filename;
+        if (file == null)
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
+
+        if (errorMessage != null) {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
+                writer.println("[" + LocalDateTime.now().toString() + "]" +
+                        " ERROR >>" +
+                        " [" + filename + "]: " +
+                        errorMessage);
+                return true;
+            } catch (IOException ioEx) {
+                return false;
+            }
+        } else {
             return false;
         }
     }

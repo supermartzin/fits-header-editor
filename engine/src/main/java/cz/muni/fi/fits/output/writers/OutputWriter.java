@@ -60,8 +60,7 @@ public interface OutputWriter {
      * Writes specified <code>exception</code> related to specified <code>file</code>
      * to output
      *
-     * @param file      file to which specific exception relates,
-     *                  if <code>null</code> then it is written as regular exception
+     * @param file      file to which specific exception relates
      * @param exception exception to be written to output
      * @return          <code>true</code> when writing to output is successful,
      *                  <code>false</code> when error occurs during writing to output or
@@ -83,8 +82,7 @@ public interface OutputWriter {
      * Writes specified <code>errorMessage</code> related to specified <code>file</code>
      * to output
      *
-     * @param file          file to which specific error message relates,
-     *                      if <code>null</code> then it is written as regular error
+     * @param file          file to which specific error message relates
      * @param errorMessage  error message to be written to output
      * @return              <code>true</code> when writing to output is successful,
      *                      <code>false</code> when error occurs during writing to output or

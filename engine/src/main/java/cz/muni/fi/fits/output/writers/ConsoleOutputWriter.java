@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * implements {@link OutputWriter} interface
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.1.1
  */
 @Singleton
 public class ConsoleOutputWriter implements OutputWriter {
@@ -121,22 +121,25 @@ public class ConsoleOutputWriter implements OutputWriter {
      * Writes specified <code>exception</code> related to specified <code>file</code>
      * to standard error output
      *
-     * @param file      file to which specific exception relates,
-     *                  if <code>null</code> then it is written as regular exception
+     * @param file      file to which specific exception relates
      * @param exception exception to be written to output
      * @return          {@inheritDoc}
      */
     @Override
     public boolean writeException(File file, Throwable exception) {
+        // set filename
+        String filename;
         if (file == null)
-            return writeException(exception);
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
 
         if (exception != null) {
             String exceptionType = StringUtils.getExceptionType(exception);
 
             System.err.println("[" + LocalDateTime.now().toString() + "]" +
                     " EXCEPTION >>" +
-                    " [" + file.getName() + "] -" +
+                    " [" + filename + "] -" +
                     " [" + exceptionType + "]: " +
                     exception.getMessage());
 
@@ -168,20 +171,23 @@ public class ConsoleOutputWriter implements OutputWriter {
      * Writes specified <code>errorMessage</code> related to specified <code>file</code>
      * to standard error output
      *
-     * @param file          file to which specific error message relates,
-     *                      if <code>null</code> then it is written as regular error
+     * @param file          file to which specific error message relates
      * @param errorMessage  error message to be written to output
      * @return              {@inheritDoc}
      */
     @Override
     public boolean writeError(File file, String errorMessage) {
+        // set filename
+        String filename;
         if (file == null)
-            return writeError(errorMessage);
+            filename = UNKNOWN_FILE_NAME;
+        else
+            filename = file.getName();
 
         if (errorMessage != null) {
             System.err.println("[" + LocalDateTime.now().toString() + "]" +
                     " ERROR >>" +
-                    " [" + file.getName() + "]: " +
+                    " [" + filename + "]: " +
                     errorMessage);
 
             return true;

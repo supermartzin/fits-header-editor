@@ -156,6 +156,16 @@ public class FileOutputWriterTest {
     }
 
     @Test
+    public void testWriteInfo2_Parameters_Null() throws Exception {
+        boolean result = _fileOutputWriter.writeInfo(null, null);
+
+        String outputString = readOutputFile();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
+    }
+
+    @Test
     public void testWriteInfo2_Parameters_Correct() throws Exception {
         String message = "Testing";
 
@@ -239,6 +249,16 @@ public class FileOutputWriterTest {
     }
 
     @Test
+    public void testWriteException2_Parameters_Null() throws Exception {
+        boolean result = _fileOutputWriter.writeException((String) null, null);
+
+        String outputString = readOutputFile();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
+    }
+
+    @Test
     public void testWriteException2_Parameters_Correct() throws Exception {
         String message = "Testing error message";
         Throwable exception = new IllegalArgumentException("Testing exception message");
@@ -273,6 +293,16 @@ public class FileOutputWriterTest {
     @Test
     public void testWriteException3_Exception_Null() throws Exception {
         boolean result = _fileOutputWriter.writeException(TEST_FILE, null);
+
+        String outputString = readOutputFile();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
+    }
+
+    @Test
+    public void testWriteException3_Parameters_Null() throws Exception {
+        boolean result = _fileOutputWriter.writeException((File) null, null);
 
         String outputString = readOutputFile();
         assertNotNull(outputString);
@@ -365,6 +395,16 @@ public class FileOutputWriterTest {
         assertTrue(outputString.contains(TEST_FILE.getName()));
         assertTrue(outputString.contains(ERROR_MESSAGE_LEADER));
         assertTrue(result);
+    }
+
+    @Test
+    public void testWriteError2_Parameters_Null() throws Exception {
+        boolean result = _fileOutputWriter.writeError(null, null);
+
+        String outputString = readOutputFile();
+        assertNotNull(outputString);
+        assertTrue(outputString.isEmpty());
+        assertFalse(result);
     }
 
     @Test
