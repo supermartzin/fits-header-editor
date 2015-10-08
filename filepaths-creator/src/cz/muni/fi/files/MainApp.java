@@ -10,12 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * FilePath Creator 1.1
+ * FilePath Creator 1.2
  *
  * @author Martin Vrábel
- * @version 1.1.0.RELEASE
+ * @version 1.2.0.RELEASE
  */
 public class MainApp extends Application {
+
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     private Stage _primaryStage;
 
@@ -43,7 +45,8 @@ public class MainApp extends Application {
 
     private void initMainLayout() {
         try {
-            FXMLLoader mainLayoutFile = new FXMLLoader(MainApp.class.getResource("view/MainLayout.fxml"));
+            FXMLLoader mainLayoutFile = new FXMLLoader(
+                    MainApp.class.getResource("view/MainLayout.fxml"));
             AnchorPane mainLayout = mainLayoutFile.load();
 
             Scene scene = new Scene(mainLayout);
@@ -56,7 +59,8 @@ public class MainApp extends Application {
             ExceptionDialog dialog = new ExceptionDialog();
             dialog.setTitle("Neočakávaná chyba programu");
             dialog.setHeaderText("Nastala neočakávaná chyba programu");
-            dialog.setContentText("Program vyhodil neočakávanú výnimku so správou:\n     " + ex.getMessage());
+            dialog.setContentText("Program vyhodil neočakávanú výnimku so správou:" + LINE_SEPARATOR
+                    + ex.getMessage());
             dialog.setException(ex);
             dialog.showAndWait();
             System.exit(1);

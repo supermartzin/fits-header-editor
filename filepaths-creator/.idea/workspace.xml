@@ -7,7 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac421976-d96d-4049-a352-206bfed6f6a8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/findbugs-idea.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FilePaths Creator.iml" afterPath="$PROJECT_DIR$/.idea/FilePaths Creator.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java" afterPath="$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml" afterPath="$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java" afterPath="$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="filepaths-creator.iws" />
@@ -30,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.050055616">
+              <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -42,24 +49,62 @@
       </file>
       <file leaf-file-name="MainLayout.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.206897">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainLayoutController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="105" column="67" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="67" />
-              <folding />
+              <caret line="27" column="86" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="86" />
+              <folding>
+                <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="class#2691:3963" expanded="false" />
+                <element signature="method#call#0;class#2691:3963" expanded="false" />
+                <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainLayoutController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
+      <file leaf-file-name="ExceptionDialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/dialog/ExceptionDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43191963">
-              <caret line="92" column="70" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
               <folding>
-                <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
+                <element signature="docComment;class#ExceptionDialog#0" expanded="false" />
+                <element signature="docComment;method#ExceptionDialog#0;class#ExceptionDialog#0" expanded="false" />
+                <element signature="docComment;method#ExceptionDialog#1;class#ExceptionDialog#0" expanded="false" />
+                <element signature="docComment;method#setException#0;class#ExceptionDialog#0" expanded="false" />
+                <element signature="method#setException#0;class#ExceptionDialog#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileCreationService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/service/FileCreationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,8 +135,8 @@
         <option value="$PROJECT_DIR$/src/cz/muni/fi/files/utils/NotifyingRunnable.java" />
         <option value="$PROJECT_DIR$/src/cz/muni/fi/files/utils/FileCreationService.java" />
         <option value="$PROJECT_DIR$/src/cz/muni/fi/files/service/FileCreationService.java" />
-        <option value="$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java" />
         <option value="$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java" />
+        <option value="$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java" />
       </list>
     </option>
   </component>
@@ -185,7 +230,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -201,7 +246,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -328,8 +373,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -342,7 +387,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3816092" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -547,9 +592,6 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -654,11 +696,12 @@
       <workItem from="1432048016795" duration="10000" />
       <workItem from="1432069830485" duration="2011000" />
       <workItem from="1432141673251" duration="329000" />
+      <workItem from="1444324715138" duration="3551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18121000" />
+    <option name="totallyTimeSpent" value="21672000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -666,30 +709,61 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15671642" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32900432" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15671642" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -704,7 +778,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -722,14 +796,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="67" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="67" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
@@ -737,6 +811,55 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="class#2691:3963" expanded="false" />
+            <element signature="method#call#0;class#2691:3963" expanded="false" />
+            <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="67" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="class#2691:3963" expanded="false" />
+            <element signature="method#call#0;class#2691:3963" expanded="false" />
+            <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
             <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
           </folding>
         </state>
@@ -746,7 +869,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#1;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#setException#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="method#setException#0;class#ExceptionDialog#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -759,14 +888,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="67" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="67" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
@@ -774,6 +903,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
           <folding>
+            <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="class#2691:3963" expanded="false" />
+            <element signature="method#call#0;class#2691:3963" expanded="false" />
+            <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
             <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
           </folding>
         </state>
@@ -783,7 +922,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#1;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#setException#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="method#setException#0;class#ExceptionDialog#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -796,14 +941,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="67" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="67" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
@@ -811,6 +956,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
           <folding>
+            <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="class#2691:3963" expanded="false" />
+            <element signature="method#call#0;class#2691:3963" expanded="false" />
+            <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
             <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
           </folding>
         </state>
@@ -820,7 +975,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#1;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#setException#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="method#setException#0;class#ExceptionDialog#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -833,14 +994,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
@@ -848,6 +1009,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
           <folding>
+            <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="class#2691:3963" expanded="false" />
+            <element signature="method#call#0;class#2691:3963" expanded="false" />
+            <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
             <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
           </folding>
         </state>
@@ -857,7 +1028,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="docComment;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#1;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#setException#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="method#setException#0;class#ExceptionDialog#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -869,75 +1046,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33206832">
-          <caret line="295" column="0" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/javafx-src.zip!/javafx/concurrent/Task.java">
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/dialog/ExceptionDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1462" column="0" selection-start-line="1462" selection-start-column="0" selection-end-line="1462" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/concurrent/FutureTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="285" column="0" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="67" selection-start-line="105" selection-start-column="62" selection-end-line="105" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/service/FileCreationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20870535">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#602#603#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
+            <element signature="docComment;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#ExceptionDialog#1;class#ExceptionDialog#0" expanded="false" />
+            <element signature="docComment;method#setException#0;class#ExceptionDialog#0" expanded="false" />
+            <element signature="method#setException#0;class#ExceptionDialog#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/dialog/ExceptionDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/view/MainLayout.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.015314">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state vertical-scroll-proportion="-8.206897">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java">
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/service/FileCreationService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/controller/MainLayoutController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43191963">
-          <caret line="92" column="70" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="86" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="86" />
           <folding>
+            <element signature="method#onBrowseForInputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onBrowseForOutputDirectory#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onCreateFile#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#createFileCreationTask#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="class#2691:3963" expanded="false" />
+            <element signature="method#call#0;class#2691:3963" expanded="false" />
+            <element signature="method#onTaskSucceeded#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#onTaskFailed#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#mandatoryFieldsFilled#0;class#MainLayoutController#0" expanded="false" />
+            <element signature="method#getFileFilters#0;class#MainLayoutController#0" expanded="false" />
             <element signature="method#satisfiesFilesFilter#0;class#MainLayoutController#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/muni/fi/files/MainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.050055616">
+          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -984,7 +1152,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Java SDK 1.7_71</last-edited>
+          <last-edited>Java SDK 8 [u60]</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1001,7 +1169,6 @@
             <option name="proportions">
               <list>
                 <option value="0.3816092" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

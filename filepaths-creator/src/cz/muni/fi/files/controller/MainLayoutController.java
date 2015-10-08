@@ -25,6 +25,8 @@ import java.util.Set;
 
 public class MainLayoutController {
 
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+
     private MainApp _mainApp;
 
     private File _inputDirectory = null;
@@ -83,12 +85,19 @@ public class MainLayoutController {
         return new Task() {
             @Override
             protected Object call() throws Exception {
-                int itemsCount = _inputDirectory.list().length;
+                File[] listedFiles = _inputDirectory.listFiles();
+                if (listedFiles == null)
+                    throw new RuntimeException("V zadanom priečinku sa nenachádzajú žiadne súbory!");
+
+                int itemsCount = listedFiles.length;
                 int counter = 0;
+
+                if (itemsCount == 0)
+                    updateProgress(1, 1);
 
                 // list all satisfying files
                 List<String> files = new ArrayList<>();
-                for (File file : _inputDirectory.listFiles()) {
+                for (File file : listedFiles) {
                     updateProgress(++counter, itemsCount);
                     if (file.isFile() && satisfiesFilesFilter(file)) {
                         files.add(file.getAbsolutePath());
@@ -134,8 +143,8 @@ public class MainLayoutController {
 
         // set content text according to exception type
         if (worker.getException() instanceof AccessDeniedException) {
-            dialog.setContentText("V zadanom priečinku nie sú dostatočné oprávnenia na zápis súboru." +
-                    "\r\nSkúste vybrať iný priečinok.");
+            dialog.setContentText("V zadanom priečinku nie sú dostatočné oprávnenia na zápis súboru." + LINE_SEPARATOR
+                    + "Skúste vybrať iný priečinok.");
         } else {
             dialog.setContentText("Vyskytla sa chyba počas vytvárania súboru s cestami.");
         }
