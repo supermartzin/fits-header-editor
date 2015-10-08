@@ -33,7 +33,7 @@ import java.util.List;
  * on GitHub
  *
  * @author Martin Vrábel
- * @version 1.5
+ * @version 1.5.1
  * @see <a href="http://nom-tam-fits.github.io/nom-tam-fits/">nom.tam.fits - Project pages</a>
  */
 public class NomTamFitsEditingEngine implements HeaderEditingEngine {
@@ -105,6 +105,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // write changes
             writeChangesBackToFile(fits, fitsFile);
+
+            // close Fits object
+            fits.close();
 
             // return success
             if (updated)
@@ -194,6 +197,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // write changes
             writeChangesBackToFile(fits, fitsFile);
 
+            // close Fits object
+            fits.close();
+
             // return success
             if (!oldRemoved && !insertedToEnd)
                 return new Result(true, "Record '" + keyword + "' successfully added to header to index " + index);
@@ -246,6 +252,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // write changes
             writeChangesBackToFile(fits, fitsFile);
 
+            // close Fits object
+            fits.close();
+
             // return success
             return new Result(true, "Record '" + keyword + "' successfully removed from header");
         } catch (FitsException | IOException ex) {
@@ -293,6 +302,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // write changes
             writeChangesBackToFile(fits, fitsFile);
+
+            // close Fits object
+            fits.close();
 
             // return success
             return new Result(true, "Successfully removed from index " + index + " record '" + indexKey + "'");
@@ -372,6 +384,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // write changes
             writeChangesBackToFile(fits, fitsFile);
 
+            // close Fits object
+            fits.close();
+
             // return success
             if (!valueOfNewRemoved)
                 return new Result(true, "Keyword '" + oldKeyword + "' successfully changed to '" + newKeyword + "'");
@@ -450,6 +465,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // write changes back to file
             writeChangesBackToFile(fits, fitsFile);
+
+            // close Fits object
+            fits.close();
 
             // return success
             if (!newAdded)
@@ -557,6 +575,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // write changes
             writeChangesBackToFile(fits, fitsFile);
+
+            // close Fits object
+            fits.close();
 
             // return success
             if (!updated)
@@ -697,6 +718,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // write changes
             writeChangesBackToFile(fits, fitsFile);
 
+            // close Fits object
+            fits.close();
+
             // return success
             return new Result(true, "'" + keyword + "' record successfully changed from '"
                     + oldCard.getValue() + "' to '"
@@ -808,6 +832,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
 
             // write changes
             writeChangesBackToFile(fits, fitsFile);
+
+            // close Fits object
+            fits.close();
 
             // return success
             if (!jdUpdated)
@@ -1094,6 +1121,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // write changes
             writeChangesBackToFile(fits, fitsFile);
 
+            // close Fits object
+            fits.close();
+
             // return success
             if (!hjdUpdated)
                 return new Result(true, "Heliocentric Julian Date successfully saved to 'HJD' record");
@@ -1153,6 +1183,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             throws IOException, FitsException {
         BufferedFile bf = new BufferedFile(fitsFile, FILE_OPENING_MODE);
         fitsObject.write(bf);
+
+        bf.flush();
+        bf.close();
     }
 
     private boolean indexInRangeOfHeaderSize(int index, Header header) {
