@@ -1,7 +1,7 @@
 package cz.muni.fi.fits.common.loaders;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -13,8 +13,13 @@ import java.util.Properties;
 public final class PropertiesLoader {
 
     /**
-     * Loads properties from specified properties file using spcified <code>mainClass</code>
-     * class loader
+     * Charset with which to load properties from file
+     */
+    private static final String PROPERTIES_CHARSET = "UTF-8";
+
+    /**
+     * Loads properties from specified properties file with <code>UTF-8</code> encoding
+     * using spcified <code>mainClass</code> class loader
      *
      * @param clazz         class containing <code>main</code> method
      * @param filePath      path to properties file
@@ -29,18 +34,25 @@ public final class PropertiesLoader {
             throw new IllegalArgumentException("filePath is null");
 
         Properties props = new Properties();
+        InputStreamReader reader = null;
 
         try {
-            props.load(clazz.getResourceAsStream(filePath));
+            URL resource = clazz.getResource(filePath);
+            reader = new InputStreamReader(resource.openStream(), PROPERTIES_CHARSET);
+            props.load(reader);
         } catch (NullPointerException npEx) {
             throw new IOException("File does not exists: " + filePath);
+        } finally {
+            // close reader
+            if (reader != null)
+                reader.close();
         }
 
         return props;
     }
 
     /**
-     * Loads properties from specified properties file
+     * Loads properties from specified properties file with <code>UTF-8</code> encoding
      *
      * @param filePath      path to properties file
      * @return              object with properties
@@ -53,8 +65,8 @@ public final class PropertiesLoader {
 
         Properties props = new Properties();
         
-        try (FileInputStream file = new FileInputStream(filePath)) {
-            props.load(file);
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(filePath), PROPERTIES_CHARSET)) {
+            props.load(reader);
         }
 
         return props;

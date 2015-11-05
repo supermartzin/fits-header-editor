@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 import java.io.IOException;
 import java.util.Properties;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertNotNull;
 public class PropertiesLoaderTest {
 
     private static final String TEST_PROPERTIES_FILE_PATH = "/test.properties";
+    private static final String UTF8_PROPERTIES_FILE_PATH = "/utf8.properties";
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
@@ -65,5 +67,24 @@ public class PropertiesLoaderTest {
         Properties properties = PropertiesLoader.loadProperties(PropertiesLoaderTest.class, TEST_PROPERTIES_FILE_PATH);
 
         assertNotNull(properties);
+    }
+
+    @Test
+    public void testLoadProperties_UTF8Encoding_1() throws Exception {
+        String filePath = getClass().getResource(UTF8_PROPERTIES_FILE_PATH).toURI().getPath();
+        Properties properties = PropertiesLoader.loadProperties(filePath);
+
+        assertNotNull(properties);
+        assertEquals(properties.getProperty("property1"), "+ľščťžýáíé=");
+        assertEquals(properties.getProperty("property2"), "áááéééíííääôô");
+    }
+
+    @Test
+    public void testLoadProperties_UTF8Encoding_2() throws Exception {
+        Properties properties = PropertiesLoader.loadProperties(PropertiesLoaderTest.class, UTF8_PROPERTIES_FILE_PATH);
+
+        assertNotNull(properties);
+        assertEquals(properties.getProperty("property1"), "+ľščťžýáíé=");
+        assertEquals(properties.getProperty("property2"), "áááéééíííääôô");
     }
 }
