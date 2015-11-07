@@ -112,7 +112,7 @@ public class FileOutputWriter implements OutputWriter {
         if (infoMessage != null) {
             try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(_outputFile, true)))) {
                 writer.println("[" + LocalDateTime.now().toString() + "]" +
-                        " INFO >> [" + filename + "]:" + infoMessage);
+                        " INFO >> [" + filename + "]: " + infoMessage);
                 return true;
             } catch (IOException ioEx) {
                 return false;

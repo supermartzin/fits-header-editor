@@ -74,6 +74,10 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             BasicHDU hdu = fits.getHDU(0);
             Header header = hdu.getHeader();
 
+            // check if keyword is not between mandatory keywords
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword))
+                return new Result(false, "Record '" + keyword + "' cannot be added to header because it is mandatory keyword.");
+
             // create new header card based on value type
             HeaderCard card = createNewHeaderCard(keyword, value, comment);
 
@@ -152,6 +156,10 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             // get header of first HDU unit
             BasicHDU hdu = fits.getHDU(0);
             Header header = hdu.getHeader();
+
+            // check if keyword is not between mandatory keywords
+            if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword))
+                return new Result(false, "Record '" + keyword + "' cannot be inserted to index " + index + " because it is mandatory keyword.");
 
             // check if keyword does already exist
             boolean keywordExists = header.containsKey(keyword);
@@ -566,6 +574,10 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
                     updated = true;
                 }
             } else {
+                // check if keyword is not between mandatory keywords
+                if (MandatoryFITSKeywords.matchesMandatoryKeyword(keyword))
+                    return new Result(false, "Cannot chain into record '" + keyword + "' because it is mandatory keyword.");
+
                 Cursor<String, HeaderCard> iterator = header.iterator();
 
                 // insert new card at the end of header
