@@ -9,6 +9,12 @@ package cz.muni.fi.fits.common.utils;
 public final class Constants {
 
     /**
+     * Current version of this application
+     */
+    public static final String APP_VERSION = "1.0-RELEASE";
+
+
+    /**
      * Maximum length of header record's keyword string
      */
     public static final int MAX_KEYWORD_LENGTH = 8;

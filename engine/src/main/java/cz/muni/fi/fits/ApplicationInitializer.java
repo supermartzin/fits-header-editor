@@ -6,7 +6,9 @@ import cz.muni.fi.fits.common.Configuration;
 import cz.muni.fi.fits.common.exceptions.ConfigurationException;
 import cz.muni.fi.fits.common.loaders.ConfigurationLoader;
 import cz.muni.fi.fits.common.loaders.PropertiesLoader;
+import cz.muni.fi.fits.common.utils.Constants;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -20,9 +22,15 @@ public class ApplicationInitializer {
 
     public static void main(String[] args) {
         try {
+            // check if version asked
+            if (isVersionAsked(args)) {
+                System.out.println(Constants.APP_VERSION);
+                return;
+            }
+
             // load properties
             //Properties properties = PropertiesLoader.loadProperties(ApplicationInitializer.class, "/fits.properties");     // for IDE
-            Properties properties = PropertiesLoader.loadProperties("./fits.properties");                                // for JAR
+            Properties properties = PropertiesLoader.loadProperties("." + File.separator + "fits.properties");               // for JAR
 
             // load configuration
             Configuration config = ConfigurationLoader.loadConfiguration(properties);
@@ -38,5 +46,15 @@ public class ApplicationInitializer {
         } catch (ConfigurationException | IOException ex) {
             System.err.println(ex.getMessage());
         }
+    }
+
+    private static boolean isVersionAsked(String[] args) {
+        if (args != null) {
+            if (args.length > 0 && args[0].toLowerCase().equals("-version")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

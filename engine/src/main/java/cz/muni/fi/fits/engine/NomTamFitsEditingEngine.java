@@ -8,6 +8,7 @@ import cz.muni.fi.fits.engine.models.converters.RightAscensionParamsConverter;
 import cz.muni.fi.fits.engine.models.formatters.NumberFormatter;
 import cz.muni.fi.fits.engine.utils.DateTimeUtils;
 import cz.muni.fi.fits.engine.utils.MandatoryFITSKeywords;
+import cz.muni.fi.fits.engine.utils.NumberUtils;
 import cz.muni.fi.fits.models.ChainValueType;
 import cz.muni.fi.fits.models.DegreesObject;
 import cz.muni.fi.fits.models.TimeObject;
@@ -822,7 +823,9 @@ public class NomTamFitsEditingEngine implements HeaderEditingEngine {
             datetimeValue = datetimeValue.plusNanos(Double.valueOf(nanoseconds).longValue());
 
             // compute Julian Date
-            double julianDate = JulianDate.computeJulianDate(datetimeValue);
+            double julianDateDouble = JulianDate.computeJulianDate(datetimeValue);
+            // convert to decimal for precision
+            BigDecimal julianDate = NumberUtils.createJDDecimal(julianDateDouble);
 
             HeaderCard jdCard = new HeaderCard(Constants.DEFAULT_JD_KEYWORD, julianDate, comment);
 
