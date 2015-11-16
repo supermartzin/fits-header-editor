@@ -4,14 +4,14 @@ package cz.muni.fi.fits.common.utils;
  * Static class contaning useful constants related to FITS files
  *
  * @author Martin Vrábel
- * @version 1.5
+ * @version 1.6
  */
 public final class Constants {
 
     /**
      * Current version of this application
      */
-    public static final String APP_VERSION = "1.0-RELEASE";
+    public static final String APP_VERSION = "1.0.1-RELEASE";
 
 
     /**

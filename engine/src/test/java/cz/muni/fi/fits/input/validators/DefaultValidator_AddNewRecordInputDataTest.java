@@ -17,7 +17,7 @@ import java.util.HashSet;
  * in {@link DefaultInputDataValidator} class
  *
  * @author Martin Vrábel
- * @version 1.1
+ * @version 1.1.1
  */
 public class DefaultValidator_AddNewRecordInputDataTest {
 
@@ -170,11 +170,20 @@ public class DefaultValidator_AddNewRecordInputDataTest {
     }
 
     @Test
-    public void testValidate_AddNewRecordInputData_CommentAndStringValue_TooLong() throws Exception {
+    public void testValidate_AddNewRecordInputData_CommentAndStringValue_TooLong_1() throws Exception {
         AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE VALUE VALUE VALUE VALUE VALUE VALUE", "COMMENT TOO LONG - COMMENT TOO LONG", false, _fitsFiles);
 
         exception.expect(ValidationException.class);
-        exception.expectMessage("Comment is too long");
+        exception.expectMessage("Comment is too long. Maximum length of comment for this String value is 24 characters");
+        _validator.validate(anrid);
+    }
+
+    @Test
+    public void testValidate_AddNewRecordInputData_CommentAndStringValue_TooLong_2() throws Exception {
+        AddNewRecordInputData anrid = new AddNewRecordInputData("KEYWORD", "VALUE VALUE VALUE VALUE VALUE VALUE VALUE VALUE VALUE VALUE VALUE V", "COMMENT TOO LONG - COMMENT TOO LONG", false, _fitsFiles);
+
+        exception.expect(ValidationException.class);
+        exception.expectMessage("Comment is too long. Maximum length of comment for this String value is 0 characters");
         _validator.validate(anrid);
     }
 

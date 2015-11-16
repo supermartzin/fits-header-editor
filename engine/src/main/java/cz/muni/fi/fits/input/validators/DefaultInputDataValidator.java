@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  * for validation of input data
  *
  * @author Martin Vrábel
- * @version 1.2.5
+ * @version 1.2.6
  */
 public class DefaultInputDataValidator implements InputDataValidator {
 
@@ -102,6 +102,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
                 if (strValue.length() + addNewRecordInputData.getComment().length()
                         > Constants.MAX_STRING_VALUE_COMMENT_LENGTH) {
                     int maxLength = Constants.MAX_STRING_VALUE_COMMENT_LENGTH - strValue.length();
+                    if (maxLength < 0) maxLength = 0;
+
                     throw new ValidationException("Comment is too long. Maximum length of comment for this String value is " + maxLength + " characters");
                 }
             }
@@ -191,6 +193,8 @@ public class DefaultInputDataValidator implements InputDataValidator {
                 if (strValue.length() + addNewToIndexInputData.getComment().length()
                         > Constants.MAX_STRING_VALUE_COMMENT_LENGTH) {
                     int maxLength = Constants.MAX_STRING_VALUE_COMMENT_LENGTH - strValue.length();
+                    if (maxLength < 0) maxLength = 0;
+
                     throw new ValidationException("Comment is too long. Maximum length of comment for this String value is " + maxLength + " characters");
                 }
             }
@@ -376,6 +380,7 @@ public class DefaultInputDataValidator implements InputDataValidator {
                 if (strValue.length() + changeValueByKeywordInputData.getComment().length()
                         > Constants.MAX_STRING_VALUE_COMMENT_LENGTH) {
                     int maxLength = Constants.MAX_STRING_VALUE_COMMENT_LENGTH - strValue.length();
+                    if (maxLength < 0) maxLength = 0;
                     throw new ValidationException("Comment is too long. Maximum length of comment for this String value is " + maxLength + " characters");
                 }
             }

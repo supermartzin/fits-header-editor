@@ -10,17 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9623f6ed-926d-4492-852f-237dc36614a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/NumberUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/NumberUtilsTest.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/resources/test-directory1/File for GIT to include this empty directory" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__gov_nasa_gsfc_heasarc_nom_tam_fits_1_14_0_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__gov_nasa_gsfc_heasarc_nom_tam_fits_1_14_0_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewToIndexInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewToIndexInputDataTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeValueByKeywordInputDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeValueByKeywordInputDataTest.java" />
     </list>
     <ignored path="FITSHeaderEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,7 +51,7 @@
     <favorites_list name="FITSHeaderEditor" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45788914">
+    <splitter split-orientation="horizontal" split-proportion="0.35501066">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="NomTamFitsEditingEngine.java" pinned="false" current-in-tab="false">
@@ -116,8 +114,8 @@
           <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.1559633">
-                  <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+                <state vertical-scroll-proportion="0.38990825">
+                  <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -211,12 +209,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/DeclinationTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/formatters/NumberFormatterTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/RightAscensionParamsConverterTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/models/converters/DeclinationParamsConverterTest.java" />
         <option value="$PROJECT_DIR$/files.in" />
-        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/utils/FileUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/Result.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/models/Result.java" />
@@ -248,7 +243,6 @@
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/output/writers/FileConsoleOutputWriterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Placeholders.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/DateTimeParserTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/loaders/PropertiesLoader.java" />
         <option value="$PROJECT_DIR$/src/test/resources/utf8.properties" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/common/loaders/PropertiesLoaderTest.java" />
@@ -257,11 +251,15 @@
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/output/writers/FileOutputWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/NomTamFitsEditingEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/engine/utils/NumberUtils.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/ApplicationInitializer.java" />
         <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/NumberUtilsTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewToIndexInputDataTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeValueByKeywordInputDataTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Constants.java" />
       </list>
     </option>
   </component>
@@ -555,11 +553,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="input" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="validators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -589,7 +587,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
+              <option name="myItemId" value="input" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -611,11 +609,101 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validators" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FITS Header Editor Tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -680,33 +768,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Run application">
-    <configuration default="false" name="NumberUtilsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cz.muni.fi.fits.engine.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="FITS-HeaderEditor" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cz.muni.fi.fits.engine.utils" />
-      <option name="MAIN_CLASS_NAME" value="cz.muni.fi.fits.engine.utils.NumberUtilsTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Maven.Package to JAR">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -1201,17 +1263,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list size="4">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Run application" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.All Tests" />
       <item index="2" class="java.lang.String" itemvalue="Maven.Package to JAR" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.NumberUtilsTest" />
     </list>
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.NumberUtilsTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="StatisticProjectComponent">
@@ -1394,27 +1450,29 @@
       <workItem from="1447359515652" duration="2299000" />
       <workItem from="1447401291787" duration="475000" />
       <workItem from="1447402379734" duration="344000" />
+      <workItem from="1447528163100" duration="8000" />
+      <workItem from="1447700954227" duration="1715000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests - 2015.11.13 at 08h 59m 31s.xml">
+    <history-entry file="All_Tests - 2015.11.16 at 20h 17m 48s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2015.11.13 at 09h 17m 31s.xml">
+    <history-entry file="All_Tests - 2015.11.16 at 20h 18m 50s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_Tests - 2015.11.13 at 09h 18m 07s.xml">
+    <history-entry file="All_Tests - 2015.11.16 at 20h 26m 51s.xml">
       <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumberUtilsTest - 2015.11.12 at 21h 08m 19s.xml">
-      <configuration name="NumberUtilsTest" configurationId="JUnit" />
+    <history-entry file="All_Tests - 2015.11.16 at 20h 31m 37s.xml">
+      <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumberUtilsTest - 2015.11.12 at 21h 08m 30s.xml">
-      <configuration name="NumberUtilsTest" configurationId="JUnit" />
+    <history-entry file="All_Tests - 2015.11.16 at 20h 32m 18s.xml">
+      <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NumberUtilsTest - 2015.11.12 at 21h 09m 48s.xml">
-      <configuration name="NumberUtilsTest" configurationId="JUnit" />
+    <history-entry file="All_Tests - 2015.11.16 at 20h 34m 31s.xml">
+      <configuration name="All Tests" configurationId="JUnit" />
     </history-entry>
     <history-entry file="NumberUtilsTest - 2015.11.12 at 21h 10m 38s.xml">
       <configuration name="NumberUtilsTest" configurationId="JUnit" />
@@ -1430,7 +1488,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="832721000" />
+    <option name="totallyTimeSpent" value="834444000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1458,7 +1516,7 @@
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.21529563" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.2153518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3217768" sideWeight="0.4978678" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1525,7 +1583,7 @@
           <option name="timeStamp" value="226" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="227" />
+      <option name="time" value="228" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1538,27 +1596,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/common/utils/FileUtilsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4160178">
-          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/models/TimeObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4160178">
-          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/models/SwitchInputData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21347032">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/processors/CmdArgumentsProcessorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1701891">
@@ -1712,13 +1749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5039909">
           <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58494866">
-          <caret line="421" column="68" selection-start-line="421" selection-start-column="68" selection-end-line="421" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -1973,11 +2003,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Constants.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/NumberUtilsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15144767">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.61513156">
+          <caret line="56" column="45" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fits.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27960527">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1991,26 +2028,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/engine/utils/NumberUtilsTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewToIndexInputDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61513156">
-          <caret line="56" column="45" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.17037863">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fits.properties">
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_AddNewRecordInputDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27960527">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.17037863">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/fits/input/validators/DefaultValidator_ChangeValueByKeywordInputDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26064736">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/input/validators/DefaultInputDataValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4923339">
+          <caret line="542" column="39" selection-start-line="542" selection-start-column="39" selection-end-line="542" selection-end-column="39" />
+          <folding>
+            <element signature="docComment;class#DefaultInputDataValidator#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/fits/common/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11358575">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1559633">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.38990825">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
           <folding />
         </state>
       </provider>
