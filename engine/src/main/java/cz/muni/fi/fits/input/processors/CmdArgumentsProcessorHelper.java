@@ -17,10 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -28,7 +25,7 @@ import java.util.stream.Stream;
  * that helps to extract input data to specific operation
  *
  * @author Martin Vrábel
- * @version 1.4.1
+ * @version 1.4.2
  */
 final class CmdArgumentsProcessorHelper {
 
@@ -44,7 +41,7 @@ final class CmdArgumentsProcessorHelper {
         if (path == null)
             throw new IllegalArgumentException("path is null");
 
-        Collection<File> fitsFiles = new HashSet<>();
+        Collection<File> fitsFiles = new LinkedHashSet<>();
 
         // check for path validity
         if (!FileUtils.isValidPath(path))

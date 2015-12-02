@@ -8,7 +8,6 @@ import cz.muni.fi.fits.common.loaders.ConfigurationLoader;
 import cz.muni.fi.fits.common.loaders.PropertiesLoader;
 import cz.muni.fi.fits.common.utils.Constants;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -29,8 +28,8 @@ public class ApplicationInitializer {
             }
 
             // load properties
-            //Properties properties = PropertiesLoader.loadProperties(ApplicationInitializer.class, "/fits.properties");     // for IDE
-            Properties properties = PropertiesLoader.loadProperties("." + File.separator + "fits.properties");               // for JAR
+            //Properties properties = PropertiesLoader.loadProperties(ApplicationInitializer.class, "/fits.properties");    // for IDE
+            Properties properties = PropertiesLoader.loadProperties("." + Constants.FILE_SEPARATOR + "fits.properties");    // for JAR
 
             // load configuration
             Configuration config = ConfigurationLoader.loadConfiguration(properties);

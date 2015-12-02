@@ -6,7 +6,7 @@
 
     <groupId>cz.muni.fi.fits</groupId>
     <artifactId>FITS-HeaderEditor</artifactId>
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
 
     <name>FITS Header Editor Tool</name>
     <packaging>jar</packaging>
@@ -63,6 +63,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

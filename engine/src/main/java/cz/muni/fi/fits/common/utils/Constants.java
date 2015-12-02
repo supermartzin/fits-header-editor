@@ -1,5 +1,7 @@
 package cz.muni.fi.fits.common.utils;
 
+import java.io.File;
+
 /**
  * Static class contaning useful constants related to FITS files
  *
@@ -11,8 +13,12 @@ public final class Constants {
     /**
      * Current version of this application
      */
-    public static final String APP_VERSION = "1.0.1-RELEASE";
+    public static final String APP_VERSION = "1.0.2-RELEASE";
 
+    /**
+     * Platform independent separator of filepaths
+     */
+    public static final String FILE_SEPARATOR = File.separator;
 
     /**
      * Maximum length of header record's keyword string
