@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cz.muni.fi.fits.gui.view.controllers.RootLayoutController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <Menu mnemonicParsing="false" text="%program">
+                <MenuItem mnemonicParsing="false" onAction="#onPreferences" text="%prefs">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../../../../../../graphics/settings.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem mnemonicParsing="false" onAction="#onExit" text="%exit">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../../../../../../graphics/exit.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+            </Menu>
+            <Menu fx:id="langMenu" mnemonicParsing="false" text="%lang">
+                <RadioMenuItem fx:id="en" mnemonicParsing="false" text="%lang.en">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../../../../../../graphics/en-flag.png"/>
+                        </ImageView>
+                    </graphic>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="languages"/>
+                    </toggleGroup>
+                </RadioMenuItem>
+                <RadioMenuItem fx:id="sk" mnemonicParsing="false" text="%lang.sk" toggleGroup="$languages">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../../../../../../graphics/sk-flag.png"/>
+                        </ImageView>
+                    </graphic>
+                </RadioMenuItem>
+                <RadioMenuItem fx:id="cs" mnemonicParsing="false" text="%lang.cs" toggleGroup="$languages">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../../../../../../graphics/cs-flag.png"/>
+                        </ImageView>
+                    </graphic>
+                </RadioMenuItem>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%help">
+                <MenuItem mnemonicParsing="false" onAction="#onAbout" text="%app.about">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../../../../../../graphics/about.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+            </Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

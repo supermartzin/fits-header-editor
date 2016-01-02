@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.TextFlow?>
+<ScrollPane fx:id="topContainer" fitToHeight="true" styleClass="edge-to-edge" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cz.muni.fi.fits.gui.view.controllers.OutputViewController">
+    <AnchorPane focusTraversable="true">
+        <TextFlow fx:id="outputTextFlow" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+    </AnchorPane>
+</ScrollPane>

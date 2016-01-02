@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" styleClass="edge-to-edge" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.muni.fi.fits.gui.view.operationtabs.controllers.ChangeValueTabController">
+    <AnchorPane>
+        <Label layoutX="15.0" layoutY="14.0" text="%oper.change.value">
+            <font>
+              <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <padding>
+                <Insets left="15.0" />
+            </padding>
+            <Label text="%keyword">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </Label>
+            <Label text="%value.new" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </Label>
+            <Label text="%comment.new" GridPane.rowIndex="2">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </Label>
+            <CheckBox fx:id="addSwitchField" mnemonicParsing="false" text="%oper.change.value.switch.a" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </CheckBox>
+            <TextField fx:id="keywordField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="%field.required" GridPane.columnIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </TextField>
+            <TextField fx:id="commentField" maxWidth="1.7976931348623157E308" promptText="%field.optional" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </TextField>
+            <ComboBox fx:id="valueTypeField" minWidth="-Infinity" promptText="%choose.value" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </ComboBox>
+            <CheckBox fx:id="valueBooleanField" mnemonicParsing="false" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </CheckBox>
+            <TextField fx:id="valueStringField" maxWidth="1.7976931348623157E308" promptText="%field.required" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </TextField>
+            <DatePicker fx:id="valueDateField" editable="false" maxWidth="1.7976931348623157E308" prefHeight="25.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </DatePicker>
+            <HBox fx:id="valueDateTimeContainer" maxWidth="1.7976931348623157E308" spacing="5.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets bottom="2.0" top="3.0" />
+                </GridPane.margin>
+                <DatePicker fx:id="valueDateTimeDateField" editable="false" maxWidth="120.0" minWidth="120.0" showWeekNumbers="true">
+                    <HBox.margin>
+                        <Insets left="5.0" />
+                    </HBox.margin>
+                </DatePicker>
+                <AnchorPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                    <TextField fx:id="valueDateTimeTimeField" minWidth="100.0" promptText="%time.pattern" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" />
+                </AnchorPane>
+            </HBox>
+            <TextField fx:id="valueNumberField" maxWidth="1.7976931348623157E308" promptText="%field.required" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </TextField>
+            <TextField fx:id="valueTimeField" maxWidth="1.7976931348623157E308" promptText="%time.pattern" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="5.0" right="5.0" />
+                </GridPane.margin>
+            </TextField>
+        </GridPane>
+    </AnchorPane>
+</ScrollPane>

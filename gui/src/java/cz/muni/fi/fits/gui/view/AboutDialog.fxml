@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cz.muni.fi.fits.gui.view.controllers.AboutDialogController">
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <StackPane style="-fx-background-color: lightgray;" VBox.vgrow="NEVER">
+            <HBox spacing="15.0">
+                <ImageView fitHeight="60.0" fitWidth="200.0" opacity="0.9" pickOnBounds="true" preserveRatio="true"
+                           smooth="false">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0"/>
+                    </HBox.margin>
+                    <Image url="@../../../../../../graphics/icon.png"/>
+                </ImageView>
+                <VBox alignment="CENTER" spacing="2.0">
+                    <Text fill="#000000ad" strokeType="OUTSIDE" strokeWidth="0.0" text="%app.title">
+                        <font>
+                            <Font name="System Bold" size="20.0"/>
+                        </font>
+                    </Text>
+                    <Text fill="#0000009a" strokeType="OUTSIDE" strokeWidth="0.0" text="%app.version">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </Text>
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </VBox>
+            </HBox>
+        </StackPane>
+        <AnchorPane VBox.vgrow="NEVER">
+            <VBox spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0">
+                <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="400.0">
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%app.about.dialog.description"
+                          wrappingWidth="250.33398914337158" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
+                    <ImageView fitHeight="192.0" fitWidth="110.0" layoutX="276.0" layoutY="22.0" pickOnBounds="true"
+                               preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                        <Image url="@../../../../../../graphics/filogo.png"/>
+                    </ImageView>
+                    <Text layoutX="10.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                          text="%app.about.dialog.thesis.school" AnchorPane.bottomAnchor="27.98828125"
+                          AnchorPane.leftAnchor="10.0">
+                        <font>
+                            <Font name="System Bold" size="12.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="10.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Martin Vrábel"
+                          AnchorPane.leftAnchor="10.0">
+                        <font>
+                            <Font name="System Bold" size="13.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="16.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                          text="%app.about.dialog.thesis.school.location" AnchorPane.bottomAnchor="10.0"
+                          AnchorPane.leftAnchor="10.0"/>
+                    <Hyperlink contentDisplay="TEXT_ONLY" disable="true" graphicTextGap="0.0" layoutX="6.0"
+                               layoutY="48.0" onAction="#openBachelorThesisHomepage"
+                               text="%app.about.dialog.thesis.pages" AnchorPane.leftAnchor="6.0"/>
+                </AnchorPane>
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0"/>
+                    </VBox.margin>
+                </Separator>
+                <AnchorPane>
+                    <GridPane AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="90.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="90.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                                            vgrow="NEVER"/>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                                            vgrow="NEVER"/>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                                            vgrow="NEVER"/>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                                            vgrow="NEVER"/>
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0"
+                                            vgrow="NEVER"/>
+                        </rowConstraints>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%app.about.dialog.used_libs"
+                              GridPane.columnSpan="2147483647">
+                            <GridPane.margin>
+                                <Insets left="10.0" right="5.0"/>
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom.tam.fits" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets left="15.0" right="15.0"/>
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Italic" size="13.0"/>
+                            </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Google Guice" GridPane.rowIndex="2">
+                            <GridPane.margin>
+                                <Insets left="15.0" right="15.0"/>
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Italic" size="13.0"/>
+                            </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Icon by Freepik" GridPane.rowIndex="4">
+                            <GridPane.margin>
+                                <Insets left="15.0" right="15.0"/>
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Italic" size="13.0"/>
+                            </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Google Guava" GridPane.rowIndex="3">
+                            <GridPane.margin>
+                                <Insets left="15.0" right="15.0"/>
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Italic" size="13.0"/>
+                            </font>
+                        </Text>
+                        <Hyperlink onAction="#openNomTamFitsHomepage" text="%app.about.dialog.link.homepage"
+                                   textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="1"/>
+                        <Hyperlink onAction="#openGuiceHomepage" text="%app.about.dialog.link.homepage"
+                                   textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="2"/>
+                        <Hyperlink onAction="#openGuavaHomepage" text="%app.about.dialog.link.homepage"
+                                   textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="3"/>
+                        <Hyperlink onAction="#openFreepikIconsHomepage" text="%app.about.dialog.link.homepage"
+                                   textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="4"/>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Public domain license"
+                              GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apache license 2.0" GridPane.columnIndex="2"
+                              GridPane.rowIndex="2">
+                            <GridPane.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apache license 2.0" GridPane.columnIndex="2"
+                              GridPane.rowIndex="3">
+                            <GridPane.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Creative Commons 3.0"
+                              GridPane.columnIndex="2" GridPane.rowIndex="4">
+                            <GridPane.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </GridPane.margin>
+                        </Text>
+                    </GridPane>
+                </AnchorPane>
+            </VBox>
+        </AnchorPane>
+    </VBox>
+</AnchorPane>
