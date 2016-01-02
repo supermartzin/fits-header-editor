@@ -2,3 +2,5 @@ engine/target/
 engine/files.in
 manuals/
 fits-files/
+.idea/
+FITS-HeaderEditor.iml
