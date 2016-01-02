@@ -38,10 +38,10 @@ public class FITSHeaderEditor {
                             InputProcessor inputProcessor,
                             InputDataValidator inputDataValidator,
                             OutputWriter outputWriter) {
-        this._headerEditingEngine = headerEditingEngine;
-        this._inputProcessor = inputProcessor;
-        this._inputDataValidator = inputDataValidator;
-        this._outputWriter = outputWriter;
+        _headerEditingEngine = headerEditingEngine;
+        _inputProcessor = inputProcessor;
+        _inputDataValidator = inputDataValidator;
+        _outputWriter = outputWriter;
 
         // in case of uncaught exception
         Thread.setDefaultUncaughtExceptionHandler((t, e) -> _outputWriter.writeException(e));

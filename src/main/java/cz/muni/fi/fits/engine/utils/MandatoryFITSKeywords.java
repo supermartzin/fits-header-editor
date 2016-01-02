@@ -18,7 +18,6 @@ public class MandatoryFITSKeywords {
         MANDATORY_KEYWORDS_REGEX.add("^SIMPLE$");
         MANDATORY_KEYWORDS_REGEX.add("^BITPIX$");
         MANDATORY_KEYWORDS_REGEX.add("^EXTEND$");
-        MANDATORY_KEYWORDS_REGEX.add("^EXTEND$");
         MANDATORY_KEYWORDS_REGEX.add("^XTENSION$");
     }
 

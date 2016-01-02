@@ -40,7 +40,7 @@ public class ApplicationInitializer {
             // get instance of executive class
             FITSHeaderEditor editor = injector.getInstance(FITSHeaderEditor.class);
 
-            // start FITS header edit operation
+            // start FITS header editing operation
             editor.start();
         } catch (ConfigurationException | IOException ex) {
             System.err.println(ex.getMessage());
