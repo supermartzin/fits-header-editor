@@ -1,4 +1,9 @@
-# **FITS Header Editor**#
+# FITS Header Editor
+
+This is engine part of **FITS Header Editor** application executable from *command line*. It can be used as a part of graphical user interface, found in standalone repository – [FITS Header Visual Editor](https://github.com/supermartzin/fits-header-visual-editor)
+
+-----
+_Following description is in slovak and czech language:_
 
 **Program na hromadnú úpravu hlavičiek FITS súborov.**
 
